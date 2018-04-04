@@ -394,7 +394,7 @@ public class NPCHandler {
 		case 239:
 		case 6611:
 		case 2054:
-
+		case 3127:
 		case 6612:
 		case 3998:
 		case 497:
@@ -2223,8 +2223,10 @@ public class NPCHandler {
 				} else if (npcs[i].attackType == 1) { // range
 					damage = Misc.random(getMaxHit(i)); // TODO
 					// damage = Misc.random(npcs[i].maxHit);
-					if (10 + Misc.random(c.getCombat().calculateRangeDefence()) > Misc
-							.random(NPCHandler.npcs[i].attack)) {
+					int rangeDefence = Misc.random(c.getCombat().calculateRangeDefence());
+					int npcAttack = Misc.random(NPCHandler.npcs[i].attack);
+					System.out.println("range def " + rangeDefence + " npc attack " + npcAttack);
+					if (rangeDefence > npcAttack) {
 						damage = 0;
 					}
 					if (c.prayerActive[17] && !protectionIgnored) { // protect
@@ -3616,63 +3618,128 @@ public class NPCHandler {
 
 	private boolean spawnedGuardian = false;
 
-	public void loadSpell(Player player, int i) {
+	public void loadSpell(Player player, int npcId) {
 		int chance = 0;
 
-		if (DemonicGorilla.isDemonicGorilla(npcs[i])) {
-			DemonicGorilla.switchPrayer(npcs[i]);
+		if (DemonicGorilla.isDemonicGorilla(npcs[npcId])) {
+			DemonicGorilla.switchPrayer(npcs[npcId]);
 		}
 
-		switch (npcs[i].npcType) {
+		switch (npcs[npcId].npcType) {
+		case 2054:
+			int r2 = Misc.random(10);
+			if (r2 <= 2) {
+				npcs[npcId].attackType = 1;
+				npcs[npcId].gfx100(550);
+				npcs[npcId].projectileId = 551;
+				npcs[npcId].endGfx = 552;
+			} else if (r2 >= 3 && r2 <= 8) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].gfx100(553);
+				npcs[npcId].projectileId = 554;
+				npcs[npcId].endGfx = 555;
+			} else if (r2 == 9) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].gfx100(553);
+				npcs[npcId].projectileId = 554;
+				npcs[npcId].endGfx = 555;
+				int r = Misc.random(2);
+				switch(r) {
+				case 0:
+					if(player.getItems().freeSlots() == 0 && player.playerEquipment[Player.playerWeapon] != -1) {
+						Server.itemHandler.createGroundItem(player, player.playerEquipment[Player.playerWeapon], npcs[i].absX, npcs[i].absY, 1, 1, player.getId());
+						player.sendMessage("The Chaos Elemental has un-equipped your weapon and placed it on the ground.");
+					} else if(player.getItems().freeSlots() > 0 && player.playerEquipment[Player.playerWeapon] != -1) {
+						player.getItems().addItem(player.playerEquipment[Player.playerWeapon], 1);
+						player.sendMessage("The Chaos Elemental has un-equipped your weapon and placed it in your inventory.");
+					}
+					player.playerEquipment[Player.playerWeapon] = -1;
+					player.getItems().updateSlot(Player.playerWeapon);
+					player.getItems().sendWeapon(player.playerEquipment[Player.playerWeapon], player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]));
+					player.getCombat().getPlayerAnimIndex(player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]).toLowerCase());
+					player.getItems().resetBonus();
+					player.getItems().getBonus();
+					player.getItems().writeBonus();
+					player.getPA().requestUpdates();
+					break;
+				case 1:
+					player.getPA().movePlayer(player.absX - Misc.random(3), player.absY - Misc.random(3), player.heightLevel);
+					player.sendMessage("The Chaos Elemental has teleported you away from it.");
+					break;
+				}
+			} else {
+				npcs[npcId].attackType = 0;
+			}
+			break;
+		// vetion
+		case 6611:
+		case 6612:
+			chance = Misc.random(100);
+			if (chance < 25) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
+				Vetion.createVetionSpell(npcs[npcId], player);
+			} else if (chance > 90 && System.currentTimeMillis() - npcs[npcId].lastSpecialAttack > 15_000) {
+				npcs[npcId].attackType = 4;
+				npcs[npcId].attackTimer = 5;
+				npcs[npcId].hitDelayTimer = 2;
+				npcs[npcId].lastSpecialAttack = System.currentTimeMillis();
+			} else {
+				npcs[npcId].attackType = 0;
+				npcs[npcId].attackTimer = 5;
+				npcs[npcId].hitDelayTimer = 2;
+			}
+			break;
 		case 963:
 			chance = Misc.random(100);
 			if (chance <= 50) {
 				player.RANGE_ABILITY = true;
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				Queen.graphic1(npcs[i], player);
-				npcs[i].hitDelayTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				Queen.graphic1(npcs[npcId], player);
+				npcs[npcId].hitDelayTimer = 4;
 			} else if (chance >= 51 && chance <= 100 && !player.RANGE_ABILITY) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].projectileId = 280;
-				Queen.graphic(npcs[i], player);
-				npcs[i].hitDelayTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].projectileId = 280;
+				Queen.graphic(npcs[npcId], player);
+				npcs[npcId].hitDelayTimer = 4;
 			}
 			break;
 
 		case 965:
-			npcs[i].attackType = 2;
-			npcs[i].attackTimer = 7;
-			npcs[i].projectileId = 473;
-			Queen.graphic(npcs[i], player);
-			npcs[i].hitDelayTimer = 4;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].attackTimer = 7;
+			npcs[npcId].projectileId = 473;
+			Queen.graphic(npcs[npcId], player);
+			npcs[npcId].hitDelayTimer = 4;
 			break;
 
 		case 6767:
 			chance = Misc.random(100);
-			if (player.SPAWN_LIZARDS >= 3 && System.currentTimeMillis() - npcs[i].spawnLizards > 7_500) {
-				npcs[i].attackType = 1;
-				Lizardman.Minions(npcs[i], player);
-				npcs[i].spawnLizards = System.currentTimeMillis();
+			if (player.SPAWN_LIZARDS >= 3 && System.currentTimeMillis() - npcs[npcId].spawnLizards > 7_500) {
+				npcs[npcId].attackType = 1;
+				Lizardman.Minions(npcs[npcId], player);
+				npcs[npcId].spawnLizards = System.currentTimeMillis();
 				player.SPAWN_LIZARDS = 0;
-			} else if (player.JUMP_ABILITY >= 4 && System.currentTimeMillis() - npcs[i].jumpAbility > 8_500) {
-				Lizardman.jump(npcs[i], player);
-				npcs[i].jumpAbility = System.currentTimeMillis();
+			} else if (player.JUMP_ABILITY >= 4 && System.currentTimeMillis() - npcs[npcId].jumpAbility > 8_500) {
+				Lizardman.jump(npcs[npcId], player);
+				npcs[npcId].jumpAbility = System.currentTimeMillis();
 				player.JUMP_ABILITY = 0;
 			} else if (chance >= 0 || chance <= 100) {
-				npcs[i].attackType = 0;
-				npcs[i].attackTimer = 5;
-				npcs[i].hitDelayTimer = 3;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].attackTimer = 5;
+				npcs[npcId].hitDelayTimer = 3;
 				player.SPAWN_LIZARDS++;
 				player.JUMP_ABILITY++;
 			}
 			break;
 
 		case 499:
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 280;
-			npcs[i].attackTimer = 3;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 280;
+			npcs[npcId].attackTimer = 3;
 			break;
 
 		/**
@@ -3684,46 +3751,46 @@ public class NPCHandler {
 				return;
 			}
 			if (!player.prayerActive[17]) {
-				npcs[i].projectileId = 1248;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].projectileId = 1248;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].attackTimer = 7;
 				player.MELEE_ATTACK += 4;
 			} else if (player.prayerActive[17]) {
-				npcs[i].attackType = 1;
-				npcs[i].projectileId = 1248;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 1248;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].attackTimer = 7;
 				player.MELEE_ATTACK += 4;
 			}
 			break;
 		case 5868: // mage
 			if (!player.prayerActive[16] && player.MAGIC_ATTACK == 10 && player.RANDOM == 3) {
-				npcs[i].projectileId = 100;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].endGfx = 101;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].projectileId = 100;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].endGfx = 101;
+				npcs[npcId].attackTimer = 7;
 				player.RANGE_ATTACK++;
 			} else if (player.prayerActive[16] && player.MAGIC_ATTACK == 10 && player.RANDOM == 3) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 100;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].endGfx = 101;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 100;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].endGfx = 101;
+				npcs[npcId].attackTimer = 7;
 				player.RANGE_ATTACK++;
 			}
 			break;
 		case 5869: // melee
 			if (!player.prayerActive[18] && player.MELEE_ATTACK == 10 && player.RANDOM_MELEE == 3) {
-				npcs[i].projectileId = 1248;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].projectileId = 1248;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].attackTimer = 7;
 				player.MAGIC_ATTACK += 4;
 				player.MELEE_ATTACK += 2;
 			} else if (player.prayerActive[18] && player.MELEE_ATTACK == 10 && player.RANDOM_MELEE == 3) {
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = 1248;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].attackTimer = 7;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = 1248;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].attackTimer = 7;
 				player.MAGIC_ATTACK += 4;
 				player.MELEE_ATTACK += 2;
 			}
@@ -3731,54 +3798,54 @@ public class NPCHandler {
 
 		case 5862:
 			chance = Misc.random(100);
-			if (npcs[i].HP <= 400 && player.CAST_GHOSTS >= 5
-					&& System.currentTimeMillis() - npcs[i].spawnGhosts > 35_000) {
-				npcs[i].forceChat("Aaarrrooooooo");
+			if (npcs[npcId].HP <= 400 && player.CAST_GHOSTS >= 5
+					&& System.currentTimeMillis() - npcs[npcId].spawnGhosts > 35_000) {
+				npcs[npcId].forceChat("Aaarrrooooooo");
 				Cerberus.ghostData(player);
-				npcs[i].spawnGhosts = System.currentTimeMillis();
+				npcs[npcId].spawnGhosts = System.currentTimeMillis();
 				player.CAST_GHOSTS = 0;
-			} else if (npcs[i].HP <= 200 && player.CAST_ROCKS >= 3
-					&& System.currentTimeMillis() - npcs[i].explodingRocks > 3_000) {
-				npcs[i].animation(4890);
-				npcs[i].forceChat("Grrrrrrrrrrrrrr");
-				Cerberus.EXPLODING_ROCKS(npcs[i], player);
-				npcs[i].explodingRocks = System.currentTimeMillis();
+			} else if (npcs[npcId].HP <= 200 && player.CAST_ROCKS >= 3
+					&& System.currentTimeMillis() - npcs[npcId].explodingRocks > 3_000) {
+				npcs[npcId].animation(4890);
+				npcs[npcId].forceChat("Grrrrrrrrrrrrrr");
+				Cerberus.EXPLODING_ROCKS(npcs[npcId], player);
+				npcs[npcId].explodingRocks = System.currentTimeMillis();
 				player.CAST_ROCKS = 0;
 			}
 			if (chance < 55) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].projectileId = 1244;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].endGfx = 1245;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].projectileId = 1244;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].endGfx = 1245;
 				player.CAST_ROCKS++;
 				player.CAST_GHOSTS++;
 			} else if (chance > 56) {
-				npcs[i].attackType = 1;
-				npcs[i].projectileId = 1242;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].attackTimer = 7;
-				npcs[i].endGfx = 1243;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 1242;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].endGfx = 1243;
 				player.CAST_ROCKS++;
 				player.CAST_GHOSTS++;
 			}
 			break;
 
 		case 6615:
-			ScorpX = npcs[i].absX;
-			ScorpY = npcs[i].absY;
+			ScorpX = npcs[npcId].absX;
+			ScorpY = npcs[npcId].absY;
 			break;
 
 		case 2218:
-			npcs[i].projectileId = 48;
-			npcs[i].endGfx = 1206;
-			npcs[i].attackType = 1;
+			npcs[npcId].projectileId = 48;
+			npcs[npcId].endGfx = 1206;
+			npcs[npcId].attackType = 1;
 			break;
 		case 6345:
 			Misc.random(100);
-			npcs[i].forceChat("Die now, in a prison of ice!");
-			npcs[i].animation(1979);// barrage?
-			npcs[i].attackType = 2;
+			npcs[npcId].forceChat("Die now, in a prison of ice!");
+			npcs[npcId].animation(1979);// barrage?
+			npcs[npcId].attackType = 2;
 			if (player.freezeTimer <= 0) {
 				player.freezeTimer = 15;
 			}
@@ -3786,21 +3853,21 @@ public class NPCHandler {
 			player.sendMessage("You have been frozen.");
 			break;
 		case 2217:
-			npcs[i].projectileId = 1203;
-			npcs[i].endGfx = 1204;
-			npcs[i].attackType = 2;
+			npcs[npcId].projectileId = 1203;
+			npcs[npcId].endGfx = 1204;
+			npcs[npcId].attackType = 2;
 			break;
 		case 494:
 		case 5535:
-			npcs[i].attackType = 2;
-			if (Misc.random(5) > 0 && npcs[i].npcType == 494 || npcs[i].npcType == 5535) {
-				npcs[i].gfx0(161);
-				npcs[i].projectileId = 162;
-				npcs[i].endGfx = 163;
+			npcs[npcId].attackType = 2;
+			if (Misc.random(5) > 0 && npcs[npcId].npcType == 494 || npcs[npcId].npcType == 5535) {
+				npcs[npcId].gfx0(161);
+				npcs[npcId].projectileId = 162;
+				npcs[npcId].endGfx = 163;
 			} else {
-				npcs[i].gfx0(161);
-				npcs[i].projectileId = 162;
-				npcs[i].endGfx = 163;
+				npcs[npcId].gfx0(161);
+				npcs[npcId].projectileId = 162;
+				npcs[npcId].endGfx = 163;
 			}
 			break;
 
@@ -3812,249 +3879,230 @@ public class NPCHandler {
 				}
 			}
 			chance = Misc.random(chance);
-			npcs[i].setFacePlayer(true);
+			npcs[npcId].setFacePlayer(true);
 			if (chance < 2) {
-				npcs[i].attackType = 1;
-				npcs[i].projectileId = 97;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 97;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 			} else {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 156;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 156;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 			}
 			break;
 
 		case 2044:
-			npcs[i].setFacePlayer(true);
+			npcs[npcId].setFacePlayer(true);
 			if (Misc.random(3) > 0) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 1046;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 1046;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 			} else {
-				npcs[i].attackType = 1;
-				npcs[i].projectileId = 1044;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 1044;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 			}
 			break;
 
 		case 2043:
-			npcs[i].setFacePlayer(false);
-			npcs[i].face(player.getX(), player.getY());
-			npcs[i].targetedLocation = new Location3D(player.getX(), player.getY(), player.heightLevel);
-			npcs[i].attackType = 0;
-			npcs[i].attackTimer = 9;
-			npcs[i].hitDelayTimer = 6;
-			npcs[i].projectileId = -1;
-			npcs[i].endGfx = -1;
+			npcs[npcId].setFacePlayer(false);
+			npcs[npcId].face(player.getX(), player.getY());
+			npcs[npcId].targetedLocation = new Location3D(player.getX(), player.getY(), player.heightLevel);
+			npcs[npcId].attackType = 0;
+			npcs[npcId].attackTimer = 9;
+			npcs[npcId].hitDelayTimer = 6;
+			npcs[npcId].projectileId = -1;
+			npcs[npcId].endGfx = -1;
 			break;
 
-		case 6611:
-		case 6612:
-			chance = Misc.random(100);
-			if (chance < 25) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
-				Vetion.createVetionSpell(npcs[i], player);
-			} else if (chance > 90 && System.currentTimeMillis() - npcs[i].lastSpecialAttack > 15_000) {
-				npcs[i].attackType = 4;
-				npcs[i].attackTimer = 5;
-				npcs[i].hitDelayTimer = 2;
-				npcs[i].lastSpecialAttack = System.currentTimeMillis();
-			} else {
-				npcs[i].attackType = 0;
-				npcs[i].attackTimer = 5;
-				npcs[i].hitDelayTimer = 2;
-			}
-			break;
 		case 6342:
-			npcs[i].attackType = 0;
-			npcs[i].projectileId = -1;
-			npcs[i].endGfx = -1;
+			npcs[npcId].attackType = 0;
+			npcs[npcId].projectileId = -1;
+			npcs[npcId].endGfx = -1;
 			break;
 		case 6609:
 			int attackStyles1 = Misc.random(100);
 			final Random random5551 = new Random();
 			if (attackStyles1 >= 0 && attackStyles1 <= 40 && player.CAST_KNOCK <= 4) {
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = -1;
-				npcs[i].attackTimer = 7;
-				npcs[i].endGfx = -1;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = -1;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].endGfx = -1;
 				player.CAST_KNOCK++;
 			} else if (attackStyles1 >= 41 && attackStyles1 <= 70 && player.CAST_KNOCK <= 4) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 395;
-				npcs[i].attackTimer = 7;
-				npcs[i].endGfx = 431;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 395;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].endGfx = 431;
 				player.CAST_KNOCK++;
 			} else if (attackStyles1 >= 71 && attackStyles1 <= 100 && player.CAST_KNOCK <= 4) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 395;
-				npcs[i].attackTimer = 7;
-				npcs[i].endGfx = 431;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 395;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].endGfx = 431;
 				player.CAST_KNOCK++;
 			} else if (player.CAST_KNOCK >= 5) {
-				Callisto.KnockBack(player, npcs[i].absX - random5551.nextInt(5), npcs[i].absY);
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 395;
-				npcs[i].attackTimer = 7;
-				npcs[i].endGfx = 431;
+				Callisto.KnockBack(player, npcs[npcId].absX - random5551.nextInt(5), npcs[npcId].absY);
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 395;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].endGfx = 431;
 				player.CAST_KNOCK = 0;
 			}
 			break;
 		case 319:
 			int ATTACK_STYLE;
 			ATTACK_STYLE = Misc.random(2);
-			if (npcs[i].HP < 1000 && hasMinions == false && newMinion == 0) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
-				handleDarkCores(npcs[i], player);
+			if (npcs[npcId].HP < 1000 && hasMinions == false && newMinion == 0) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
+				handleDarkCores(npcs[npcId], player);
 				newMinion = 1;
 				hasMinions = true;
-			} else if (npcs[i].HP < 650 && hasMinions == false && newMinion == 1) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
-				handleDarkCores(npcs[i], player);
+			} else if (npcs[npcId].HP < 650 && hasMinions == false && newMinion == 1) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
+				handleDarkCores(npcs[npcId], player);
 				newMinion = 2;
 				hasMinions = true;
-			} else if (npcs[i].HP < 250 && hasMinions == false && newMinion == 2) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
-				handleDarkCores(npcs[i], player);
+			} else if (npcs[npcId].HP < 250 && hasMinions == false && newMinion == 2) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
+				handleDarkCores(npcs[npcId], player);
 				newMinion = 3;
 				hasMinions = true;
 			} else if (ATTACK_STYLE == 1) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 316;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 316;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 				hasMinions = false;
 			} else if (ATTACK_STYLE == 2) {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 314;
-				npcs[i].endGfx = -1;
-				npcs[i].hitDelayTimer = 3;
-				npcs[i].attackTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 314;
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].hitDelayTimer = 3;
+				npcs[npcId].attackTimer = 4;
 				hasMinions = false;
-				doProjectiles(npcs[i], player);
+				doProjectiles(npcs[npcId], player);
 			}
 			break;
 
 		case 6618:
 			chance = Misc.random(100);
-			npcs[i].forceChat(Archaeologist.Archaeologist_Quotes());
-			npcs[i].face(player.getX(), player.getY());
+			npcs[npcId].forceChat(Archaeologist.Archaeologist_Quotes());
+			npcs[npcId].face(player.getX(), player.getY());
 			if (chance >= 66 && Archaeologist.FINISHED_ABILITY == false) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
-				npcs[i].forceChat("Rain of Knowledge!");
-				Archaeologist.Rain_of_Knowledge(npcs[i], player);
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
+				npcs[npcId].forceChat("Rain of Knowledge!");
+				Archaeologist.Rain_of_Knowledge(npcs[npcId], player);
 			} else if (Archaeologist.FINISHED_ABILITY == true) {
-				npcs[i].forceChat("You belong in a museum!");
-				npcs[i].attackType = 1;
-				npcs[i].attackTimer = 7;
-				npcs[i].projectileId = 1259;
-				npcs[i].hitDelayTimer = 4;
+				npcs[npcId].forceChat("You belong in a museum!");
+				npcs[npcId].attackType = 1;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].projectileId = 1259;
+				npcs[npcId].hitDelayTimer = 4;
 				Archaeologist.MUSEUM_ABILITY(player);
 			} else if (chance >= 0 && chance <= 65 && Fanatic.FINISHED_ABILITY == false) {
-				npcs[i].face(player.getX(), player.getY());
-				npcs[i].attackType = 1;
-				npcs[i].attackTimer = 5;
-				npcs[i].hitDelayTimer = 4;
+				npcs[npcId].face(player.getX(), player.getY());
+				npcs[npcId].attackType = 1;
+				npcs[npcId].attackTimer = 5;
+				npcs[npcId].hitDelayTimer = 4;
 			}
 			break;
 
 		case 6619:
-			npcs[i].forceChat(Fanatic.Fanatic_Quotes());
+			npcs[npcId].forceChat(Fanatic.Fanatic_Quotes());
 			chance = Misc.random(100);
 			if (chance >= 54 && Fanatic.FINISHED_ABILITY == false) {
-				npcs[i].attackType = 2;
-				npcs[i].attackTimer = 7;
-				npcs[i].hitDelayTimer = 4;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].attackTimer = 7;
+				npcs[npcId].hitDelayTimer = 4;
 				Fanatic.Weapon_Removal++;
-				Fanatic.EARTH_ABILITY(npcs[i], player);
+				Fanatic.EARTH_ABILITY(npcs[npcId], player);
 			} else if (Fanatic.FINISHED_ABILITY == true && Fanatic.DAMAGE_RECIEVED == true) {
-				npcs[i].projectileId = 195;
-				npcs[i].attackTimer = 7;
-				Fanatic.attackingData(i, 1, 4);
+				npcs[npcId].projectileId = 195;
+				npcs[npcId].attackTimer = 7;
+				Fanatic.attackingData(npcId, 1, 4);
 				Fanatic.Weapon_Removal++;
 				Fanatic.Black_Ability(player);
 			} else if (Fanatic.Weapon_Removal > 2 && Fanatic.FINISHED_ABILITY == false) {
-				npcs[i].projectileId = 195;
-				npcs[i].attackTimer = 5;
-				Fanatic.attackingData(i, 2, 4);
+				npcs[npcId].projectileId = 195;
+				npcs[npcId].attackTimer = 5;
+				Fanatic.attackingData(npcId, 2, 4);
 				Fanatic.removeWeapon(player);
 				player.sendMessage("You have been disarmed.");
 				Fanatic.Weapon_Removal = 0;
 			} else if (chance >= 0 && chance <= 53 && Fanatic.FINISHED_ABILITY == false) {
-				npcs[i].projectileId = 195;
-				npcs[i].attackTimer = 5;
-				Fanatic.attackingData(i, 1, 2);
+				npcs[npcId].projectileId = 195;
+				npcs[npcId].attackTimer = 5;
+				Fanatic.attackingData(npcId, 1, 2);
 			}
 			break;
 
 		case 6528:
 			if (Misc.random(10) > 0) {
-				npcs[i].attackType = 2;
-				npcs[i].gfx100(194);
-				npcs[i].projectileId = 195;
-				npcs[i].endGfx = 196;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].gfx100(194);
+				npcs[npcId].projectileId = 195;
+				npcs[npcId].endGfx = 196;
 			} else {
-				npcs[i].attackType = 4;
-				npcs[i].gfx100(194);
-				npcs[i].projectileId = 195;
-				npcs[i].endGfx = 576;
+				npcs[npcId].attackType = 4;
+				npcs[npcId].gfx100(194);
+				npcs[npcId].projectileId = 195;
+				npcs[npcId].endGfx = 576;
 
 			}
 			break;
 		case 6610:
 			if (Misc.random(15) > 0) {
-				npcs[i].attackType = 2;
-				npcs[i].gfx100(164);
-				npcs[i].projectileId = 165;
-				npcs[i].endGfx = 166;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].gfx100(164);
+				npcs[npcId].projectileId = 165;
+				npcs[npcId].endGfx = 166;
 			} else {
-				npcs[i].attackType = 4;
-				npcs[i].gfx0(164);
-				npcs[i].projectileId = 165;
-				npcs[i].endGfx = 166;
+				npcs[npcId].attackType = 4;
+				npcs[npcId].gfx0(164);
+				npcs[npcId].projectileId = 165;
+				npcs[npcId].endGfx = 166;
 			}
 			break;
 
 		case 497:
 		case 3998:
-			npcs[i].attackType = 2;
-			if (Misc.random(5) > 0 && npcs[i].npcType == 3998 || npcs[i].npcType == 497) {
-				npcs[i].gfx0(161);
-				npcs[i].projectileId = 162;
-				npcs[i].endGfx = 163;
+			npcs[npcId].attackType = 2;
+			if (Misc.random(5) > 0 && npcs[npcId].npcType == 3998 || npcs[npcId].npcType == 497) {
+				npcs[npcId].gfx0(161);
+				npcs[npcId].projectileId = 162;
+				npcs[npcId].endGfx = 163;
 			} else {
-				npcs[i].gfx0(155);
-				npcs[i].projectileId = 156;
-				npcs[i].endGfx = 157;
+				npcs[npcId].gfx0(155);
+				npcs[npcId].projectileId = 156;
+				npcs[npcId].endGfx = 157;
 			}
 			break;
 		case 2892:
-			npcs[i].projectileId = 94;
-			npcs[i].attackType = 2;
-			npcs[i].endGfx = 95;
+			npcs[npcId].projectileId = 94;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].endGfx = 95;
 			break;
 		case 2894:
-			npcs[i].projectileId = 298;
-			npcs[i].attackType = 1;
+			npcs[npcId].projectileId = 298;
+			npcs[npcId].attackType = 1;
 			break;
 		case 264:
 		case 259:
@@ -4068,165 +4116,159 @@ public class NPCHandler {
 		case 6593:
 			int random2 = Misc.random(2);
 			if (random2 == 0) {
-				npcs[i].projectileId = 393;
-				npcs[i].endGfx = 430;
-				npcs[i].attackType = 3;
+				npcs[npcId].projectileId = 393;
+				npcs[npcId].endGfx = 430;
+				npcs[npcId].attackType = 3;
 			} else {
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = -1;
-				npcs[i].endGfx = -1;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = -1;
+				npcs[npcId].endGfx = -1;
 			}
 			break;
 		case 239:
 			int random = Misc.random(100);
-			int distance1 = player.distanceToPoint(npcs[i].absX, npcs[i].absY);
+			int distance1 = player.distanceToPoint(npcs[npcId].absX, npcs[npcId].absY);
 			if (random >= 60 && random < 65) {
-				npcs[i].projectileId = 394; // green
-				npcs[i].endGfx = 429;
-				npcs[i].attackType = 3;
+				npcs[npcId].projectileId = 394; // green
+				npcs[npcId].endGfx = 429;
+				npcs[npcId].attackType = 3;
 			} else if (random >= 65 && random < 75) {
-				npcs[i].projectileId = 395; // white
-				npcs[i].endGfx = 431;
-				npcs[i].attackType = 3;
+				npcs[npcId].projectileId = 395; // white
+				npcs[npcId].endGfx = 431;
+				npcs[npcId].attackType = 3;
 			} else if (random >= 75 && random < 80) {
-				npcs[i].projectileId = 396; // blue
-				npcs[i].endGfx = 428;
-				npcs[i].attackType = 3;
+				npcs[npcId].projectileId = 396; // blue
+				npcs[npcId].endGfx = 428;
+				npcs[npcId].attackType = 3;
 			} else if (random >= 80 && distance1 <= 4) {
-				npcs[i].projectileId = -1; // melee
-				npcs[i].endGfx = -1;
-				npcs[i].attackType = 1;
+				npcs[npcId].projectileId = -1; // melee
+				npcs[npcId].endGfx = -1;
+				npcs[npcId].attackType = 1;
 			} else {
-				npcs[i].projectileId = 393; // red
-				npcs[i].endGfx = 430;
-				npcs[i].attackType = 3;
+				npcs[npcId].projectileId = 393; // red
+				npcs[npcId].endGfx = 430;
+				npcs[npcId].attackType = 3;
 			}
 			break;
 		// arma npcs
 		case 2561:
-			npcs[i].attackType = 0;
+			npcs[npcId].attackType = 0;
 			break;
 		case 2560:
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 1190;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 1190;
 			break;
 		case 2559:
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1203;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1203;
 			break;
 		case 2558:
 			random = Misc.random(1);
-			npcs[i].attackType = 1 + random;
-			if (npcs[i].attackType == 1) {
-				npcs[i].projectileId = 1197;
+			npcs[npcId].attackType = 1 + random;
+			if (npcs[npcId].attackType == 1) {
+				npcs[npcId].projectileId = 1197;
 			} else {
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 1198;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 1198;
 			}
 			break;
 		// sara npcs
 		case 2562: // sara
 			random = Misc.random(1);
 			if (random == 0) {
-				npcs[i].attackType = 2;
-				npcs[i].endGfx = 1224;
-				npcs[i].projectileId = -1;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].endGfx = 1224;
+				npcs[npcId].projectileId = -1;
 			} else if (random == 1)
-				npcs[i].attackType = 0;
+				npcs[npcId].attackType = 0;
 			break;
 		case 2563: // star
-			npcs[i].attackType = 0;
+			npcs[npcId].attackType = 0;
 			break;
 		case 2564: // growler
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1203;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1203;
 			break;
 		case 2565: // bree
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 9;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 9;
 			break;
 		case 2551:
-			npcs[i].attackType = 0;
+			npcs[npcId].attackType = 0;
 			break;
 		case 2552:
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1203;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1203;
 			break;
 		case 2553:
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 1206;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 1206;
 			break;
 		case 2025:
-			npcs[i].attackType = 2;
+			npcs[npcId].attackType = 2;
 			int r = Misc.random(3);
 			if (r == 0) {
-				npcs[i].gfx100(158);
-				npcs[i].projectileId = 159;
-				npcs[i].endGfx = 160;
+				npcs[npcId].gfx100(158);
+				npcs[npcId].projectileId = 159;
+				npcs[npcId].endGfx = 160;
 			}
 			if (r == 1) {
-				npcs[i].gfx100(161);
-				npcs[i].projectileId = 162;
-				npcs[i].endGfx = 163;
+				npcs[npcId].gfx100(161);
+				npcs[npcId].projectileId = 162;
+				npcs[npcId].endGfx = 163;
 			}
 			if (r == 2) {
-				npcs[i].gfx100(164);
-				npcs[i].projectileId = 165;
-				npcs[i].endGfx = 166;
+				npcs[npcId].gfx100(164);
+				npcs[npcId].projectileId = 165;
+				npcs[npcId].endGfx = 166;
 			}
 			if (r == 3) {
-				npcs[i].gfx100(155);
-				npcs[i].projectileId = 156;
+				npcs[npcId].gfx100(155);
+				npcs[npcId].projectileId = 156;
 			}
 			break;
 		case 2265:// supreme
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 298;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 298;
 			break;
 
 		case 2266:// prime
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 162;
-			npcs[i].endGfx = 477;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 162;
+			npcs[npcId].endGfx = 477;
 			break;
 
 		case 2028:
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 27;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 27;
 			break;
 
-		case 2054:
-			npcs[i].attackType = 1;
-			npcs[i].gfx100(550);
-			npcs[i].projectileId = 551;
-			npcs[i].endGfx = 552;
-			break;
 		case 3163:
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1190;
-			npcs[i].endGfx = -1;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1190;
+			npcs[npcId].endGfx = -1;
 			break;
 		case 3164:
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 1190;
-			npcs[i].endGfx = -1;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 1190;
+			npcs[npcId].endGfx = -1;
 			break;
 		case 3165:
-			npcs[i].attackType = 0;
-			npcs[i].projectileId = 1190;
-			npcs[i].endGfx = -1;
+			npcs[npcId].attackType = 0;
+			npcs[npcId].projectileId = 1190;
+			npcs[npcId].endGfx = -1;
 			break;
 		case 6257:// saradomin strike
-			npcs[i].attackType = 2;
-			npcs[i].endGfx = 76;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].endGfx = 76;
 			break;
 		case 6221:// zamorak strike
-			npcs[i].attackType = 2;
-			npcs[i].endGfx = 78;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].endGfx = 78;
 			break;
 		case 6231:// arma
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1199;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1199;
 			break;
 		/*
 		 * case 3162:// kree random = Misc.random(10); if (random < 2) {
@@ -4251,71 +4293,71 @@ public class NPCHandler {
 		 * = -1; npcs[i].projectileId = -1; } break;
 		 */
 		case 2205:
-			switch (npcs[i].zilyana) {
+			switch (npcs[npcId].zilyana) {
 			case 0:
 			case 1:
 			case 2:
 			case 3:
-				npcs[i].attackType = 0;
+				npcs[npcId].attackType = 0;
 				break;
 			case 4:
 			case 5:
 			case 6:
-				npcs[i].attackType = 2;
+				npcs[npcId].attackType = 2;
 				break;
 			}
 			break;
 		case 3162:
-			npcs[i].kree = Misc.random(2);
-			switch (npcs[i].kree) {
+			npcs[npcId].kree = Misc.random(2);
+			switch (npcs[npcId].kree) {
 			case 0:
-				npcs[i].attackType = 2;
-				npcs[i].projectileId = 1199;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 1199;
 				break;
 			case 1:
 			case 2:
-				npcs[i].attackType = 1;
-				npcs[i].projectileId = 1198;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 1198;
 				break;
 			}
 			if (Misc.random(5) >= 3) {
-				npcs[i].forceChat(npcs[i].Kree());
+				npcs[npcId].forceChat(npcs[npcId].Kree());
 			}
 			break;
 		case 3129:
 			if (Misc.random(5) >= 3) {
-				npcs[i].forceChat(npcs[i].Tsutsaroth());
+				npcs[npcId].forceChat(npcs[npcId].Tsutsaroth());
 			}
-			switch (npcs[i].tsutsaroth) {
+			switch (npcs[npcId].tsutsaroth) {
 			case 0:
 			case 1:
 			case 2:
 			case 3:
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = -1;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = -1;
 				break;
 			case 4:
-				npcs[i].attackType = 2;
+				npcs[npcId].attackType = 2;
 				// npcs[i].multiAttack = true;
-				npcs[i].gfx0(1165);
-				npcs[i].projectileId = 1166;
+				npcs[npcId].gfx0(1165);
+				npcs[npcId].projectileId = 1166;
 				break;
 			}
 			break;
 		case 2206: // star
-			npcs[i].setFacePlayer(true);
-			npcs[i].attackType = 0;
-			npcs[i].projectileId = -1;
+			npcs[npcId].setFacePlayer(true);
+			npcs[npcId].attackType = 0;
+			npcs[npcId].projectileId = -1;
 			break;
 		case 2207: // growler
-			npcs[i].setFacePlayer(true);
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 1203;
+			npcs[npcId].setFacePlayer(true);
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 1203;
 			break;
 		case 2208: // bree
-			npcs[i].setFacePlayer(true);
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 9;
+			npcs[npcId].setFacePlayer(true);
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 9;
 			break;
 		// bandos npcs
 		/*
@@ -4325,70 +4367,65 @@ public class NPCHandler {
 		 * npcs[i].projectileId = 1200; npcs[i].endGfx = -1; } break;
 		 */
 		case 2215:
-			switch (npcs[i].graardor) {
+			switch (npcs[npcId].graardor) {
 			case 0:
 			case 1:
 			case 2:
 			case 3:
 			case 4:
 				if (Misc.random(5) >= 4) {
-					npcs[i].forceChat(npcs[i].Graardor());
+					npcs[npcId].forceChat(npcs[npcId].Graardor());
 				}
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = -1;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = -1;
 				break;
 			case 5:
 				if (Misc.random(5) >= 3) {
-					npcs[i].forceChat(npcs[i].Graardor());
+					npcs[npcId].forceChat(npcs[npcId].Graardor());
 				}
-				npcs[i].attackType = 1;
+				npcs[npcId].attackType = 1;
 				// npcs[i].multiAttack = true;
-				npcs[i].gfx0(1203);
-				npcs[i].projectileId = 1202;
+				npcs[npcId].gfx0(1203);
+				npcs[npcId].projectileId = 1202;
 				break;
 			}
 			break;
 		case 3209:// cave horror
 			random = Misc.random(3);
 			if (random == 0 || random == 1) {
-				npcs[i].attackType = 0;
+				npcs[npcId].attackType = 0;
 			} else {
-				npcs[i].attackType = 2;
+				npcs[npcId].attackType = 2;
 			}
 			break;
 		case 3127:
-			int r3 = 0;
-			if (goodDistance(npcs[i].absX, npcs[i].absY, PlayerHandler.players[npcs[i].spawnedBy].absX,
-					PlayerHandler.players[npcs[i].spawnedBy].absY, 1))
-				r3 = Misc.random(2);
-			else
-				r3 = Misc.random(1);
+			int r3 = Misc.random(1);
 			if (r3 == 0) {
-				npcs[i].attackType = 2;
-				npcs[i].endGfx = 157;
-				npcs[i].projectileId = 448;
+				npcs[npcId].attackType = 2;
+				npcs[npcId].endGfx = 157;
+				npcs[npcId].projectileId = 448;
 			} else if (r3 == 1) {
-				npcs[i].attackType = 1;
-				npcs[i].endGfx = 451;
-				npcs[i].projectileId = -1;
-				npcs[i].hitDelayTimer = 6;
-				npcs[i].attackTimer = 9;
+				npcs[npcId].attackType = 1;
+				npcs[npcId].endGfx = 451;
+				npcs[npcId].projectileId = -1;
+				npcs[npcId].hitDelayTimer = 6;
+				npcs[npcId].attackTimer = 9;
 			} else if (r3 == 2) {
-				npcs[i].attackType = 0;
-				npcs[i].projectileId = -1;
-				npcs[i].endGfx = -1;
+				npcs[npcId].attackType = 0;
+				npcs[npcId].projectileId = -1;
+				npcs[npcId].endGfx = -1;
 			}
 			break;
 		case 3125:
-			npcs[i].attackType = 2;
-			npcs[i].projectileId = 445;
-			npcs[i].endGfx = 446;
+			npcs[npcId].attackType = 2;
+			npcs[npcId].projectileId = 445;
+			npcs[npcId].endGfx = 446;
 			break;
 
 		case 3121:
 		case 2167:
-			npcs[i].attackType = 1;
-			npcs[i].projectileId = 443;
+			npcs[npcId].attackType = 1;
+			npcs[npcId].projectileId = 443;
 			break;
 		}
 	}
@@ -4610,7 +4647,7 @@ public class NPCHandler {
 			return;
 		}
 
-		if (npcs[i].npcType == 965 && c.transforming) {
+		if (npcs[i].npcType == 965 && Player.transforming) {
 			return;
 		}
 
