@@ -1886,6 +1886,63 @@ public class ItemAssistant {
 		}
 		return true;
 	}
+	
+	public boolean addToBankQuickSpawn(int itemID, int amount, boolean updateView) {
+		if (c.getPA().viewingOtherBank) {
+			c.getPA().resetOtherBank();
+			return false;
+		}
+		if (!c.getItems().playerHasItem(itemID))
+			return false;
+		BankTab tab = c.getBank().getBankTab()[0];
+		BankItem item = new BankItem(itemID + 1, amount);
+		Iterator<BankTab> iterator = Arrays.asList(c.getBank().getBankTab()).iterator();
+		while (iterator.hasNext()) {
+			BankTab t = iterator.next();
+			if (t != null && t.size() > 0) {
+				Iterator<BankItem> iterator2 = t.getItems().iterator();
+				while (iterator2.hasNext()) {
+					BankItem i = iterator2.next();
+					if (i.getId() == item.getId() && !isNotable(itemID)) {
+						if (t.getTabId() != tab.getTabId()) {
+							tab = t;
+						}
+					} else {
+						if (ItemDefinition.DEFINITIONS[itemID] != null && ItemDefinition.DEFINITIONS[itemID].isNoteable() && i.getId() == item.getId()) {
+							item = new BankItem(itemID, amount);
+							if (t.getTabId() != tab.getTabId()) {
+								tab = t;
+							}
+						}
+					}
+				}
+			}
+		}
+		if (isNotable(itemID)) {
+			item = new BankItem(itemID, amount);
+		}
+		if (item.getAmount() > getItemAmount(itemID))
+			item.setAmount(getItemAmount(itemID));
+		if (tab.getItemAmount(item) == Integer.MAX_VALUE) {
+			c.sendMessage("Your bank is already holding the maximum amount of " + getItemName(itemID).toLowerCase()
+					+ " possible.");
+			return false;
+		}
+		if (tab.freeSlots() == 0 && !tab.contains(item)) {
+			c.sendMessage("Your current bank tab is full.");
+			return false;
+		}
+		long totalAmount = ((long) tab.getItemAmount(item) + (long) item.getAmount());
+		if (totalAmount >= Integer.MAX_VALUE) {
+			int difference = Integer.MAX_VALUE - tab.getItemAmount(item);
+			item.setAmount(difference);
+			deleteItem2(itemID, difference);
+		} else {
+			deleteItem2(itemID, item.getAmount());
+		}
+		tab.add(item);
+		return true;
+	}
 
 	public boolean bankContains(int itemId) {
 		for (BankTab tab : c.getBank().getBankTab())
@@ -2014,7 +2071,64 @@ public class ItemAssistant {
 		}
 		c.getItems().resetItems(5064);
 	}
-
+	public boolean addEquipmentToBankQuickSpawn(int itemID, int slot, int amount, boolean updateView) {
+		if (c.playerEquipment[slot] != itemID || c.playerEquipmentN[slot] <= 0)
+			return false;
+		BankTab tab = c.getBank().getCurrentBankTab();
+		BankItem item = new BankItem(itemID + 1, amount);
+		Iterator<BankTab> iterator = Arrays.asList(c.getBank().getBankTab()).iterator();
+		while (iterator.hasNext()) {
+			BankTab t = iterator.next();
+			if (t != null && t.size() > 0) {
+				Iterator<BankItem> iterator2 = t.getItems().iterator();
+				while (iterator2.hasNext()) {
+					BankItem i = iterator2.next();
+					if (i.getId() == item.getId() && !isNotable(itemID)) {
+						if (t.getTabId() != tab.getTabId()) {
+							tab = t;
+							c.getBank().setCurrentBankTab(tab);
+							resetBank();
+						}
+					} else {
+						if (isNotable(itemID) && i.getId() == item.getId() - 1) {
+							item = new BankItem(itemID, amount);
+							if (t.getTabId() != tab.getTabId()) {
+								tab = t;
+								c.getBank().setCurrentBankTab(tab);
+								resetBank();
+							}
+						}
+					}
+				}
+			}
+		}
+		if (isNotable(itemID))
+			item = new BankItem(itemID, amount);
+		if (item.getAmount() > c.playerEquipmentN[slot])
+			item.setAmount(c.playerEquipmentN[slot]);
+		if (tab.getItemAmount(item) == Integer.MAX_VALUE) {
+			c.sendMessage("Your bank is already holding the maximum amount of " + getItemName(itemID).toLowerCase()
+					+ " possible.");
+			return false;
+		}
+		if (tab.freeSlots() == 0 && !tab.contains(item)) {
+			c.sendMessage("Your current bank tab is full.");
+			return false;
+		}
+		long totalAmount = ((long) tab.getItemAmount(item) + (long) item.getAmount());
+		if (totalAmount >= Integer.MAX_VALUE) {
+			c.sendMessage("Your bank is already holding the maximum amount of this item.");
+			return false;
+		} else
+			c.playerEquipmentN[slot] -= item.getAmount();
+		if (c.playerEquipmentN[slot] <= 0) {
+			c.playerEquipmentN[slot] = -1;
+			c.playerEquipment[slot] = -1;
+		}
+		tab.add(item);
+		return true;
+	}
+	
 	public boolean addEquipmentToBank(int itemID, int slot, int amount, boolean updateView) {
 		if (c.getPA().viewingOtherBank) {
 			c.getPA().resetOtherBank();

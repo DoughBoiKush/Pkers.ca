@@ -45199,12 +45199,12 @@
     "poisonous": false,
     "respawn": 60,
     "maxHit": 28,
-    "hitpoints": 250,
+    "hitpoints": 650,
     "attackSpeed": 5,
     "attackAnim": 0,
     "defenceAnim": 0,
     "deathAnim": 0,
-    "attackBonus": 50,
+    "attackBonus": 3000,
     "defenceMelee": 210,
     "defenceRange": 70,
     "defenceMage": 70
@@ -68810,7 +68810,7 @@
     "attackAnim": 0,
     "defenceAnim": 0,
     "deathAnim": 0,
-    "attackBonus": 0,
+    "attackBonus": 100000,
     "defenceMelee": 0,
     "defenceRange": 0,
     "defenceMage": 0

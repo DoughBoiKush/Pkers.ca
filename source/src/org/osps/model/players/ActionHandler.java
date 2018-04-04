@@ -21,6 +21,7 @@ import org.osps.model.content.teleport.Teleport.TeleportType;
 import org.osps.model.minigames.Sailing;
 import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.minigames.hunger.PlayerWrapper;
+import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.minigames.pest_control.PestControl;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
@@ -2211,9 +2212,6 @@ public class ActionHandler {
 		case 7072:
 			c.getShops().openShop(57);
 			break;
-		case 5792:
-			c.sendMessage("Currently disabled for now.");
-			break;
 		case 5518:
 			if ((System.currentTimeMillis() - c.actionTimer) <= 5000) {
 				c.sendMessage("Please give some time before checking again.");
@@ -2555,6 +2553,13 @@ public class ActionHandler {
 		case 1986:
 			c.getDH().sendDialogues(2244, c.npcType);
 			break;
+		case 5792:
+			c.getDH().sendDialogues(5792, c.npcType);
+			break;
+		case 1011:
+			//Gambler
+			c.getDH().sendDialogues(1011, c.npcType);
+			break;
 
 		case 536:
 			if (c.ironman) {
@@ -2663,6 +2668,11 @@ public class ActionHandler {
 		if (PetHandler.pickupPet(c, npcType))
 			return;
 		switch (npcType) {
+		case 5792:
+			//player.outStream.createFrame(27);
+			//player.lotteryAmount = true;
+			LotteryController.newEntryPKP(c, c.npcType);
+			break;
 		case 1025:
 			c.getShops().openShop(59);
 		break;
@@ -3053,6 +3063,9 @@ public class ActionHandler {
 			c.sendMessage(c.playerName + " - ThirdNpcOption: " + npcType);
 		}
 		switch (npcType) {
+		case 5792:
+			c.getDH().sendDialogues(5794, c.npcType);
+			break;
 		case 1025:
 			c.getShops().openShop(60);
 		break;

@@ -15,6 +15,7 @@ import org.osps.database.LoginLogHandler;
 import org.osps.event.CycleEventHandler;
 import org.osps.model.content.clan.ClanManager;
 import org.osps.model.minigames.FightPits;
+import org.osps.model.minigames.lottery.TriLottery;
 import org.osps.model.multiplayer_session.MultiplayerSessionListener;
 import org.osps.model.npcs.NPCCacheDefinition;
 import org.osps.model.npcs.NPCHandler;
@@ -65,7 +66,7 @@ public class Server { // go to your commands
 	public static long recordLogin = 0;
 	
 	private static final MotivoteRS motivote = new MotivoteRS("osps", "302a1f144a5c4baf2afa1d316bf8207a");
-
+	public static final TriLottery triLottery = new TriLottery();
 	/**
 	 * Timers
 	 **/
@@ -229,6 +230,7 @@ public class Server { // go to your commands
 			WebServer.initialize();
 			long endTime = System.currentTimeMillis();
 			long elapsed = endTime - startTime;
+			triLottery.init();
 
 			System.out.println("Pkers.Ca has successfully started up in " + elapsed + " milliseconds.");
 		} catch (Exception e) {
@@ -241,6 +243,10 @@ public class Server { // go to your commands
 	 */
 	public static long getSleepTimer() {
 		return sleepTime;
+	}
+	
+	public static TriLottery getLottery() {
+		return triLottery;
 	}
 
 	/**

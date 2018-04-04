@@ -10,6 +10,7 @@ import org.osps.model.content.dialogue.Emotion;
 import org.osps.model.minigames.Dicing;
 import org.osps.model.minigames.bounty_hunter.BountyHunterEmblem;
 import org.osps.model.minigames.hunger.HungerManager;
+import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.util.Misc;
 
@@ -73,36 +74,50 @@ public class DialogueHandler {
 			return;
 		}
 		switch (dialogue) {
-                    case 2500000:
-                        sendOption3("Search for shops", "Open my shop", "Add items to my shop");
-                        c.dialogueAction = 2500000;
-                    break;
+		case 2500000:
+			sendOption3("Search for shops", "Open my shop", "Add items to my shop");
+			c.dialogueAction = 2500000;
+			break;
+
+        case 5792:
+        	sendNpcChat3("Hello there " + c.playerName + "!", "Enter the lottery with PKP or by using items on me.", "A winner is picked every hour, and gets 85% of the pot!", 
+        			c.talkingNpc, "Lottery Master");
+        	c.nextChat = 5793;
+        	break;
+        case 5793:
+        	sendOption3("Enter with 1000 PKP", "What are my current chances of winning?", "No thanks");
+        	c.dialogueAction = 5793;
+        	break;
+        case 5794:
+        	sendNpcChat1("This is under construction.", c.talkingNpc, "Lottery Master");
+        	c.nextChat = -1;
+        	break;
 		case 200:
 			sendNpcChat4("Hello there "+c.playerName+"!"," I have the ability to reset your combat stats for 10 PK Points each!","But remember, this is irreversable!","What would you like me to do?", c.talkingNpc, "Rassain");
 			c.nextChat = 210;
-		break;
+			break;
 		case 210:
 			sendOption4("Reset Defence", "Reset Prayer", "Reset Attack", "Reset All Combat Stats");
 			c.dialogueAction = 42;
-		break;
+			break;
 		case 230:
 			sendNpcChat2("Congratulations!", "Your defence has been completely reset!",c.talkingNpc, "Rassain");
 			c.nextChat = 0;
-		break;
+			break;
 		case 240:
 			sendNpcChat2("Congratulations!", "Your attack has been completely reset!",c.talkingNpc, "Rassain");
 			c.nextChat = 0;
-		break;
+			break;
 		case 250:
 			sendNpcChat2("Congratulations!", "Your combat stats have been completely reset!",c.talkingNpc, "Rassain");
 			c.nextChat = 0;
-		break;
+			break;
 		case 260:
 			sendNpcChat2("Congratulations!","Your prayer have been completely reset!",c.talkingNpc, "Rassain");
 			c.nextChat = 0;
-		break;
+			break;
 		case 1100000:
-			sendNpcChat4("Hello I'm Ava and I can make an", "ava's accumulator for you, you'll need", "the following: 999 coins,", "100 steel arrows & 10 noted leather", c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+			sendNpcChat4("Hello I'm Ava and I can make an", "ava's accumulator for you, you'll need", "the following: 999 coins,", "100 steel arrows & 10 noted leather", c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 			c.dialogueAction = 1100000;
 			c.nextChat = 1100001;
 		break;
@@ -142,12 +157,12 @@ public class DialogueHandler {
 			break;
 			
 		case 12348:
-			c.getDH().sendOption2("Zerker", "Cancel");
+			c.getDH().sendOption2("Void", "Cancel");
 			c.dialogueAction = 12348;
 			break;
 			
 		case 12349:
-			c.getDH().sendOption2("Tribrid", "Cancel");
+			c.getDH().sendOption2("Zerker", "Cancel");
 			c.dialogueAction = 12349;
 			break;
 			
@@ -161,10 +176,53 @@ public class DialogueHandler {
 			c.dialogueAction = 12351;
 			break;
 			
-		//
+			//Gambler
+		case 1011:
+			c.getDH().sendNpcChat3("Hello " + c.playerName + "! I'm the gambler.", "If you put up a bet, I'll roll my 100-sided dice.", 
+					"If I roll 55 or higher, your bet is doubled!", c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
+			c.nextChat = 1012;
+			break;
+			
+		case 1012:
+			c.getDH().sendOption3("Gamble PKP", "Gamble items", "No thanks");
+			c.dialogueAction = 1012;
+			c.nextChat = -1;
+			break;
+			
+		case 1033:
+			c.getDH().sendOption5("Gamble 100 PKP", "Gamble 250 PKP", 
+					"Gamble 500 PKP", "Gamble 1000 PKP", "Gamble 2000 PKP");
+			c.dialogueAction = 1033;
+			c.nextChat = -1;
+			break;
+			
+		case 1020:
+			c.getDH().sendNpcChat("You can use an item on me to gamble it.");
+			c.nextChat = -1;
+			break;
+			
+		case 1021:
+			c.getDH().sendPlayerChat1("No thanks.");
+			c.nextChat = 1032;
+			break;
+			
+		case 1032:
+			c.getDH().sendNpcChat("Ok, have a good day.");
+			c.nextChat = -1;
+			break;
+			
+		case 1050:
+			c.getDH().sendNpcChat("You don't have enough PKP for that!");
+			c.nextChat = -1;
+			break;
+			
+		case 1051:
+			c.getDH().sendNpcChat("How the fuck did you get that rich?");
+			c.nextChat = -1;
+			break;
 		
 		case 400001:
-			sendNpcChat3("Hello " + c.playerName + " it appears you" , "don't have an account pin", "would you like to set one?", c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+			sendNpcChat3("Hello " + c.playerName + " it appears you" , "don't have an account pin", "would you like to set one?", c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 			c.nextChat = 400002;
 			break;
 		case 400002:
@@ -173,7 +231,7 @@ public class DialogueHandler {
 			c.nextChat = -1;
 			break;
 		case 400003:
-			sendNpcChat3("Hello " + c.playerName + " it seems you", "have an account pin",  "would you like to reset it?", c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+			sendNpcChat3("Hello " + c.playerName + " it seems you", "have an account pin",  "would you like to reset it?", c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 			c.nextChat = 400004;
 			break;
 		case 400004:
@@ -182,7 +240,7 @@ public class DialogueHandler {
 			c.nextChat = -1;
 			break;
 		case 200000:
-			sendNpcChat1("Hello my master, what can I do for you?", c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+			sendNpcChat1("Hello my master, what can I do for you?", c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 			c.nextChat = 200001;
 			break;
 		case 200001:
@@ -3170,21 +3228,21 @@ public class DialogueHandler {
 	public void sendNpcChat(String... messages) {
 		switch (messages.length) {
 			case 1:
-				sendNpcChat1(messages[0], c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+				sendNpcChat1(messages[0], c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 				break;
 			
 			case 2:
-				sendNpcChat2(messages[0], messages[1], c.talkingNpc, Server.npcHandler.getNpcName(c.talkingNpc));
+				sendNpcChat2(messages[0], messages[1], c.talkingNpc, NPCHandler.getNpcName(c.talkingNpc));
 				break;
 			
 			case 3:
 				sendNpcChat3(messages[0], messages[1], messages[2], c.talkingNpc,
-						Server.npcHandler.getNpcName(c.talkingNpc));
+						NPCHandler.getNpcName(c.talkingNpc));
 				break;
 			
 			case 4:
 				sendNpcChat4(messages[0], messages[1], messages[2], messages[3], c.talkingNpc,
-						Server.npcHandler.getNpcName(c.talkingNpc));
+						NPCHandler.getNpcName(c.talkingNpc));
 				break;
 		}
 	}

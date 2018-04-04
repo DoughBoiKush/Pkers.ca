@@ -11,6 +11,7 @@ import org.osps.model.content.CrystalChest;
 import org.osps.model.content.DiceNpc;
 import org.osps.model.content.RunePouch;
 import org.osps.model.minigames.BlastMine.BlastMine;
+import org.osps.model.minigames.gamble.GambleItems;
 import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.minigames.warriors_guild.AnimatedArmour;
 import org.osps.model.npcs.NPCHandler;
@@ -848,6 +849,10 @@ public class UseItem {
 	 * @param slot
 	 */
 	public static void ItemonNpc(Player c, int itemId, int npcId, int slot) {
+		if (npcId == 1011) {
+			GambleItems.gambleItems(c, itemId);
+			return;
+		}
 		if (npcId == 954) {
 			Degrade.repair(c, itemId);
 			return;

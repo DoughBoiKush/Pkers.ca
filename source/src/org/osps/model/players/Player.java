@@ -13,7 +13,6 @@ import org.osps.model.content.InstancedArea;
 import org.osps.model.content.Lootbag;
 import org.osps.model.content.PunishmentPanel;
 import org.osps.model.content.QuickPrayer;
-import org.osps.model.content.QuickSpawn;
 import org.osps.model.content.RandomEventInterface;
 import org.osps.model.content.RunePouch;
 import org.osps.model.content.Streak;
@@ -22,6 +21,7 @@ import org.osps.model.content.dialogue.Dialogue;
 import org.osps.model.content.hs.Highscore;
 import org.osps.model.content.kill_streaks.Killstreak;
 import org.osps.model.content.presets.Presets;
+import org.osps.model.content.quickspawn.QuickSpawn;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.items.*;
 import org.osps.model.items.bank.Bank;
@@ -589,6 +589,7 @@ public class Player extends Entity {
 	private int privateChat;
 	public boolean slayerHelmetEffect;
 	public boolean inArdiCC;
+	public boolean lotteryAmount = false;
 	public boolean attackSkill = false;
 	public boolean strengthSkill = false;
 	public boolean defenceSkill = false;
@@ -1455,6 +1456,7 @@ public class Player extends Entity {
 			correctCoordinates();
 			checkAccountPin();
 			loginMessage();
+			Server.triLottery.checkUnclaimedWinners(this);
 			long end = System.currentTimeMillis() - start;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1039,6 +1039,10 @@ public class PlayerAssistant {
 			sendFrame126("@bla@-   -   -   -   -   -   -", 16054);
 			
 	        }
+	
+	public void updatePKP() {
+		sendFrame126("@gre@Pk Points: @yel@ [ " +player.pkp+ " ]", 16034);
+	}
 			
 			public void loadAchievements() {
 				/** Achievement Tab **/

@@ -21,6 +21,7 @@ import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
 import org.osps.model.minigames.hunger.HungerManager;
+import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;

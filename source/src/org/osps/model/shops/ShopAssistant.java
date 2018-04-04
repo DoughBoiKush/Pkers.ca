@@ -119,11 +119,12 @@ public class ShopAssistant {
 		// }
 	}
 
-	public double getItemShopValue(int ItemID, int Type, int fromSlot) {
+	public double getItemShopValue(int itemID, int Type, int fromSlot) {
 		double ShopValue = 1;
 		double TotPrice = 0;
-		int price = getSpecialItemValue(ItemID);
-		// int price = ItemDefinition.forId(ItemID).getGeneralPrice();
+		//int price = getSpecialItemValue(ItemID);
+		int price = getItemShopValue(itemID);
+		//int price = ItemDefinition.forId(ItemID).getGeneralPrice();
 		ShopValue = price;
 
 		TotPrice = ShopValue;

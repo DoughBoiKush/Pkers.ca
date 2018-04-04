@@ -11,7 +11,6 @@ import org.osps.Connection;
 import org.osps.Server;
 import org.osps.data.SerializablePair;
 import org.osps.model.content.QuickPrayer;
-import org.osps.model.content.QuickSpawn;
 import org.osps.model.content.Skillcape;
 import org.osps.model.content.TeleportTab;
 import org.osps.model.content.clan.Clan;
@@ -19,6 +18,19 @@ import org.osps.model.content.dialogue.DialogueManager;
 import org.osps.model.content.dialogue.teleport.Teleports;
 import org.osps.model.content.help.HelpDatabase;
 import org.osps.model.content.newTitles.TitleHandler;
+import org.osps.model.content.quickspawn.Hybrid4;
+import org.osps.model.content.quickspawn.Hybrid5;
+import org.osps.model.content.quickspawn.Hybrid6;
+import org.osps.model.content.quickspawn.MainGranite;
+import org.osps.model.content.quickspawn.MainRune;
+import org.osps.model.content.quickspawn.MainRuneMace;
+import org.osps.model.content.quickspawn.PureMelee;
+import org.osps.model.content.quickspawn.PureMeleeRange;
+import org.osps.model.content.quickspawn.PureTribrid;
+import org.osps.model.content.quickspawn.QuickSpawn;
+import org.osps.model.content.quickspawn.Tank;
+import org.osps.model.content.quickspawn.VoidSet;
+import org.osps.model.content.quickspawn.Zerker;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.Tablets;
 import org.osps.model.content.teleport.Teleport;
@@ -30,6 +42,8 @@ import org.osps.model.items.bank.BankItem;
 import org.osps.model.items.bank.BankTab;
 import org.osps.model.minigames.FishingTourney;
 import org.osps.model.minigames.bounty_hunter.BountyHunterEmblem;
+import org.osps.model.minigames.gamble.GamblePKP;
+import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
@@ -1302,7 +1316,10 @@ public class ClickingButtons implements PacketType {
 			break;
 		// 1st tele option
 		case 9190:
-
+			if (player.dialogueAction == 1033) {
+				GamblePKP.gamblePKP(player, 100, player.npcType);
+				return;
+			}
 			if (player.dialogueAction == 75007) {
 				player.enchantOpal = true;
 				player.getOutStream().createFrame(27);
@@ -1433,6 +1450,10 @@ public class ClickingButtons implements PacketType {
 
 		// 2nd tele option
 		case 9191:
+			if (player.dialogueAction == 1033) {
+				GamblePKP.gamblePKP(player, 250, player.npcType);
+				return;
+			}
 			if (player.dialogueAction == 75007) {
 				player.enchantSapphire = true;
 				player.getOutStream().createFrame(27);
@@ -1588,6 +1609,10 @@ public class ClickingButtons implements PacketType {
 			// 3rd tele option
 
 		case 9192:
+			if (player.dialogueAction == 1033) {
+				GamblePKP.gamblePKP(player, 500, player.npcType);
+				return;
+			}
 			if (player.dialogueAction == 75007) {
 				player.enchantJade = true;
 				player.getOutStream().createFrame(27);
@@ -1746,6 +1771,10 @@ public class ClickingButtons implements PacketType {
 
 		// 4th tele option
 		case 9193:
+			if (player.dialogueAction == 1033) {
+				GamblePKP.gamblePKP(player, 1000, player.npcType);
+				return;
+			}
 			if (player.dialogueAction == 75007) {
 				player.enchantPearl = true;
 				player.getOutStream().createFrame(27);
@@ -1897,6 +1926,10 @@ public class ClickingButtons implements PacketType {
 			break;
 		// 5th tele option
 		case 9194:
+			if (player.dialogueAction == 1033) {
+				GamblePKP.gamblePKP(player, 2000, player.npcType);
+				return;
+			}
 			if (player.teleAction == 66) {
 				TeleportExecutor.teleport(player, new Position(2116, 5658, 0));
 				player.teleAction = -1;
@@ -2134,79 +2167,17 @@ public class ClickingButtons implements PacketType {
 		case 9178:
 			//melee weapon shop
 			if (player.dialogueAction == 12345) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().removeAllItems();
-				player.getItems().deleteEquipment();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-				resetCurrent(player);
-				player.getItems().wearItem(10828, 1, player.playerHat);
-				player.getItems().wearItem(11978, 1, player.playerAmulet);
-				player.getItems().wearItem(4151, 1, Player.playerWeapon);
-				player.getItems().wearItem(8850, 1, player.playerShield);
-				player.getItems().wearItem(1052, 1, player.playerCape);
-				player.getItems().wearItem(1127, 1, player.playerChest);
-				player.getItems().wearItem(1079, 1, player.playerLegs);
-				player.getItems().wearItem(2550, 1, player.playerRing);
-				player.getItems().wearItem(4131, 1, player.playerFeet);
-				player.getItems().wearItem(7462, 1, player.playerHands);
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(2436, 1); // super a
-				player.getItems().addItem(2440, 1); // super s
-				player.getItems().addItem(2442, 1); // super d
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(6685, 1); // sara brew
-				player.getItems().addItem(10925, 2); // sanfew
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11838, 1); // godsword
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(5680, 1); // dds
-				player.getItems().addItem(560, 1000); // death
-				player.getItems().addItem(9075, 1000); // astral
-				player.getItems().addItem(557, 1000); // earth
-				player.setSidebarInterface(6, 29999); // lunar
-				player.playerMagicBook = 2;
-				player.getPA().resetAutocast();
-				player.getItems().updateInventory();
-				player.getPA().requestUpdates();
-				handleMainLevels(player);
-				player.getCombat().resetPrayers();
-				player.vengOn = false;
-				player.getItems().updateSpecialBar();
-				player.combatLevel = player.calculateCombatLevel();
-				player.getPA().removeAllWindows();
-				player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
+				MainRune.equip(player);
 			}
-			
+			if (player.dialogueAction == 12346) {
+				PureMelee.equip(player);
+			}
+			if (player.dialogueAction == 12347) {
+				Hybrid4.equip(player);
+			}
+			if (player.dialogueAction == 12351) {
+				player.getDH().sendStatement("Suggest 2006 setups on the forums! Coming soon...");
+			}
 			
 			if (player.dialogueAction == 12351) {
 				for (int slot = 0; slot < player.playerItems.length; slot++) {
@@ -2395,166 +2366,19 @@ public class ClickingButtons implements PacketType {
 
 		case 9179:
 			if (player.dialogueAction == 12345) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-                player.getItems().deleteEquipment();
-				player.getItems().wearItem(10828, 1, player.playerHat);
-				player.getItems().wearItem(11978, 1, player.playerAmulet);
-				player.getItems().wearItem(4151, 1, Player.playerWeapon);
-				player.getItems().wearItem(8850, 1, player.playerShield);
-				player.getItems().wearItem(1052, 1, player.playerCape);
-				player.getItems().wearItem(1127, 1, player.playerChest);
-				player.getItems().wearItem(1079, 1, player.playerLegs);
-				player.getItems().wearItem(2550, 1, player.playerRing);
-				player.getItems().wearItem(4131, 1, player.playerFeet);
-				player.getItems().wearItem(7462, 1, player.playerHands);
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(2436, 1); // super a
-				player.getItems().addItem(2440, 1); // super s
-				player.getItems().addItem(2442, 1); // super d
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(6685, 1); // sara brew
-				player.getItems().addItem(10925, 2); // sanfew
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(1434, 1); // mace
-				player.getItems().addItem(11838, 1); // godsword
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(11936, 1);
-				player.getItems().addItem(5680, 1); // dds
-				player.getItems().addItem(560, 5000); // death
-				player.getItems().addItem(9075, 5000); // astral
-				player.getItems().addItem(557, 5000); // earth
-				player.setSidebarInterface(6, 29999); // lunar
-				player.playerMagicBook = 2;
-				player.getPA().resetAutocast();
-				player.getItems().updateInventory();
-				player.getPA().requestUpdates();
-				handleMainLevels(player);
-				player.getCombat().resetPrayers();
-				player.vengOn = false;
-				player.getItems().updateSpecialBar();
-				player.combatLevel = player.calculateCombatLevel();
-				player.getPA().removeAllWindows();
-				player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
+				MainRuneMace.equip(player);
 			}
 			if (player.dialogueAction == 12346) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
+				PureMeleeRange.equip(player);
+			}
 				
 			if (player.dialogueAction == 12347) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-				resetCurrent(player);
-				player.getItems().wearItem(10828, 1, player.playerHat);
-				player.getItems().wearItem(1704, 1, player.playerAmulet);
-				player.getItems().wearItem(4675, 1, Player.playerWeapon);
-				player.getItems().wearItem(12612, 1, player.playerShield);
-				player.getItems().wearItem(2412, 1, player.playerCape);
-				player.getItems().wearItem(4091, 1, player.playerChest);
-				player.getItems().wearItem(4093, 1, player.playerLegs);
-				player.getItems().wearItem(2550, 1, player.playerRing);
-				player.getItems().wearItem(2579, 1, player.playerFeet);
-				player.getItems().wearItem(7462, 1, player.playerHands);
-				player.getItems().addItem(1127, 1);
-				player.getItems().addItem(8850, 1);
-				player.getItems().addItem(4131, 1);	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(1079, 1);
-				player.getItems().addItem(4151, 1);
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2503, 1);
-				player.getItems().addItem(5680, 1);
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2440, 1); // super s
-				player.getItems().addItem(6685, 1); // sara brew				
-				player.getItems().addItem(10925, 1); // sanfew		
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2436, 1); // super a
-				player.getItems().addItem(6685, 1); // sara brew				
-				player.getItems().addItem(10925, 1); // sanfew		
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(565, 5000);
-				player.getItems().addItem(555, 5000);
-				player.getItems().addItem(560, 5000);
-				player.getItems().addItem(2550, 1); // ring of recoil
-				player.setSidebarInterface(6, 12855);
-				player.playerMagicBook = 1;
-				player.getPA().resetAutocast();
-				player.getItems().updateInventory();
-				player.getPA().requestUpdates();
-				player.getItems().updateSpecialBar();
-				handlePureLevels(player);
-				player.getCombat().resetPrayers();
-				player.vengOn = false;
-				player.combatLevel = player.calculateCombatLevel();
-				player.getPA().removeAllWindows();
-				player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
+				Hybrid5.equip(player);
 			}
+			if (player.dialogueAction == 12351) {
+				player.getDH().sendStatement("Suggest 2006 setups on the forums! Coming soon...");
+			}
+			
 			if (player.dialogueAction == 12350) {
 				for (int slot = 0; slot < player.playerItems.length; slot++) {
 					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
@@ -2789,213 +2613,20 @@ public class ClickingButtons implements PacketType {
 				player.getDH().sendDialogues(125, player.npcType);
 				player.caPlayerTalk1 = false;
 			}
-			break;}
+			break;
 
 		case 9180:
 			if (player.dialogueAction == 12345) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				
+				MainGranite.equip(player);
+			}
 			if (player.dialogueAction == 12346) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-				resetCurrent(player);
-				player.getItems().wearItem(6109, 1, player.playerHat);
-				player.getItems().wearItem(1704, 1, player.playerAmulet);
-				player.getItems().wearItem(4675, 1, Player.playerWeapon);
-				player.getItems().wearItem(3842, 1, player.playerShield);
-				player.getItems().wearItem(9291, 2500, player.playerArrows);
-				player.getItems().wearItem(2412, 1, player.playerCape);
-				player.getItems().wearItem(6107, 1, player.playerChest);
-				player.getItems().wearItem(6108, 1, player.playerLegs);
-				player.getItems().wearItem(2550, 1, player.playerRing);
-				player.getItems().wearItem(3105, 1, player.playerFeet);
-				player.getItems().wearItem(7458, 1, player.playerHands);
-				player.getItems().addItem(10499, 1);
-				player.getItems().addItem(2497, 1);
-				player.getItems().addItem(2440, 1); // super s
-				player.getItems().addItem(2444, 1); // ranging
-				player.getItems().addItem(9185, 1);
-				player.getItems().addItem(5680, 1); // dds			
-				player.getItems().addItem(10925, 1); // sanfew
-				player.getItems().addItem(10925, 1); // sanfew				
-				player.getItems().addItem(4587, 1);
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(6685, 1); // sara brew
-				player.getItems().addItem(6685, 1); // sara brew
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(565, 5000);
-				player.getItems().addItem(555, 5000);
-				player.getItems().addItem(560, 5000);
-				player.getItems().addItem(2550, 1); // ring of recoil
-				player.setSidebarInterface(6, 12855);
-				player.playerMagicBook = 1;
-				player.getPA().resetAutocast();
-				player.getItems().updateInventory();
-				player.getPA().requestUpdates();
-				player.getItems().updateSpecialBar();
-				handlePureLevels(player);
-				player.getCombat().resetPrayers();
-				player.vengOn = false;
-				player.combatLevel = player.calculateCombatLevel();
-				player.getPA().removeAllWindows();
-				player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
+				PureTribrid.equip(player);
 			}
 			if (player.dialogueAction == 12347) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-				resetCurrent(player);
-				player.getItems().wearItem(4099, 1, player.playerHat);
-				player.getItems().wearItem(1704, 1, player.playerAmulet);
-				player.getItems().wearItem(4675, 1, Player.playerWeapon);
-				player.getItems().wearItem(12612, 1, player.playerShield);
-				player.getItems().wearItem(2414, 1, player.playerCape);
-				player.getItems().wearItem(4101, 1, player.playerChest);
-				player.getItems().wearItem(4103, 1, player.playerLegs);
-				player.getItems().wearItem(2550, 1, player.playerRing);
-				player.getItems().wearItem(2579, 1, player.playerFeet);
-				player.getItems().wearItem(7462, 1, player.playerHands);
-				player.getItems().addItem(1127, 1);
-				player.getItems().addItem(4151, 1);
-				player.getItems().addItem(10828, 1);	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(1079, 1);
-				player.getItems().addItem(8850, 1);
-				player.getItems().addItem(4131, 1);	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2503, 1);
-				player.getItems().addItem(5680, 1);
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2440, 1); // super s
-				player.getItems().addItem(6685, 1); // sara brew				
-				player.getItems().addItem(10925, 1); // sanfew		
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(2436, 1); // super a
-				player.getItems().addItem(6685, 1); // sara brew				
-				player.getItems().addItem(10925, 1); // sanfew		
-				player.getItems().addItem(11936, 1); // dark crab	
-				player.getItems().addItem(565, 5000);
-				player.getItems().addItem(555, 5000);
-				player.getItems().addItem(560, 5000);
-				player.getItems().addItem(2550, 1); // ring of recoil
-				player.setSidebarInterface(6, 12855);
-				player.playerMagicBook = 1;
-				player.getPA().resetAutocast();
-				player.getItems().updateInventory();
-				player.getPA().requestUpdates();
-				player.getItems().updateSpecialBar();
-				handlePureLevels(player);
-				player.getCombat().resetPrayers();
-				player.vengOn = false;
-				player.combatLevel = player.calculateCombatLevel();
-				player.getPA().removeAllWindows();
-				player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
-			}
-			if (player.dialogueAction == 12350) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
+				Hybrid6.equip(player);
 			}
 			if (player.dialogueAction == 12351) {
-				for (int slot = 0; slot < player.playerItems.length; slot++) {
-					if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
-						player.getItems().addToBank(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
-
-				for (int slot = 0; slot < player.playerEquipment.length; slot++) {
-					if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
-						player.getItems().addEquipmentToBank(player.playerEquipment[slot], slot,
-								player.playerEquipmentN[slot], false);
-						player.getItems().wearItem(-1, 0, slot);
-					}
-				}
-				player.getItems().updateInventory();
-				player.getItems().resetBank();
-				player.getItems().resetTempItems();
+				player.getDH().sendStatement("Suggest 2006 setups on the forums! Coming soon...");
 			}
 			//melee armor shop
 		    if (player.dialogueAction == 3609) {
@@ -3191,7 +2822,7 @@ public class ClickingButtons implements PacketType {
 				player.getDH().sendDialogues(127, player.npcType);
 				player.caPlayerTalk1 = false;
 			}
-			break;}
+			break;
 
 		case 9181:
 			if (player.dialogueAction == 12345) {
@@ -3395,6 +3026,18 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 9157:
+			if (player.dialogueAction == 12348) {
+				VoidSet.equip(player);
+			}
+			if (player.dialogueAction == 12349) {
+				Zerker.equip(player);
+			}
+			if (player.dialogueAction == 12350) {
+				Tank.equip(player);
+			}
+			if (player.dialogueAction == 12351) {
+				player.getDH().sendStatement("Suggest 2006 setups on the forums! Coming soon...");
+			}
 			
 			
 			if (player.dialogueAction == 4072) {
@@ -4228,6 +3871,15 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 9167:
+			if (player.dialogueAction == 5793) {
+				//player.outStream.createFrame(27);
+				//player.lotteryAmount = true;
+				LotteryController.newEntryPKP(player, player.npcType);
+			}
+			if (player.dialogueAction == 1012) {
+				player.getDH().sendDialogues(1033, player.npcType);
+				return;
+			}
                     if (player.dialogueAction == 2500000) {
                         PlayerShops.openMainInterface(player);
                         return;
@@ -4410,6 +4062,13 @@ public class ClickingButtons implements PacketType {
 			}
 			break;
 		case 9168:
+			if (player.dialogueAction == 5793) {
+				player.getDH().sendDialogues(5794, player.npcType);
+			}
+			if (player.dialogueAction == 1012) {
+				player.getDH().sendDialogues(1020, player.npcType);
+				return;
+			}
                     if (player.dialogueAction == 2500000) {
                         PlayerShops.openShop(player, player);
                         return;
@@ -4589,6 +4248,13 @@ public class ClickingButtons implements PacketType {
 
 			break;
 		case 9169:
+			if (player.dialogueAction == 5793) {
+				player.getPA().closeAllWindows();
+			}
+			if (player.dialogueAction == 1012) {
+				player.getDH().sendDialogues(1021, player.npcType);
+				return;
+			}
                     if (player.dialogueAction == 2500000) {
                         PlayerShops.openSellInterface(player);
                         return;
@@ -4688,6 +4354,9 @@ public class ClickingButtons implements PacketType {
 			}
 			if (player.dialogueAction == 12349) {
 				player.getPA().closeAllWindows();
+			}
+			if (player.dialogueAction == 12351) {
+				player.getDH().sendStatement("Suggest 2006 setups on the forums! Coming soon...");
 			}
 			//costumes items
 			if (player.dialogueAction == 3617) {
@@ -6034,7 +5703,7 @@ public class ClickingButtons implements PacketType {
 		}
 	}
 
-	private static void resetCurrent(Player player) {
+	public static void resetCurrent(Player player) {
 		int[] skillIds = { 0, 1, 2, 3, 4, 5, 6
 
 		};

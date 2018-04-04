@@ -1,24 +1,28 @@
-package org.osps.model.content;
+package org.osps.model.content.quickspawn;
 
 import org.osps.model.players.Boundary;
 import org.osps.model.players.Player;
 
 public class QuickSpawn {
-
-	private static void resetCurrent(Player client) {
-		int[] skillIds = { 0, 1, 2, 3, 4, 5, 6
-
-		};
-		for (int i : skillIds) {
-			int skilld = 1;
-			int leveld = 1;
-			client.playerXP[i] = 1;
-			client.playerLevel[i] = 1;
-			client.getPA().refreshSkill(i);
+	
+	public static void bankAll(Player player) {
+		for (int slot = 0; slot < player.playerItems.length; slot++) {
+			if (player.playerItems[slot] > 0 && player.playerItemsN[slot] > 0) {
+				player.getItems().addToBankQuickSpawn(player.playerItems[slot] - 1, player.playerItemsN[slot], false);
+			}
 		}
+		for (int slot = 0; slot < player.playerEquipment.length; slot++) {
+			if (player.playerEquipment[slot] > 0 && player.playerEquipmentN[slot] > 0) {
+				player.getItems().addEquipmentToBankQuickSpawn(player.playerEquipment[slot], slot,
+						player.playerEquipmentN[slot], false);
+				player.getItems().wearItem(-1, 0, slot);
+			}
+		}
+		player.getItems().updateInventory();
+		player.sendMessage("Your previous equipment and inventory have been sent to your bank.");
 	}
 
-	private static void handleMainLevels(Player client) {
+	public static void set126(Player client) {
 		if (client.playerLevel[0] == 99 && client.playerLevel[5] == 99 && client.playerLevel[1] == 99
 				&& client.playerLevel[2] == 99 && client.playerLevel[3] == 99 && client.playerLevel[4] == 99
 				&& client.playerLevel[6] == 99 && client.playerLevel[7] == 99 && client.playerLevel[8] == 99
@@ -29,40 +33,39 @@ public class QuickSpawn {
 				&& client.playerLevel[21] == 99 && client.playerLevel[22] == 99 && client.playerLevel[23] == 99) {
 			return;
 		}
-		int[] skillIds = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
-
-		};
+		int[] skillIds = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
+		
 		for (int i : skillIds) {
 			client.playerLevel[i] = 99;
-			client.getPA().addSkillXP10(1034138, i);
+			client.getPA().addSkillXP10(14000000, i);
 			client.getPA().refreshSkill(i);
 		}
 	}
 
-	private static void handleTankLevels(Player client) {
+	public static void set116(Player client) {
 		if (client.playerLevel[0] == 75 && client.playerLevel[1] == 75 && client.playerLevel[5] == 70) {
 			return;
 		}
-		int[] skillIds = { 2, 3, 4, 6
-
-		};
+		int[] skillIds = { 0, 2, 3, 4, 6};
 		for (int i : skillIds) {
 			client.playerLevel[i] = 99;
-			client.getPA().addSkillXP10(13034138, i);
+			client.getPA().addSkillXP10(client.getPA().getXPForLevel(99), i);
 			client.getPA().refreshSkill(i);
 		}
-		client.playerLevel[0] = 75;
-		client.getPA().addSkillXP10(1096278, 0);
+		//client.playerLevel[0] = 75;
+		//client.getPA().addSkillXP10(1096278, 0);
 		client.playerLevel[5] = 70;
-		client.getPA().addSkillXP10(668051, 5);
-		client.playerLevel[1] = 75;
-		client.getPA().addSkillXP10(1096278, 1);
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(70), 5);
+		client.playerLevel[1] = 70;
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(70), 5);
+		//client.playerLevel[1] = 75;
+		//client.getPA().addSkillXP10(1096278, 1);
 		client.getPA().refreshSkill(1);
 		client.getPA().refreshSkill(4);
 		client.getPA().refreshSkill(5);
 	}
 
-	private static void handlePureLevels(Player client) {
+	public static void set90(Player client) {
 		if (client.playerLevel[0] == 75 && client.playerLevel[5] == 52) {
 			return;
 		}
@@ -71,13 +74,13 @@ public class QuickSpawn {
 		};
 		for (int i : skillIds) {
 			client.playerLevel[i] = 99;
-			client.getPA().addSkillXP10(13034138, i);
+			client.getPA().addSkillXP10(14000000, i);
 			client.getPA().refreshSkill(i);
 		}
-		client.playerLevel[0] = 75;
-		client.getPA().addSkillXP10(1096278, 0);
+		client.playerLevel[0] = 80;
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(80), 0);
 		client.playerLevel[5] = 52;
-		client.getPA().addSkillXP10(111945, 5);
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(52), 5);
 		client.playerLevel[1] = 1;
 		client.getPA().addSkillXP10(1, 1);
 		client.getPA().refreshSkill(1);
@@ -85,7 +88,7 @@ public class QuickSpawn {
 		client.getPA().refreshSkill(5);
 	}
 
-	private static void handleZerkerLevels(Player client) {
+	public static void set110(Player client) {
 		if (client.playerLevel[0] == 90 && client.playerLevel[1] == 70 && client.playerLevel[5] == 52) {
 			return;
 		}
@@ -94,15 +97,15 @@ public class QuickSpawn {
 		};
 		for (int i : skillIds) {
 			client.playerLevel[i] = 99;
-			client.getPA().addSkillXP10(13034138, i);
+			client.getPA().addSkillXP10(client.getPA().getXPForLevel(99), i);
 			client.getPA().refreshSkill(i);
 		}
 		client.playerLevel[0] = 90;
-		client.getPA().addSkillXP10(4646332, 0);
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(90), 0);
 		client.playerLevel[5] = 52;
-		client.getPA().addSkillXP10(111945, 5);
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(52), 5);
 		client.playerLevel[1] = 70;
-		client.getPA().addSkillXP10(637627, 1);
+		client.getPA().addSkillXP10(client.getPA().getXPForLevel(70), 1);
 		client.getPA().refreshSkill(1);
 		client.getPA().refreshSkill(4);
 		client.getPA().refreshSkill(5);
@@ -490,12 +493,7 @@ public class QuickSpawn {
 			break;
 
 		case 100157: // Godswords
-			client.getPA().closeAllWindows();
-			client.getItems().addItem(11808, 1);
-			client.getItems().addItem(11806, 1);
-			client.getItems().addItem(11804, 1);
-			client.getItems().addItem(11802, 1);
-			// client.sendMessage("Currently disabled.");
+			client.sendMessage("Currently disabled.");
 			break;
 
 		case 100160: // Vote

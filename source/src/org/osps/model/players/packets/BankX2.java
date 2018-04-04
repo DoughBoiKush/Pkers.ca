@@ -5,6 +5,7 @@ import java.util.Objects;
 import org.osps.Server;
 import org.osps.model.content.enchanting.Bolts;
 import org.osps.model.items.GameItem;
+import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.multiplayer_session.MultiplayerSession;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
@@ -340,6 +341,13 @@ public class BankX2 implements PacketType {
 			} catch (Exception e) {
 			}
 		}
+		//if (c.lotteryAmount) {
+		//	try {
+				//LotteryController.newEntryPKP(c, Xamount, c.npcType);
+				//c.lotteryAmount = false;
+		//	} catch (Exception e) {
+		//	}
+		//}
 		if (c.strengthSkill) {
 			if(c.inWild()) {
 				c.sendMessage("You cannot change skills in the wilderness!");

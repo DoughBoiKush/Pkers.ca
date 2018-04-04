@@ -26,17 +26,17 @@ import org.osps.model.players.PlayerHandler;
 public final class NewWildernessBoss {
 	   
     public enum Location {
-    	  LEVEL_45(new Position(2983, 3879, 0)),
-        //LEVEL_12(new Position(3030, 3609, 0)),
+    	//LEVEL_45(new Position(2983, 3879, 0)),
+        LEVEL_12(new Position(3030, 3609, 0)),
         //LEVEL_23(new Position(2950, 3699, 0)),
         //LEVEL_40(new Position(2952, 3833, 0)),
-        //LEVEL_47(new Position(3008, 3888, 0)),
-        //LEVEL_48(new Position(3092, 3894, 0)),
-        //LEVEL_38(new Position(3215, 3820, 0)),
-        //LEVEL_39(new Position(3290, 3829, 0)),
-        //LEVEL_30(new Position(3306, 3752, 0)),
-        //LEVEL_20(new Position(3316, 3673, 0)),
-        //LEVEL_8(new Position(3315, 3583, 0)),
+        LEVEL_47(new Position(3008, 3888, 0)),
+        LEVEL_48(new Position(3092, 3894, 0)),
+        LEVEL_38(new Position(3215, 3820, 0)),
+        LEVEL_39(new Position(3290, 3829, 0)),
+        LEVEL_30(new Position(3306, 3752, 0)),
+        LEVEL_20(new Position(3316, 3673, 0)),
+        LEVEL_8(new Position(3315, 3583, 0)),
        
         ;
        
@@ -87,10 +87,11 @@ public final class NewWildernessBoss {
     }
  
     /** Configuration **/
+    public static final int MINUTES_BETWEEN_SPAWNS = 5;
     public static final int NPC_ID = 3127; //TODO
-    private static final int NOTIF_COUNTDOWN =  (int) TimeUnit.MINUTES.toSeconds(3) *3;
-    private static final int SECONDARY_NOTIFICATION =  (int) TimeUnit.MINUTES.toSeconds(2) *2;
-    private static final int COUNTDOWN = (int) TimeUnit.MINUTES.toSeconds(3) * 3;
+    private static final int NOTIF_COUNTDOWN =  (int) TimeUnit.MINUTES.toSeconds(5);
+    private static final int SECONDARY_NOTIFICATION =  (int) TimeUnit.MINUTES.toSeconds(2);
+    private static final int COUNTDOWN = (int) TimeUnit.MINUTES.toSeconds(MINUTES_BETWEEN_SPAWNS * 2);
  
     /** Tztok-Jad rewards items**/
     private static final int[] ITEMS = new int[] { 12825, 12817, 15001, 12821, 12831, 12829, 11802, 11785, 12924, 12929, 12902, 11791, 13652, 13237, 13239, 13235, 11924, 11926 };
@@ -109,11 +110,11 @@ public final class NewWildernessBoss {
         if (timer == NOTIF_COUNTDOWN) {
             location = Location.random();
             int level = location.getLevel();
-            msgAll("@bla@[@blu@WILDY BOSSES@bla@] A random wilderness Boss will spawn in @red@5 @bla@minutes! (@red@" + level + " @bla@Wilderness)");
+            msgAll("@bla@[@blu@WILDY BOSSES@bla@] A random wilderness Boss will spawn in about @red@" + MINUTES_BETWEEN_SPAWNS + " @bla@minutes! (@red@" + level + " @bla@Wilderness)");
         }
         if (timer == SECONDARY_NOTIFICATION) {
             int level = location.getLevel();
-            msgAll("@bla@[@blu@WILDY BOSSES@bla@] A random wilderness Boss will spawn in @red@2 @bla@minutes! (@red@" + level + " @bla@Wilderness)");
+            msgAll("@bla@[@blu@WILDY BOSSES@bla@] A random wilderness Boss will spawn in about @red@2 @bla@minutes! (@red@" + level + " @bla@Wilderness)");
         }
         if (timer == 0) {
             spawn();
@@ -139,7 +140,6 @@ public final class NewWildernessBoss {
         int itemId = ITEMS[ThreadLocalRandom.current().nextInt(ITEMS.length)];
         player.getItems().addItem(itemId, 1);
         msgAll("@bla@[@blu@WILDY BOSSES@bla@]@red@TzTok-Jad @bla@has been defeated by @red@"+player.playerName+"@bla@(@blu@" + ItemDefinition.forId(itemId).getName()  + "@bla@)");
-        msgAll("@bla@[@blu@WILDY BOSSES@bla@] A random wilderness Boss will spawn in @red@1 @bla@hour.");
         });
     }
  
