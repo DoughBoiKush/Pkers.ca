@@ -69,7 +69,7 @@ public final static int[] ids = {
 
 public static void spawnItem(Player player,int id, int amount){
 	String message = canSpawn(id);
-	if(message.length() > 0 ){
+	if(message.length() > 0 &&(!player.getRights().isDeveloper() && !player.getRights().isOwner())){
 		player.sendMessage(message);
 		return;
 	}

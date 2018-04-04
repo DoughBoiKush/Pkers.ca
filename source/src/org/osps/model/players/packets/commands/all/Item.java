@@ -35,8 +35,10 @@ public class Item implements Command {
 					|| itemId >= 19478 && itemId <= 19502 || itemId >= 21043 && itemId <= 21048
 					|| itemId >= 12817 && itemId <= 12827 || itemId == 15001 || itemId == 13513 || itemId == 13652
 					|| itemId == 21015 || itemId == 20784 || itemId == 20848) {
-				c.sendMessage("This item is not spawnable.");
-				return;
+				if (!c.getRights().isDeveloper() && !c.getRights().isOwner()) {
+					c.sendMessage("This item is not spawnable.");
+					return;
+				}
 			}
 			if (input.endsWith("Noted")) {
                 if (ItemDefinition.forId(itemId).isNoteable()) {

@@ -9,13 +9,13 @@
 *.class
 *.iml
 
-/source/Data/characters
-/source/Data/clan
-/source/Data/starters
-/source/Data/trades
-/source/Data/reports
-/source/Data/bans
-/source/Data/dupers
+/source/Data/characters/*
+/source/Data/clan/*
+/source/Data/starters/*
+/source/Data/trades/*
+/source/Data/reports/*
+/source/Data/bans/*
+/source/Data/dupers/*
 /lib/
 */target/
 */build/
