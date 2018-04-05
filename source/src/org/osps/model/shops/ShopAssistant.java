@@ -1635,7 +1635,7 @@ public int getItemValueHungerGames(int id) {
 		case 4739:
 			return 350;
 		}
-		return 5000;
+		return 0;
 	}
 
 	public void handleOtherShop(int itemID, int amount) {
