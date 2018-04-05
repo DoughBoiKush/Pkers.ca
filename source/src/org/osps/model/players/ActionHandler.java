@@ -1,16 +1,12 @@
 package org.osps.model.players;
 
 import java.util.Objects;
-import java.util.Random;
-
 import org.osps.Config;
 import org.osps.Server;
 import org.osps.model.content.Obelisks;
 import org.osps.model.content.WildernessDitch;
-import org.osps.model.content.dialogue.impl.AdamDialogue;
 import org.osps.model.content.dialogue.impl.ConverterDialogue;
 import org.osps.model.content.dialogue.impl.DecantingDialogue;
-import org.osps.model.content.dialogue.impl.PilesDialogue;
 import org.osps.model.content.dialogue.impl.ZenyteDialogue;
 import org.osps.model.content.hs.PKHighscore;
 import org.osps.model.content.newTitles.TitleHandler;
@@ -30,7 +26,6 @@ import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCCacheDefinition;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.PetHandler;
-import org.osps.model.players.combat.melee.MeleeMaxHit;
 import org.osps.model.players.skills.Skill;
 import org.osps.model.players.skills.Fishing.AnglerDig;
 import org.osps.model.players.skills.Fishing.Fishing;

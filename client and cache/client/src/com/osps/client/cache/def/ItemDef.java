@@ -386,6 +386,13 @@ public final class ItemDef {
 			itemDef.modelCustomColor3 = 926;
 
 		}
+		if (i == 7630) {
+			itemDef.name = "Pet Box";
+			itemDef.description = "Open for a random pet!";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[2] = "Open";
+			itemDef.itemActions[4] = "Drop";
+		}
 		if (i == 2406) {
 			itemDef.name = "Mark of Life";
 			itemDef.description = "A necklace made to pay tribute to life.";

@@ -186,6 +186,12 @@ public class ItemClick2 implements PacketType {
 		case 8901:
 			c.getPA().assembleSlayerHelmet();
 		break;
+		case 7630:
+			if (c.getItems().playerHasItem(7630)) {
+				c.getPetBox().open();
+				return;
+			}
+			break;
 		case 11283:
 		case 11285:
 		case 11284:

@@ -183,6 +183,7 @@ public class Player extends Entity {
 	private HashMap<String, ArrayList<Damage>> damageReceived = new HashMap<>();
 	private BountyHunter bountyHunter = new BountyHunter(this);
 	private MysteryBox mysteryBox = new MysteryBox(this);
+	private PetBox petBox = new PetBox(this);
 	private long lastContainerSearch;
 	private PlayerKill playerKills;
 	public String macAddress;
@@ -400,6 +401,82 @@ public class Player extends Entity {
 			}
 		} catch (IOException e) {
 		}
+	}
+	
+	public String getCrown() {
+		if (getRights().isPlayer()) {
+			return "";
+		}
+		if (getRights().isContributor()) {
+			return "<img=4>";
+		}
+		if (getRights().isSponsor()) {
+			return "<img=5>";
+		}
+		if (getRights().isSupporter()) {
+			return "<img=6>";
+		}
+		if (getRights().isVIP()) {
+			return "<img=7>";
+		}			
+		if (getRights().isHelper()) {
+			return "<img=10>";
+		}
+		/* Staff */
+		if (getRights().isModerator()) {
+			return "<img=1>";
+		}
+		if (getRights().isAdministrator()) {
+			return "<img=2>";
+		}
+		if (getRights().isOwner()) {
+			return "<img=2>";
+		}
+		if (getRights().isDeveloper()) {
+			return "<img=8>";
+		} 
+		if(getRights().isYoutuber()) {
+			return "<img=9>";
+		}
+		return "";
+	}
+	
+	public String getYellTextColor() {
+		if (getRights().isPlayer()) {
+			return "";
+		}
+		if (getRights().isContributor()) {
+			return "@red@";
+		}
+		if (getRights().isSponsor()) {
+			return "@yel@";
+		}
+		if (getRights().isSupporter()) {
+			return "<col=380770>";
+		}
+		if (getRights().isVIP()) {
+			return "<col=FF00CD>";
+		}			
+		if (getRights().isHelper()) {
+			return "@blu@";
+		}
+		/* Staff */
+		if (getRights().isModerator()) {
+			return "<col=148200>";
+		}
+		if (getRights().isAdministrator()) {
+			return "@yel@";
+		}
+		if (getRights().isOwner()) {
+			return "<col=A67711>";
+		}
+		if (getRights().isDeveloper()) {
+			return "<col=5E14A7>";
+		} 
+		if(getRights().isYoutuber()) {
+			return "<col=B0171F>";
+		}
+		return "";
 	}
 
 	/*
@@ -1619,7 +1696,7 @@ public class Player extends Entity {
 	public int floweritem = 0;
 	public int seedtimer = 0;
 	public boolean insure;
-	public static int spawnId;
+	public int spawnId;
 	public long lastHeal;
 
 	private long usernameHash;
@@ -2401,6 +2478,10 @@ public class Player extends Entity {
 
 	public MysteryBox getMysteryBox() {
 		return mysteryBox;
+	}
+	
+	public PetBox getPetBox() {
+		return petBox;
 	}
 
 	public DamageQueueEvent getDamageQueue() {
