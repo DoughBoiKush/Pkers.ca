@@ -23,7 +23,7 @@ public class Mb implements Command {
 			if (c.inWild() || c.inCamWild()) {
 				return;
 			}
-			TeleportExecutor.teleport(c, new Position(2539, 4716, 0));
+			TeleportExecutor.teleport(c, new Position(2539, 4716, 0), true);
 		}
 	}
 }

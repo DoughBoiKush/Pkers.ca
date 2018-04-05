@@ -81,7 +81,7 @@ public class TeleportDialogue extends OptionDialogue {
 
 			if (teleports[index].isDangerous()) {
 				player.start(new OptionDialogue("Proceed with dangerous teleport", p -> {
-					TeleportExecutor.teleport(getPlayer(), teleports[index]);
+					TeleportExecutor.teleport(getPlayer(), teleports[index], true);
 					getPlayer().setDialogue(null);
 					getPlayer().getPA().closeAllWindows();
 				}, "Cancel", p -> {
@@ -89,7 +89,7 @@ public class TeleportDialogue extends OptionDialogue {
 					getPlayer().getPA().closeAllWindows();
 				}));
 			} else {
-				TeleportExecutor.teleport(getPlayer(), teleports[index]);
+				TeleportExecutor.teleport(getPlayer(), teleports[index], true);
 			}
 		}
 

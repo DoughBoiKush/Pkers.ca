@@ -1241,7 +1241,7 @@ public class Client extends RSApplet {
                 newRegularFont.drawBasicString(inputString + ("*"), xPos + 9 + textDrawingArea.getTextWidth(s + " :"),
                         133 + yOffset, changeChatArea ? 0x7FA9FF : 255, shadow);
                 DrawingArea.method339(121 + yOffset, 0x807660, 506, 7);
-            } else if (myPrivilege == 3) { // Developer
+            } else if (myPrivilege == 3) { // Owner
                 modIcons[2].drawSprite(10 + xPos, 121 + yOffset);
                 xPos += 14;
                 newRegularFont.drawBasicString(fixedString + "", xPos + 11, 133 + yOffset, changeChatArea ? 0xffffff : 0, shadow);
@@ -1289,7 +1289,7 @@ public class Client extends RSApplet {
                 newRegularFont.drawBasicString(inputString + ("*"), xPos + 12 + textDrawingArea.getTextWidth(s + " :"),
                         133 + yOffset, changeChatArea ? 0x7FA9FF : 255, shadow);
                 DrawingArea.method339(121 + yOffset, 0x807660, 506, 7);
-            } else if (myPrivilege == 9) { // Veteran
+            } else if (myPrivilege == 9) { // Developer
                 modIcons[8].drawSprite(10 + xPos, 122 + yOffset);
                 xPos += 14;
                 newRegularFont.drawBasicString(fixedString + "", xPos + 11, 133 + yOffset, changeChatArea ? 0xffffff : 0, shadow);
@@ -2234,7 +2234,10 @@ public class Client extends RSApplet {
 													continue;
 												}
 											}
-											menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " " + "@whi@(" + itemDef.id + ")";
+											if (myPlayer.getRights() == 9)
+												menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " " + "@whi@(" + itemDef.id + ")";
+											else
+												menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
 											menuActionID[menuActionRow] = 1125;
 											menuActionCmd1[menuActionRow] = itemDef.id;
 											menuActionCmd2[menuActionRow] = k2;
@@ -6746,9 +6749,10 @@ public class Client extends RSApplet {
 									menuActionCmd3[menuActionRow] = j1;
 									menuActionRow++;
 								}
-
-							//menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " @gre@(@whi@" + item.ID + "@gre@)";
-							menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
+							if (myPlayer.getRights() == 9)
+								menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " @gre@(@whi@" + item.ID + "@gre@)";
+							else
+								menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
 							menuActionID[menuActionRow] = 1448;
 							menuActionCmd1[menuActionRow] = item.ID;
 							menuActionCmd2[menuActionRow] = i1;
@@ -9895,11 +9899,7 @@ public class Client extends RSApplet {
                     }
  
             }
-            if(myPrivilege == 3) {
-            menuActionName[menuActionRow] = "Examine @yel@" + s + " @gre@(@whi@" + entityDef.name + "@gre@)";
-            } else {
             menuActionName[menuActionRow] = "Examine @yel@" + s;
-            
             menuActionID[menuActionRow] = 1025;
             menuActionCmd1[menuActionRow] = i;
             menuActionCmd2[menuActionRow] = k;
@@ -9907,7 +9907,7 @@ public class Client extends RSApplet {
             menuActionRow++;
         }
     }
-    }
+    
     public void buildAtPlayerMenu(int i, int j, Player player, int k) {
         if (player == myPlayer)
             return;

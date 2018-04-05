@@ -2920,6 +2920,15 @@ public class ItemAssistant {
 				items.add(new GameItem(id, amount));
 			}
 		}
+		
+		for (int i = 0; i < c.beastOfBurdenItems.length; i++) {
+			int id = c.beastOfBurdenItems[i];
+			int amount = 1;
+			if (id > 0) {
+				items.add(new GameItem(id, amount));
+				c.beastOfBurdenItems[i] = 0;
+			}
+		}
 
 		return items;
 	}

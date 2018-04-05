@@ -12,6 +12,6 @@ public class Pker099 implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3374, 2971, 0));
+		TeleportExecutor.teleport(c, new Position(3374, 2971, 0), true);
 	}
 }

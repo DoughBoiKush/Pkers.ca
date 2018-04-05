@@ -12,7 +12,7 @@ public class Party implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(2096, 3206, 0));
+		TeleportExecutor.teleport(c, new Position(2096, 3206, 0), true);
 	}
 }
 

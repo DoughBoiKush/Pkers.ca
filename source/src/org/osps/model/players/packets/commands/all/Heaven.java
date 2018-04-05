@@ -12,6 +12,6 @@ public class Heaven implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(2804, 3184, 0));
+		TeleportExecutor.teleport(c, new Position(2804, 3184, 0), true);
 	}
 }

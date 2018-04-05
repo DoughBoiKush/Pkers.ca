@@ -14,6 +14,6 @@ public class Jailzone implements Command {
 
 	@Override
 	public void execute(Player c, String input) {
-		TeleportExecutor.teleport(c, new Position(3168, 9758, 0));
+		TeleportExecutor.teleport(c, new Position(3168, 9758, 0), true);
 	}
 }

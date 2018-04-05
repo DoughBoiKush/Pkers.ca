@@ -13,6 +13,7 @@ import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.players.Logs;
 import org.osps.model.players.Player;
+import org.osps.model.shops.ShopAssistant;
 import org.osps.util.Misc;
 
 import java.util.Objects;
@@ -20,6 +21,9 @@ import java.util.Objects;
 import com.mchange.v1.util.SimpleMapEntry;
 
 public class TradeSession extends MultiplayerSession {
+	
+	private int yourValue;
+	private int opponentValue;
 
 	public TradeSession(List<Player> players, MultiplayerSessionType type) {
 		super(players, type);
@@ -86,7 +90,7 @@ public class TradeSession extends MultiplayerSession {
 	   		player.getItems().resetItems(3322);
     		refreshItemContainer(player, player, 3415);
     		refreshItemContainer(player, getOther(player), 3416);
-    		player.getPA().sendFrame126("", 3431);
+    		player.getPA().sendFrame126("@bla@Your offer: @dre@" + tradeValue(player) + " PKP@bla@. Opponent offer: @dre@" + tradeValue(getOther(player)) + " PKP@bla@.", 3431);
     		player.getPA().sendFrame126("Trading with: " + getOther(player).playerName + " who has @gre@"
     				+ getOther(player).getItems().freeSlots() + " free slots.", 3417);
 		}
@@ -276,6 +280,34 @@ public class TradeSession extends MultiplayerSession {
 			sb.append(", ");
 		}
 		return sb.substring(0, sb.length() - 2).replaceAll("'", "\\\\'");
+	}
+	
+	private int tradeValue(Player player) {
+		ShopAssistant sa = new ShopAssistant(player);
+		if (items.get(player).size() == 0) {
+			return 0;
+		}
+		int value = 0;
+		for (GameItem item : items.get(player)) {
+			value += sa.getPKPCost(item.getId()) * item.getAmount();
+		}
+		return value;
+	}
+
+	public int getOpponentValue() {
+		return opponentValue;
+	}
+
+	public void setOpponentValue(int opponentValue) {
+		this.opponentValue = opponentValue;
+	}
+
+	public int getYourValue() {
+		return yourValue;
+	}
+
+	public void setYourValue(int yourValue) {
+		this.yourValue = yourValue;
 	}
 	
 }

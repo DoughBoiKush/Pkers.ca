@@ -12,7 +12,7 @@ public class Creations implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(2794, 3321, 0));
+		TeleportExecutor.teleport(c, new Position(2794, 3321, 0), true);
 	}
 }
 

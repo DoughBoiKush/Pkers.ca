@@ -12,6 +12,6 @@ public class Home2 implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3351, 3345, 0));
+		TeleportExecutor.teleport(c, new Position(3351, 3345, 0), true);
 	}
 }

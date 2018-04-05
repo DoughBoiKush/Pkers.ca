@@ -4073,121 +4073,121 @@ public class PlayerAssistant {
 		}
 		switch (player.slayerTask) {
 		case 273:
-			TeleportExecutor.teleport(player, new Position(2706, 9450, 0));
+			TeleportExecutor.teleport(player, new Position(2706, 9450, 0), true);
 			break;
 		case 270:
-			TeleportExecutor.teleport(player, new Position(2731, 9484, 0));
+			TeleportExecutor.teleport(player, new Position(2731, 9484, 0), true);
 			break;
 		case 85:
-			TeleportExecutor.teleport(player, new Position(2903, 9849, 0));
+			TeleportExecutor.teleport(player, new Position(2903, 9849, 0), true);
 			break;
 		case 448:
-			TeleportExecutor.teleport(player, new Position(3416, 3536, 0));
+			TeleportExecutor.teleport(player, new Position(3416, 3536, 0), true);
 			break;
 		case 2834:
-			TeleportExecutor.teleport(player, new Position(2913, 9832, 0));
+			TeleportExecutor.teleport(player, new Position(2913, 9832, 0), true);
 			break;
 		case 437:
-			TeleportExecutor.teleport(player, new Position(2705, 10028, 0));
+			TeleportExecutor.teleport(player, new Position(2705, 10028, 0), true);
 			break;
 		case 419:
-			TeleportExecutor.teleport(player, new Position(2802, 10034, 0));
+			TeleportExecutor.teleport(player, new Position(2802, 10034, 0), true);
 			break;
 		case 417:
-			TeleportExecutor.teleport(player, new Position(2745, 10005, 0));
+			TeleportExecutor.teleport(player, new Position(2745, 10005, 0), true);
 			break;
 		case 435:
-			TeleportExecutor.teleport(player, new Position(2761, 10011, 0));
+			TeleportExecutor.teleport(player, new Position(2761, 10011, 0), true);
 			break;
 		case 2840:
-			TeleportExecutor.teleport(player, new Position(3121, 9970, 0));
+			TeleportExecutor.teleport(player, new Position(3121, 9970, 0), true);
 			break;
 		case 2025:
-			TeleportExecutor.teleport(player, new Position(2635, 9505, 2));
+			TeleportExecutor.teleport(player, new Position(2635, 9505, 2), true);
 			break;
 		case 2098:
-			TeleportExecutor.teleport(player, new Position(3118, 9838, 0));
+			TeleportExecutor.teleport(player, new Position(3118, 9838, 0), true);
 			break;
 		case 2084:
-			TeleportExecutor.teleport(player, new Position(2645, 9491, 0));
+			TeleportExecutor.teleport(player, new Position(2645, 9491, 0), true);
 			break;
 		case 411:
-			TeleportExecutor.teleport(player, new Position(2701, 9997, 0));
+			TeleportExecutor.teleport(player, new Position(2701, 9997, 0), true);
 			break;
 		case 119:
-			TeleportExecutor.teleport(player, new Position(2895, 9769, 0));
+			TeleportExecutor.teleport(player, new Position(2895, 9769, 0), true);
 			break;
 		case 18:
-			TeleportExecutor.teleport(player, new Position(3293, 3171, 0));
+			TeleportExecutor.teleport(player, new Position(3293, 3171, 0), true);
 			break;
 		case 181:
-			TeleportExecutor.teleport(player, new Position(2932, 9847, 0));
+			TeleportExecutor.teleport(player, new Position(2932, 9847, 0), true);
 			break;
 		case 446:
-			TeleportExecutor.teleport(player, new Position(3436, 3560, 1));
+			TeleportExecutor.teleport(player, new Position(3436, 3560, 1), true);
 			break;
 		case 484:
-			TeleportExecutor.teleport(player, new Position(3418, 3563, 1));
+			TeleportExecutor.teleport(player, new Position(3418, 3563, 1), true);
 			break;
 		case 264:
-			TeleportExecutor.teleport(player, new Position(2988, 3597, 0));
+			TeleportExecutor.teleport(player, new Position(2988, 3597, 0), true);
 			break;
 		case 2005:
-			TeleportExecutor.teleport(player, new Position(2932, 9800, 0));
+			TeleportExecutor.teleport(player, new Position(2932, 9800, 0), true);
 			break;
 		case 52:
-			TeleportExecutor.teleport(player, new Position(2916, 9801, 0));
+			TeleportExecutor.teleport(player, new Position(2916, 9801, 0), true);
 			break;
 		case 1612:
-			TeleportExecutor.teleport(player, new Position(3438, 3560, 0));
+			TeleportExecutor.teleport(player, new Position(3438, 3560, 0), true);
 			break;
 		case 891:
-			TeleportExecutor.teleport(player, new Position(2675, 9549, 0));
+			TeleportExecutor.teleport(player, new Position(2675, 9549, 0), true);
 			break;
 		case 125:
-			TeleportExecutor.teleport(player, new Position(2954, 3892, 0));
+			TeleportExecutor.teleport(player, new Position(2954, 3892, 0), true);
 			break;
 		case 1341:
-			TeleportExecutor.teleport(player, new Position(2452, 10152, 0));
+			TeleportExecutor.teleport(player, new Position(2452, 10152, 0), true);
 			break;
 		case 424:
-			TeleportExecutor.teleport(player, new Position(3422, 3541, 1));
+			TeleportExecutor.teleport(player, new Position(3422, 3541, 1), true);
 			break;
 		case 1543:
-			TeleportExecutor.teleport(player, new Position(3442, 3554, 2));
+			TeleportExecutor.teleport(player, new Position(3442, 3554, 2), true);
 			break;
 		case 11:
-			TeleportExecutor.teleport(player, new Position(3440, 3566, 2));
+			TeleportExecutor.teleport(player, new Position(3440, 3566, 2), true);
 			break;
 		case 2919:
-			TeleportExecutor.teleport(player, new Position(1748, 5328, 0));
+			TeleportExecutor.teleport(player, new Position(1748, 5328, 0), true);
 			break;
 		case 415:
-			TeleportExecutor.teleport(player, new Position(3419, 3568, 2));
+			TeleportExecutor.teleport(player, new Position(3419, 3568, 2), true);
 			break;
 		case 268:
-			TeleportExecutor.teleport(player, new Position(2897, 9800, 0));
+			TeleportExecutor.teleport(player, new Position(2897, 9800, 0), true);
 			break;
 		case 259:
-			TeleportExecutor.teleport(player, new Position(2833, 9824, 0));
+			TeleportExecutor.teleport(player, new Position(2833, 9824, 0), true);
 			break;
 		case 1432:
-			TeleportExecutor.teleport(player, new Position(2864, 9775, 0));
+			TeleportExecutor.teleport(player, new Position(2864, 9775, 0), true);
 			break;
 		case 135:
-			TeleportExecutor.teleport(player, new Position(2857, 9840, 0));
+			TeleportExecutor.teleport(player, new Position(2857, 9840, 0), true);
 			break;
 		case 4005:
-			TeleportExecutor.teleport(player, new Position(2907, 9692, 0));
+			TeleportExecutor.teleport(player, new Position(2907, 9692, 0), true);
 			break;
 		case 247:
-			TeleportExecutor.teleport(player, new Position(2698, 9512, 0));
+			TeleportExecutor.teleport(player, new Position(2698, 9512, 0), true);
 			break;
 		case 924:
-			TeleportExecutor.teleport(player, new Position(3105, 9949, 0));
+			TeleportExecutor.teleport(player, new Position(3105, 9949, 0), true);
 			break;
 		case 274:
-			TeleportExecutor.teleport(player, new Position(2712, 9432, 0));
+			TeleportExecutor.teleport(player, new Position(2712, 9432, 0), true);
 			break;
 		case 50:
 		case 3200:
@@ -4198,13 +4198,13 @@ public class PlayerAssistant {
 			player.sendMessage("Use the minigames teleports for this task.");
 			break;
 		case 9467:
-			TeleportExecutor.teleport(player, new Position(2521, 4646, 0));
+			TeleportExecutor.teleport(player, new Position(2521, 4646, 0), true);
 			break;
 		case 9465:
-			TeleportExecutor.teleport(player, new Position(2521, 4646, 0));
+			TeleportExecutor.teleport(player, new Position(2521, 4646, 0), true);
 			break;
 		case 9463:
-			TeleportExecutor.teleport(player, new Position(2521, 4646, 0));
+			TeleportExecutor.teleport(player, new Position(2521, 4646, 0), true);
 			break;
 		default:
 			player.sendMessage("Could not find a teleportation location.");
@@ -4266,7 +4266,7 @@ public class PlayerAssistant {
 		case 2562:
 		case 2564:
 		case 2566:
-			TeleportExecutor.teleport(player, new Position(3362, 3263, 0));
+			TeleportExecutor.teleport(player, new Position(3362, 3263, 0), true);
 			break;
 		}
 	}

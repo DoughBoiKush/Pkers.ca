@@ -12,6 +12,6 @@ public class Hell implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3035, 5229, 0));
+		TeleportExecutor.teleport(c, new Position(3035, 5229, 0), true);
 	}
 }

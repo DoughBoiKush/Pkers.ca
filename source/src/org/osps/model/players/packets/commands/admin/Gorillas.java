@@ -12,7 +12,7 @@ public class Gorillas implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3159, 3727, 0));
+		TeleportExecutor.teleport(c, new Position(3159, 3727, 0), true);
 	}
 }
 

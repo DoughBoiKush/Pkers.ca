@@ -95,7 +95,7 @@ public enum TeleportTab {
     
     
     private static void teleport(Player c, TeleportTab t) {
-        TeleportExecutor.teleport(c, t.getLocation());
+        TeleportExecutor.teleport(c, t.getLocation(), true);
     }
     
     

@@ -12,6 +12,6 @@ public class Darkcastle implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3010, 3631, 0));
+		TeleportExecutor.teleport(c, new Position(3010, 3631, 0), true);
 	}
 }

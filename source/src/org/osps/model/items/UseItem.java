@@ -15,6 +15,7 @@ import org.osps.model.minigames.gamble.GambleItems;
 import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.minigames.warriors_guild.AnimatedArmour;
 import org.osps.model.npcs.NPCHandler;
+import org.osps.model.npcs.PetHandler;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerCannon;
 import org.osps.model.players.PlayerHandler;
@@ -849,6 +850,14 @@ public class UseItem {
 	 * @param slot
 	 */
 	public static void ItemonNpc(Player c, int itemId, int npcId, int slot) {
+		if (npcId == 5892) {
+			PetHandler.storeItemJad(c, itemId);
+			return;
+		}
+		if (npcId == 6636) {
+			PetHandler.storeItemKBD(c, itemId);
+			return;
+		}
 		if (npcId == 1011) {
 			GambleItems.gambleItems(c, itemId);
 			return;
@@ -890,7 +899,7 @@ public class UseItem {
 		switch (itemId) {
 
 		default:
-			if (c.getRights().isDeveloper() && Config.SERVER_DEBUG)
+			if (c.getRights().isDeveloper())
 				Misc.println("Player used Item id: " + itemId + " with Npc id: " + npcId + " With Slot : " + slot);
 			break;
 		}

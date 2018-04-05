@@ -3175,6 +3175,10 @@ public class Player extends Entity {
 	public String getUsername() {
 		return Misc.formatPlayerName(username);
 	}
+	
+	public int getSummonId() {
+		return summonId;
+	}
 
 	public String getUsername1() {
 		return username;
@@ -3194,6 +3198,7 @@ public class Player extends Entity {
 	public PlayerHandler handler = null;
 	public int playerItems[] = new int[28];
 	public int playerItemsN[] = new int[28];
+	public int beastOfBurdenItems[] = new int[8];
 	public int bankItems[] = new int[Config.BANK_SIZE];
 	public int bankItemsN[] = new int[Config.BANK_SIZE];
 	public boolean bankNotes = false;

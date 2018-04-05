@@ -33,8 +33,9 @@ public class TeleportExecutor {
 	 *            The {@link Player} trying to teleport
 	 * @param position
 	 *            The {@link Position} the player is teleporting too
+	 * @param requirements TODO
 	 */
-	public static void teleport(Player player, Position position) {
+	public static void teleport(Player player, Position position, boolean requirements) {
 		player.canWalk = false;
 		if(player.doingTutorial) {
 			return;
@@ -93,7 +94,7 @@ public class TeleportExecutor {
 		}
 
 		TeleportType type = player.playerMagicBook == 2 ? TeleportType.NORMAL : player.playerMagicBook == 1 ? TeleportType.ANCIENT : TeleportType.NORMAL;
-		teleport(player, new Teleport(position, type), true);
+		teleport(player, new Teleport(position, type), requirements);
 	}
 	
 	/**

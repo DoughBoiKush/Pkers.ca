@@ -23,7 +23,7 @@ public class Easts implements Command {
 			if (c.inWild() || c.inCamWild()) {
 				return;
 			}
-			TeleportExecutor.teleport(c, new Position(3353, 3684, 0));
+			TeleportExecutor.teleport(c, new Position(3353, 3684, 0), true);
 		}
 	}
 }

@@ -12,6 +12,6 @@ public class PortalsFourtyFour implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(2980, 3871, 0));
+		TeleportExecutor.teleport(c, new Position(2980, 3871, 0), true);
 	}
 }

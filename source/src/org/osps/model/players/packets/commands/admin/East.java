@@ -12,6 +12,6 @@ public class East implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3361, 3676, 0));
+		TeleportExecutor.teleport(c, new Position(3361, 3676, 0), true);
 	}
 }

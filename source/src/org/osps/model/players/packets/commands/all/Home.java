@@ -12,6 +12,6 @@ public class Home implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3087, 3500, 0));
+		TeleportExecutor.teleport(c, new Position(3087, 3500, 0), true);
 	}
 }
