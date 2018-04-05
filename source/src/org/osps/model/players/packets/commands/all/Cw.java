@@ -12,6 +12,6 @@ public class Cw implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(2440, 3090, 0));
+		TeleportExecutor.teleport(c, new Position(2440, 3090, 0), true);
 	}
 }

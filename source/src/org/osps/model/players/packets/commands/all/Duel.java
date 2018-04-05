@@ -12,6 +12,6 @@ public class Duel implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3366, 3267, 0));
+		TeleportExecutor.teleport(c, new Position(3366, 3267, 0), true);
 	}
 }

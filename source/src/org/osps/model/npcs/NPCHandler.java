@@ -2325,6 +2325,9 @@ public class NPCHandler {
 					if (System.currentTimeMillis() - c.lastAntifirePotion < c.antifireDelay) {
 						resistance++;
 					}
+					if (c.summonId == 12653) {
+						resistance = 3;
+					}
 					if (resistance == 0) {
 						if (getNpcDef()[npcs[i].npcType].getName().contains("baby")) {
 							damage = Misc.random(15);
@@ -2336,6 +2339,9 @@ public class NPCHandler {
 						damage = Misc.random(10);
 					} else if (resistance == 2) {
 						damage = 0;
+					} else if (resistance == 3) {
+						damage = 0;
+						c.sendMessage("Your Prince Black Dragon fully protects you from the dragon fire.");
 					}
 					if (npcs[i].endGfx != 430 && resistance == 2) {
 						damage = 5 + Misc.random(5);

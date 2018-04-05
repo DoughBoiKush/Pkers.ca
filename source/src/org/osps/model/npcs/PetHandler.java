@@ -1,5 +1,7 @@
 package org.osps.model.npcs;
 
+import java.util.ArrayList;
+
 import org.osps.Server;
 import org.osps.clip.Region;
 import org.osps.model.players.Player;
@@ -111,6 +113,96 @@ public class PetHandler {
 			c.sendMessage("@blu@Your pet was insured and was added to your bank!");
 		}
 	}
+	
+	public static void storeItemJad(Player c, int itemId) {
+		if (c.beastOfBurdenItems[7] != 0) {
+			c.sendMessage("Your beast of burden can't hold any more!");
+			return;
+		}
+		if (c.summonId != 13225) {
+			c.sendMessage("Your Jad is gone.");
+			return;
+		}
+		for (int i = 0; i < 8; i++) {
+			if (c.beastOfBurdenItems[i] == 0) {
+				if (!c.getItems().playerHasItem(itemId)) {
+					c.sendMessage("You no longer have the item you tried to store.");
+					return;
+				}
+				c.getItems().deleteItem(itemId, 1);
+				c.beastOfBurdenItems[i] = itemId;
+				c.sendMessage("Jad is now holding your @or2@" + c.getItems().getItemName(itemId));
+				return;
+			}
+		}
+	}
+	
+	public static void storeItemKBD(Player c, int itemId) {
+		if (c.beastOfBurdenItems[3] != 0) {
+			c.sendMessage("Your beast of burden can't hold any more!");
+			return;
+		}
+		if (c.summonId != 12653) {
+			c.sendMessage("Your Prince Black Dragon is gone.");
+			return;
+		}
+		for (int i = 0; i < 4; i++) {
+			if (c.beastOfBurdenItems[i] == 0) {
+				if (!c.getItems().playerHasItem(itemId)) {
+					c.sendMessage("You no longer have the item you tried to store.");
+					return;
+				}
+				c.getItems().deleteItem(itemId, 1);
+				c.beastOfBurdenItems[i] = itemId;
+				c.sendMessage("Prince Black Dragon is now holding your @or2@" + c.getItems().getItemName(itemId));
+				return;
+			}
+		}
+	}
+	
+	public static void withdrawBOB(Player c) {
+		int slotsOpen = c.getItems().freeSlots();
+		if (slotsOpen == 0) {
+			c.sendMessage("You have no free inventory spaces.");
+			return;
+		}
+		for (int i = 0; i < slotsOpen; i++) {
+			if (c.beastOfBurdenItems[0] == 0) {
+				c.sendMessage("You've withdrawn all you can.");
+				return;
+			}
+			c.getItems().addItem(c.beastOfBurdenItems[0], 1);
+			for (int j = 0; j < c.beastOfBurdenItems.length - 1; j++) {
+				c.beastOfBurdenItems[j] = c.beastOfBurdenItems[j + 1];
+			}
+			c.beastOfBurdenItems[7] = 0;
+		}
+	}
+	
+	public static void checkBOB(Player c) {
+		if (c.beastOfBurdenItems[0] == 0) {
+			c.sendMessage("Your BoB is currently holding nothing.");
+			return;
+		}
+		ArrayList<Integer> items = new ArrayList<>();
+		ArrayList<Integer> amounts = new ArrayList<>();
+		for (int item : c.beastOfBurdenItems) {
+			if (item == 0) {
+				continue;
+			}
+			if (!items.contains(item)) {
+				items.add(item);
+				amounts.add(1);
+			} else {
+				int index = items.indexOf(item);
+				amounts.set(index, amounts.get(index) + 1);
+			}
+		}
+		for (int item : items) {
+			c.sendMessage("Your BoB is holding @or2@" + amounts.get(items.indexOf(item)) + "x " + c.getItems().getItemName(item));
+		}
+	}
+	
 	public static boolean spawnPet(Player c, int itemId, int slot,
 			boolean ignore) {
 		Pets pets = forItem(itemId);
@@ -154,6 +246,10 @@ public class PetHandler {
 	
 
 	public static boolean pickupPet(Player c, int npcId) {	
+		if (c.beastOfBurdenItems[0] != 0) {
+			c.sendMessage("You must take your BoB's items before you can pick it up.");
+			return false;
+		}
 		Pets pets = forNpc(npcId);
 		if (pets != null) {
 			if (NPCHandler.npcs[c.rememberNpcIndex].spawnedBy == c.index && c.summonId == pets.itemId) {

@@ -244,7 +244,7 @@ public class DialogueHandler {
 			c.nextChat = 200001;
 			break;
 		case 200001:
-			sendOption2("I'd like to view my bank please.", "Nothing at this time, thanks.");
+			sendOption2("What are you holding?", "Nothing at this time, thanks.");
 			c.dialogueAction = 200001;
 			c.nextChat = -1;
 			break;
@@ -367,7 +367,7 @@ public class DialogueHandler {
 			c.nextChat = -1;
 			break;
 		case 3802:
-			sendNpcChat3("I can do that but it won't be cheap,", "You'll have to pay a one time fee of,", "150 PK Points", c.talkingNpc, "Zoo Keeper");
+			sendNpcChat3("I can do that but it won't be cheap,", "You'll have to pay a one time fee of,", "120,000 PK Points", c.talkingNpc, "Zoo Keeper");
 			c.nextChat = 3803;
 		break;
 		case 3803:

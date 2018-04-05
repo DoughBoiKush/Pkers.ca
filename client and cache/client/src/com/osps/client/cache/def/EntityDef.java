@@ -23,6 +23,24 @@ public final class EntityDef {
 		stream.currentOffset = streamIndices[i];
 		entityDef.interfaceType = i;
 		entityDef.readValues(stream);
+		if (i == 2055) { //chaos elemental jr
+			entityDef.actions = new String[5];
+			entityDef.actions[0] = "Talk-to";
+			entityDef.actions[2] = "Pick-up";
+			entityDef.actions[3] = "@or2@Tele Home";
+		}
+		if (i == 6636) { //prince black dragon
+			entityDef.actions = new String[5];
+			entityDef.actions[0] = "Talk-to";
+			entityDef.actions[2] = "Pick-up";
+			entityDef.actions[3] = "@or2@Take BoB";
+		}
+		if (i == 5892) { //TzRek-Jad
+			entityDef.actions = new String[5];
+			entityDef.actions[0] = "Talk-to";
+			entityDef.actions[2] = "Pick-up";
+			entityDef.actions[3] = "@or2@Take BoB";
+		}
 		if(i == 1571) { // NPC ID 
 			entityDef.actions = new String[5];
 			entityDef.actions[0] = "Talk-to";

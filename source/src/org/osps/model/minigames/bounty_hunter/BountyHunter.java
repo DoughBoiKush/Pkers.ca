@@ -361,7 +361,7 @@ public class BountyHunter extends CycleEvent {
 				}
 			}
 		}
-		TeleportExecutor.teleport(player, new Position(targetX, targetY - 1, target.heightLevel));
+		TeleportExecutor.teleport(player, new Position(targetX, targetY - 1, target.heightLevel), true);
 		lastTeleport = System.currentTimeMillis();
 	}
 	

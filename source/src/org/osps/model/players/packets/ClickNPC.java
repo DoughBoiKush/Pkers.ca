@@ -1,5 +1,6 @@
 package org.osps.model.players.packets;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import org.osps.Config;
@@ -9,6 +10,7 @@ import org.osps.event.CycleEventHandler;
 import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.NpcDefinition;
+import org.osps.model.npcs.PetHandler;
 import org.osps.model.npcs.boss.abyssalsire.AbyssalSireConstants;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
@@ -317,6 +319,8 @@ public class ClickNPC implements PacketType {
 			}
 			if (NPCHandler.npcs[c.npcClickIndex] != null)
 				c.npcType = NPCHandler.npcs[c.npcClickIndex].npcType;
+			System.out.println(c.npcType);
+			System.out.println(c.npcClickIndex);
 			if (c.goodDistance(NPCHandler.npcs[c.npcClickIndex].getX(), NPCHandler.npcs[c.npcClickIndex].getY(),
 					c.getX(), c.getY(), 1)) {
 				c.face(NPCHandler.npcs[c.npcClickIndex].getX(), NPCHandler.npcs[c.npcClickIndex].getY());
@@ -350,21 +354,28 @@ public class ClickNPC implements PacketType {
 			break;
 
 		case ClickNPC.FOURTH_CLICK:
+			System.out.println("i got here ");
 			c.npcClickIndex = packet.getUnsignedByte();
 			if (c.npcClickIndex >= NPCHandler.npcs.length || c.npcClickIndex < 0) {
 				break;
 			}
+			System.out.println("i got here 2");
 			if (Objects.isNull(NPCHandler.npcs[c.npcClickIndex])) {
 				break;
 			}
+			System.out.println("i got here 3");
 			if (NPCHandler.npcs[c.npcClickIndex] != null)
 				c.npcType = NPCHandler.npcs[c.npcClickIndex].npcType;
+			System.out.println(NPCHandler.getNpcName(c.npcType));
+			//System.out.println(c.npcClickIndex);
 			if (c.goodDistance(NPCHandler.npcs[c.npcClickIndex].getX(), NPCHandler.npcs[c.npcClickIndex].getY(),
 					c.getX(), c.getY(), 1)) {
+				System.out.println("i got here 5");
 				c.face(NPCHandler.npcs[c.npcClickIndex].getX(), NPCHandler.npcs[c.npcClickIndex].getY());
 				NPCHandler.npcs[c.npcClickIndex].face(c);
 				c.getActions().operateNpcAction4(c.npcType);
 			} else {
+				System.out.println("i got here 6");
 				c.clickNpcType = 4;
 				CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
 					@Override

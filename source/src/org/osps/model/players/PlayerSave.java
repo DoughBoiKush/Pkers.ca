@@ -800,7 +800,13 @@ public class PlayerSave {
 						p.shop().amounts[Integer.parseInt(token3[0])] = Integer.parseInt(token3[2]);
                                                 p.shop().prices[Integer.parseInt(token3[0])] = Integer.parseInt(token3[3]);
 					}
-                                break;
+                    break;
+                case 21:
+                	if (token.equals("beastofburden-item")) {
+                		p.beastOfBurdenItems[Integer.parseInt(token3[0])] = Integer.parseInt(token3[1]);
+                	}
+                break;
+                                
 				}
 			} else {
 				if (line.equals("[ACCOUNT]")) {
@@ -843,6 +849,8 @@ public class PlayerSave {
 					ReadMode = 19;
 				} else if (line.equals("[PLAYER-SHOP]")) {
 					ReadMode = 20;
+				} else if (line.equals("[BEASTOFBURDEN]")) {
+					ReadMode = 21;
 				} else if (line.equals("[EOF]")) {
 					try {
 						characterfile.close();
@@ -1424,7 +1432,24 @@ public class PlayerSave {
 				}
 			}
 			characterfile.newLine();
-                        
+			
+			/* BEASTOFBURDEN */
+			characterfile.write("[BEASTOFBURDEN]", 0, 15);
+			characterfile.newLine();
+			for (int i = 0; i < p.beastOfBurdenItems.length; i++) {
+				if (p.beastOfBurdenItems[i] > 0) {
+					characterfile.write("beastofburden-item = ", 0, 21);
+					characterfile.write(Integer.toString(i), 0, Integer.toString(i).length());
+					characterfile.write("	", 0, 1);
+					characterfile.write(Integer.toString(p.beastOfBurdenItems[i]), 0,
+							Integer.toString(p.beastOfBurdenItems[i]).length());
+					characterfile.write("	", 0, 1);
+					characterfile.write(Integer.toString(1), 0,
+							Integer.toString(1).length());
+					characterfile.newLine();
+				}
+			}
+			characterfile.newLine();
                         
                         
                         

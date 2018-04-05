@@ -17,6 +17,6 @@ public class Donatorzone implements Command {
 		if (c.inTrade || c.inDuel || c.inWild()) {
 			return;
 		}
-		TeleportExecutor.teleport(c, new Position(3482, 3237, 0));
+		TeleportExecutor.teleport(c, new Position(3482, 3237, 0), true);
 	}
 }

@@ -1,16 +1,12 @@
 package org.osps.model.players;
 
 import java.util.Objects;
-import java.util.Random;
-
 import org.osps.Config;
 import org.osps.Server;
 import org.osps.model.content.Obelisks;
 import org.osps.model.content.WildernessDitch;
-import org.osps.model.content.dialogue.impl.AdamDialogue;
 import org.osps.model.content.dialogue.impl.ConverterDialogue;
 import org.osps.model.content.dialogue.impl.DecantingDialogue;
-import org.osps.model.content.dialogue.impl.PilesDialogue;
 import org.osps.model.content.dialogue.impl.ZenyteDialogue;
 import org.osps.model.content.hs.PKHighscore;
 import org.osps.model.content.newTitles.TitleHandler;
@@ -30,7 +26,6 @@ import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCCacheDefinition;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.PetHandler;
-import org.osps.model.players.combat.melee.MeleeMaxHit;
 import org.osps.model.players.skills.Skill;
 import org.osps.model.players.skills.Fishing.AnglerDig;
 import org.osps.model.players.skills.Fishing.Fishing;
@@ -160,7 +155,7 @@ public class ActionHandler {
 //			c.getPA().loadQuests();
 //	        break;
 		case 4152:
-			TeleportExecutor.teleport(c, new Position(3233, 2887, 0));
+			TeleportExecutor.teleport(c, new Position(3233, 2887, 0), true);
 			break;
 		case 104: //creations chest
 			c.getPA().openUpBank();
@@ -230,10 +225,10 @@ public class ActionHandler {
 		case 4470:
 			//TODO: monk
 		case 14995:
-			TeleportExecutor.teleport(c, new Position(2141, 3944, 0));
+			TeleportExecutor.teleport(c, new Position(2141, 3944, 0), true);
 			break;
 		case 14996:
-			TeleportExecutor.teleport(c, new Position(2329, 10353, 2));
+			TeleportExecutor.teleport(c, new Position(2329, 10353, 2), true);
 			break;
 		case 4415:
 			if(c.heightLevel == 1 && obX == 2419 && obY == 3080) {
@@ -844,7 +839,7 @@ public class ActionHandler {
 				c.getPA().movePlayer(3087, 3491, 0);
 			break;
 		case 4157:
-			TeleportExecutor.teleport(c, new Position(2604, 3154, 0));
+			TeleportExecutor.teleport(c, new Position(2604, 3154, 0), true);
 			c.sendMessage("This is the dicing area. Place a bet on designated hosts.");
 			break;
 		case 2309:
@@ -1910,7 +1905,7 @@ public class ActionHandler {
 		 * if (ImpCatching.catchImpling(c, npcType)) { return; }
 		 */
 
-		if (Config.SERVER_DEBUG == true) {
+		if (c.getRights().equals(Rights.DEVELOPER)) {
 			c.sendMessage("<col=255>[SERVER DEBUG] First Click Mob: " + npcType);
 		}
 		int impling = c.npcClickIndex;
@@ -2653,8 +2648,8 @@ public class ActionHandler {
 		if (ImpCatching.catchImpling(c, npcType)) {
 			return;
 		}
-		if (Config.SERVER_DEBUG == true) {
-			c.sendMessage("<col=255>[SERVER DEBUG] Second Click Mob: " + npcType + " " + npcType);
+		if (c.getRights().equals(Rights.DEVELOPER)) {
+			c.sendMessage("<col=255>[SERVER DEBUG] Second Click Mob: " + npcType);
 		}
 		c.clickNpcType = 0;
 		c.rememberNpcIndex = c.npcClickIndex;
@@ -3044,6 +3039,9 @@ public class ActionHandler {
 	}
 
 	public void thirdClickNpc(int npcType) {
+		if (c.getRights().equals(Rights.DEVELOPER)) {
+			c.sendMessage("<col=255>[SERVER DEBUG] Third Click Mob: " + npcType);
+		}
 		if (Server.getMultiplayerSessionListener().inAnySession(c)) {
 			return;
 		}
@@ -3053,16 +3051,17 @@ public class ActionHandler {
 		c.clickNpcType = 0;
 		c.rememberNpcIndex = c.npcClickIndex;
 		c.npcClickIndex = 0;
-		if (PetHandler.bankPet(c, npcType)) {
-			return;
-		}
-		if (PetHandler.talktoPet(c, npcType))
-			return;
-		if (Config.SERVER_DEBUG == true) {
-			c.sendMessage("<col=255>[SERVER DEBUG] Third Click Mob: " + npcType);
-			c.sendMessage(c.playerName + " - ThirdNpcOption: " + npcType);
-		}
 		switch (npcType) {
+		case 2055:
+			if (c.summonId == 11995)
+				TeleportExecutor.teleport(c, new Position(Config.RESPAWN_X, Config.RESPAWN_Y, 0), false);
+			break;
+		case 5892:
+		case 6636:
+			if (c.summonId == 13225 || c.summonId == 12653) {
+				PetHandler.withdrawBOB(c);
+			}
+			break;
 		case 5792:
 			c.getDH().sendDialogues(5794, c.npcType);
 			break;
@@ -3134,6 +3133,10 @@ public class ActionHandler {
 	}
 
 	public void operateNpcAction4(int npcType) {
+		System.out.println("i got here");
+		if (c.getRights().equals(Rights.DEVELOPER)) {
+			c.sendMessage("<col=255>[SERVER DEBUG] Fourth Click Mob: " + npcType);
+		}
 		if (Server.getMultiplayerSessionListener().inAnySession(c)) {
 			return;
 		}
@@ -3142,6 +3145,16 @@ public class ActionHandler {
 		c.npcClickIndex = 0;
 
 		switch (npcType) {
+		case 5892:
+			if (c.summonId == 13225) {
+				PetHandler.withdrawBOB(c);
+			}
+			break;
+		case 6636:
+			if (c.summonId == 12653) {
+				PetHandler.withdrawBOB(c);
+			}
+			break;
 		case 1571:
 			c.getShops().openShop(58);
 		break;
@@ -3169,6 +3182,9 @@ public class ActionHandler {
 		}
 	}
 		public void operateNpcAction5(int npcType) {
+			if (c.getRights().equals(Rights.DEVELOPER)) {
+				c.sendMessage("<col=255>[SERVER DEBUG] First Click Mob: " + npcType);
+			}
 			if (Server.getMultiplayerSessionListener().inAnySession(c)) {
 				return;
 			}

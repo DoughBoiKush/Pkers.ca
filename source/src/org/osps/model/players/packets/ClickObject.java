@@ -227,7 +227,7 @@ public class ClickObject implements PacketType {
 				c.objectYOffset = 2;
 				break;
 			case 24600:
-				TeleportExecutor.teleport(c, new Position(1469, 3863, 0));
+				TeleportExecutor.teleport(c, new Position(1469, 3863, 0), true);
 				c.sendMessage("<col=006600>Welcome to the Blast Mine, You will need 42 Mining, 30 Crafting!");
 				c.sendMessage("<col=006600>Buy a Dynamite pot for 25,000 coins from the operator .");
 				c.sendMessage("<col=006600>Talk to Toothy to get up to the mine, there is a bank up there!");

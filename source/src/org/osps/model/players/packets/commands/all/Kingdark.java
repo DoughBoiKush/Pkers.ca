@@ -12,7 +12,7 @@ public class Kingdark implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3233, 9315, 0));
+		TeleportExecutor.teleport(c, new Position(3233, 9315, 0), true);
 		c.sendMessage("Welcome to #clean.Gang.Zone");
 	}
 }

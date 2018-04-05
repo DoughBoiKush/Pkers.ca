@@ -10,7 +10,7 @@ public class Hunger implements Command {
 	
 	@Override
 	public void execute(Player c, String input) {
-		TeleportExecutor.teleport(c, new Position(2440, 3090, 0));
+		TeleportExecutor.teleport(c, new Position(2440, 3090, 0), true);
 	}
 	
 	

@@ -241,50 +241,50 @@ public class AttackPlayer {
 		switch (type) {
 			default:
 			case MELEE:
-				c.getPA().addSkillXP((int) Math.ceil((damage * Config.MELEE_EXP_RATE)) / 3, 3);
+				c.getPA().addSkillXP((int) Math.ceil((damage * 4 * Config.MELEE_EXP_RATE) / 3), 3);
 				switch (c.fightMode) {
 					case 0: // Accurate
-						c.getPA().addSkillXP((int) Math.ceil(damage * Config.MELEE_EXP_RATE), 0);
+						c.getPA().addSkillXP((int) Math.ceil(damage * 4 * Config.MELEE_EXP_RATE), 0);
 						break;
 					case 1: // Block
 						if (c.playerLevel[1] == 1) {
-							c.getPA().addSkillXP((int) Math.ceil(damage * Config.MELEE_EXP_RATE), 2);
+							c.getPA().addSkillXP((int) Math.ceil(damage * 4 * Config.MELEE_EXP_RATE), 2);
 						} else {
-						c.getPA().addSkillXP((int) Math.ceil(damage * Config.MELEE_EXP_RATE), 1);
+						c.getPA().addSkillXP((int) Math.ceil(damage * 4 * Config.MELEE_EXP_RATE), 1);
 						}
 						break;
 					case 2: // Aggressive
-						c.getPA().addSkillXP((int) Math.ceil(damage * Config.MELEE_EXP_RATE), 2);
+						c.getPA().addSkillXP((int) Math.ceil(damage * 4 * Config.MELEE_EXP_RATE), 2);
 						break;
 					case 3: // Controlled
 						if (c.playerLevel[1] == 1) {
 							c.getPA().addSkillXP((int) Math.ceil(damage * Config.MELEE_EXP_RATE), 2);
 						} else {
 						for (int i = 0; i < 3; i++)
-							c.getPA().addSkillXP((int) Math.ceil((damage * Config.MELEE_EXP_RATE) / 3), i);// 1.3
+							c.getPA().addSkillXP((int) Math.ceil((damage * 4 * Config.MELEE_EXP_RATE) / 3), i);// 1.3
 						}
 						break;
 					}
 				break;
 			case RANGE:
-				c.getPA().addSkillXP((damage * Config.RANGE_EXP_RATE) / 3, 3);
+				c.getPA().addSkillXP((int) Math.ceil((damage * 4 * Config.RANGE_EXP_RATE) / 3), 3);
 				switch (c.fightMode) {
 					case 0: // Accurate
 					case 2: // Rapid
 						c.getPA().addSkillXP(
-								damage * Config.RANGE_EXP_RATE, 4);
+								damage * 4 * Config.RANGE_EXP_RATE, 4);
 						break;
 					case 1: // Block
 						c.getPA().addSkillXP(
-								damage * Config.RANGE_EXP_RATE, 1);
+								damage * 2 * Config.RANGE_EXP_RATE, 1);
 						c.getPA().addSkillXP(
-								damage * Config.RANGE_EXP_RATE / 2, 4);
+								damage * 2 * Config.RANGE_EXP_RATE / 2, 4);
 						break;
 					}
 				break;
 			case MAGE:
-				c.getPA().addSkillXP((damage * Config.MAGIC_EXP_RATE) / 3, 3);
-				int magicXP = damage * Config.MAGIC_EXP_RATE;
+				c.getPA().addSkillXP((int) Math.ceil((damage * 4 * Config.MAGIC_EXP_RATE) / 3), 3);
+				int magicXP = damage * 4 * Config.MAGIC_EXP_RATE;
 				c.getPA().addSkillXP(magicXP, 6);
 				break;
 		}

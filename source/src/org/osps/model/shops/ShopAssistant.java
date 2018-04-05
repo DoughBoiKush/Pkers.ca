@@ -44,6 +44,8 @@ public class ShopAssistant {
 		c.getPA().sendFrame248(3824, 3822);
 		if (ShopID == 68)
 			c.getPA().sendFrame126("Fishing Tourney Shop - Points: " + c.fishingTourneyPoints, 3901);
+		if (ShopID == 81)
+			c.getPA().sendFrame126("Donator Shop - Points: @or2@" + c.donatorPoints, 3901);
 		else if (ShopID == 72)
 			c.getPA().sendFrame126("Blast Mine Shop - Points: " + c.blastPoints, 3901);
 		else if (ShopID == 74)
@@ -372,83 +374,14 @@ public class ShopAssistant {
 		}
 	public int donatorValue(int id) {
 		switch (id) {
-		case 1038:
-		case 1040:
-		case 1042:
-		case 1044:
-		case 1046:
-		case 1048:
-		case 11862:
-		case 11863:
-		case 12399:
-			return 1199;
-		case 1050:
-		case 1053:
-		case 1055:
-		case 1057:
-		case 13343:
-		case 13344:
-			return 799;
+		case 15315:
+		case 15316:
+		case 15317:
+			return 0;
 		case 6199:
-			return 99;
-		case 12817:
-		case 12825:
-		case 12821:
-			return 1599;
-		case 15001:
-			return 1799;
-		case 14484:
-		case 11802:
-			return 1899;
-		case 4084:
-			return 399;
-		case 11832:
-			return 899;
-		case 11834:
-			return 1299;
-		case 11283:
-		case 11284:
-		case 12006:
-			return 499;
-		case 11785:
-		case 11804:
-		case 11806:
-		case 11808:
-		case 11826:
-		case 11828:
-		case 11830:
-			return 899;
-		case 12924:
-		case 12902:
-			return 1499;
-		case 11791:
-		case 13576:
-		case 13265:
-		case 13263:
-			return 1099;
-		case 10350:
-		case 10348:
-		case 10346:
-		case 10352:
-			return 2199;
-		case 15098:
-			return 1499;
-		case 299:
-			return 59;
-		case 10342:
-		case 10344:
-		case 10338:
-		case 10340:
-			return 1999;
-		case 10334:
-		case 10330:
-		case 10332:
-		case 10336:
-		case 12424:
-		case 12422:
-		case 12437:
-		case 12426:
-			return 1699;
+			return 10;
+		case 7630:
+			return 50;
 		default:
 			return Integer.MAX_VALUE;
 		}
@@ -802,7 +735,7 @@ public class ShopAssistant {
 			return;
 		}
 		if (c.myShopId == 81) {
-			c.sendMessage("@blu@" + c.getItems().getItemName(removeId)+"@bla@ is currenlty free. ");
+			c.sendMessage(c.getItems().getItemName(removeId) + ": currently costs " + donatorValue(removeId) + " donator points.");
 			return;
 		}
 	    c.sendMessage("@blu@" + c.getItems().getItemName(removeId)+"@bla@ is currenlty free. ");

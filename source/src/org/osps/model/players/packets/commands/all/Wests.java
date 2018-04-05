@@ -23,7 +23,7 @@ public class Wests implements Command {
 			if (c.inWild() || c.inCamWild()) {
 				return;
 			}
-			TeleportExecutor.teleport(c, new Position(2979, 3597, 0));
+			TeleportExecutor.teleport(c, new Position(2979, 3597, 0), true);
 		}
 	}
 }

@@ -49,6 +49,7 @@ import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
 import org.osps.model.multiplayer_session.duel.DuelSessionRules.Rule;
 import org.osps.model.npcs.NpcDefinition;
+import org.osps.model.npcs.PetHandler;
 import org.osps.model.npcs.BossDeathTracker.BOSSName;
 import org.osps.model.npcs.NPCDeathTracker.NPCName;
 import org.osps.model.players.Boundary;
@@ -1353,16 +1354,16 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.teleAction == 205) {
-				TeleportExecutor.teleport(player, new Position(1469, 3863, 0));
+				TeleportExecutor.teleport(player, new Position(1469, 3863, 0), true);
 			} else if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(3565, 3314, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3314, 0), true);
 			} else if (player.teleAction == 201) {
-				TeleportExecutor.teleport(player, new Position(2847, 3541, 0));
+				TeleportExecutor.teleport(player, new Position(2847, 3541, 0), true);
 			}
 			switch (player.teleAction) {
 
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2680, 9563, 0));
+				TeleportExecutor.teleport(player, new Position(2680, 9563, 0), true);
 				break;
 			}
 			if (player.dialogueAction == 123) {
@@ -1375,73 +1376,73 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(3105, 3279, 0));
+				TeleportExecutor.teleport(player, new Position(3105, 3279, 0), true);
 				return;
 			}
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(3429, 3538, 0));
+				TeleportExecutor.teleport(player, new Position(3429, 3538, 0), true);
 				return;
 			}
 			if (player.teleAction == 65) {
-				TeleportExecutor.teleport(player, new Position(2976, 4384, 2));
+				TeleportExecutor.teleport(player, new Position(2976, 4384, 2), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
 			if (player.teleAction == 66) {
-				TeleportExecutor.teleport(player, new Position(2872, 9847, 0));
+				TeleportExecutor.teleport(player, new Position(2872, 9847, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
 			if (player.teleAction == 14) {
-				TeleportExecutor.teleport(player, new Position(2900, 4449, 0));
+				TeleportExecutor.teleport(player, new Position(2900, 4449, 0), true);
 				player.teleAction = -1;
 				player.dialogueAction = -1;
 				return;
 			}
 			if (player.teleAction == 12) {
-				TeleportExecutor.teleport(player, new Position(3302, 9361, 0));
+				TeleportExecutor.teleport(player, new Position(3302, 9361, 0), true);
 			}
 			if (player.teleAction == 11) {
-				TeleportExecutor.teleport(player, new Position(3228, 9392, 0));
+				TeleportExecutor.teleport(player, new Position(3228, 9392, 0), true);
 			}
 			if (player.teleAction == 10) {
-				TeleportExecutor.teleport(player, new Position(2705, 9487, 0));
+				TeleportExecutor.teleport(player, new Position(2705, 9487, 0), true);
 			}
 			if (player.teleAction == 9) {
-				TeleportExecutor.teleport(player, new Position(3226, 3263, 0));
+				TeleportExecutor.teleport(player, new Position(3226, 3263, 0), true);
 			}
 			if (player.teleAction == 8) {
-				TeleportExecutor.teleport(player, new Position(3293, 3178, 0));
+				TeleportExecutor.teleport(player, new Position(3293, 3178, 0), true);
 			}
 			if (player.teleAction == 7) {
-				TeleportExecutor.teleport(player, new Position(3118, 9851, 0));
+				TeleportExecutor.teleport(player, new Position(3118, 9851, 0), true);
 			}
 			if (player.teleAction == 1) {
 				// rock crabs
-				TeleportExecutor.teleport(player, new Position(3087, 3514, 0));
+				TeleportExecutor.teleport(player, new Position(3087, 3514, 0), true);
 			} else if (player.teleAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3005, 3850, 0));
+				TeleportExecutor.teleport(player, new Position(3005, 3850, 0), true);
 			} else if (player.teleAction == 4) {
 				// varrock wildy
-				TeleportExecutor.teleport(player, new Position(3025, 3379, 0));
+				TeleportExecutor.teleport(player, new Position(3025, 3379, 0), true);
 			} else if (player.teleAction == 5) {
-				TeleportExecutor.teleport(player, new Position(3046, 9779, 0));
+				TeleportExecutor.teleport(player, new Position(3046, 9779, 0), true);
 			} else if (player.teleAction == 2000) {
 				// lum
-				TeleportExecutor.teleport(player, new Position(3222, 3218, 0));// 3222
+				TeleportExecutor.teleport(player, new Position(3222, 3218, 0), true);// 3222
 																				// 3218
 			} /*
 				 * else { DiceHandler.handleClick(c, actionButtonId); }
 				 */
 			if (player.dialogueAction == 10) {
-				TeleportExecutor.teleport(player, new Position(2845, 4832, 0));
+				TeleportExecutor.teleport(player, new Position(2845, 4832, 0), true);
 				player.dialogueAction = -1;
 
 			} else if (player.dialogueAction == 11) {
-				TeleportExecutor.teleport(player, new Position(2786, 4839, 0));
+				TeleportExecutor.teleport(player, new Position(2786, 4839, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 12) {
-				TeleportExecutor.teleport(player, new Position(2398, 4841, 0));
+				TeleportExecutor.teleport(player, new Position(2398, 4841, 0), true);
 				player.dialogueAction = -1;
 			}
 			break;
@@ -1490,24 +1491,24 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.teleAction == 66) {
-				TeleportExecutor.teleport(player, new Position(3000, 3383, 0));
+				TeleportExecutor.teleport(player, new Position(3000, 3383, 0), true);
 				player.sendMessage("You need a Spade and dig below you!");
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			} else if (player.teleAction == 200) {
 				player.sendMessage("@red@Stake only what you can afford to lose!");
-				TeleportExecutor.teleport(player, new Position(3365, 3266, 0));
+				TeleportExecutor.teleport(player, new Position(3365, 3266, 0), true);
 			}
 			switch (player.teleAction) {
 			case 2:
-				TeleportExecutor.teleport(player, new Position(3117, 9856, 0));
+				TeleportExecutor.teleport(player, new Position(3117, 9856, 0), true);
 				break;
 			case 205:
-				TeleportExecutor.teleport(player, new Position(1469, 3863, 0));
+				TeleportExecutor.teleport(player, new Position(1469, 3863, 0), true);
 				break;
 			}
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(2884, 9801, 0));
+				TeleportExecutor.teleport(player, new Position(2884, 9801, 0), true);
 			}
 			if (player.dialogueAction == 123) {
 				DegradableItem[] claimable = Degrade.getClaimedItems(player);
@@ -1519,11 +1520,11 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 14400) {// Al kharid agil
-				TeleportExecutor.teleport(player, new Position(3273, 3197, 0));
+				TeleportExecutor.teleport(player, new Position(3273, 3197, 0), true);
 				return;
 			}
 			if (player.teleAction == 65) {
-				TeleportExecutor.teleport(player, new Position(1495, 3700, 0));
+				TeleportExecutor.teleport(player, new Position(1495, 3700, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
@@ -1551,25 +1552,25 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 12) {
-				TeleportExecutor.teleport(player, new Position(2908, 9694, 0));
+				TeleportExecutor.teleport(player, new Position(2908, 9694, 0), true);
 			}
 			if (player.teleAction == 11) {
-				TeleportExecutor.teleport(player, new Position(3237, 9384, 0));
+				TeleportExecutor.teleport(player, new Position(3237, 9384, 0), true);
 			}
 			if (player.teleAction == 10) {
-				TeleportExecutor.teleport(player, new Position(3219, 9366, 0));
+				TeleportExecutor.teleport(player, new Position(3219, 9366, 0), true);
 			}
 			if (player.teleAction == 9) {
-				TeleportExecutor.teleport(player, new Position(2916, 9800, 0));
+				TeleportExecutor.teleport(player, new Position(2916, 9800, 0), true);
 			}
 			if (player.teleAction == 8) {
-				TeleportExecutor.teleport(player, new Position(2903, 9849, 0));
+				TeleportExecutor.teleport(player, new Position(2903, 9849, 0), true);
 			}
 			if (player.teleAction == 7) {
-				TeleportExecutor.teleport(player, new Position(2859, 9843, 0));
+				TeleportExecutor.teleport(player, new Position(2859, 9843, 0), true);
 			}
 			if (player.teleAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3318, 3834, 0));
+				TeleportExecutor.teleport(player, new Position(3318, 3834, 0), true);
 				return;
 			} else
 			// player.getPA()().closeAllWindows();
@@ -1586,24 +1587,24 @@ public class ClickingButtons implements PacketType {
 			 */
 			if (player.teleAction == 1) {
 				// slay dungeon
-				TeleportExecutor.teleport(player, new Position(2561, 3311, 0));
+				TeleportExecutor.teleport(player, new Position(2561, 3311, 0), true);
 			} else if (player.teleAction == 4) {
 				// graveyard
-				TeleportExecutor.teleport(player, new Position(3043, 9779, 0));
+				TeleportExecutor.teleport(player, new Position(3043, 9779, 0), true);
 			} else if (player.teleAction == 5) {
-				TeleportExecutor.teleport(player, new Position(3079, 9502, 0));
+				TeleportExecutor.teleport(player, new Position(3079, 9502, 0), true);
 
 			} else if (player.teleAction == 2000) {
-				TeleportExecutor.teleport(player, new Position(3210, 3424, 0));// 3210
+				TeleportExecutor.teleport(player, new Position(3210, 3424, 0), true);// 3210
 																				// 3424
 			} else if (player.dialogueAction == 10) {
-				TeleportExecutor.teleport(player, new Position(2796, 4818, 0));
+				TeleportExecutor.teleport(player, new Position(2796, 4818, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 11) {
-				TeleportExecutor.teleport(player, new Position(2527, 4833, 0));
+				TeleportExecutor.teleport(player, new Position(2527, 4833, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 12) {
-				TeleportExecutor.teleport(player, new Position(2464, 4834, 0));
+				TeleportExecutor.teleport(player, new Position(2464, 4834, 0), true);
 				player.dialogueAction = -1;
 			}
 			// 3rd tele option
@@ -1624,11 +1625,11 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 205) {
-				TeleportExecutor.teleport(player, new Position(1590, 3482, 0));
+				TeleportExecutor.teleport(player, new Position(1590, 3482, 0), true);
 				return;
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(2439, 5169, 0));
+				TeleportExecutor.teleport(player, new Position(2439, 5169, 0), true);
 				player.sendMessage("Use the cave entrance to start.");
 			} else if (player.dialogueAction == 114) {
 				if (player.getItems().playerHasItem(6731, 1)
@@ -1652,7 +1653,7 @@ public class ClickingButtons implements PacketType {
 			}
 			switch (player.teleAction) {
 			case 2:
-				TeleportExecutor.teleport(player, new Position(1749, 5331, 0));
+				TeleportExecutor.teleport(player, new Position(1749, 5331, 0), true);
 				break;
 			}
 			if (player.dialogueAction == 123) {
@@ -1666,15 +1667,15 @@ public class ClickingButtons implements PacketType {
 			}
 
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(3223, 3414, 0));
+				TeleportExecutor.teleport(player, new Position(3223, 3414, 0), true);
 				return;
 			}
 			if (player.teleAction == 80) {// Elven Camp
-				TeleportExecutor.teleport(player, new Position(2171, 3125, 0));
+				TeleportExecutor.teleport(player, new Position(2171, 3125, 0), true);
 			}
 
 			if (player.teleAction == 65) {
-				TeleportExecutor.teleport(player, new Position(2980, 3705, 0));
+				TeleportExecutor.teleport(player, new Position(2980, 3705, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
@@ -1712,25 +1713,25 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 14) {
-				TeleportExecutor.teleport(player, new Position(3352, 3730, 0));
+				TeleportExecutor.teleport(player, new Position(3352, 3730, 0), true);
 			}
 			if (player.teleAction == 12) {
-				TeleportExecutor.teleport(player, new Position(2739, 5088, 0));
+				TeleportExecutor.teleport(player, new Position(2739, 5088, 0), true);
 			}
 			if (player.teleAction == 11) {
-				TeleportExecutor.teleport(player, new Position(3280, 9372, 0));
+				TeleportExecutor.teleport(player, new Position(3280, 9372, 0), true);
 			}
 			if (player.teleAction == 10) {
-				TeleportExecutor.teleport(player, new Position(3241, 9364, 0));
+				TeleportExecutor.teleport(player, new Position(3241, 9364, 0), true);
 			}
 			if (player.teleAction == 9) {
-				TeleportExecutor.teleport(player, new Position(3159, 9895, 0));
+				TeleportExecutor.teleport(player, new Position(3159, 9895, 0), true);
 			}
 			if (player.teleAction == 8) {
-				TeleportExecutor.teleport(player, new Position(2912, 9831, 0));
+				TeleportExecutor.teleport(player, new Position(2912, 9831, 0), true);
 			}
 			if (player.teleAction == 7) {
-				TeleportExecutor.teleport(player, new Position(2843, 9555, 0));
+				TeleportExecutor.teleport(player, new Position(2843, 9555, 0), true);
 			}
 			if (player.teleAction == 3) {
 				player.getDH().sendOption4("Armadyl", "Bandos", "Zamorak", "Saradomin");
@@ -1748,23 +1749,23 @@ public class ClickingButtons implements PacketType {
 			 * TeleportExecutor.teleport(c, new Position(2813,3436,0); }
 			 */
 			if (player.teleAction == 1) {
-				TeleportExecutor.teleport(player, new Position(3347, 3672, 0));
+				TeleportExecutor.teleport(player, new Position(3347, 3672, 0), true);
 			} else if (player.teleAction == 4) {
 				// Hillz
-				TeleportExecutor.teleport(player, new Position(2726, 3487, 0));
+				TeleportExecutor.teleport(player, new Position(2726, 3487, 0), true);
 			} else if (player.teleAction == 5) {
-				TeleportExecutor.teleport(player, new Position(2813, 3436, 0));
+				TeleportExecutor.teleport(player, new Position(2813, 3436, 0), true);
 			} else if (player.teleAction == 2000) {
-				TeleportExecutor.teleport(player, new Position(3222, 3219, 0));
+				TeleportExecutor.teleport(player, new Position(3222, 3219, 0), true);
 			}
 			if (player.dialogueAction == 10) {
-				TeleportExecutor.teleport(player, new Position(2713, 4836, 0));
+				TeleportExecutor.teleport(player, new Position(2713, 4836, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 11) {
-				TeleportExecutor.teleport(player, new Position(2162, 4833, 0));
+				TeleportExecutor.teleport(player, new Position(2162, 4833, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 12) {
-				TeleportExecutor.teleport(player, new Position(2207, 4836, 0));
+				TeleportExecutor.teleport(player, new Position(2207, 4836, 0), true);
 				player.dialogueAction = -1;
 			}
 			break;
@@ -1786,7 +1787,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 205) {
-				TeleportExecutor.teleport(player, new Position(3184, 3945, 0));
+				TeleportExecutor.teleport(player, new Position(3184, 3945, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			} else if (player.dialogueAction == 114) {
@@ -1805,7 +1806,7 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(2639, 3441, 0));
+				TeleportExecutor.teleport(player, new Position(2639, 3441, 0), true);
 				player.teleAction = -1;
 				return;
 			}
@@ -1815,29 +1816,29 @@ public class ClickingButtons implements PacketType {
 			}
 			switch (player.teleAction) {
 			case 66:
-				TeleportExecutor.teleport(player, new Position(3260, 3927, 0));
+				TeleportExecutor.teleport(player, new Position(3260, 3927, 0), true);
 				player.teleAction = -1;
 				player.dialogueAction = -1;
 				break;
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2791, 10018, 0));
+				TeleportExecutor.teleport(player, new Position(2791, 10018, 0), true);
 				break;
 			}
 			if (player.teleAction == 80) {// neitiznot
-				TeleportExecutor.teleport(player, new Position(2317, 3823, 0));
+				TeleportExecutor.teleport(player, new Position(2317, 3823, 0), true);
 			}
 			if (player.teleAction == 65) {
-				TeleportExecutor.teleport(player, new Position(2990, 3850, 0));
+				TeleportExecutor.teleport(player, new Position(2990, 3850, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
 
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(3506, 3487, 0));
+				TeleportExecutor.teleport(player, new Position(3506, 3487, 0), true);
 				return;
 			}
 			if (player.teleAction == 14) {
-				TeleportExecutor.teleport(player, new Position(3179, 3774, 0));
+				TeleportExecutor.teleport(player, new Position(3179, 3774, 0), true);
 				player.sendMessage("Vet'ion is located to the North of here.");
 				player.teleAction = -1;
 				player.dialogueAction = -1;
@@ -1889,11 +1890,11 @@ public class ClickingButtons implements PacketType {
 				break;
 			}
 			if (player.teleAction == 7) {
-				TeleportExecutor.teleport(player, new Position(2923, 9759, 0));
+				TeleportExecutor.teleport(player, new Position(2923, 9759, 0), true);
 			}
 			if (player.teleAction == 1) {
 				// brimhaven dungeon
-				TeleportExecutor.teleport(player, new Position(2980, 3871, 0));
+				TeleportExecutor.teleport(player, new Position(2980, 3871, 0), true);
 			} else if (player.teleAction == 3) {
 				//TeleportExecutor.teleport(player, new Position(3808, 2844, 4));
 				// player.sendMessage("Vet'ion is located to the North of here.");
@@ -1903,14 +1904,14 @@ public class ClickingButtons implements PacketType {
 				/*
 				 * player.getPA()().removeAllWindows(); c.teleAction = 0;
 				 */
-				TeleportExecutor.teleport(player, new Position(2815, 3461, 0));
+				TeleportExecutor.teleport(player, new Position(2815, 3461, 0), true);
 				player.getDH().sendStatement("You need a Rake, Watering can, Seed Dibber and a seed.");
 			} else if (player.teleAction == 5) {
-				TeleportExecutor.teleport(player, new Position(2724, 3484, 0));
+				TeleportExecutor.teleport(player, new Position(2724, 3484, 0), true);
 				player.sendMessage("For magic logs, try north of the duel arena.");
 			}
 			if (player.dialogueAction == 10) {
-				TeleportExecutor.teleport(player, new Position(2660, 4839, 0));
+				TeleportExecutor.teleport(player, new Position(2660, 4839, 0), true);
 				player.dialogueAction = -1;
 			} else if (player.dialogueAction == 11) {
 				// TeleportExecutor.teleport(c, new Position(2527, 4833, 0);
@@ -1931,7 +1932,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 66) {
-				TeleportExecutor.teleport(player, new Position(2116, 5658, 0));
+				TeleportExecutor.teleport(player, new Position(2116, 5658, 0), true);
 				player.teleAction = -1;
 				return;
 			}
@@ -1944,7 +1945,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 205) {
-				TeleportExecutor.teleport(player, new Position(1803, 3788, 0));
+				TeleportExecutor.teleport(player, new Position(1803, 3788, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 			}
@@ -1984,7 +1985,7 @@ public class ClickingButtons implements PacketType {
 			}
 
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(2672, 3712, 0));
+				TeleportExecutor.teleport(player, new Position(2672, 3712, 0), true);
 				return;
 			}
 			if (player.teleAction == 65) {
@@ -2045,9 +2046,9 @@ public class ClickingButtons implements PacketType {
 						"Vet'ion @red@(Wild & Multi)", "@blu@Next Page");
 				player.teleAction = 14;
 			} else if (player.teleAction == 4) {
-				TeleportExecutor.teleport(player, new Position(3039, 4836, 0));
+				TeleportExecutor.teleport(player, new Position(3039, 4836, 0), true);
 			} else if (player.teleAction == 5) {
-				TeleportExecutor.teleport(player, new Position(2812, 3463, 0));
+				TeleportExecutor.teleport(player, new Position(2812, 3463, 0), true);
 			}
 			if (player.dialogueAction == 10 || player.dialogueAction == 11) {
 				player.dialogueId++;
@@ -2231,14 +2232,14 @@ public class ClickingButtons implements PacketType {
 				}
 			switch (player.teleAction) {
 			case 50:
-				TeleportExecutor.teleport(player, new Position(2540, 4715, 0)); // MAGE
+				TeleportExecutor.teleport(player, new Position(2540, 4715, 0), true); // MAGE
 																				// BANK
 				break;
 			case 1:
-				TeleportExecutor.teleport(player, new Position(3011, 3632, 0));
+				TeleportExecutor.teleport(player, new Position(3011, 3632, 0), true);
 				break;
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2441, 3090, 0));
+				TeleportExecutor.teleport(player, new Position(2441, 3090, 0), true);
 				break;
 			}
 			if (player.dialogueAction == 3301) {
@@ -2253,17 +2254,17 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 13) {
-				TeleportExecutor.teleport(player, new Position(2839, 5292, 2));
+				TeleportExecutor.teleport(player, new Position(2839, 5292, 2), true);
 			}
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(3421, 3536, 0));
+				TeleportExecutor.teleport(player, new Position(3421, 3536, 0), true);
 			}
 			if (player.teleAction == 3) {
-				TeleportExecutor.teleport(player, new Position(2273, 4681, 0));
+				TeleportExecutor.teleport(player, new Position(2273, 4681, 0), true);
 			}
 			if (player.teleAction == 201) {
 				// pest
-				TeleportExecutor.teleport(player, new Position(3565, 3308, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3308, 0), true);
 			}
 			if (player.dialogueAction == 2299) {
 				player.playerXP[0] = player.getPA().getXPForLevel(99) + 5;
@@ -2338,19 +2339,19 @@ public class ClickingButtons implements PacketType {
 			}
 			if (player.usingGlory) // player.getPA()().useCharge();
 			{
-				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0), true);
 			}
 			if (player.dialogueAction == 2) {
-				TeleportExecutor.teleport(player, new Position(3428, 3538, 0));
+				TeleportExecutor.teleport(player, new Position(3428, 3538, 0), true);
 			}
 			if (player.dialogueAction == 3) {
-				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0), true);
 			}
 			if (player.dialogueAction == 4) {
-				TeleportExecutor.teleport(player, new Position(3565, 3314, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3314, 0), true);
 			}
 			if (player.dialogueAction == 20) {
-				TeleportExecutor.teleport(player, new Position(2897, 3618, 4));
+				TeleportExecutor.teleport(player, new Position(2897, 3618, 4), true);
 				player.killCount = 0;
 			}
 
@@ -2452,13 +2453,13 @@ public class ClickingButtons implements PacketType {
 			}
 			switch (player.teleAction) {
 			case 50:
-				TeleportExecutor.teleport(player, new Position(2979, 3597, 0));
+				TeleportExecutor.teleport(player, new Position(2979, 3597, 0), true);
 				break;
 			case 1:
-				TeleportExecutor.teleport(player, new Position(3170, 3886, 0));
+				TeleportExecutor.teleport(player, new Position(3170, 3886, 0), true);
 				break;
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2400, 5179, 0));
+				TeleportExecutor.teleport(player, new Position(2400, 5179, 0), true);
 				break;
 			}
 			if (player.dialogueAction == 122) {
@@ -2501,19 +2502,19 @@ public class ClickingButtons implements PacketType {
 				player.getDH().sendDialogues(839, 4227);
 			}
 			if (player.teleAction == 13) {
-				TeleportExecutor.teleport(player, new Position(2860, 5354, 2));
+				TeleportExecutor.teleport(player, new Position(2860, 5354, 2), true);
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(3565, 3306, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3306, 0), true);
 
 			}
 			if (player.teleAction == 201) {
 				// warr guild
-				TeleportExecutor.teleport(player, new Position(2847, 3543, 0));
+				TeleportExecutor.teleport(player, new Position(2847, 3543, 0), true);
 				player.sendMessage("@blu@Use the animators to gain tokens, then head upstairs to the cyclops.");
 			}
 			if (player.teleAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3262, 3929, 0));
+				TeleportExecutor.teleport(player, new Position(3262, 3929, 0), true);
 			}
 			if (player.dialogueAction == 2299) {
 				player.playerXP[0] = player.getPA().getXPForLevel(99) + 5;
@@ -2586,24 +2587,24 @@ public class ClickingButtons implements PacketType {
 			}
 			if (player.usingGlory) // player.getPA()().useCharge();
 			{
-				TeleportExecutor.teleport(player, new Position(Config.AL_KHARID_X, Config.AL_KHARID_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.AL_KHARID_X, Config.AL_KHARID_Y, 0), true);
 			}
 			if (player.dialogueAction == 2) {
-				TeleportExecutor.teleport(player, new Position(2884, 3395, 0));
+				TeleportExecutor.teleport(player, new Position(2884, 3395, 0), true);
 			}
 			if (player.dialogueAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3243, 3513, 0));
+				TeleportExecutor.teleport(player, new Position(3243, 3513, 0), true);
 			}
 			if (player.dialogueAction == 4) {
-				TeleportExecutor.teleport(player, new Position(2444, 5170, 0));
+				TeleportExecutor.teleport(player, new Position(2444, 5170, 0), true);
 			}
 
 			if (player.dialogueAction == 20) {
-				TeleportExecutor.teleport(player, new Position(2897, 3618, 12));
+				TeleportExecutor.teleport(player, new Position(2897, 3618, 12), true);
 				player.killCount = 0;
 			} else if (player.teleAction == 200) {
 				// assault
-				TeleportExecutor.teleport(player, new Position(2605, 3153, 0));
+				TeleportExecutor.teleport(player, new Position(2605, 3153, 0), true);
 			}
 			if (player.caOption4c) {
 				player.getDH().sendDialogues(120, player.npcType);
@@ -2664,10 +2665,10 @@ public class ClickingButtons implements PacketType {
 
 				break;
 			case 1:
-				TeleportExecutor.teleport(player, new Position(3289, 3639, 0));
+				TeleportExecutor.teleport(player, new Position(3289, 3639, 0), true);
 				break;
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2846, 3541, 0));
+				TeleportExecutor.teleport(player, new Position(2846, 3541, 0), true);
 				break;
 			/*
 			 * case 2: TeleportExecutor.teleport(c, new Position(2667, 3424, 0);
@@ -2689,7 +2690,7 @@ public class ClickingButtons implements PacketType {
 				player.getShops().openShop(99);
 			}
 			if (player.teleAction == 13) {
-				TeleportExecutor.teleport(player, new Position(2925, 5335, 2));
+				TeleportExecutor.teleport(player, new Position(2925, 5335, 2), true);
 			} else if (player.dialogueAction == 1445) {
 				int items[][] = { { 556, 558, }, { 556, 558, 557 }, { 556, 562, 557 }, { 556, 556, 562, 557, 554 },
 						{ 556, 556, 560, 557, 554 }, { 556, 556, 560, 557, 554, 560, 557, 554, 555 },
@@ -2799,19 +2800,19 @@ public class ClickingButtons implements PacketType {
 			}
 			if (player.usingGlory) // player.getPA()().useCharge();
 			{
-				TeleportExecutor.teleport(player, new Position(Config.KARAMJA_X, Config.KARAMJA_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.KARAMJA_X, Config.KARAMJA_Y, 0), true);
 			}
 			if (player.dialogueAction == 2) {
-				TeleportExecutor.teleport(player, new Position(2471, 10137, 0));
+				TeleportExecutor.teleport(player, new Position(2471, 10137, 0), true);
 			}
 			if (player.dialogueAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3363, 3676, 0));
+				TeleportExecutor.teleport(player, new Position(3363, 3676, 0), true);
 			}
 			if (player.dialogueAction == 4) {
-				TeleportExecutor.teleport(player, new Position(2659, 2676, 0));
+				TeleportExecutor.teleport(player, new Position(2659, 2676, 0), true);
 			}
 			if (player.dialogueAction == 20) {
-				TeleportExecutor.teleport(player, new Position(2897, 3618, 8));
+				TeleportExecutor.teleport(player, new Position(2897, 3618, 8), true);
 				player.killCount = 0;
 			}
 			if (player.caOption4c) {
@@ -2902,7 +2903,7 @@ public class ClickingButtons implements PacketType {
 				player.teleAction = 1;
 				break;
 			case 1:
-				TeleportExecutor.teleport(player, new Position(3153, 3923, 0));
+				TeleportExecutor.teleport(player, new Position(3153, 3923, 0), true);
 				break;
 			case 2:
 				player.getDH().sendDialogues(3325, -1);
@@ -2946,10 +2947,10 @@ public class ClickingButtons implements PacketType {
 				player.getPA().removeAllWindows();
 			}
 			if (player.teleAction == 13) {
-				TeleportExecutor.teleport(player, new Position(2909, 5265, 0));
+				TeleportExecutor.teleport(player, new Position(2909, 5265, 0), true);
 			}
 			if (player.teleAction == 3) {
-				TeleportExecutor.teleport(player, new Position(3331, 3706, 0));
+				TeleportExecutor.teleport(player, new Position(3331, 3706, 0), true);
 			}
 
 			/*
@@ -2967,20 +2968,20 @@ public class ClickingButtons implements PacketType {
 			}
 			if (player.usingGlory) // player.getPA()().useCharge();
 			{
-				TeleportExecutor.teleport(player, new Position(Config.MAGEBANK_X, Config.MAGEBANK_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.MAGEBANK_X, Config.MAGEBANK_Y, 0), true);
 			}
 			if (player.dialogueAction == 2) {
-				TeleportExecutor.teleport(player, new Position(2669, 3714, 0));
+				TeleportExecutor.teleport(player, new Position(2669, 3714, 0), true);
 			}
 			if (player.dialogueAction == 3) {
-				TeleportExecutor.teleport(player, new Position(2540, 4716, 0));
+				TeleportExecutor.teleport(player, new Position(2540, 4716, 0), true);
 			}
 			if (player.dialogueAction == 4) {
-				TeleportExecutor.teleport(player, new Position(3366, 3266, 0));
+				TeleportExecutor.teleport(player, new Position(3366, 3266, 0), true);
 
 			} else if (player.teleAction == 200) {
 				// tzhaar
-				TeleportExecutor.teleport(player, new Position(2444, 5170, 0));
+				TeleportExecutor.teleport(player, new Position(2444, 5170, 0), true);
 			}
 			if (player.dialogueAction == 20) {
 				// TeleportExecutor.teleport(c, new Position(3366, 3266, 0);
@@ -3171,7 +3172,7 @@ public class ClickingButtons implements PacketType {
 						return;
 					}
 
-					TeleportExecutor.teleport(player, new Position(c2.getX(), c2.getY() - 1, c2.heightLevel));
+					TeleportExecutor.teleport(player, new Position(c2.getX(), c2.getY() - 1, c2.heightLevel), true);
 					player.getPA().closeAllWindows();
 					player.lastClanTeleport = System.currentTimeMillis();
 				} else {
@@ -3214,7 +3215,7 @@ public class ClickingButtons implements PacketType {
 					if (player.inWild() || player.inCamWild()) {
 						return;
 					}
-					TeleportExecutor.teleport(player, new Position(3280, 3878, 0));
+					TeleportExecutor.teleport(player, new Position(3280, 3878, 0), true);
 					return;
 				}
 			}
@@ -3232,7 +3233,7 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.teleAction == 3000) {
-				TeleportExecutor.teleport(player, new Position(1834, 3669, 0));
+				TeleportExecutor.teleport(player, new Position(1834, 3669, 0), true);
 				player.teleAction = -1;
 				return;
 			}
@@ -3248,13 +3249,8 @@ public class ClickingButtons implements PacketType {
 				player.resetAccountPin();
 			}
 			if (player.dialogueAction == 200001) {
-				if (player.inZeah()) {
-					player.getPA().openUpBank();
-					player.sendMessage("Your pet opens the bank for you.");
-				} else {
-					player.sendMessage("You need to be in Zeah to do this.");
-					player.getPA().closeAllWindows();
-				}
+				player.getPA().closeAllWindows();
+				PetHandler.checkBOB(player);
 			}
 			if (player.dialogueAction == 86000) {
 				if (player.pkp >= 25
@@ -3318,16 +3314,16 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.teleAction == 110) {// armadyl
-				TeleportExecutor.teleport(player, new Position(2839, 5296, 2));
+				TeleportExecutor.teleport(player, new Position(2839, 5296, 2), true);
 			}
 			if (player.teleAction == 111) {// bandos
-				TeleportExecutor.teleport(player, new Position(2864, 5354, 2));
+				TeleportExecutor.teleport(player, new Position(2864, 5354, 2), true);
 			}
 			if (player.teleAction == 112) {// saradomin
-				TeleportExecutor.teleport(player, new Position(2907, 5265, 0));
+				TeleportExecutor.teleport(player, new Position(2907, 5265, 0), true);
 			}
 			if (player.teleAction == 113) {// zamorak
-				TeleportExecutor.teleport(player, new Position(2925, 5331, 2));
+				TeleportExecutor.teleport(player, new Position(2925, 5331, 2), true);
 			}
 			if (!player.playerName.equalsIgnoreCase("dylan") && player.dialogueAction == 129) {
 				if (!player.playerName.equalsIgnoreCase("dylan") && player.wildLevel > 20) {
@@ -3357,7 +3353,7 @@ public class ClickingButtons implements PacketType {
 			}
 
 			if (player.dialogueAction == 2223) {
-				TeleportExecutor.teleport(player, new Position(3041, 4532, 0));
+				TeleportExecutor.teleport(player, new Position(3041, 4532, 0), true);
 				player.getPA().closeAllWindows();
 			}
 
@@ -3399,11 +3395,11 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.dialogueAction == 16501) {
-				if (player.pkp < 150) {
+				if (player.pkp < 120000) {
 					player.getDH().sendDialogues(3804, player.npcType);
 					return;
-				} else if (player.pkp >= 150) {
-					player.pkp -= 150;
+				} else if (player.pkp >= 120000) {
+					player.pkp -= 120000;
 					player.insure = true;
 					player.getDH().sendDialogues(3805, player.npcType);
 					player.sendMessage("@blu@You have insured all of your pets and will no longer lose them on death!");
@@ -3420,7 +3416,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(2474, 3438, 0));
+				TeleportExecutor.teleport(player, new Position(2474, 3438, 0), true);
 				player.getPA().closeAllWindows();
 			}
 			if (player.dialogueAction == 127) {
@@ -3451,7 +3447,7 @@ public class ClickingButtons implements PacketType {
 				}
 			}
 			if (player.dialogueAction == 126) {
-				TeleportExecutor.teleport(player, new Position(3039, 4835, 0));
+				TeleportExecutor.teleport(player, new Position(3039, 4835, 0), true);
 				player.dialogueAction = -1;
 				player.teleAction = -1;
 				return;
@@ -3662,7 +3658,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 2258) {
-				TeleportExecutor.teleport(player, new Position(3039, 4834, 0)); // first
+				TeleportExecutor.teleport(player, new Position(3039, 4834, 0), true); // first
 				// click
 				// teleports
 				// second
@@ -3792,7 +3788,7 @@ public class ClickingButtons implements PacketType {
 			if (player.newPlayerAct == 1) {
 				// c.isNewPlayer = false;
 				player.newPlayerAct = 0;
-				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0));
+				TeleportExecutor.teleport(player, new Position(Config.EDGEVILLE_X, Config.EDGEVILLE_Y, 0), true);
 				player.getPA().removeAllWindows();
 			}
 			if (player.dialogueAction == 6) {
@@ -3927,21 +3923,21 @@ public class ClickingButtons implements PacketType {
 			switch (player.teleAction) {
 
 			case 2:
-				TeleportExecutor.teleport(player, new Position(2804, 10001, 0));
+				TeleportExecutor.teleport(player, new Position(2804, 10001, 0), true);
 				break;
 			}
 
 			if (player.teleAction == 60) {
-				TeleportExecutor.teleport(player, new Position(3565, 3306, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3306, 0), true);
 				return;
 			}
 			if (player.teleAction == 200) {
 				player.sendMessage("@red@Stake only what you can afford to lose!");
-				TeleportExecutor.teleport(player, new Position(3365, 3266, 0));
+				TeleportExecutor.teleport(player, new Position(3365, 3266, 0), true);
 				return;
 			}
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(3429, 3538, 0));
+				TeleportExecutor.teleport(player, new Position(3429, 3538, 0), true);
 				return;
 			}
 			if (player.dialogueAction == 12200) {
@@ -4029,12 +4025,12 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(2474, 3438, 0));
+				TeleportExecutor.teleport(player, new Position(2474, 3438, 0), true);
 				player.sendMessage("You will gain XP after each lap");
 				player.getPA().closeAllWindows();
 			}
 			if (player.dialogueAction == 2245) {
-				TeleportExecutor.teleport(player, new Position(2110, 3915, 0));
+				TeleportExecutor.teleport(player, new Position(2110, 3915, 0), true);
 				player.sendMessage("High Priest teleported you to @red@Lunar Island@bla@.");
 				player.getPA().closeAllWindows();
 			}
@@ -4120,12 +4116,12 @@ public class ClickingButtons implements PacketType {
 			switch (player.teleAction) {
 
 			case 2:
-				TeleportExecutor.teleport(player, new Position(1748, 5326, 0));
+				TeleportExecutor.teleport(player, new Position(1748, 5326, 0), true);
 				player.teleAction = -1;
 				break;
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(3565, 3306, 0));
+				TeleportExecutor.teleport(player, new Position(3565, 3306, 0), true);
 				return;
 			}
 			if (player.dialogueAction == 4005) {
@@ -4208,11 +4204,11 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 80) {
-				TeleportExecutor.teleport(player, new Position(2884, 9800, 0));
+				TeleportExecutor.teleport(player, new Position(2884, 9800, 0), true);
 				return;
 			}
 			if (player.teleAction == 60) {
-				TeleportExecutor.teleport(player, new Position(2847, 3541, 0));
+				TeleportExecutor.teleport(player, new Position(2847, 3541, 0), true);
 				return;
 			}
 			if (player.dialogueAction == 100) {
@@ -4220,12 +4216,12 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.dialogueAction == 14400) {
-				TeleportExecutor.teleport(player, new Position(3004, 3935, 0));
+				TeleportExecutor.teleport(player, new Position(3004, 3935, 0), true);
 				player.sendMessage("You will gain XP after each lap. Use the portal at the gate to get home.");
 				player.getPA().closeAllWindows();
 			}
 			if (player.dialogueAction == 2245) {
-				TeleportExecutor.teleport(player, new Position(3230, 2915, 0));
+				TeleportExecutor.teleport(player, new Position(3230, 2915, 0), true);
 				player.sendMessage("High Priest teleported you to @red@Desert Pyramid@bla@.");
 				player.getPA().closeAllWindows();
 			}
@@ -4238,7 +4234,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(3365, 3266, 0));
+				TeleportExecutor.teleport(player, new Position(3365, 3266, 0), true);
 
 			}
 			if (player.doricOption) {
@@ -4340,7 +4336,7 @@ public class ClickingButtons implements PacketType {
 				player.getDH().sendDialogues(1015, 394);
 			}
 			if (player.teleAction == 200) {
-				TeleportExecutor.teleport(player, new Position(2439, 5169, 0));
+				TeleportExecutor.teleport(player, new Position(2439, 5169, 0), true);
 				player.sendMessage("Use the cave entrance to start.");
 			}
 			if (player.doricOption) {
@@ -4364,9 +4360,10 @@ public class ClickingButtons implements PacketType {
 			player.getPA().loadQuests();
 			player.dialogueAction = 0;
 		    }
-			//Donator shop Titles
+			//Donator shop
 			if (player.dialogueAction == 3613) {
 			player.getPA().showInterface(3200);
+			//player.getShops().openShop(9);
 			player.getPA().loadQuests();
 			player.dialogueAction = 0;
 		    }
@@ -4457,7 +4454,7 @@ public class ClickingButtons implements PacketType {
 				return;
 			}
 			if (player.teleAction == 3000) {
-				TeleportExecutor.teleport(player, new Position(1829, 3601, 0));
+				TeleportExecutor.teleport(player, new Position(1829, 3601, 0), true);
 				player.teleAction = -1;
 				return;
 			}
@@ -5134,17 +5131,17 @@ public class ClickingButtons implements PacketType {
 		case 117048:
 		case 75010:
 		case 84237:
-			TeleportExecutor.teleport(player, new Position(3087, 3500, 0));
+			TeleportExecutor.teleport(player, new Position(3087, 3500, 0), true);
 			break;
 		case 50056:
-			TeleportExecutor.teleport(player, new Position(3087, 3500, 0));
+			TeleportExecutor.teleport(player, new Position(3087, 3500, 0), true);
 			break;
 
 		/* TELEPORTS */
 		case 6005:
 		case 51023:
 		case 117210:
-			TeleportExecutor.teleport(player, new Position(2672, 3712, 0));
+			TeleportExecutor.teleport(player, new Position(2672, 3712, 0), true);
 			break;
 		case 51031:
 			TeleportExecutor.teleport(player, new Teleport(new Position(3287, 3887, 0), TeleportType.ANCIENT));

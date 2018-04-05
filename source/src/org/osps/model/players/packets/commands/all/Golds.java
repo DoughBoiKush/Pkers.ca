@@ -12,6 +12,6 @@ public class Golds implements Command {
 		 if (c.inTrade) {
              return;
          }
-		TeleportExecutor.teleport(c, new Position(3291, 3027, 0));
+		TeleportExecutor.teleport(c, new Position(3291, 3027, 0), true);
 	}
 }

@@ -80,26 +80,26 @@ public enum Teleports {
 
 		public static final Consumer<Player> godwarsTeleport = player -> {
 			player.start(new OptionDialogue(/**/
-					"Armadyl", p -> TeleportExecutor.teleport(p, new Position(2839, 5292, 2)), /**/
-					"Bandos", p -> TeleportExecutor.teleport(p, new Position(2860, 5354, 2)), /**/
-					"Zamorak", p -> TeleportExecutor.teleport(p, new Position(2925, 5335, 2)), /**/
-					"Saradomin", p -> TeleportExecutor.teleport(p, new Position(2909, 5265, 0)) /**/
+					"Armadyl", p -> TeleportExecutor.teleport(p, new Position(2839, 5292, 2), true), /**/
+					"Bandos", p -> TeleportExecutor.teleport(p, new Position(2860, 5354, 2), true), /**/
+					"Zamorak", p -> TeleportExecutor.teleport(p, new Position(2925, 5335, 2), true), /**/
+					"Saradomin", p -> TeleportExecutor.teleport(p, new Position(2909, 5265, 0), true) /**/
 			));
 		};
 		public static final Consumer<Player> agilityTeleport = player -> {
 			player.start(new OptionDialogue(/**/
-					"Draynor Agility Course", p -> TeleportExecutor.teleport(p, new Position(3105, 3279, 0)), /**/
-					"Al Kharid Agility Course", p -> TeleportExecutor.teleport(p, new Position(3273, 3197, 0)), /**/
-					"Varrock Agility Course", p -> TeleportExecutor.teleport(p, new Position(3223, 3414, 0)), /**/
-					"Canifis Agility Course", p -> TeleportExecutor.teleport(p, new Position(3506, 3487, 0)), /**/
+					"Draynor Agility Course", p -> TeleportExecutor.teleport(p, new Position(3105, 3279, 0), true), /**/
+					"Al Kharid Agility Course", p -> TeleportExecutor.teleport(p, new Position(3273, 3197, 0), true), /**/
+					"Varrock Agility Course", p -> TeleportExecutor.teleport(p, new Position(3223, 3414, 0), true), /**/
+					"Canifis Agility Course", p -> TeleportExecutor.teleport(p, new Position(3506, 3487, 0), true), /**/
 					"Coming Soon", p -> player.getDH().sendStatement("This teleport is coming soon.") /**/
 			));
 		};
 
 		public static final Consumer<Player> hunterTeleport = player -> {
 			player.start(new OptionDialogue(/**/
-					"Hunter (1-50)", p -> TeleportExecutor.teleport(p, new Position(1834, 3669)), /**/
-					"Hunter (50-99)", p -> TeleportExecutor.teleport(p, new Position(1829, 3601)) /**/
+					"Hunter (1-50)", p -> TeleportExecutor.teleport(p, new Position(1834, 3669), true), /**/
+					"Hunter (50-99)", p -> TeleportExecutor.teleport(p, new Position(1829, 3601), true) /**/
 			));
 		};
 
