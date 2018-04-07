@@ -4356,9 +4356,10 @@ public class ClickingButtons implements PacketType {
 			player.getPA().loadQuests();
 			player.dialogueAction = 0;
 		    }
-			//Donator shop Titles
+			//Donator shop
 			if (player.dialogueAction == 3613) {
 			player.getPA().showInterface(3200);
+			//player.getShops().openShop(9);
 			player.getPA().loadQuests();
 			player.dialogueAction = 0;
 		    }

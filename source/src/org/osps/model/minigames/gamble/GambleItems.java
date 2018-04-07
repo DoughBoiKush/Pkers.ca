@@ -11,6 +11,10 @@ import org.osps.util.Misc;
 
 public class GambleItems {
 	
+	public static int pets[] = { 12650, 12649, 12651, 12652, 12644, 12643, 11995,
+			12653, 12655, 13178, 12646, 12921, 12939, 12940, 12654, 13179, 13177,
+			12648, 13181, 12816, 13320, 13225, 13321, 13322, 13323, 13247 }; 
+	
 	public static void gambleItems(final Player player, final int item) {
 		if (player == null || player.disconnected || player.teleporting || player.isDead) {
 			return;
@@ -20,9 +24,16 @@ public class GambleItems {
 			player.sendMessage("You need atleast 2 free slots to gamble.");
 			return;
 		}
-		int price = ShopAssistant.getItemShopValue(item);
+		for (int pet : pets) {
+			if (item == pet) {
+				player.getDH().sendNpcChat1("It would be pretty insensitive of you to gamble your pet.", 
+						player.npcType, "Gambler");
+				return;
+			}
+		}
+		int price = new ShopAssistant(player).getPKPCost(item);
 		if (price > 2000) {
-			player.getDH().sendNpcChat2("You can't bet items worth more than 2000 PKP.", player.getItems().getItemName(item) + " is worth " + amount + " PKP.", 
+			player.getDH().sendNpcChat2("You can't bet items worth more than 2000 PKP.", player.getItems().getItemName(item) + " is worth " + price + " PKP.", 
 					player.npcType, "Gambler");
 			return;
 		}

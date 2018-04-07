@@ -28,7 +28,7 @@ public class Unspawnable {
 			"zamorak platebody", "guthix platebody", "saradomin plate", "grim reaper hood", "armadyl", "bandos",
 			"armadyl cross", "graardor", "zilyana", "kree", "tsut", "mole", "kraken", "dagannoth", "king black dragon",
 			"chaos ele", "staff of the dead", "staff of dead", "(i)", "ticket", "PK Point", "jester", "dragon defender",
-			"fury", "mithril defender", "adamant defender", "rune defender", "elysian", "mystery box", "arcane",
+			"fury", "mithril defender", "adamant defender", "rune defender", "pet box", "crate", "elysian", "mystery box", "arcane",
 			"chaotic", "Chaotic", "stream", "broken", "deg", "corrupt", "fire cape", "sigil", "godsword", "void seal",
 			"lunar", "hilt", "(g)", "mage's book", "berserker ring", "warriors ring", "warrior ring", "warrior's ring",
 			"archer", "archer's ring", "archer ring", "archers' ring", "seers' ring", "seer's ring", "seers ring",
@@ -63,7 +63,7 @@ public class Unspawnable {
 
 public final static int[] ids = {
 			13280, 13281, 13282, 13329, 13330, 13331, 13332, 13333, 13334, 13335, 13336, 13337, 13338, 13342, 20770,
-			20771, 20772,
+			20771, 20772, 7630
 };
 
 public static void spawnItem(Player player,int id, int amount){

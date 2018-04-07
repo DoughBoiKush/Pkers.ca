@@ -199,6 +199,12 @@ public class ItemClick3 implements PacketType {
 			c.isOperate = true;
 			c.itemUsing = itemId;
 			break;
+		case 7630:
+			if (c.getItems().playerHasItem(7630)) {
+				c.getPetBox().open();
+				return;
+			}
+			break;
 
 		case 1710:
 			c.getPA().handleGlory(itemId);

@@ -534,6 +534,11 @@ public class ClickItem implements PacketType {
 				c.getMysteryBox().open();
 				return;
 			}
+		if (itemId == 7630)
+			if (c.getItems().playerHasItem(7630)) {
+				c.getPetBox().open();
+				return;
+			}
 		if (itemId == 2714) { // Easy Clue Scroll Casket
 			c.getItems().deleteItem(itemId, 1);
 			PlayerAssistant.addClueReward(c, 0);
