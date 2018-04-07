@@ -2,7 +2,6 @@ package org.osps.model.players.combat;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import org.osps.Config;
 import org.osps.Server;
@@ -11,7 +10,6 @@ import org.osps.model.items.EquipmentSet;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
 import org.osps.model.multiplayer_session.duel.DuelSessionRules.Rule;
-import org.osps.model.npcs.NPCHandler;
 import org.osps.model.players.Boundary;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
@@ -22,8 +20,6 @@ import org.osps.model.players.combat.effects.ToxicBlowpipeEffect;
 import org.osps.model.players.combat.range.RangeData;
 import org.osps.model.players.combat.range.RangeExtras;
 import org.osps.util.Misc;
-
-import com.google.common.base.Stopwatch;
 
 public class AttackPlayer {
 

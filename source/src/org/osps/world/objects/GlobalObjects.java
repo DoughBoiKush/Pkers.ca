@@ -220,6 +220,7 @@ public class GlobalObjects {
 					type = Integer.parseInt(data[5]);
 				} catch (NumberFormatException nfe) {
 					System.out.println("WARNING: Unable to load object from file.");
+					nfe.printStackTrace();
 					continue;
 				} catch (NullPointerException ne) {
 					continue;

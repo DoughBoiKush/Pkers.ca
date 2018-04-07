@@ -1,5 +1,6 @@
 package com.osps.client.cache;
-import java.io.*;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 public final class Decompressor {
 
@@ -23,7 +24,7 @@ public final class Decompressor {
 			int j1 = ((buffer[3] & 0xff) << 16) + ((buffer[4] & 0xff) << 8) + (buffer[5] & 0xff);
 			//if(i1 < 0 || i1 > 0xffffff)
 			//	return null;
-			if(j1 <= 0 || (long)j1 > dataFile.length() / 520L)
+			if(j1 <= 0 || j1 > dataFile.length() / 520L)
 				return null;
 			byte abyte0[] = new byte[i1];
 			int k1 = 0;
@@ -47,7 +48,7 @@ public final class Decompressor {
 				int j3 = buffer[7] & 0xff;
 				if(k2 != i || l2 != l1 || j3 != anInt311)
 					return null;
-				if(i3 < 0 || (long)i3 > dataFile.length() / 520L)
+				if(i3 < 0 || i3 > dataFile.length() / 520L)
 					return null;
 				for(int k3 = 0; k3 < i2; k3++)
 					abyte0[k1++] = buffer[k3 + 8];
@@ -80,7 +81,7 @@ public final class Decompressor {
 						return false;
 				}
 				l = ((buffer[3] & 0xff) << 16) + ((buffer[4] & 0xff) << 8) + (buffer[5] & 0xff);
-				if(l <= 0 || (long)l > dataFile.length() / 520L)
+				if(l <= 0 || l > dataFile.length() / 520L)
 					return false;
 			} else {
 				l = (int)((dataFile.length() + 519L) / 520L);
@@ -114,7 +115,7 @@ public final class Decompressor {
 						int k3 = buffer[7] & 0xff;
 						if(i3 != j || j3 != l1 || k3 != anInt311)
 							return false;
-						if(i2 < 0 || (long)i2 > dataFile.length() / 520L)
+						if(i2 < 0 || i2 > dataFile.length() / 520L)
 							return false;
 					}
 				}

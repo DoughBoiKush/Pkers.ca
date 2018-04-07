@@ -3,8 +3,8 @@ package org.osps.model.players;
 import org.osps.Config;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.Teleport;
-import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.content.teleport.Teleport.TeleportType;
+import org.osps.model.content.teleport.TeleportExecutor;
 
 /**
  * 

@@ -1,9 +1,9 @@
 package org.osps.model.players.packets.commands.all;
 
-import org.osps.model.players.Player;
-import org.osps.model.players.packets.commands.Command;
 import org.osps.Connection;
+import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
+import org.osps.model.players.packets.commands.Command;
 import org.osps.util.Misc;
 /**
  * Tells the player they need to be a donator to use this feature.

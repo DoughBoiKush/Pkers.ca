@@ -1,6 +1,5 @@
 package org.osps.model.players.packets.commands.all;
 
-import org.osps.Config;
 import org.osps.Server;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;

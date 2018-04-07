@@ -1,9 +1,11 @@
 package org.osps.model.players.combat.melee;
 
-import org.osps.*;
+import org.osps.Config;
 import org.osps.model.minigames.Dicing;
 import org.osps.model.minigames.hunger.HungerManager;
-import org.osps.model.players.*;
+import org.osps.model.players.Boundary;
+import org.osps.model.players.Player;
+import org.osps.model.players.PlayerHandler;
 
 public class MeleeRequirements {
 

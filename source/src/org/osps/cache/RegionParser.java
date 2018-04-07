@@ -2,12 +2,8 @@ package org.osps.cache;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.logging.Logger;
 
-import org.apollo.fs.Cache;
-import org.apollo.fs.archive.Archive;
 import org.apollo.util.ByteBufferUtil;
-import org.apollo.util.CompressionUtil;
 import org.osps.clip.Region;
 import org.osps.model.Location;
 import org.osps.world.GameObject;

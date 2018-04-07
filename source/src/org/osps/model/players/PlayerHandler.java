@@ -16,21 +16,17 @@ import java.util.stream.Collectors;
 
 import org.osps.Config;
 import org.osps.Server;
-import org.osps.clip.Region;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
 import org.osps.model.minigames.hunger.HungerManager;
-import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.boss.NewWildernessBoss;
-import org.osps.util.Misc;
 import org.osps.util.Stream;
-import org.osps.world.objects.GlobalObject;
 
 public class PlayerHandler {
 

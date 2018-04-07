@@ -8,7 +8,6 @@ import org.osps.Server;
 import org.osps.clip.Region;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
-import org.osps.event.CycleEventHandler;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.skills.Firemaking;

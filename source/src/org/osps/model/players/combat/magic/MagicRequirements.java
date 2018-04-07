@@ -1,7 +1,8 @@
 package org.osps.model.players.combat.magic;
 
-import org.osps.*;
-import org.osps.model.players.*;
+import org.osps.Config;
+import org.osps.model.players.Player;
+import org.osps.model.players.PlayerHandler;
 
 public class MagicRequirements extends MagicData {
 

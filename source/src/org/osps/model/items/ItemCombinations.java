@@ -7,7 +7,21 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import org.osps.model.items.item_combinations.*;
+import org.osps.model.items.item_combinations.AmuletOfFury;
+import org.osps.model.items.item_combinations.ArcaneSpiritShield;
+import org.osps.model.items.item_combinations.BlessedSpiritShield;
+import org.osps.model.items.item_combinations.BlueDarkBow;
+import org.osps.model.items.item_combinations.DragonPickaxe;
+import org.osps.model.items.item_combinations.ElysianSpiritShield;
+import org.osps.model.items.item_combinations.GraniteMaul;
+import org.osps.model.items.item_combinations.GreenDarkBow;
+import org.osps.model.items.item_combinations.RingOfWealthImbued;
+import org.osps.model.items.item_combinations.SaradominsBlessedSword;
+import org.osps.model.items.item_combinations.SpectralSpiritShield;
+import org.osps.model.items.item_combinations.SteamStaff;
+import org.osps.model.items.item_combinations.TentacleWhip;
+import org.osps.model.items.item_combinations.WhiteDarkBow;
+import org.osps.model.items.item_combinations.YellowDarkBow;
 
 public enum ItemCombinations {
 	

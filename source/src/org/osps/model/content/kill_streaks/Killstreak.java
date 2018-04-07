@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 /**
  * A killstreak can be described as a conjunction of successful kills that

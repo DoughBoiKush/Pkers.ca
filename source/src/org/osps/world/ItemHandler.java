@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+import org.json.simple.ItemList;
 import org.osps.Config;
 import org.osps.model.items.GroundItem;
 import org.osps.model.items.ItemDefinition;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
-import org.json.simple.ItemList;
 
 /**
  * Handles ground items

@@ -28,6 +28,7 @@ public final class Npc extends Entity
 		return desc.method164(-1, l, null);
 	}
 
+	@Override
 	public Model getRotatedModel()
 	{
 		if(desc == null)
@@ -63,6 +64,7 @@ public final class Npc extends Entity
 		return model;
 	}
 
+	@Override
 	public boolean isVisible()
 	{
 		return desc != null;

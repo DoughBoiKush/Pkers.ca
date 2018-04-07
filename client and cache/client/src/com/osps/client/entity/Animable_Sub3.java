@@ -27,6 +27,7 @@ public final class Animable_Sub3 extends Animable {
 		aBoolean1567 = false;
 	}
 
+	@Override
 	public Model getRotatedModel() {
 		Model model = aSpotAnim_1568.getModel();
 		if(model == null) {

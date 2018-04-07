@@ -1,7 +1,7 @@
 package org.osps.net;
 
-import org.osps.model.players.Player;
 import org.jboss.netty.channel.Channel;
+import org.osps.model.players.Player;
 
 public class Session {
 

@@ -1,7 +1,6 @@
 package com.osps.client;
 
 import com.osps.client.cache.graphics.RSInterface;
-import static com.osps.client.cache.graphics.RSInterface.interfaceCache;
 import com.osps.client.cache.graphics.TextDrawingArea;
 
 public class Interfaces extends RSInterface {

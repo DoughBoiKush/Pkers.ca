@@ -1,7 +1,5 @@
 package org.osps.model.players.skills.Runecrafting;
 
-import java.util.ArrayList;
-
 import org.osps.model.players.Player;
 
 /**

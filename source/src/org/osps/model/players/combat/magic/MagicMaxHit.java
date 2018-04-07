@@ -1,8 +1,5 @@
 package org.osps.model.players.combat.magic;
 
-import java.security.SecureRandom;
-
-import org.osps.Config;
 import org.osps.model.players.Player;
 
 public class MagicMaxHit {

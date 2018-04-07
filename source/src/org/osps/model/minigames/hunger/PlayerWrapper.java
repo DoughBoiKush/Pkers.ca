@@ -2,8 +2,6 @@ package org.osps.model.minigames.hunger;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;

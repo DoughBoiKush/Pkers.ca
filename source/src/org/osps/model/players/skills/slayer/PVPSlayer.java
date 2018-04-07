@@ -8,8 +8,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.osps.model.players.Player;
-import org.osps.model.players.skills.Skill;
-import org.osps.model.players.skills.slayer.EasyTask.Task;
 import org.osps.util.Misc;
 
 public class PVPSlayer {

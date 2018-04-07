@@ -1,6 +1,5 @@
 package org.osps.model.content.dialogue.impl;
 
-import org.osps.Config;
 import org.osps.model.content.dialogue.Dialogue;
 import org.osps.model.content.dialogue.DialogueManager;
 import org.osps.model.content.dialogue.Emotion;

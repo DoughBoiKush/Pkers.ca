@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.apache.commons.lang3.text.WordUtils;
-
 import org.osps.Server;
 import org.osps.model.items.GameItem;
 import org.osps.model.items.ItemDefinition;

@@ -1,9 +1,5 @@
 package org.osps.model.players.packets.commands.all;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-
 import org.osps.model.players.Player;
 import org.osps.model.players.packets.commands.Command;
 

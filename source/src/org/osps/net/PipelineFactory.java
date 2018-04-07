@@ -1,12 +1,12 @@
 package org.osps.net;
 
-import org.osps.net.login.RS2Encoder;
-import org.osps.net.login.RS2LoginProtocol;
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.jboss.netty.channel.DefaultChannelPipeline;
 import org.jboss.netty.handler.timeout.ReadTimeoutHandler;
 import org.jboss.netty.util.Timer;
+import org.osps.net.login.RS2Encoder;
+import org.osps.net.login.RS2LoginProtocol;
 
 public class PipelineFactory implements ChannelPipelineFactory {
 

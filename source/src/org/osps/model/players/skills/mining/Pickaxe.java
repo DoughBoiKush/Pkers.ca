@@ -1,12 +1,11 @@
 package org.osps.model.players.skills.mining;
 
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Set;
 
 import org.osps.model.players.Player;
 import org.osps.model.players.skills.Skill;
-
-import java.util.EnumSet;
-import java.util.Collections;
 /**
  * An enumeration of mining pickaxes.
  * 

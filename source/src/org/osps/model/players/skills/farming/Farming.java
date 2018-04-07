@@ -10,7 +10,6 @@ import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
 import org.osps.model.items.ItemDefinition;
 import org.osps.model.players.Player;
-import org.osps.model.players.skills.Skill;
 import org.osps.util.Misc;
 
 /**

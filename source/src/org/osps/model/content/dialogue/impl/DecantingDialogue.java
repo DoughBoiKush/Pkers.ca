@@ -1,6 +1,5 @@
 package org.osps.model.content.dialogue.impl;
 
-import org.osps.Config;
 import org.osps.model.content.decanting.Decanting;
 import org.osps.model.content.dialogue.Dialogue;
 import org.osps.model.content.dialogue.DialogueManager;

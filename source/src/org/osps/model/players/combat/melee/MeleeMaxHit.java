@@ -1,6 +1,6 @@
 package org.osps.model.players.combat.melee;
 
-import org.osps.model.players.*;
+import org.osps.model.players.Player;
 
 public class MeleeMaxHit {
 	

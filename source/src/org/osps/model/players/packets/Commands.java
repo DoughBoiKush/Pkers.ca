@@ -1,14 +1,10 @@
 package org.osps.model.players.packets;
-import java.net.*;
-import java.io.*;
-import org.osps.Config;
 import org.osps.Connection;
 import org.osps.Server;
 import org.osps.model.content.DonationManager;
 import org.osps.model.content.newTitles.TitleHandler;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
-import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.packets.commands.Command;
 import org.osps.model.shops.playerOwned.PlayerShops;
 import org.osps.net.Packet;

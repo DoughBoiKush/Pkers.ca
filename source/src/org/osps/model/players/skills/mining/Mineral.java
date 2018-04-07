@@ -1,8 +1,8 @@
 package org.osps.model.players.skills.mining;
 
-import java.util.Set;
-import java.util.EnumSet;
 import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * An enumeration of ore vein information.

@@ -1,12 +1,9 @@
 package org.osps.model.players.packets.commands.owner;
 
 import org.osps.Config;
-import org.osps.model.items.ItemDefinition;
-import org.osps.model.npcs.boss.abyssalsire.AbyssalSire;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.packets.commands.Command;
-import org.osps.util.Misc;
 
 /**
  * Promote a given player to a Sponsor.

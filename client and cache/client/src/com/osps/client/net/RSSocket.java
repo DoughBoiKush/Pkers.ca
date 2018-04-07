@@ -3,7 +3,9 @@ package com.osps.client.net;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 
 import com.osps.client.RSApplet;
@@ -116,6 +118,7 @@ public final class RSSocket
 		}
 	}
 
+	@Override
 	public void run()
 	{
 		while(isWriter)

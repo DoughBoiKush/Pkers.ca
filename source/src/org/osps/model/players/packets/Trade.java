@@ -3,7 +3,6 @@ package org.osps.model.players.packets;
 import java.util.Objects;
 
 import org.osps.Config;
-import org.osps.model.minigames.FishingTourney;
 import org.osps.model.players.Boundary;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;

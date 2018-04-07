@@ -8,9 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Logger;
 
 import org.osps.event.CycleEventHandler;
-import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.players.PacketHandler;
-import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.net.Packet;

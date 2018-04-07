@@ -1,8 +1,8 @@
 package org.osps.net;
 
-import org.osps.net.Packet.Type;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
+import org.osps.net.Packet.Type;
 
 /**
  * A utility class for building packets.

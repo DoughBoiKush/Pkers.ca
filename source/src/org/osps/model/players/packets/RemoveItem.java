@@ -1,7 +1,6 @@
 package org.osps.model.players.packets;
 
 import java.util.Objects;
-import java.util.Optional;
 
 import org.osps.Server;
 import org.osps.model.items.GameItem;

@@ -1,7 +1,6 @@
 package org.osps.world;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -43,9 +42,9 @@ public class ShopHandler {
 		}
 		TotalShops = 0;
 		if (!Config.PLACEHOLDER_ECONOMY) {
-		loadShops("shops.cfg");
+			loadShops("shops.cfg");
 		} else {
-		loadShops("shops2.cfg");
+			loadShops("shops2.cfg");
 		}
 	}
 
@@ -60,8 +59,7 @@ public class ShopHandler {
 				for (int j = 0; j < MaxShopItems; j++) {
 					if (ShopItems[i][j] > 0) {
 						if (ShopItemsDelay[i][j] >= MaxShowDelay) {
-							if (j <= ShopItemsStandard[i]
-									&& ShopItemsN[i][j] <= ShopItemsSN[i][j]) {
+							if (j <= ShopItemsStandard[i] && ShopItemsN[i][j] <= ShopItemsSN[i][j]) {
 								if (ShopItemsN[i][j] < ShopItemsSN[i][j]) {
 									ShopItemsN[i][j] += 1;
 									DidUpdate = true;
@@ -81,8 +79,7 @@ public class ShopHandler {
 				if (DidUpdate == true) {
 					for (int k = 1; k < Config.MAX_PLAYERS; k++) {
 						if (PlayerHandler.players[k] != null) {
-							if (PlayerHandler.players[k].isShopping == true
-									&& PlayerHandler.players[k].myShopId == i) {
+							if (PlayerHandler.players[k].isShopping == true && PlayerHandler.players[k].myShopId == i) {
 								PlayerHandler.players[k].updateShop = true;
 								DidUpdate = false;
 								PlayerHandler.players[k].updateshop(i);
@@ -92,7 +89,7 @@ public class ShopHandler {
 					DidUpdate = false;
 				}
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -118,72 +115,61 @@ public class ShopHandler {
 		String token2_2 = "";
 		String[] token3 = new String[(MaxShopItems * 2)];
 		boolean EndOfFile = false;
-		BufferedReader characterfile = null;
-		try {
-			characterfile = new BufferedReader(new FileReader("./Data/cfg/"
-					+ FileName));
-		} catch (FileNotFoundException fileex) {
-			Misc.println(FileName + ": file not found.");
-			return false;
-		}
-		try {
-			line = characterfile.readLine();
-		} catch (IOException ioexception) {
-			Misc.println(FileName + ": error loading file.");
-			return false;
-		}
-		while (EndOfFile == false && line != null) {
-			line = line.trim();
-			int spot = line.indexOf("=");
-			if (spot > -1) {
-				token = line.substring(0, spot);
-				token = token.trim();
-				token2 = line.substring(spot + 1);
-				token2 = token2.trim();
-				token2_2 = token2.replaceAll("\t\t", "\t");
-				token2_2 = token2_2.replaceAll("\t\t", "\t");
-				token2_2 = token2_2.replaceAll("\t\t", "\t");
-				token2_2 = token2_2.replaceAll("\t\t", "\t");
-				token2_2 = token2_2.replaceAll("\t\t", "\t");
-				token3 = token2_2.split("\t");
-				if (token.equals("shop")) {
-					int ShopID = Integer.parseInt(token3[0]);
-					ShopName[ShopID] = token3[1].replaceAll("_", " ");
-					ShopSModifier[ShopID] = Integer.parseInt(token3[2]);
-					ShopBModifier[ShopID] = Integer.parseInt(token3[3]);
-					for (int i = 0; i < ((token3.length - 4) / 2); i++) {
-						if (token3[(4 + (i * 2))] != null) {
-							ShopItems[ShopID][i] = (Integer
-									.parseInt(token3[(4 + (i * 2))]) + 1);
-							ShopItemsN[ShopID][i] = Integer
-									.parseInt(token3[(5 + (i * 2))]);
-							ShopItemsSN[ShopID][i] = Integer
-									.parseInt(token3[(5 + (i * 2))]);
-							ShopItemsStandard[ShopID]++;
-						} else {
-							break;
-						}
-					}
-					TotalShops++;
-				}
-			} else {
-				if (line.equals("[ENDOFSHOPLIST]")) {
-					try {
-						characterfile.close();
-					} catch (IOException ioexception) {
-					}
-					return true;
-				}
-			}
+		try (BufferedReader characterfile = new BufferedReader(new FileReader("./Data/cfg/" + FileName))) {
 			try {
 				line = characterfile.readLine();
-			} catch (IOException ioexception1) {
-				EndOfFile = true;
+			} catch (IOException ioexception) {
+				Misc.println(FileName + ": error loading file.");
+				return false;
 			}
-		}
-		try {
-			characterfile.close();
-		} catch (IOException ioexception) {
+			while (EndOfFile == false && line != null) {
+				line = line.trim();
+				int spot = line.indexOf("=");
+				if (spot > -1) {
+					token = line.substring(0, spot);
+					token = token.trim();
+					token2 = line.substring(spot + 1);
+					token2 = token2.trim();
+					token2_2 = token2.replaceAll("\t\t", "\t");
+					token2_2 = token2_2.replaceAll("\t\t", "\t");
+					token2_2 = token2_2.replaceAll("\t\t", "\t");
+					token2_2 = token2_2.replaceAll("\t\t", "\t");
+					token2_2 = token2_2.replaceAll("\t\t", "\t");
+					token3 = token2_2.split("\t");
+					if (token.equals("shop")) {
+						int ShopID = Integer.parseInt(token3[0]);
+						ShopName[ShopID] = token3[1].replaceAll("_", " ");
+						ShopSModifier[ShopID] = Integer.parseInt(token3[2]);
+						ShopBModifier[ShopID] = Integer.parseInt(token3[3]);
+						for (int i = 0; i < ((token3.length - 4) / 2); i++) {
+							if (token3[(4 + (i * 2))] != null) {
+								ShopItems[ShopID][i] = (Integer.parseInt(token3[(4 + (i * 2))]) + 1);
+								ShopItemsN[ShopID][i] = Integer.parseInt(token3[(5 + (i * 2))]);
+								ShopItemsSN[ShopID][i] = Integer.parseInt(token3[(5 + (i * 2))]);
+								ShopItemsStandard[ShopID]++;
+							} else {
+								break;
+							}
+						}
+						TotalShops++;
+					}
+				} else {
+					if (line.equals("[ENDOFSHOPLIST]")) {
+						try {
+							characterfile.close();
+						} catch (IOException ioexception) {
+						}
+						return true;
+					}
+				}
+				try {
+					line = characterfile.readLine();
+				} catch (IOException ioexception1) {
+					EndOfFile = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return false;
 	}

@@ -2,11 +2,9 @@ package org.osps.model.players;
 
 import java.util.Objects;
 
-import org.osps.Config;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
-import org.osps.model.players.Player;
 import org.osps.util.Misc;
 /**
  * Revamped a simple means of receiving a random item based on chance.

@@ -17,7 +17,6 @@ public abstract class CycleEvent {
 	/**
 	 * The update function is referenced every cycle the event is alive for.
 	 */
-	@SuppressWarnings("unused")
 	public void update(CycleEventContainer container) { }
 
 	/**

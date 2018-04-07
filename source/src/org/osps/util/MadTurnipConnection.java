@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 

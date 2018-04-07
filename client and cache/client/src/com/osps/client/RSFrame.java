@@ -8,7 +8,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import javax.imageio.ImageIO;
 
 final class RSFrame extends Frame {
 	
@@ -68,6 +67,7 @@ final class RSFrame extends Frame {
 		    return "";
 		}
 
+	@Override
 	public Graphics getGraphics() {
 		Graphics g = super.getGraphics();
 		Insets insets = this.getInsets();
@@ -85,10 +85,12 @@ final class RSFrame extends Frame {
 		return getHeight() - (insets.top + insets.bottom);
 	}
 
+	@Override
 	public void update(Graphics g) {
 		rsApplet.update(g);
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		rsApplet.paint(g);
 	}

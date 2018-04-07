@@ -5,6 +5,9 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.Executors;
 
+import org.jboss.netty.bootstrap.ServerBootstrap;
+import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+import org.jboss.netty.util.HashedWheelTimer;
 import org.osps.api.WebServer;
 import org.osps.clip.ObjectDef;
 import org.osps.clip.Region;
@@ -19,11 +22,9 @@ import org.osps.model.minigames.lottery.TriLottery;
 import org.osps.model.multiplayer_session.MultiplayerSessionListener;
 import org.osps.model.npcs.NPCCacheDefinition;
 import org.osps.model.npcs.NPCHandler;
-import org.osps.model.npcs.boss.WildernessBoss;
 import org.osps.model.npcs.boss.abstract_bosses.BossData;
 import org.osps.model.players.PlayerHandler;
 import org.osps.net.PipelineFactory;
-import org.osps.util.RemoveItems;
 import org.osps.util.SimpleTimer;
 import org.osps.util.date.Calendar;
 import org.osps.util.json.EquipmentRequirementLoader;
@@ -37,9 +38,6 @@ import org.osps.world.PlayerManager;
 import org.osps.world.ShopHandler;
 import org.osps.world.StillGraphicsManager;
 import org.osps.world.objects.GlobalObjects;
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
-import org.jboss.netty.util.HashedWheelTimer;
 
 import com.motivoters.motivote.service.MotivoteRS;
 

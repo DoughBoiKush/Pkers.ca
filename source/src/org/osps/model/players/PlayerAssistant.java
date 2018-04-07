@@ -3,26 +3,21 @@ package org.osps.model.players;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.osps.Config;
-import org.osps.Connection;
 import org.osps.Server;
 import org.osps.clip.PathChecker;
 import org.osps.clip.Region;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
-import org.osps.model.content.IngameHiscore;
 import org.osps.model.content.clan.Clan;
 import org.osps.model.content.enchanting.Jewellery;
-import org.osps.model.content.kill_streaks.Killstreak;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.items.GameItem;
@@ -57,7 +52,6 @@ import org.osps.model.players.skills.crafting.CraftingData;
 import org.osps.net.outgoing.messages.ComponentVisibility;
 import org.osps.util.Misc;
 import org.osps.util.Stream;
-
 
 import com.google.common.base.Stopwatch;
 

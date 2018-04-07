@@ -1,23 +1,21 @@
 package org.osps.model.players;
 
 import java.util.Objects;
-import java.util.Random;
 
 import org.osps.Config;
 import org.osps.Server;
 import org.osps.model.content.Obelisks;
 import org.osps.model.content.WildernessDitch;
-import org.osps.model.content.dialogue.impl.AdamDialogue;
 import org.osps.model.content.dialogue.impl.ConverterDialogue;
 import org.osps.model.content.dialogue.impl.DecantingDialogue;
-import org.osps.model.content.dialogue.impl.PilesDialogue;
+import org.osps.model.content.dialogue.impl.SlayerAssignmentDialogue;
 import org.osps.model.content.dialogue.impl.ZenyteDialogue;
 import org.osps.model.content.hs.PKHighscore;
 import org.osps.model.content.newTitles.TitleHandler;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.Teleport;
-import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.content.teleport.Teleport.TeleportType;
+import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.minigames.Sailing;
 import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.minigames.hunger.PlayerWrapper;
@@ -30,15 +28,14 @@ import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCCacheDefinition;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.PetHandler;
-import org.osps.model.players.combat.melee.MeleeMaxHit;
 import org.osps.model.players.skills.Skill;
 import org.osps.model.players.skills.Fishing.AnglerDig;
 import org.osps.model.players.skills.Fishing.Fishing;
 import org.osps.model.players.skills.crafting.JewelryMaking;
 import org.osps.model.players.skills.crafting.Tanning;
 import org.osps.model.players.skills.hunter.Hunter;
-import org.osps.model.players.skills.hunter.ImpCatching;
 import org.osps.model.players.skills.hunter.Hunter.impData;
+import org.osps.model.players.skills.hunter.ImpCatching;
 import org.osps.model.players.skills.mining.Mineral;
 import org.osps.model.players.skills.thieving.Thieving.Pickpocket;
 import org.osps.model.players.skills.thieving.Thieving.Stall;
@@ -48,7 +45,6 @@ import org.osps.model.shops.playerOwned.PlayerShops;
 import org.osps.util.Location3D;
 import org.osps.util.Misc;
 import org.osps.world.objects.GlobalObject;
-import org.osps.model.content.dialogue.impl.SlayerAssignmentDialogue;
 
 public class ActionHandler {
 

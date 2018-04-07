@@ -11,11 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map.Entry;
+import java.util.Set;
 
 import org.osps.model.players.Player;
-
-import java.util.Set;
 
 /**
  * The Connection Auth Class

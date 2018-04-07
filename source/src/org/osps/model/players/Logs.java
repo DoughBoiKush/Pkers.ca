@@ -4,10 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import org.osps.Config;
-import org.osps.model.items.Item;
 
 public class Logs {
 

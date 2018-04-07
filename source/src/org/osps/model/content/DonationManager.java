@@ -1,9 +1,12 @@
 
 package org.osps.model.content;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import org.osps.model.players.Player;
-import java.net.*;
-import java.io.*;
 public class DonationManager {
 	public static void gpay(Player c, String username) {
 		 try {

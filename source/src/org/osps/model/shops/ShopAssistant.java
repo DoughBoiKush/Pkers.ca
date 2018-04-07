@@ -1202,10 +1202,7 @@ public int getItemValueHungerGames(int id) {
 			buyVoid(itemID);
 			return false;
 		}
-
-		if (itemID != itemID) {
-			return false;
-		}
+		
 		if (!shopSellsItem(itemID)) {
 			c.sendMessage("Stop trying to cheat!");
 			return false;

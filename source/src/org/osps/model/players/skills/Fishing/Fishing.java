@@ -3,7 +3,6 @@ package org.osps.model.players.skills.Fishing;
 import java.util.Random;
 
 import org.osps.Config;
-import org.osps.Server;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;

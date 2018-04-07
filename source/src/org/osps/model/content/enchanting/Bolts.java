@@ -1,6 +1,5 @@
 package org.osps.model.content.enchanting;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 
 /*

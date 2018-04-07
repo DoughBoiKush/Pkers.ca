@@ -1,6 +1,5 @@
 package org.osps.model.players.packets;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 import org.osps.Config;
@@ -10,13 +9,11 @@ import org.osps.event.CycleEventHandler;
 import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.npcs.NpcDefinition;
-import org.osps.model.npcs.PetHandler;
 import org.osps.model.npcs.boss.abyssalsire.AbyssalSireConstants;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
 import org.osps.model.players.combat.AttackNPC;
 import org.osps.net.Packet;
-import org.osps.util.Stream;
 
 /**
  * Click NPC

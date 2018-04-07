@@ -62,6 +62,10 @@ public class PlayerCannon {
 					case FURNACE:
 						container.stop();
 						break;
+					case NONE:
+						break;
+					default:
+						break;
 					
 					}
 					

@@ -1,8 +1,5 @@
 package org.osps.util;
 
-import java.nio.charset.Charset;
-
-import org.apache.commons.io.Charsets;
 import org.osps.Config;
 
 public class Stream {

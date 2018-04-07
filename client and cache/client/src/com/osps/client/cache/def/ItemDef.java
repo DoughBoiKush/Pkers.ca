@@ -1,7 +1,4 @@
 package com.osps.client.cache.def;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
@@ -1729,9 +1726,9 @@ public final class ItemDef {
 		Rasterizer.method364();
 		int k3 = itemDef.modelZoom;
 		if (k == -1)
-			k3 = (int) ((double) k3 * 1.5D);
+			k3 = (int) (k3 * 1.5D);
 		if (k > 0)
-			k3 = (int) ((double) k3 * 1.04D);
+			k3 = (int) (k3 * 1.04D);
 		int l3 = Rasterizer.anIntArray1470[itemDef.modelRotationY] * k3 >> 16;
 		int i4 = Rasterizer.anIntArray1471[itemDef.modelRotationY] * k3 >> 16;
 		model.method482(itemDef.modelRotationX, itemDef.anInt204, itemDef.modelRotationY, itemDef.modelOffset1,

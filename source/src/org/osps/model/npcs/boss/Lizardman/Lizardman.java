@@ -1,7 +1,5 @@
 package org.osps.model.npcs.boss.Lizardman;
 
-import java.util.ArrayList;
-
 import org.osps.Server;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;

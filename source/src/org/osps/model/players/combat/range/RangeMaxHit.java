@@ -1,7 +1,6 @@
 package org.osps.model.players.combat.range;
 
-import org.osps.Config;
-import org.osps.model.players.*;
+import org.osps.model.players.Player;
 
 public class RangeMaxHit extends RangeData {
 

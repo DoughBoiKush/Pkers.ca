@@ -1,11 +1,9 @@
 package org.osps.model.content.dialogue.impl;
 
-import org.osps.Config;
 import org.osps.model.content.dialogue.Dialogue;
 import org.osps.model.content.dialogue.DialogueConstants;
 import org.osps.model.content.dialogue.DialogueManager;
 import org.osps.model.content.dialogue.Emotion;
-import org.osps.model.items.Item;
 import org.osps.model.players.Player;
 import org.osps.util.Misc;
 

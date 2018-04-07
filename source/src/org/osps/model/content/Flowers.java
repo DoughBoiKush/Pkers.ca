@@ -1,11 +1,9 @@
 package org.osps.model.content;
 
 import java.security.SecureRandom;
-import java.util.Objects;
 
 import org.osps.Server;
 import org.osps.clip.Region;
-import org.osps.model.minigames.BlastMine.Vein;
 import org.osps.model.players.Player;
 import org.osps.world.objects.GlobalObject;
 

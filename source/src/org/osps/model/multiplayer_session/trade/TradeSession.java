@@ -3,20 +3,17 @@ package org.osps.model.multiplayer_session.trade;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import org.osps.Server;
 import org.osps.model.items.GameItem;
-import org.osps.model.items.ItemDefinition;
 import org.osps.model.multiplayer_session.MultiplayerSession;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
-import org.osps.model.players.Logs;
 import org.osps.model.players.Player;
 import org.osps.model.shops.ShopAssistant;
 import org.osps.util.Misc;
-
-import java.util.Objects;
 
 import com.mchange.v1.util.SimpleMapEntry;
 

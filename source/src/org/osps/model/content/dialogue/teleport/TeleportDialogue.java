@@ -3,7 +3,6 @@ package org.osps.model.content.dialogue.teleport;
 import java.util.function.Consumer;
 
 import org.osps.model.content.dialogue.OptionDialogue;
-import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.players.Player;
 

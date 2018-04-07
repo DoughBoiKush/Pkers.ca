@@ -8,7 +8,6 @@ import org.osps.model.content.dialogue.Emotion;
 import org.osps.model.content.dialogue.OptionDialogue;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerSave;
-import org.osps.model.players.Rights;
 import org.osps.util.Misc;
 
 public class AdamDialogue extends Dialogue {

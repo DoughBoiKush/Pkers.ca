@@ -1,8 +1,5 @@
 package org.osps.model.players.packets.commands.owner;
 
-import java.io.IOException;
-
-import org.osps.Server;
 import org.osps.model.players.Player;
 import org.osps.model.players.packets.commands.Command;
 import org.osps.util.json.NpcDefinitionLoader;

@@ -45,7 +45,7 @@ final class Class29
 			anInt544 = anIntArray537[anInt542++] << 15;
 			if(anInt542 >= anInt535)
 				anInt542 = anInt535 - 1;
-			anInt541 = (int)(((double)anIntArray536[anInt542] / 65536D) * (double)i);
+			anInt541 = (int)((anIntArray536[anInt542] / 65536D) * i);
 			if(anInt541 > anInt545)
 				anInt543 = ((anIntArray537[anInt542] << 15) - anInt544) / (anInt541 - anInt545);
 		}

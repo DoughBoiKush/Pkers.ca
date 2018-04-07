@@ -1,7 +1,5 @@
 package org.osps.model.players.packets.commands.donator;
 
-import org.osps.model.players.Player;
-import org.osps.model.players.packets.commands.Command;
 import org.osps.Connection;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;

@@ -1,13 +1,6 @@
 package com.osps.client.cache.def;
 
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-
 import com.osps.client.Client;
 import com.osps.client.Stream;
 import com.osps.client.VarBit;

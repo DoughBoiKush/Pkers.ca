@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.osps.event.CycleEventHandler;
 import org.osps.model.npcs.NPC;
-import org.osps.model.npcs.boss.Bandos.BandosStage;
 import org.osps.model.npcs.boss.Bandos.impl.RespawnNpc;
 import org.osps.model.npcs.boss.Bandos.impl.SpawnBandosStageZero;
 import org.osps.model.npcs.boss.instances.InstancedArea;

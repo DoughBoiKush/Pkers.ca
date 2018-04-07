@@ -1,6 +1,5 @@
 package org.osps.model.content;
 
-import org.osps.model.items.Item;
 import org.osps.model.items.ItemDefinition;
 import org.osps.model.players.Player;
 

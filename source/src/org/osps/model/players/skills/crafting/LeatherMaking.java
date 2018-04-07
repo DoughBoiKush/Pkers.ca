@@ -92,7 +92,6 @@ public class LeatherMaking extends CraftingData {
 					c.playerIsCrafting = true;
 					amount = l.getAmount(buttonId);
 					CycleEventHandler.getSingleton().addEvent(3, c, new CycleEvent() {
-						@SuppressWarnings({ "unused", "null" })
 						@Override
 						public void execute(CycleEventContainer container) {
 							if( c == null || c.disconnected || c.teleporting || c.isDead) {

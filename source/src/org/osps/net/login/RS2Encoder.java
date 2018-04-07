@@ -1,9 +1,9 @@
 package org.osps.net.login;
 
-import org.osps.net.Packet;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.oneone.OneToOneEncoder;
+import org.osps.net.Packet;
 
 public class RS2Encoder extends OneToOneEncoder {
 

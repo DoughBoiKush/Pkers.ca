@@ -1,10 +1,8 @@
 package org.osps.model.items.bank;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.osps.Config;
 

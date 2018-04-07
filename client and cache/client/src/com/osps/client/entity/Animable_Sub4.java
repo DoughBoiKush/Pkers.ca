@@ -36,20 +36,21 @@ public final class Animable_Sub4 extends Animable {
 			double d = l - anInt1580;
 			double d2 = j - anInt1581;
 			double d3 = Math.sqrt(d * d + d2 * d2);
-			aDouble1585 = (double)anInt1580 + (d * (double)anInt1589) / d3;
-			aDouble1586 = (double)anInt1581 + (d2 * (double)anInt1589) / d3;
+			aDouble1585 = anInt1580 + (d * anInt1589) / d3;
+			aDouble1586 = anInt1581 + (d2 * anInt1589) / d3;
 			aDouble1587 = anInt1582;
 		}
 		double d1 = (anInt1572 + 1) - i;
-		aDouble1574 = ((double)l - aDouble1585) / d1;
-		aDouble1575 = ((double)j - aDouble1586) / d1;
+		aDouble1574 = (l - aDouble1585) / d1;
+		aDouble1575 = (j - aDouble1586) / d1;
 		aDouble1576 = Math.sqrt(aDouble1574 * aDouble1574 + aDouble1575 * aDouble1575);
 		if(!aBoolean1579) {
-			aDouble1577 = -aDouble1576 * Math.tan((double)anInt1588 * 0.02454369D);
+			aDouble1577 = -aDouble1576 * Math.tan(anInt1588 * 0.02454369D);
 		}
-		aDouble1578 = (2D * ((double)k - aDouble1587 - aDouble1577 * d1)) / (d1 * d1);
+		aDouble1578 = (2D * (k - aDouble1587 - aDouble1577 * d1)) / (d1 * d1);
 	}
 
+	@Override
 	public Model getRotatedModel() {
 		Model model = aSpotAnim_1592.getModel();
 		if(model == null) {
@@ -92,10 +93,10 @@ public final class Animable_Sub4 extends Animable {
 
 	public void method456(int i) {
 		aBoolean1579 = true;
-		aDouble1585 += aDouble1574 * (double)i;
-		aDouble1586 += aDouble1575 * (double)i;
-		aDouble1587 += aDouble1577 * (double)i + 0.5D * aDouble1578 * (double)i * (double)i;
-		aDouble1577 += aDouble1578 * (double)i;
+		aDouble1585 += aDouble1574 * i;
+		aDouble1586 += aDouble1575 * i;
+		aDouble1587 += aDouble1577 * i + 0.5D * aDouble1578 * i * i;
+		aDouble1577 += aDouble1578 * i;
 		anInt1595 = (int)(Math.atan2(aDouble1574, aDouble1575) * 325.94900000000001D) + 1024 & 0x7ff;
 		anInt1596 = (int)(Math.atan2(aDouble1577, aDouble1576) * 325.94900000000001D) & 0x7ff;
 		if(aSpotAnim_1592.aAnimation_407 != null) {

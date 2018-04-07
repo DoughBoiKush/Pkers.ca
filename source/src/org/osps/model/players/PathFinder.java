@@ -3,7 +3,6 @@ package org.osps.model.players;
 import java.util.LinkedList;
 
 import org.osps.clip.Region;
-import org.osps.model.players.Player;
 
 public class PathFinder {
 	 

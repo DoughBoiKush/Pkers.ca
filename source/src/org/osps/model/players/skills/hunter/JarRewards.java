@@ -3,7 +3,6 @@ package org.osps.model.players.skills.hunter;
 import java.util.HashMap;
 import java.util.Random;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 import org.osps.util.Misc;
 

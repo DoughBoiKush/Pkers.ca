@@ -15,7 +15,7 @@ public class Broadcast {
 	
 	@SuppressWarnings("static-access")
 	public void setMessage(String message) {
-		this.message = message;
+		Broadcast.message = message;
 	}
 	
 	public void setLifetime(int lifetime) {

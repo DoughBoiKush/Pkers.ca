@@ -1,6 +1,5 @@
 package org.osps.model.content.drops.vetion;
 
-import org.osps.Config;
 import org.osps.Server;
 import org.osps.model.items.ItemDefinition;
 import org.osps.model.npcs.NPC;

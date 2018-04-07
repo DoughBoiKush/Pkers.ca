@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.text.WordUtils;
-import org.osps.Config;
 import org.osps.database.Poker;
 import org.osps.model.content.help.HelpDatabase;
 import org.osps.model.content.help.HelpRequest;

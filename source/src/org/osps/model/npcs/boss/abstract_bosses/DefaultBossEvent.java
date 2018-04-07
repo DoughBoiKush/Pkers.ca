@@ -2,7 +2,6 @@ package org.osps.model.npcs.boss.abstract_bosses;
 
 import java.util.ArrayList;
 
-import org.osps.Config;
 import org.osps.Server;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;

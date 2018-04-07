@@ -1,8 +1,6 @@
 package org.osps.model.players.packets.commands.owner;
 
 import org.osps.Connection;
-import org.osps.model.content.teleport.Position;
-import org.osps.model.content.teleport.TeleportExecutor;
 import org.osps.model.players.Player;
 import org.osps.model.players.packets.commands.Command;
 

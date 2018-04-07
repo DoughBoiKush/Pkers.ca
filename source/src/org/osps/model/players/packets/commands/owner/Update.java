@@ -3,7 +3,6 @@ package org.osps.model.players.packets.commands.owner;
 import java.util.Objects;
 
 import org.osps.Server;
-import org.osps.model.minigames.hunger.HungerManager;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;

@@ -1,12 +1,12 @@
 package org.osps.model.minigames.BlastMine;
 
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Set;
 
 import org.osps.model.players.Player;
 import org.osps.model.players.skills.Skill;
-
-import java.util.EnumSet;
-import java.util.Collections;
+import org.osps.model.players.skills.mining.Pickaxe;
 /**
  * An enumeration of mining pickaxes.
  * 

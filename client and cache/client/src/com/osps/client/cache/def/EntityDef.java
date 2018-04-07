@@ -1,6 +1,5 @@
 package com.osps.client.cache.def;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 import com.osps.client.Client;
 import com.osps.client.Signlink;
@@ -15,7 +14,7 @@ public final class EntityDef {
 
 	public static EntityDef forID(int i) {
 		for (int j = 0; j < 20; j++)
-			if (i != 4178 && cache[j].interfaceType == (long) i)
+			if (i != 4178 && cache[j].interfaceType == i)
 				return cache[j];
 
 		anInt56 = (anInt56 + 1) % 20;

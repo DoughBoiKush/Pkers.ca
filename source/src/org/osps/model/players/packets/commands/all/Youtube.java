@@ -1,6 +1,5 @@
 package org.osps.model.players.packets.commands.all;
 
-import org.osps.Config;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;

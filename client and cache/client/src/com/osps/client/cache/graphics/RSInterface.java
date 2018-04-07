@@ -1,6 +1,7 @@
 package com.osps.client.cache.graphics;
 
 import com.osps.client.Client;
+import com.osps.client.InterfaceTextInput;
 import com.osps.client.Interfaces;
 import com.osps.client.RSMenuItem;
 import com.osps.client.Sprite;
@@ -12,7 +13,6 @@ import com.osps.client.cache.def.EntityDef;
 import com.osps.client.cache.def.ItemDef;
 import com.osps.client.entity.model.Model;
 import com.osps.client.link.MRUNodes;
-import com.osps.client.InterfaceTextInput;
 
 public class RSInterface {
 	
@@ -5766,7 +5766,7 @@ private static void tradeUIAddon(TextDrawingArea[] tda) {
 	}
 
 	private static Sprite method207(int i, StreamLoader streamLoader, String s) {
-		long l = (TextClass.method585(s) << 8) + (long) i;
+		long l = (TextClass.method585(s) << 8) + i;
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
 		if (sprite != null)
 			return sprite;

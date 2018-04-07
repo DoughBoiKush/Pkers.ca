@@ -1,6 +1,5 @@
 package org.osps.model.players.skills.crafting;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 
 public class Tanning extends CraftingData {

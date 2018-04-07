@@ -5,6 +5,7 @@ import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.model.npcs.NPC;
 import org.osps.model.players.Player;
+import org.osps.model.players.skills.mining.MiningEvent;
 import org.osps.util.Location3D;
 import org.osps.util.Misc;
 import org.osps.world.objects.GlobalObject;

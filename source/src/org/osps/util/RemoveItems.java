@@ -8,9 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import org.osps.model.items.ItemAssistant;
-import org.osps.model.players.Player;
-
 public class RemoveItems {
 
 	private static final int EQUIP_SLOT = 0;

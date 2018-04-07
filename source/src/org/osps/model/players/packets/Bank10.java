@@ -13,7 +13,6 @@ import org.osps.model.multiplayer_session.trade.TradeSession;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
 import org.osps.model.players.skills.crafting.JewelryMaking;
-import org.osps.model.shops.playerOwned.PlayerShops;
 import org.osps.net.Packet;
 /**
  * Bank 10 Items

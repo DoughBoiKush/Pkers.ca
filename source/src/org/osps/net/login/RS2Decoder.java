@@ -1,14 +1,14 @@
 package org.osps.net.login;
 
-import org.osps.model.players.Player;
-import org.osps.net.Packet;
-import org.osps.net.Packet.Type;
-import org.osps.util.ISAACCipher;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.frame.FrameDecoder;
+import org.osps.model.players.Player;
+import org.osps.net.Packet;
+import org.osps.net.Packet.Type;
+import org.osps.util.ISAACCipher;
 
 public class RS2Decoder extends FrameDecoder {
 

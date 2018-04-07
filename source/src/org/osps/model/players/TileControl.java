@@ -1,8 +1,6 @@
 package org.osps.model.players;
 
 import org.osps.model.npcs.NPC;
-import org.osps.model.players.Player;
-import org.osps.model.players.Tile;
 
 public class TileControl {
 	

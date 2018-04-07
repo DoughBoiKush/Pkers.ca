@@ -1,7 +1,9 @@
 package org.osps.model.minigames.BlastMine;
-import java.util.Set;
-import java.util.EnumSet;
 import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Set;
+
+import org.osps.model.players.skills.mining.Mineral;
 
 /**
  * An enumeration of ore vein information.

@@ -19,7 +19,6 @@ import org.osps.model.players.Boundary;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
 import org.osps.model.players.combat.Hitmark;
-import org.osps.model.shops.ShopAssistant;
 import org.osps.net.Packet;
 /**
  * Drop Item Class

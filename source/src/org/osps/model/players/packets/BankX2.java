@@ -5,7 +5,6 @@ import java.util.Objects;
 import org.osps.Server;
 import org.osps.model.content.enchanting.Bolts;
 import org.osps.model.items.GameItem;
-import org.osps.model.minigames.lottery.LotteryController;
 import org.osps.model.multiplayer_session.MultiplayerSession;
 import org.osps.model.multiplayer_session.MultiplayerSessionFinalizeType;
 import org.osps.model.multiplayer_session.MultiplayerSessionStage;

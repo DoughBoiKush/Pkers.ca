@@ -4,8 +4,6 @@ package org.osps.model.players.packets.commands.moderator;
 import java.util.Optional;
 
 import org.osps.Server;
-import org.osps.event.CycleEventHandler;
-import org.osps.model.players.ConnectedFrom;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.packets.commands.Command;

@@ -8,7 +8,6 @@ import org.osps.Server;
 import org.osps.model.multiplayer_session.MultiplayerSessionType;
 import org.osps.model.multiplayer_session.duel.DuelSession;
 import org.osps.model.multiplayer_session.duel.DuelSessionRules.Rule;
-import org.osps.model.players.Player;
 import org.osps.util.Misc;
 
 public class Food {

@@ -16,6 +16,7 @@ public final class Player extends Entity {
 	
 	public int npcStatShow = -1;
 
+	@Override
 	public Model getRotatedModel() {
 		if(!visible)
 			return null;
@@ -297,6 +298,7 @@ public final class Player extends Entity {
 		return model_2;
 	}
 
+	@Override
 	public boolean isVisible()
 	{
 		return visible;

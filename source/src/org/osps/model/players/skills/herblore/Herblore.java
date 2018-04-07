@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.osps.Config;
-import org.osps.Server;
 import org.osps.model.items.GameItem;
 import org.osps.model.items.ItemDefinition;
 import org.osps.model.players.Player;

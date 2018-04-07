@@ -1,17 +1,15 @@
 package org.osps.database;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.osps.Config;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.util.Misc;
 
 import com.mysql.jdbc.Statement;
-import com.sun.security.ntlm.Client;
 
 public class Donation {
 

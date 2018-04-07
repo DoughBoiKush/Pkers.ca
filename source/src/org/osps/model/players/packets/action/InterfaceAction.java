@@ -1,23 +1,13 @@
 package org.osps.model.players.packets.action;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
 
-import org.osps.model.content.Unspawnable;
 import org.osps.model.content.clan.Clan;
-import org.osps.model.content.teleport.Position;
-import org.osps.model.content.teleport.TeleportExecutor;
-import org.osps.model.items.GameItem;
-import org.osps.model.items.ItemDefinition;
 import org.osps.model.players.PacketType;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.PlayerSave;
-import org.osps.model.players.Requirement;
 import org.osps.net.Packet;
-import org.osps.util.ItemId;
 import org.osps.util.Misc;
 
 public class InterfaceAction implements PacketType {

@@ -1,5 +1,8 @@
 package com.osps.client.net;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.zip.GZIPInputStream;
 
@@ -217,6 +220,7 @@ public final class OnDemandFetcher extends OnDemandFetcherParent implements Runn
 		return modelIndices[i] & 0xff;
 	}
 
+	@Override
 	public void run() {
 		try {
 			while (running) {
@@ -368,6 +372,7 @@ public final class OnDemandFetcher extends OnDemandFetcherParent implements Runn
 		return -1;
 	}
 
+	@Override
 	public void method548(int i) {
 		method558(0, i);
 	}

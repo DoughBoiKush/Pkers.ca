@@ -1,7 +1,22 @@
 package com.osps.client;
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import com.osps.client.cache.graphics.RSInterface;
 import com.osps.client.draw.RSImageProducer;
@@ -90,7 +105,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		startRunnable(this, 1);
 	}
 
-    public void run()
+    @Override
+	public void run()
     {
     	setFocusTraversalKeysEnabled(false);
         getGameComponent().addMouseListener(this);
@@ -140,7 +156,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
             } else
             if(l2 > aLongArray7[i])
             {
-                j = (int)((long)(2560 * delayTime) / (l2 - aLongArray7[i]));
+                j = (int)(2560 * delayTime / (l2 - aLongArray7[i]));
             }
             if(j < 25)
             {
@@ -149,7 +165,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
             if(j > 256)
             {
                 j = 256;
-                k = (int)((long)delayTime - (l2 - aLongArray7[i]) / 10L);
+                k = (int)(delayTime - (l2 - aLongArray7[i]) / 10L);
             }
             if(k > delayTime)
             {
@@ -283,7 +299,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
         delayTime = 1000 / i;
     }
 
-    public final void start()
+    @Override
+	public final void start()
     {
         if(anInt4 >= 0)
         {
@@ -291,7 +308,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
         }
     }
 
-    public final void stop()
+    @Override
+	public final void stop()
     {
         if(anInt4 >= 0)
         {
@@ -299,7 +317,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
         }
     }
 
-    public final void destroy()
+    @Override
+	public final void destroy()
     {
         anInt4 = -1;
         try
@@ -313,7 +332,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
         }
     }
 
-    public final void update(Graphics g)
+    @Override
+	public final void update(Graphics g)
     {
         if(graphics == null)
         {
@@ -323,7 +343,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
         raiseWelcomeScreen();
     }
 
-    public final void paint(Graphics g)
+    @Override
+	public final void paint(Graphics g)
     {
         if(graphics == null)
         {
@@ -335,7 +356,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
     
 	public boolean canZoom = true;
 
-    public void mouseWheelMoved(MouseWheelEvent event) {
+    @Override
+	public void mouseWheelMoved(MouseWheelEvent event) {
 		int rotation = event.getWheelRotation();
 		handleInterfaceScrolling(event);
 		if(mouseX > 0 && mouseX < 512 && mouseY > Configuration.clientHeight - 165 && mouseY < Configuration.clientHeight - 25) {
@@ -461,6 +483,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public int releasedY;
 	public boolean mouseWheelDown;
 	
+	@Override
 	public final void mousePressed(MouseEvent mouseevent) {
 		int i = mouseevent.getX();
 		int j = mouseevent.getY();
@@ -491,6 +514,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	}
 
 
+	@Override
 	public final void mouseReleased(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
@@ -507,14 +531,17 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		mouseWheelDown = false;
 	}
 
-    public final void mouseClicked(MouseEvent mouseevent)
+    @Override
+	public final void mouseClicked(MouseEvent mouseevent)
     {
     }
 
-    public final void mouseEntered(MouseEvent mouseevent)
+    @Override
+	public final void mouseEntered(MouseEvent mouseevent)
     {
     }
 
+	@Override
 	public final void mouseExited(MouseEvent mouseevent)
 	{
 		idleTime = 0;
@@ -524,6 +551,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
 	public int mouseWheelX;
 	public int mouseWheelY;
+	@Override
 	public final void mouseDragged(MouseEvent mouseevent) {
 		 if (Client.instance.variousSettings[314] == 0) {
 			int i = mouseevent.getX();
@@ -555,6 +583,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
 	}
 
+	@Override
 	public final void mouseMoved(MouseEvent mouseevent) {
 		int x = mouseevent.getX();
 		int y = mouseevent.getY();
@@ -569,6 +598,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		clickType = MOVE;
 	}
 
+	@Override
 	public final void keyPressed(KeyEvent keyevent) {
 		idleTime = 0;
 		int i = keyevent.getKeyCode();
@@ -625,6 +655,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 
+	@Override
 	public final void keyReleased(KeyEvent keyevent)
 	{
 		idleTime = 0;
@@ -654,7 +685,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			keyArray[c] = 0;
 	}
 
-    public final void keyTyped(KeyEvent keyevent)
+    @Override
+	public final void keyTyped(KeyEvent keyevent)
     {
     }
 
@@ -673,14 +705,16 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		return k;
 	}
 
-    public final void focusGained(FocusEvent focusevent)
+    @Override
+	public final void focusGained(FocusEvent focusevent)
     {
         awtFocus = true;
         shouldClearScreen = true;
         raiseWelcomeScreen();
     }
 
-    public final void focusLost(FocusEvent focusevent)
+    @Override
+	public final void focusLost(FocusEvent focusevent)
     {
         awtFocus = false;
         for(int i = 0; i < 128; i++)
@@ -690,33 +724,40 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
     }
 
-    public final void windowActivated(WindowEvent windowevent)
+    @Override
+	public final void windowActivated(WindowEvent windowevent)
     {
     }
 
-    public final void windowClosed(WindowEvent windowevent)
+    @Override
+	public final void windowClosed(WindowEvent windowevent)
     {
     }
 
-    public final void windowClosing(WindowEvent windowevent)
+    @Override
+	public final void windowClosing(WindowEvent windowevent)
     {
         destroy();
 
     }
 
-    public final void windowDeactivated(WindowEvent windowevent)
+    @Override
+	public final void windowDeactivated(WindowEvent windowevent)
     {
     }
 
-    public final void windowDeiconified(WindowEvent windowevent)
+    @Override
+	public final void windowDeiconified(WindowEvent windowevent)
     {
     }
 
-    public final void windowIconified(WindowEvent windowevent)
+    @Override
+	public final void windowIconified(WindowEvent windowevent)
     {
     }
 
-    public final void windowOpened(WindowEvent windowevent)
+    @Override
+	public final void windowOpened(WindowEvent windowevent)
     {
     }
 

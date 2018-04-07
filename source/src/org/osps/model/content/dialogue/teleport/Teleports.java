@@ -8,7 +8,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.osps.model.content.dialogue.OptionDialogue;
 import org.osps.model.content.teleport.Position;
 import org.osps.model.content.teleport.TeleportExecutor;
-import org.osps.model.npcs.boss.Kraken.Kraken;
 import org.osps.model.players.Player;
 
 public enum Teleports {

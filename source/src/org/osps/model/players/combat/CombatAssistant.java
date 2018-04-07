@@ -1,11 +1,9 @@
 package org.osps.model.players.combat;
 
-import java.security.SecureRandom;
 import java.util.Random;
 
 import org.osps.model.npcs.NPCHandler;
 import org.osps.model.players.Player;
-import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.combat.magic.MagicData;
 import org.osps.model.players.combat.magic.MagicExtras;
 import org.osps.model.players.combat.magic.MagicMaxHit;
@@ -19,7 +17,6 @@ import org.osps.model.players.combat.melee.MeleeSpecial;
 import org.osps.model.players.combat.range.RangeData;
 import org.osps.model.players.combat.range.RangeExtras;
 import org.osps.model.players.combat.range.RangeMaxHit;
-import org.osps.util.Misc;
 
 public class CombatAssistant {
 	

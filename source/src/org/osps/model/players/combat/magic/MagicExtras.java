@@ -1,9 +1,10 @@
 package org.osps.model.players.combat.magic;
 
-import org.osps.*;
+import org.osps.Config;
 import org.osps.model.npcs.NPC;
 import org.osps.model.npcs.NPCHandler;
-import org.osps.model.players.*;
+import org.osps.model.players.Player;
+import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.combat.Hitmark;
 import org.osps.util.Misc;
 

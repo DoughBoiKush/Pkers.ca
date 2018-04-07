@@ -2347,7 +2347,8 @@ public class Model extends Animable {
                         }
         }
  
-        public final void method443(int i, int j, int k, int l, int i1, int j1,
+        @Override
+		public final void method443(int i, int j, int k, int l, int i1, int j1,
                         int k1, int l1, int i2) {
                 int j2 = l1 * i1 - j1 * l >> 16;
                         int k2 = k1 * j + j2 * k >> 16;

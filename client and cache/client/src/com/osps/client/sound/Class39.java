@@ -10,7 +10,7 @@ final class Class39
 
 	private float method541(int i, int j, float f)
 	{
-		float f1 = (float)anIntArrayArrayArray667[i][0][j] + f * (float)(anIntArrayArrayArray667[i][1][j] - anIntArrayArrayArray667[i][0][j]);
+		float f1 = anIntArrayArrayArray667[i][0][j] + f * (anIntArrayArrayArray667[i][1][j] - anIntArrayArrayArray667[i][0][j]);
 			f1 *= 0.001525879F;
 			return 1.0F - (float)Math.pow(10D, -f1 / 20F);
 	}
@@ -23,7 +23,7 @@ final class Class39
 
 	private float method543(float f, int i, int j)
 	{
-		float f1 = (float)anIntArrayArrayArray666[j][0][i] + f * (float)(anIntArrayArrayArray666[j][1][i] - anIntArrayArrayArray666[j][0][i]);
+		float f1 = anIntArrayArrayArray666[j][0][i] + f * (anIntArrayArrayArray666[j][1][i] - anIntArrayArrayArray666[j][0][i]);
 		f1 *= 0.0001220703F;
 		return method542(f1);
 	}
@@ -32,7 +32,7 @@ final class Class39
 	{
 		if(i == 0)
 		{
-			float f1 = (float)anIntArray668[0] + (float)(anIntArray668[1] - anIntArray668[0]) * f;
+			float f1 = anIntArray668[0] + (anIntArray668[1] - anIntArray668[0]) * f;
 			f1 *= 0.003051758F;
 			aFloat671 = (float)Math.pow(0.10000000000000001D, f1 / 20F);
 			anInt672 = (int)(aFloat671 * 65536F);

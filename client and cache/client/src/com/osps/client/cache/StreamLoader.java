@@ -1,11 +1,10 @@
 package com.osps.client.cache;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import com.osps.client.Stream;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.File;
 
 public final class StreamLoader {
 

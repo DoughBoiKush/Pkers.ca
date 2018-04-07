@@ -31,8 +31,7 @@ public class Vetion {
 			int y1 = point[1] + 2;
 			int offY = (nX - x1) * -1;
 			int offX = (nY - y1) * -1;
-			player.getPA().createPlayersProjectile(nX, nY, offX, offY, 40, NPCHandler.getProjectileSpeed(npc.index),
-					280, 31, 0, -1, 5);
+			player.getPA().createPlayersProjectile(nX, nY, offX, offY, 40, NPCHandler.getProjectileSpeed(npc.index), 280, 31, 0, -1, 5);
 
 		}
 		CycleEventHandler.getSingleton().addEvent(player, new CycleEvent() {

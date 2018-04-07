@@ -1,7 +1,6 @@
 package org.osps.model.npcs.boss.Kalphite;
 
 import org.osps.event.CycleEvent;
-import org.osps.model.npcs.boss.Kalphite.Kalphite;
 import org.osps.model.players.Player;
 
 public abstract class Stage extends CycleEvent {

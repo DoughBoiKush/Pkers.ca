@@ -42,6 +42,7 @@ public final class Signlink implements Runnable {
 	}
 	
 
+	@Override
 	public void run() {
 		active = true;
 		try {
@@ -126,7 +127,6 @@ public final class Signlink implements Runnable {
 	}
 
 	public static String getIdentifierFile() {
-		String name = System.getProperty("os.name");
 		String directory = "";
 		Platform platform = getPlatform();
 		if (platform == Platform.WINDOWS) {

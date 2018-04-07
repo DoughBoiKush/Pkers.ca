@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
- 
 
 import org.osps.model.content.teleport.Position;
 import org.osps.model.items.ItemDefinition;

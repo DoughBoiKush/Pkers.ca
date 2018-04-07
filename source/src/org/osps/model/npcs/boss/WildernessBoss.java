@@ -4,7 +4,7 @@ import org.osps.Server;
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
-import org.osps.model.npcs.*;
+import org.osps.model.npcs.NPCHandler;
 import org.osps.model.players.Player;
 import org.osps.model.players.PlayerHandler;
 import org.osps.util.Misc;

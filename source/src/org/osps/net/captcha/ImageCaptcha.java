@@ -3,7 +3,6 @@ package org.osps.net.captcha;
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 
-
 import javax.imageio.ImageIO;
 
 import nl.captcha.backgrounds.GradiatedBackgroundProducer;

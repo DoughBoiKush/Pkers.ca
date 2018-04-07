@@ -1,11 +1,8 @@
 package org.osps.model.npcs.boss.Callisto;
 
-import java.util.Random;
-
 import org.osps.event.CycleEvent;
 import org.osps.event.CycleEventContainer;
 import org.osps.event.CycleEventHandler;
-import org.osps.model.npcs.NPC;
 import org.osps.model.players.Player;
 
 /**

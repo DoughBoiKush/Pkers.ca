@@ -263,10 +263,10 @@ public final class Texture extends DrawingArea {
 		d += Math.random() * 0.029999999999999999D - 0.014999999999999999D;
 		int j = 0;
 		for (int k = 0; k < 512; k++) {
-			double d1 = (double) (k / 8) / 64D + 0.0078125D;
-			double d2 = (double) (k & 7) / 8D + 0.0625D;
+			double d1 = k / 8 / 64D + 0.0078125D;
+			double d2 = (k & 7) / 8D + 0.0625D;
 			for (int k1 = 0; k1 < 128; k1++) {
-				double d3 = (double) k1 / 128D;
+				double d3 = k1 / 128D;
 				double d4 = d3;
 				double d5 = d3;
 				double d6 = d3;
@@ -339,9 +339,9 @@ public final class Texture extends DrawingArea {
 	}
 
 	private static int method373(int i, double d) {
-		double d1 = (double) (i >> 16) / 256D;
-		double d2 = (double) (i >> 8 & 0xff) / 256D;
-		double d3 = (double) (i & 0xff) / 256D;
+		double d1 = (i >> 16) / 256D;
+		double d2 = (i >> 8 & 0xff) / 256D;
+		double d3 = (i & 0xff) / 256D;
 		d1 = Math.pow(d1, d);
 		d2 = Math.pow(d2, d);
 		d3 = Math.pow(d3, d);
@@ -3812,9 +3812,9 @@ public final class Texture extends DrawingArea {
 
 		for (int k = 0; k < 2048; k++) {
 			anIntArray1470[k] = (int) (65536D * Math
-					.sin((double) k * 0.0030679614999999999D));
+					.sin(k * 0.0030679614999999999D));
 			anIntArray1471[k] = (int) (65536D * Math
-					.cos((double) k * 0.0030679614999999999D));
+					.cos(k * 0.0030679614999999999D));
 		}
 
 	}

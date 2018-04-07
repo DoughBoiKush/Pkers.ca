@@ -45,6 +45,7 @@ public final class Animable_Sub5 extends Animable {
 		}
 	}
 
+	@Override
 	public Model getRotatedModel() {
 		int j = -1;
 		if (aAnimation_1607 != null) {
@@ -93,8 +94,8 @@ public final class Animable_Sub5 extends Animable {
 			anInt1599 = 0;
 			anInt1608 = Client.loopCycle;
 			if (flag && aAnimation_1607.anInt356 != -1) {
-				anInt1599 = (int) (Math.random() * (double) aAnimation_1607.anInt352);
-				anInt1608 -= (int) (Math.random() * (double) aAnimation_1607.method258(anInt1599));
+				anInt1599 = (int) (Math.random() * aAnimation_1607.anInt352);
+				anInt1608 -= (int) (Math.random() * aAnimation_1607.method258(anInt1599));
 			}
 		}
 		ObjectDef class46 = ObjectDef.forID(anInt1610);

@@ -1,14 +1,13 @@
 package org.osps.net;
 
-import org.osps.Config;
-import org.osps.Server;
-import org.osps.model.players.Player;
-import org.osps.model.players.PlayerSave;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
+import org.osps.Server;
+import org.osps.model.players.Player;
+import org.osps.model.players.PlayerSave;
 
 public class ChannelHandler extends SimpleChannelHandler {
 

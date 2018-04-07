@@ -1,10 +1,6 @@
 package org.osps.model.content.herbsack;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.osps.model.content.PlayerContent;
-import org.osps.model.items.pouch.HerbSackDefinition;
 import org.osps.model.players.Player;
 
 public class HerbSack extends PlayerContent {

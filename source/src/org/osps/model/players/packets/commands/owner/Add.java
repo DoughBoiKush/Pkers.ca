@@ -5,8 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.osps.Server;
-import org.osps.model.npcs.NPCHandler;
-import org.osps.model.npcs.NpcDefinition;
 import org.osps.model.players.Player;
 import org.osps.model.players.packets.commands.Command;
 

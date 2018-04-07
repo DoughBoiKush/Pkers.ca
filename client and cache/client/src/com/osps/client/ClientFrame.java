@@ -52,6 +52,7 @@ import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.ColorUIResource;
 
@@ -114,7 +115,7 @@ public class ClientFrame extends Client implements ActionListener {
 			frame = new JFrame(Constants.CLIENT_NAME);
 			frame.setLayout(new BorderLayout());
 			frame.setResizable(false);
-			frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 			frame.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, null);
 			frame.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, null);
 
@@ -367,12 +368,14 @@ public class ClientFrame extends Client implements ActionListener {
 		button.setForeground(Color.BLACK);
 		button.setBorder(new EmptyBorder(1, 1, 3, 1));
 		button.addMouseListener(new java.awt.event.MouseAdapter() {
-		    public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    @Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
 		    	button.setContentAreaFilled(true);
 		    	button.setBackground(Color.decode("0xb6fcd5"));
 		    }
 
-		    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    @Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
 		    	button.setBackground(UIManager.getColor("control"));
 		    	button.setContentAreaFilled(false);
 		    }
@@ -471,6 +474,7 @@ public class ClientFrame extends Client implements ActionListener {
 	/**
 	 * The action listener for the menu panel buttons
 	 */
+	@Override
 	public void actionPerformed(ActionEvent evt) {
 		String cmd = evt.getActionCommand();
 		try {
