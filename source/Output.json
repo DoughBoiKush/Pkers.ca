@@ -1,0 +1,684 @@
+[
+	{
+		"mobId": 7862,
+		"position": {
+			"x": 3237,
+			"y": 10206,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Black dragon"
+	},
+	{
+		"mobId": 7940,
+		"position": {
+			"x": 3239,
+			"y": 10177,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Revenant dragon"
+	},
+	{
+		"mobId": 7863,
+		"position": {
+			"x": 3239,
+			"y": 10195,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Black dragon"
+	},
+	{
+		"mobId": 7936,
+		"position": {
+			"x": 3249,
+			"y": 10180,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Revenant demon"
+	},
+	{
+		"mobId": 7881,
+		"position": {
+			"x": 3248,
+			"y": 10185,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Revenant imp"
+	},
+	{
+		"mobId": 7866,
+		"position": {
+			"x": 3155,
+			"y": 10113,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7865,
+		"position": {
+			"x": 3167,
+			"y": 10117,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7877,
+		"position": {
+			"x": 3198,
+			"y": 10072,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Hellhound"
+	},
+	{
+		"mobId": 7877,
+		"position": {
+			"x": 3196,
+			"y": 10067,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Hellhound"
+	},
+	{
+		"mobId": 7877,
+		"position": {
+			"x": 3201,
+			"y": 10075,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Hellhound"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3172,
+			"y": 10183,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3173,
+			"y": 10205,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3170,
+			"y": 10195,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3179,
+			"y": 10194,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3179,
+			"y": 10191,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3180,
+			"y": 10184,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3185,
+			"y": 10189,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3188,
+			"y": 10193,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7864,
+		"position": {
+			"x": 3193,
+			"y": 10197,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Ankou"
+	},
+	{
+		"mobId": 7943,
+		"position": {
+			"x": 3201,
+			"y": 10114,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Emblem Trader"
+	},
+	{
+		"mobId": 7866,
+		"position": {
+			"x": 3157,
+			"y": 10117,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "SOUTH",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7867,
+		"position": {
+			"x": 3161,
+			"y": 10119,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7866,
+		"position": {
+			"x": 3163,
+			"y": 10117,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7874,
+		"position": {
+			"x": 3159,
+			"y": 10150,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "SOUTH",
+		"mobName": "Black demon"
+	},
+	{
+		"mobId": 7865,
+		"position": {
+			"x": 3172,
+			"y": 10120,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7878,
+		"position": {
+			"x": 3202,
+			"y": 10164,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "SOUTH",
+		"mobName": "Ice giant"
+	},
+	{
+		"mobId": 7875,
+		"position": {
+			"x": 3166,
+			"y": 10161,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Black demon"
+	},
+	{
+		"mobId": 5007,
+		"position": {
+			"x": 3082,
+			"y": 3493,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Imp"
+	},
+	{
+		"mobId": 7867,
+		"position": {
+			"x": 3171,
+			"y": 10110,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7880,
+		"position": {
+			"x": 3201,
+			"y": 10169,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Ice giant"
+	},
+	{
+		"mobId": 7866,
+		"position": {
+			"x": 3167,
+			"y": 10119,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Lesser demon"
+	},
+	{
+		"mobId": 7880,
+		"position": {
+			"x": 3206,
+			"y": 10157,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Ice giant"
+	},
+	{
+		"mobId": 7879,
+		"position": {
+			"x": 3206,
+			"y": 10168,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "WEST",
+		"mobName": "Ice giant"
+	},
+	{
+		"mobId": 7876,
+		"position": {
+			"x": 3176,
+			"y": 10150,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "SOUTH",
+		"mobName": "Black demon"
+	},
+	{
+		"mobId": 7874,
+		"position": {
+			"x": 3184,
+			"y": 10162,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Black demon"
+	},
+	{
+		"mobId": 7932,
+		"position": {
+			"x": 3232,
+			"y": 10172,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "WEST",
+		"mobName": "Revenant pyrefiend"
+	},
+	{
+		"mobId": 7936,
+		"position": {
+			"x": 3237,
+			"y": 10161,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Revenant demon"
+	},
+	{
+		"mobId": 7937,
+		"position": {
+			"x": 3237,
+			"y": 10169,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Revenant ork"
+	},
+	{
+		"mobId": 7939,
+		"position": {
+			"x": 3246,
+			"y": 10173,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Revenant knight"
+	},
+	{
+		"mobId": 7932,
+		"position": {
+			"x": 3247,
+			"y": 10162,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Revenant pyrefiend"
+	},
+	{
+		"mobId": 7934,
+		"position": {
+			"x": 3247,
+			"y": 10157,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Revenant cyclops"
+	},
+	{
+		"mobId": 7937,
+		"position": {
+			"x": 3248,
+			"y": 10152,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Revenant ork"
+	},
+	{
+		"mobId": 7938,
+		"position": {
+			"x": 3252,
+			"y": 10141,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Revenant dark beast"
+	},
+	{
+		"mobId": 7933,
+		"position": {
+			"x": 3252,
+			"y": 10158,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Revenant hobgoblin"
+	},
+	{
+		"mobId": 7935,
+		"position": {
+			"x": 3252,
+			"y": 10167,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "SOUTH",
+		"mobName": "Revenant hellhound"
+	},
+	{
+		"mobId": 7877,
+		"position": {
+			"x": 3201,
+			"y": 10067,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Hellhound"
+	},
+{
+		"mobId": 7871,
+		"position": {
+			"x": 3212,
+			"y": 10127,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7873,
+		"position": {
+			"x": 3218,
+			"y": 10142,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7872,
+		"position": {
+			"x": 3224,
+			"y": 10127,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7871,
+		"position": {
+			"x": 3218,
+			"y": 10137,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7873,
+		"position": {
+			"x": 3225,
+			"y": 10130,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7873,
+		"position": {
+			"x": 3225,
+			"y": 10138,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "SOUTH",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7868,
+		"position": {
+			"x": 3223,
+			"y": 10068,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7872,
+		"position": {
+			"x": 3236,
+			"y": 10134,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "EAST",
+		"mobName": "Greater demon"
+	},
+	{
+		"mobId": 7877,
+		"position": {
+			"x": 3203,
+			"y": 10070,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "NORTH",
+		"mobName": "Hellhound"
+	},
+	{
+		"mobId": 7869,
+		"position": {
+			"x": 3205,
+			"y": 10091,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "SOUTH",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7870,
+		"position": {
+			"x": 3214,
+			"y": 10098,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7868,
+		"position": {
+			"x": 3222,
+			"y": 10066,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7870,
+		"position": {
+			"x": 3221,
+			"y": 10076,
+			"z": 0
+		},
+		"roamTile": 0,
+		"face": "NORTH",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7868,
+		"position": {
+			"x": 3223,
+			"y": 10092,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "WEST",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7869,
+		"position": {
+			"x": 3228,
+			"y": 10072,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Green dragon"
+	},
+	{
+		"mobId": 7861,
+		"position": {
+			"x": 3237,
+			"y": 10210,
+			"z": 0
+		},
+		"roamTile": 1,
+		"face": "EAST",
+		"mobName": "Black dragon"
+	}
+]

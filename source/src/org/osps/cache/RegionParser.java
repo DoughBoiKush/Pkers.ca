@@ -2,8 +2,12 @@ package org.osps.cache;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.logging.Logger;
 
+import org.apollo.fs.Cache;
+import org.apollo.fs.archive.Archive;
 import org.apollo.util.ByteBufferUtil;
+import org.apollo.util.CompressionUtil;
 import org.osps.clip.Region;
 import org.osps.model.Location;
 import org.osps.world.GameObject;
@@ -13,7 +17,7 @@ public class RegionParser {
 	private static int objectsParsed;
 
 	private static void parse() throws IOException {
-		/*Logger.getAnonymousLogger().info("Parsing regions...");
+		Logger.getAnonymousLogger().info("Parsing regions...");
 
 		Archive versionList = Archive.decode(Cache.fileSystem.getFile(0, 5));
 		ByteBuffer buffer = versionList.getEntry("map_index").getBuffer();
@@ -44,7 +48,7 @@ public class RegionParser {
 
 		}
 		Logger.getAnonymousLogger().info(
-				"Loaded " + objectsParsed + " objects for game regions.");*/
+				"Loaded " + objectsParsed + " objects for game regions.");
 		
 	}
 
