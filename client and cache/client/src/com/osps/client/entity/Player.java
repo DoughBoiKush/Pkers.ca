@@ -34,7 +34,7 @@ public final class Player extends Entity {
 				Model model_3 = new Model(true, Class36.method532(super.anInt1521), false, model_2);
 				model_3.method475(0, -super.anInt1524, 0);
 				model_3.method469();
-				model_3.method470(spotAnim.aAnimation_407.anIntArray353[super.anInt1521]);
+				model_3.method470(spotAnim.aAnimation_407.frameLengths[super.anInt1521]);
 				model_3.anIntArrayArray1658 = null;
 				model_3.anIntArrayArray1657 = null;
 				if(spotAnim.anInt410 != 128 || spotAnim.anInt411 != 128)
@@ -188,10 +188,10 @@ public final class Player extends Entity {
 		{
 			int j = -1;
 			if(super.anim >= 0 && super.anInt1529 == 0)
-				j = Animation.anims[super.anim].anIntArray353[super.anInt1527];
+				j = Animation.anims[super.anim].frameLengths[super.anInt1527];
 			else
 			if(super.anInt1517 >= 0)
-				j = Animation.anims[super.anInt1517].anIntArray353[super.anInt1518];
+				j = Animation.anims[super.anInt1517].frameLengths[super.anInt1518];
 			Model model = desc.method164(-1, j, null);
 			return model;
 		}
@@ -203,9 +203,9 @@ public final class Player extends Entity {
 		if(super.anim >= 0 && super.anInt1529 == 0)
 		{
 			Animation animation = Animation.anims[super.anim];
-			k = animation.anIntArray353[super.anInt1527];
+			k = animation.frameLengths[super.anInt1527];
 			if(super.anInt1517 >= 0 && super.anInt1517 != super.anInt1511)
-				i1 = Animation.anims[super.anInt1517].anIntArray353[super.anInt1518];
+				i1 = Animation.anims[super.anInt1517].frameLengths[super.anInt1518];
 			if(animation.anInt360 >= 0)
 			{
 				j1 = animation.anInt360;
@@ -218,7 +218,7 @@ public final class Player extends Entity {
 			}
 		} else
 		if(super.anInt1517 >= 0)
-			k = Animation.anims[super.anInt1517].anIntArray353[super.anInt1518];
+			k = Animation.anims[super.anInt1517].frameLengths[super.anInt1518];
 		Model model_1 = (Model) mruNodes.insertFromCache(l);
 		if(model_1 == null)
 		{

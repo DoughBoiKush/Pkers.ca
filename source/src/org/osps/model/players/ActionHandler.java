@@ -103,10 +103,6 @@ public class ActionHandler {
 		c.getBM().dig(objectType, new Location3D(obX, obY, c.heightLevel));
 		Obelisks.get().activate(c, objectType);
 
-		if (Config.SERVER_DEBUG == true) {
-			c.sendMessage("<col=255>[SERVER DEBUG] " + " - FirstClickObject: " + objectType);
-		}
-
 		if (c.hungerGames && objectType == 1990) {
 			HungerManager.getSingleton().claimCrate(c, obX, obY);
 		}
@@ -143,6 +139,26 @@ public class ActionHandler {
 		}
 		Location3D location = new Location3D(obX, obY, c.heightLevel);
 		switch (objectType) {
+		case 31558:
+			c.animation(844);
+			c.face(3241, 10236);
+			c.getPA().movePlayer(3126, 3833, 0);
+			break;
+		case 31556:
+			c.animation(844);
+			c.face(3125, 3833);
+			c.getPA().movePlayer(3241, 10234, 0);
+			break;
+		case 31557:
+			c.animation(844);
+			c.face(3194, 10056);
+			c.getPA().movePlayer(3075, 3653, 0);
+			break;
+		case 31555:
+			c.animation(844);
+			c.face(3075, 3654);
+			c.getPA().movePlayer(3196, 10056, 0);
+			break;
 //		case 12355:
 //			if (c.clickTimer > 0)
 //                return;

@@ -4101,6 +4101,7 @@ public class Player extends Entity {
 			return true;
 		}
 		if ((absX >= 3136 && absX <= 3327 && absY >= 3519 && absY <= 3607)
+				|| absX > 2941 && absX < 3392 && absY > 9918 && absY < 10366
 				|| (absX >= 3190 && absX <= 3327 && absY >= 3648 && absY <= 3839)
 				|| (absX >= 3200 && absX <= 3390 && absY >= 3840 && absY <= 3967)
 				|| (absX >= 2992 && absX <= 3007 && absY >= 3912 && absY <= 3967)

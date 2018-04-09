@@ -648,6 +648,7 @@ public class NPC extends Entity {
 			return true;
 		}
 		if ((absX >= 3136 && absX <= 3327 && absY >= 3519 && absY <= 3607) || (absX >= 3190 && absX <= 3327 && absY >= 3648 && absY <= 3839)
+				|| absX > 2941 && absX < 3392 && absY > 9918 && absY < 10366
 				|| (absX >= 3200 && absX <= 3390 && absY >= 3840 && absY <= 3967) || (absX >= 2992 && absX <= 3007 && absY >= 3912 && absY <= 3967)
 				|| (absX >= 2946 && absX <= 2959 && absY >= 3816 && absY <= 3831) || (absX >= 3008 && absX <= 3199 && absY >= 3856 && absY <= 3903)
 				|| (absX >= 2824 && absX <= 2944 && absY >= 5258 && absY <= 5369) || (absX >= 3008 && absX <= 3071 && absY >= 3600 && absY <= 3711)

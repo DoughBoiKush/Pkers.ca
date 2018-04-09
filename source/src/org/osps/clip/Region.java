@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -1158,7 +1159,7 @@ public class Region {
 		}
 	}
 
-	private static Map<Integer, byte[]> loadMapData() {
+	/*private static Map<Integer, byte[]> loadMapData() {
 		Map<Integer, byte[]> entries = new HashMap<>();
 		try {
 
@@ -1171,6 +1172,48 @@ public class Region {
 				int dotIndex = entryName.indexOf('.');
 				int entryId = Integer.parseInt(entryName.substring(0, dotIndex));
 				entries.put(entryId, getBuffer(buff));
+			}
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return entries;
+	}
+	private static Map<Integer, byte[]> loadMapData() {
+		Map<Integer, byte[]> entries = new HashMap<>();
+		try {
+
+			ZipInputStream in = new ZipInputStream(
+					new ByteArrayInputStream(Files.readAllBytes(Paths.get("./Data/cache/maps.zip"))));
+			ZipEntry entry = null;
+			while ((entry = in.getNextEntry()) != null) {
+				byte[] buff =  ByteStreams.toByteArray(in);
+				String entryName = entry.getName();
+				int dotIndex = entryName.indexOf('.');
+				System.out.println(entryName);
+				int entryId = Integer.parseInt(entryName.substring(entryName.indexOf("/") + 1, dotIndex));
+				entries.put(entryId, getBuffer(buff));
+			}
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return entries;
+	}*/
+	private static Map<Integer, byte[]> loadMapData() {
+		Map<Integer, byte[]> entries = new HashMap<>();
+		try {
+
+			ZipInputStream in = new ZipInputStream(
+					new ByteArrayInputStream(Files.readAllBytes(Paths.get("./Data/cache/maps/maps.zip"))));
+			ZipEntry entry = null;
+			while ((entry = in.getNextEntry()) != null) {
+				byte[] buff =  ByteStreams.toByteArray(in);
+				String entryName = entry.getName();
+				int dotIndex = entryName.indexOf('.');
+				//int entryId = Integer.parseInt(entryName.substring(entryName.indexOf("/") + 1, dotIndex));
+				int entryId = Integer.parseInt(entryName.substring(entryName.indexOf("/") + 1));
+				entries.put(entryId, getBufferNonZip(buff));
 			}
 			in.close();
 		} catch (Exception e) {
@@ -1320,6 +1363,28 @@ public class Region {
 		byte[] gzipInputBuffer = new byte[999999];
 		int bufferlength = 0;
 		GZIPInputStream gzip = new GZIPInputStream(new ByteArrayInputStream(buffer));
+		do {
+			if (bufferlength == gzipInputBuffer.length) {
+				System.out.println("Error inflating data.\nGZIP buffer overflow.");
+				break;
+			}
+			int readByte = gzip.read(gzipInputBuffer, bufferlength, gzipInputBuffer.length - bufferlength);
+			if (readByte == -1)
+				break;
+			bufferlength += readByte;
+		} while (true);
+		byte[] inflated = new byte[bufferlength];
+		System.arraycopy(gzipInputBuffer, 0, inflated, 0, bufferlength);
+		buffer = inflated;
+		if (buffer.length < 10)
+			return null;
+		return buffer;
+	}
+	
+	public static byte[] getBufferNonZip(byte[] buffer) throws Exception {
+		byte[] gzipInputBuffer = new byte[99999];
+		int bufferlength = 0;
+		InputStream gzip = new ByteArrayInputStream(buffer);
 		do {
 			if (bufferlength == gzipInputBuffer.length) {
 				System.out.println("Error inflating data.\nGZIP buffer overflow.");

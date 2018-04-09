@@ -278,7 +278,7 @@ public class PetHandler {
 		Pets pets = forNpc(npcId);
 		if (pets != null) {
 			if (NPCHandler.npcs[c.rememberNpcIndex].spawnedBy == c.index) {
-				switch (npcId) {
+				/*switch (npcId) {
 				case 4441:
 					c.getDH().sendDialogues(14000, 3200);
 					break;
@@ -300,7 +300,8 @@ public class PetHandler {
 				case 4435:
 					c.getDH().sendDialogues(14017, 4435);
 					break;
-				}
+				}*/
+				c.getDH().sendDialogues(200001, npcId);
 			} else {
 				c.sendMessage("This is not your pet.");
 			}

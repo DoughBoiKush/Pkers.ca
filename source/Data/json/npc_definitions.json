@@ -45204,7 +45204,7 @@
     "attackAnim": 0,
     "defenceAnim": 0,
     "deathAnim": 0,
-    "attackBonus": 3000,
+    "attackBonus": 305,
     "defenceMelee": 210,
     "defenceRange": 70,
     "defenceMage": 70

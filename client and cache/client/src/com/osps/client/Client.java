@@ -7960,7 +7960,7 @@ public class Client extends RSApplet {
 					}
 
 				model.method469();
-				model.method470(Animation.anims[myPlayer.anInt1511].anIntArray353[0]);
+				model.method470(Animation.anims[myPlayer.anInt1511].frameLengths[0]);
 				model.method479(64, 1300, 0, -570, 0, true);
 				class9.anInt233 = 5;
 				class9.mediaID = 0;
@@ -7986,7 +7986,7 @@ public class Client extends RSApplet {
 					}
 				int staticFrame = myPlayer.anInt1511;
 				characterDisplay.method469();
-				characterDisplay.method470(Animation.anims[staticFrame].anIntArray353[0]);
+				characterDisplay.method470(Animation.anims[staticFrame].frameLengths[0]);
 				// characterDisplay.method479(64, 850, -30, -50, -30, true);
 				rsInterface.anInt233 = 5;
 				rsInterface.mediaID = 0;
@@ -10745,11 +10745,11 @@ public class Client extends RSApplet {
 				entity.anInt1519++;
 				if (animation == null)
 					return;
-				if (entity.anInt1518 < animation.anInt352 && entity.anInt1519 > animation.method258(entity.anInt1518)) {
+				if (entity.anInt1518 < animation.count && entity.anInt1519 > animation.method258(entity.anInt1518)) {
 					entity.anInt1519 = 1;
 					entity.anInt1518++;
 				}
-				if (entity.anInt1518 >= animation.anInt352) {
+				if (entity.anInt1518 >= animation.count) {
 					entity.anInt1519 = 1;
 					entity.anInt1518 = 0;
 				}
@@ -10758,12 +10758,12 @@ public class Client extends RSApplet {
 				if (entity.anInt1521 < 0)
 					entity.anInt1521 = 0;
 				Animation animation_1 = SpotAnim.cache[entity.anInt1520].aAnimation_407;
-				for (entity.anInt1522++; entity.anInt1521 < animation_1.anInt352
+				for (entity.anInt1522++; entity.anInt1521 < animation_1.count
 						&& entity.anInt1522 > animation_1.method258(entity.anInt1521); entity.anInt1521++)
 					entity.anInt1522 -= animation_1.method258(entity.anInt1521);
 
-				if (entity.anInt1521 >= animation_1.anInt352
-						&& (entity.anInt1521 < 0 || entity.anInt1521 >= animation_1.anInt352))
+				if (entity.anInt1521 >= animation_1.count
+						&& (entity.anInt1521 < 0 || entity.anInt1521 >= animation_1.count))
 					entity.anInt1520 = -1;
 			}
 			if (entity.anim != -1 && entity.anInt1529 <= 1) {
@@ -10776,16 +10776,16 @@ public class Client extends RSApplet {
 			}
 			if (entity.anim != -1 && entity.anInt1529 == 0) {
 				Animation animation_3 = Animation.anims[entity.anim];
-				for (entity.anInt1528++; entity.anInt1527 < animation_3.anInt352
+				for (entity.anInt1528++; entity.anInt1527 < animation_3.count
 						&& entity.anInt1528 > animation_3.method258(entity.anInt1527); entity.anInt1527++)
 					entity.anInt1528 -= animation_3.method258(entity.anInt1527);
 
-				if (entity.anInt1527 >= animation_3.anInt352) {
+				if (entity.anInt1527 >= animation_3.count) {
 					entity.anInt1527 -= animation_3.anInt356;
 					entity.anInt1530++;
 					if (entity.anInt1530 >= animation_3.anInt362)
 						entity.anim = -1;
-					if (entity.anInt1527 < 0 || entity.anInt1527 >= animation_3.anInt352)
+					if (entity.anInt1527 < 0 || entity.anInt1527 >= animation_3.count)
 						entity.anim = -1;
 				}
 				entity.aBoolean1541 = animation_3.aBoolean358;
@@ -11458,7 +11458,7 @@ public class Client extends RSApplet {
 					} else {
 						Animation animation = Animation.anims[i7];
 						model = class9_1.method209(animation.anIntArray354[class9_1.anInt246],
-								animation.anIntArray353[class9_1.anInt246], flag2);
+								animation.frameLengths[class9_1.anInt246], flag2);
 					}
 					if (model != null)
 						model.method482(class9_1.modelRotation2, 0, class9_1.modelRotation1, 0, i5, l5);
@@ -12509,9 +12509,9 @@ public class Client extends RSApplet {
 					for (class9_1.anInt208 += i; class9_1.anInt208 > animation.method258(class9_1.anInt246);) {
 						class9_1.anInt208 -= animation.method258(class9_1.anInt246) + 1;
 						class9_1.anInt246++;
-						if (class9_1.anInt246 >= animation.anInt352) {
+						if (class9_1.anInt246 >= animation.count) {
 							class9_1.anInt246 -= animation.anInt356;
-							if (class9_1.anInt246 < 0 || class9_1.anInt246 >= animation.anInt352)
+							if (class9_1.anInt246 < 0 || class9_1.anInt246 >= animation.count)
 								class9_1.anInt246 = 0;
 						}
 						flag1 = true;

@@ -56,17 +56,17 @@ public final class Animable_Sub5 extends Animable {
 			while (k > aAnimation_1607.method258(anInt1599)) {
 				k -= aAnimation_1607.method258(anInt1599);
 				anInt1599++;
-				if (anInt1599 < aAnimation_1607.anInt352)
+				if (anInt1599 < aAnimation_1607.count)
 					continue;
 				anInt1599 -= aAnimation_1607.anInt356;
-				if (anInt1599 >= 0 && anInt1599 < aAnimation_1607.anInt352)
+				if (anInt1599 >= 0 && anInt1599 < aAnimation_1607.count)
 					continue;
 				aAnimation_1607 = null;
 				break;
 			}
 			anInt1608 = Client.loopCycle - k;
 			if (aAnimation_1607 != null) {
-				j = aAnimation_1607.anIntArray353[anInt1599];
+				j = aAnimation_1607.frameLengths[anInt1599];
 			}
 		}
 		ObjectDef class46;
@@ -94,7 +94,7 @@ public final class Animable_Sub5 extends Animable {
 			anInt1599 = 0;
 			anInt1608 = Client.loopCycle;
 			if (flag && aAnimation_1607.anInt356 != -1) {
-				anInt1599 = (int) (Math.random() * aAnimation_1607.anInt352);
+				anInt1599 = (int) (Math.random() * aAnimation_1607.count);
 				anInt1608 -= (int) (Math.random() * aAnimation_1607.method258(anInt1599));
 			}
 		}

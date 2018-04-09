@@ -482,6 +482,23 @@ public class NPCHandler {
 			return 0;
 		}
 	}
+	
+	public boolean isRevenant(int i) {
+		switch(i) {
+		case 7940:
+		case 7936:
+		case 7881:
+		case 7932:
+		case 7937:
+		case 7939:
+		case 7934:
+		case 7938:
+		case 7933:
+		case 7935:
+			return true;
+		}
+		return false;
+	}
 
 	public boolean isAggressive(int i) {
 		if (Boundary.isIn(npcs[i], Boundary.GODWARS_BOSSROOMS)) {
@@ -493,6 +510,8 @@ public class NPCHandler {
 		if (Boundary.isIn(npcs[i], NPC.BOUNDARY_CORP)) {
 			return true;
 		}
+		if (npcs[i].inWild()) 
+			return true;
 		switch (npcs[i].npcType) {
 		case 5535:
 		case 5867:
@@ -1849,8 +1868,8 @@ public class NPCHandler {
 						npcs[i].underAttackBy = 0;
 						npcs[i].underAttack = false;
 					}
-
-					if ((npcs[i].killerId > 0 || npcs[i].underAttack) && !npcs[i].walkingHome
+					//if ((npcs[i].killerId > 0 || npcs[i].underAttack) && !npcs[i].walkingHome
+					if (npcs[i].killerId > 0 && !npcs[i].walkingHome
 							&& retaliates(npcs[i].npcType)) {
 						if (!npcs[i].isDead) {
 							int p = npcs[i].killerId;
@@ -3582,28 +3601,27 @@ public class NPCHandler {
 				&& (npcs[i].npcType >= 2042 && npcs[i].npcType <= 2044 || npcs[i].npcType == 6720)) {
 			return;
 		}
-		if (!followPlayer(i)) {
+		if (!followPlayer(i)) { 
+			System.out.println("got here");
 			npcs[i].face(PlayerHandler.players[playerId]);
 			return;
 		}
 		if (npcs[i].npcType >= 1739 && npcs[i].npcType <= 1742 || npcs[i].npcType == 1747) {
 			return;
 		}
+		npcs[i].randomWalk = false;
 		int playerX = PlayerHandler.players[playerId].absX;
 		int playerY = PlayerHandler.players[playerId].absY;
-		npcs[i].randomWalk = false;
 		double distance = distanceRequired(i);
 		if (npcs[i].getSize() > 1)
 			distance += 0.5;
 		if (npcs[i].getDistance(playerX, playerY) <= distance) {
 			return;
-		}
-
+		} 
 		if ((npcs[i].spawnedBy > 0) || ((npcs[i].absX < npcs[i].makeX + Config.NPC_FOLLOW_DISTANCE)
 				&& (npcs[i].absX > npcs[i].makeX - Config.NPC_FOLLOW_DISTANCE)
 				&& (npcs[i].absY < npcs[i].makeY + Config.NPC_FOLLOW_DISTANCE)
 				&& (npcs[i].absY > npcs[i].makeY - Config.NPC_FOLLOW_DISTANCE))) {
-
 			if (npcs[i].heightLevel == PlayerHandler.players[playerId].heightLevel) {
 				if (PlayerHandler.players[playerId] != null && npcs[i] != null) {
 					NPCDumbPathFinder.follow(npcs[i], player);
@@ -4926,7 +4944,7 @@ public class NPCHandler {
 		case 2044:
 			return 41;
 		case 2054:
-			return 50;
+			return 25;
 		case 320:
 			return 20;
 		case 6609:
