@@ -3566,9 +3566,9 @@ private static void tradeUIAddon(TextDrawingArea[] tda) {
 		for(int i = 0; i < 5; i++) {
 			addInterface(23027 + i);
 			if(i == 0)
-				addConfigButton(24031, 23000, 1, 0, "BankTab/TAB", 48, 38, new String[] {"Open"}, 1, 700);
+				addConfigButton(27500, 23000, 1, 0, "BankTab/TAB", 48, 38, new String[] {"Open"}, 1, 700);
 			else
-				addConfigButton(24031 + i, 23000, 4, 2, "BankTab/TAB", 48, 38, new String[] {"Open"}, 1, 700 + i);
+				addConfigButton(27500 + i, 23000, 4, 2, "BankTab/TAB", 48, 38, new String[] {"Open"}, 1, 700 + i);
 			addToItemGroup(24040 + i, 1, 1, 0, 0, false, "", "", "");
 		}
 		
@@ -3607,7 +3607,7 @@ private static void tradeUIAddon(TextDrawingArea[] tda) {
 			setBounds(23027 + i, 0, 0, 26 + i, tab);
 			RSInterface rsi = interfaceCache[23027 + i];
 			setChildren(2, rsi);
-			setBounds(24031 + i, x, 54, 0, rsi);
+			setBounds(27500 + i, x, 54, 0, rsi);
 			setBounds(24040 + i, x + 5, 39, 1, rsi);
 			x += 41;
 		}

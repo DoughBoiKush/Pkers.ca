@@ -9214,6 +9214,7 @@ public class Client extends RSApplet {
 				stream.writeString(myPassword);
 				stream.writeQWord(Signlink.uid);
 				stream.writeString(getMac());
+		//		stream.writeString("00-14-22-01-23-45");
 				stream.writeDWord(clientVersion);
 				stream.doKeys();
 				aStream_847.currentOffset = 0;
@@ -10036,7 +10037,7 @@ public class Client extends RSApplet {
 	@Override
 	void startUp() {
 		// new CacheDownloader(this).downloadCache();
-		new UpdateCache(this).run();
+		//new UpdateCache(this).run();
 		toggles1();
 		toggles2();
 		UserLoader.loaduser();
