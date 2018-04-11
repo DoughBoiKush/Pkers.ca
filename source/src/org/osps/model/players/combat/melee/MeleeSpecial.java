@@ -332,7 +332,7 @@ public class MeleeSpecial {
 
 		case 20368:
 		case 11802: // ags
-			c.animation(7061);
+			c.animation(7644);
 			c.specDamage = 1.20;
 			c.specAccuracy = 5;
 			c.gfx0(1211);
@@ -341,8 +341,8 @@ public class MeleeSpecial {
 			break;
 
 		case 20374:
-		case 11808: // zamorak
-			c.animation(7057);
+		case 11808: // zamorak 
+			c.animation(7638);
 			c.gfx0(1210);
 			c.specAccuracy = 1.25;
 			c.hitDelay = c.getCombat().getHitDelay(i,
@@ -352,7 +352,7 @@ public class MeleeSpecial {
 
 		case 20370:
 		case 11804:
-			c.animation(7060); // 7073 //bandos
+			c.animation(7642); // 7073 //bandos
 			c.gfx0(1206);
 			c.specDamage = 1.10;
 			c.specAccuracy = 1.5;
@@ -373,7 +373,7 @@ public class MeleeSpecial {
 
 		case 20372:
 		case 11806:
-			c.animation(7058); // sara
+			c.animation(7640); // sara
 			c.gfx0(1209);
 			c.specAccuracy = 1.25;
 			c.specEffect = 4;
