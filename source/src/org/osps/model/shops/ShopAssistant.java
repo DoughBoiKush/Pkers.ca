@@ -796,6 +796,8 @@ public class ShopAssistant {
 			return 30_000_000;
 		case 19481:
 			return 25_000_000;
+		case 19478:
+			return 20_000_000;
 		case 12924:
 			return 25_000_000;
 		case 12024:

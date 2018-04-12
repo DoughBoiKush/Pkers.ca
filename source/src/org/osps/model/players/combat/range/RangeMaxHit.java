@@ -36,6 +36,9 @@ public class RangeMaxHit extends RangeData {
 		if(c.playerEquipment[3] == 19481) {
 			rangeLevel += Player.getLevelForXP(c.playerXP[c.playerRanged]) * 2.50;
 		}
+		if(c.playerEquipment[3] == 19478) {
+			rangeLevel += Player.getLevelForXP(c.playerXP[c.playerRanged]) * 2;
+		}
 		if (c.prayerActive[3]) {
 			rangeLevel *= 1.05;
 		} else if (c.prayerActive[11]) {
@@ -81,6 +84,9 @@ public class RangeMaxHit extends RangeData {
 		}
 		if(c.playerEquipment[3] == 19481) {
 			b = 2.30;
+		}
+		if(c.playerEquipment[3] == 19478) {
+			b = 2;
 		}
 		if(c.playerEquipment[3] == 20997) {
 			b = 2.30;

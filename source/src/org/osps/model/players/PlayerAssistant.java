@@ -179,48 +179,48 @@ public class PlayerAssistant {
 	}
 
 	public boolean wearingDharok(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4718 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4718 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4716 && c.playerEquipment[c.playerChest] == 4720
 				&& c.playerEquipment[c.playerLegs] == 4722);
 	}
 
 	public boolean wearingVerac(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4755 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4755 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4753 && c.playerEquipment[c.playerChest] == 4757
 				&& c.playerEquipment[c.playerLegs] == 4759);
 	}
 
 	public boolean wearingAhrim(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4710 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4710 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4708 && c.playerEquipment[c.playerChest] == 4712
 				&& c.playerEquipment[c.playerLegs] == 4714);
 	}
 
 	public boolean wearingTorag(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4747 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4747 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4745 && c.playerEquipment[c.playerChest] == 4749
 				&& c.playerEquipment[c.playerLegs] == 4751);
 	}
 
 	public boolean wearingGuthan(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4726 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4726 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4724 && c.playerEquipment[c.playerChest] == 4728
 				&& c.playerEquipment[c.playerLegs] == 4730);
 	}
 
 	public boolean wearingKaril(Player c) {
-		return (c.playerEquipment[Player.playerWeapon] == 4734 && c.playerEquipment[c.playerAmulet] == 12851
+		return (c.playerEquipment[player.playerWeapon] == 4734 && c.playerEquipment[c.playerAmulet] == 12851
 				&& c.playerEquipment[c.playerHat] == 4732 && c.playerEquipment[c.playerChest] == 4736
 				&& c.playerEquipment[c.playerLegs] == 4738);
 	}
 
 	public boolean corpSpear() {
-		return (player.playerEquipment[Player.playerWeapon] == 11824
-				|| player.playerEquipment[Player.playerWeapon] == 11889);
+		return (player.playerEquipment[player.playerWeapon] == 11824
+				|| player.playerEquipment[player.playerWeapon] == 11889);
 	}
 
 	public boolean Keris() {
-		return (player.playerEquipment[Player.playerWeapon] == 10581);
+		return (player.playerEquipment[player.playerWeapon] == 10581);
 	}
 
 	public void destroyItem(int itemId) {
@@ -810,8 +810,8 @@ public class PlayerAssistant {
 		player.spellId = 0;
 		player.autocasting = false;
 		player.getPA().sendFrame36(108, 0);
-		player.getItems().sendWeapon(player.playerEquipment[Player.playerWeapon],
-		player.getItems().getItemName(player.playerEquipment[Player.playerWeapon])); 
+		player.getItems().sendWeapon(player.playerEquipment[player.playerWeapon],
+		player.getItems().getItemName(player.playerEquipment[player.playerWeapon])); 
 	}
 
 	public int getItemSlot(int itemID) {
@@ -2214,7 +2214,7 @@ public class PlayerAssistant {
 						killer.specAmount = 10.0;
 						killer.getItems().updateSpecialBar();
 						killer.sendMessage("Your special attack has been restored.");
-						killer.getItems().addSpecialBar(killer.playerEquipment[Player.playerWeapon]);
+						killer.getItems().addSpecialBar(killer.playerEquipment[player.playerWeapon]);
 						player.killStreak -= player.killStreak;
 					/*	killer.getKillstreak().increase(Killstreak.Type.ROGUE);
 						killer.getBH().setCurrentRogueKills(killer.getBH().getCurrentRogueKills() + 1);
@@ -2262,7 +2262,7 @@ public class PlayerAssistant {
 		}
 		PlayerSave.saveGame(player);
 		player.specAmount = 10;
-		player.getItems().addSpecialBar(player.playerEquipment[Player.playerWeapon]);
+		player.getItems().addSpecialBar(player.playerEquipment[player.playerWeapon]);
 		player.lastVeng = 0;
 		player.animation(2304);
 		player.vengOn = false;
@@ -2360,7 +2360,7 @@ public class PlayerAssistant {
 					}
 				}
 				if (player.getItems().isWearingItem(12904)
-						&& player.getItems().getWornItemSlot(12904) == Player.playerWeapon
+						&& player.getItems().getWornItemSlot(12904) == player.playerWeapon
 						|| player.getItems().playerHasItem(12904)) {
 					if (player.staffOfDeadCharge > 0) {
 						Server.itemHandler.createGroundItem(killer == null ? player : killer, 12934, player.getX(),
@@ -2369,8 +2369,8 @@ public class PlayerAssistant {
 						Server.itemHandler.createGroundItem(killer == null ? player : killer, 12904, player.getX(),
 								player.getY(), player.heightLevel, 1, killer == null ? player.index : killer.index);
 						if (player.getItems().isWearingItem(12904)
-								&& player.getItems().getWornItemSlot(12904) == Player.playerWeapon) {
-							player.getItems().wearItem(-1, 0, Player.playerWeapon);
+								&& player.getItems().getWornItemSlot(12904) == player.playerWeapon) {
+							player.getItems().wearItem(-1, 0, player.playerWeapon);
 						} else {
 							player.getItems().deleteItem2(12904, 1);
 						}
@@ -2380,7 +2380,7 @@ public class PlayerAssistant {
 					}
 				}
 				if (player.getItems().isWearingItem(12926)
-						&& player.getItems().getWornItemSlot(12926) == Player.playerWeapon
+						&& player.getItems().getWornItemSlot(12926) == player.playerWeapon
 						|| player.getItems().playerHasItem(12926)) {
 					if (player.getToxicBlowpipeAmmo() > 0 && player.getToxicBlowpipeAmmoAmount() > 0
 							&& player.getToxicBlowpipeCharge() > 0) {
@@ -2393,8 +2393,8 @@ public class PlayerAssistant {
 								player.getToxicBlowpipeAmmo(), player.getX(), player.getY(), player.heightLevel,
 								player.getToxicBlowpipeAmmoAmount(), killer == null ? player.index : killer.index);
 						if (player.getItems().isWearingItem(12926)
-								&& player.getItems().getWornItemSlot(12926) == Player.playerWeapon) {
-							player.getItems().wearItem(-1, 0, Player.playerWeapon);
+								&& player.getItems().getWornItemSlot(12926) == player.playerWeapon) {
+							player.getItems().wearItem(-1, 0, player.playerWeapon);
 						} else {
 							player.getItems().deleteItem2(12926, 1);
 						}
@@ -3231,13 +3231,13 @@ public class PlayerAssistant {
 	public boolean fullVeracs() {
 		return player.playerEquipment[player.playerHat] == 4753 && player.playerEquipment[player.playerChest] == 4757
 				&& player.playerEquipment[player.playerLegs] == 4759
-				&& player.playerEquipment[Player.playerWeapon] == 4755;
+				&& player.playerEquipment[player.playerWeapon] == 4755;
 	}
 
 	public boolean fullGuthans() {
 		return player.playerEquipment[player.playerHat] == 4724 && player.playerEquipment[player.playerChest] == 4728
 				&& player.playerEquipment[player.playerLegs] == 4730
-				&& player.playerEquipment[Player.playerWeapon] == 4726;
+				&& player.playerEquipment[player.playerWeapon] == 4726;
 	}
 
 	/**
@@ -3245,7 +3245,7 @@ public class PlayerAssistant {
 	 **/
 	public void resetAnimation() {
 		player.getCombat().getPlayerAnimIndex(
-				player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]).toLowerCase());
+				player.getItems().getItemName(player.playerEquipment[player.playerWeapon]).toLowerCase());
 		player.animation(player.playerStandIndex);
 		requestUpdates();
 	}

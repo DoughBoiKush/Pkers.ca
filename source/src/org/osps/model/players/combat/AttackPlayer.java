@@ -97,19 +97,19 @@ public class AttackPlayer {
 				guthansEffect = true;
 			}
 		}
-		if (c.playerEquipment[Player.playerWeapon] == 12926) {
+		if (c.playerEquipment[c.playerWeapon] == 12926) {
 			c.bonusAttack += damage / 3;
 			if (o.isSusceptibleToPoison() && Misc.random(4) == 0) {
 				o.setPoisonDamage((byte) 6);
 			}
 		}
-		if (c.playerEquipment[Player.playerWeapon] == 5698) {
+		if (c.playerEquipment[c.playerWeapon] == 5698) {
 			c.bonusAttack += damage / 3;
 			if (o.isSusceptibleToPoison() && Misc.random(4) == 0) {
 				o.setPoisonDamage((byte) 6);
 			}
 		}
-		if (c.playerEquipment[Player.playerWeapon] == 13265 || c.playerEquipment[Player.playerWeapon] == 13271) {
+		if (c.playerEquipment[c.playerWeapon] == 13265 || c.playerEquipment[c.playerWeapon] == 13271) {
 			c.bonusAttack += damage / 3;
 			if (o.isSusceptibleToPoison() && Misc.random(4) == 0) {
 				o.setPoisonDamage((byte) 6);
@@ -335,7 +335,7 @@ public class AttackPlayer {
 				}
 				if (damage > 0 && Misc.random(5) == 1
 						&& c.lastArrowUsed == 9244) {
-					if(c.playerEquipment[Player.playerWeapon] == 11785) 
+					if(c.playerEquipment[c.playerWeapon] == 11785) 
 						damage *= 1.5;
 					else
 						damage *= 1.45;
@@ -648,7 +648,7 @@ public class AttackPlayer {
 				hitmark4 = damage4 > 0 ? Hitmark.HIT : Hitmark.MISS;
 				addCombatXP(attacker, CombatType.RANGE, damage + (damage2 > 0 ? damage2 : 0));
 			} else if (attacker.projectileStage > 0) {
-				if ((attacker.hasFullVoidMage() || attacker.hasFullEliteVoidMage()) && attacker.playerEquipment[Player.playerWeapon] == 8841) {
+				if ((attacker.hasFullVoidMage() || attacker.hasFullEliteVoidMage()) && attacker.playerEquipment[attacker.playerWeapon] == 8841) {
 					damage = Misc.random(attacker.getCombat().magicMaxHit() + 13);
 				} else {
 					damage = Misc.random(attacker.getCombat().magicMaxHit());
@@ -687,8 +687,8 @@ public class AttackPlayer {
 				attacker.getPA().refreshSkill(6);
 			}
 		}
-		attacker.attackTimer = attacker.getCombat().getAttackDelay(attacker.getItems().getItemName(attacker.playerEquipment[Player.playerWeapon]).toLowerCase());;
-		if (attacker.playerEquipment[Player.playerWeapon] == 1249 && attacker.usingSpecial) {
+		attacker.attackTimer = attacker.getCombat().getAttackDelay(attacker.getItems().getItemName(attacker.playerEquipment[attacker.playerWeapon]).toLowerCase());;
+		if (attacker.playerEquipment[attacker.playerWeapon] == 1249 && attacker.usingSpecial) {
 			return;
 		}
 		
@@ -751,7 +751,7 @@ public class AttackPlayer {
 			c.getCombat().resetPlayerAttack();
 			return;
 		}
-		if (c.playerEquipment[Player.playerWeapon] == 4734 && c.playerEquipment[c.playerArrows] > 0 && c.playerEquipment[c.playerArrows] != 4740) {
+		if (c.playerEquipment[c.playerWeapon] == 4734 && c.playerEquipment[c.playerArrows] > 0 && c.playerEquipment[c.playerArrows] != 4740) {
 			c.sendMessage("You must use bolt racks with the karil's crossbow.");
 			c.getCombat().resetPlayerAttack();
 			return;
@@ -838,22 +838,22 @@ public class AttackPlayer {
 					c.getCombat().resetPlayerAttack();
 					return;
 				}*/
-				if (c.playerEquipment[Player.playerWeapon] == 9703) {
+				if (c.playerEquipment[c.playerWeapon] == 9703) {
 					c.sendMessage("You cannot attack players with training sword.");
 					return;
 				}
-				if (c.playerEquipment[Player.playerWeapon] == 4212 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4213 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4214 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4215 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4216 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4217 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4218 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4219 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4220 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4221 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4222 && c.playerEquipment[c.playerArrows] != 892
-						|| c.playerEquipment[Player.playerWeapon] == 4223 && c.playerEquipment[c.playerArrows] != 892) {
+				if (c.playerEquipment[c.playerWeapon] == 4212 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4213 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4214 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4215 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4216 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4217 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4218 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4219 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4220 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4221 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4222 && c.playerEquipment[c.playerArrows] != 892
+						|| c.playerEquipment[c.playerWeapon] == 4223 && c.playerEquipment[c.playerArrows] != 892) {
 					c.sendMessage("You must use Rune Arrows with this bow.");
 					c.getCombat().resetPlayerAttack();
 					return;
@@ -890,8 +890,9 @@ public class AttackPlayer {
 					c.usingBow = false;
 					c.usingArrows = false;
 					c.usingOtherRangeWeapons = false;
-					c.usingCross = c.playerEquipment[Player.playerWeapon] == 9185 || c.playerEquipment[Player.playerWeapon] == 11785
-							|| c.playerEquipment[Player.playerWeapon] == 8880 || c.playerEquipment[Player.playerWeapon] == 19481;
+					c.usingCross = c.playerEquipment[c.playerWeapon] == 9185 || c.playerEquipment[c.playerWeapon] == 11785
+							|| c.playerEquipment[c.playerWeapon] == 8880 || c.playerEquipment[c.playerWeapon] == 19481
+									 || c.playerEquipment[c.playerWeapon] == 19478;
 					c.projectileStage = 0;
 
 					if (c.absX == PlayerHandler.players[i].absX && c.absY == PlayerHandler.players[i].absY) {
@@ -919,7 +920,7 @@ public class AttackPlayer {
 //					}
 					if (!c.usingMagic) {
 						for (int bowId : c.BOWS) {
-							if (c.playerEquipment[Player.playerWeapon] == bowId && c.switchDelay.elapsed(2)) {
+							if (c.playerEquipment[c.playerWeapon] == bowId && c.switchDelay.elapsed(2)) {
 								c.usingBow = true;
 								for (int arrowId : c.ARROWS) {
 									if (c.playerEquipment[c.playerArrows] == arrowId) {
@@ -930,7 +931,7 @@ public class AttackPlayer {
 						}
 
 						for (int otherRangeId : c.OTHER_RANGE_WEAPONS) {
-							if (c.playerEquipment[Player.playerWeapon] == otherRangeId) {
+							if (c.playerEquipment[c.playerWeapon] == otherRangeId) {
 								c.usingOtherRangeWeapons = true;
 							}
 						}
@@ -948,7 +949,7 @@ public class AttackPlayer {
 						c.spellId = c.autocastId;
 						c.usingMagic = true;
 						if (c.MAGIC_SPELLS[c.spellId][0] >= 12861 && c.MAGIC_SPELLS[c.spellId][0] <= 13023) {
-							if (c.playerEquipment[Player.playerWeapon] != 4675 && c.playerEquipment[Player.playerWeapon] != 6914 && c.playerEquipment[Player.playerWeapon] != 12904 && c.playerEquipment[Player.playerWeapon] != 13867 && c.playerEquipment[Player.playerWeapon] != 4710) {
+							if (c.playerEquipment[c.playerWeapon] != 4675 && c.playerEquipment[c.playerWeapon] != 6914 && c.playerEquipment[c.playerWeapon] != 12904 && c.playerEquipment[c.playerWeapon] != 13867 && c.playerEquipment[c.playerWeapon] != 4710) {
 								//c.sendMessage("You cannot autocast with your current weapon.");
 								//c.getCombat().resetPlayerAttack();
 								c.getPA().resetAutocast();
@@ -995,7 +996,7 @@ public class AttackPlayer {
 								return;
 							}
 							if (session.getRules().contains(Rule.WHIP_AND_DDS)) {
-								String weaponName = c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase();
+								String weaponName = c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase();
 								if (!weaponName.contains("whip") && !weaponName.contains("dragon dagger") || weaponName.contains("tentacle")) {
 									c.sendMessage("<col=CC0000>You can only use a whip and dragon dagger in this duel.");
 									c.getCombat().resetPlayerAttack();
@@ -1066,14 +1067,14 @@ public class AttackPlayer {
 								}
 							}
 							if (session.getRules().contains(Rule.NO_WEAPON)) {
-								if (c.playerEquipment[Player.playerWeapon] > -1) {
+								if (c.playerEquipment[c.playerWeapon] > -1) {
 									c.sendMessage("<col=CC0000>Wearing weapons has been disabled for this duel.");
 									c.getCombat().resetPlayerAttack();
 									return;
 								}
 							}
 							if (session.getRules().contains(Rule.NO_SHIELD)) {
-								if (c.playerEquipment[c.playerShield] > -1 || c.getItems().is2handed(c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase(), c.playerEquipment[Player.playerWeapon])) {
+								if (c.playerEquipment[c.playerShield] > -1 || c.getItems().is2handed(c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase(), c.playerEquipment[c.playerWeapon])) {
 									c.sendMessage("<col=CC0000>Wearing shields has been disabled for this duel.");
 									c.getCombat().resetPlayerAttack();
 									return;
@@ -1107,31 +1108,31 @@ public class AttackPlayer {
 					}
 					
 					if (!c.usingCross && !c.usingArrows && c.usingBow
-							&& (c.playerEquipment[Player.playerWeapon] < 4212 || c.playerEquipment[Player.playerWeapon] > 4223) && !c.usingMagic) {
+							&& (c.playerEquipment[c.playerWeapon] < 4212 || c.playerEquipment[c.playerWeapon] > 4223) && !c.usingMagic) {
 						c.sendMessage("You have run out of arrows!");
 						c.stopMovement();
 						c.getCombat().resetPlayerAttack();
 						return;
 					}
 					if (c.getCombat().correctBowAndArrows() < c.playerEquipment[c.playerArrows] && Config.CORRECT_ARROWS && c.usingBow
-							&& !c.getCombat().usingCrystalBow() && c.playerEquipment[Player.playerWeapon] != 9185 && c.playerEquipment[Player.playerWeapon] != 19481 && c.playerEquipment[Player.playerWeapon] != 8880
-							&& c.playerEquipment[Player.playerWeapon] != 11785 && !c.usingMagic && !c.getItems().isWearingItem(12926)) {
+							&& !c.getCombat().usingCrystalBow() && c.playerEquipment[c.playerWeapon] != 9185 && c.playerEquipment[c.playerWeapon] != 19481 && c.playerEquipment[c.playerWeapon] != 8880
+							&& c.playerEquipment[c.playerWeapon] != 11785 && c.playerEquipment[c.playerWeapon] != 19478 && !c.usingMagic && !c.getItems().isWearingItem(12926)) {
 						c.sendMessage("You can't use " + c.getItems().getItemName(c.playerEquipment[c.playerArrows]).toLowerCase() + "'s with a "
-								+ c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase() + ".");
+								+ c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase() + ".");
 						c.stopMovement();
 						c.getCombat().resetPlayerAttack();
 						return;
 					}
 					
-					if (c.playerEquipment[Player.playerWeapon] == 9185 && !c.getCombat().properBolts() && !c.usingMagic
-							|| (c.playerEquipment[Player.playerWeapon] == 11785 && !c.getCombat().properBolts() && !c.usingMagic)
-							|| (c.playerEquipment[Player.playerWeapon] == 8880 && !c.getCombat().properBolts() && !c.usingMagic)) {
+					if (c.playerEquipment[c.playerWeapon] == 9185 && !c.getCombat().properBolts() && !c.usingMagic
+							|| (c.playerEquipment[c.playerWeapon] == 11785 && !c.getCombat().properBolts() && !c.usingMagic)
+							|| (c.playerEquipment[c.playerWeapon] == 8880 && !c.getCombat().properBolts() && !c.usingMagic)) {
 						c.sendMessage("You must use bolts with a crossbow.");
 						c.stopMovement();
 						c.getCombat().resetPlayerAttack();
 						return;
 					}
-					if (c.playerEquipment[Player.playerWeapon] == 19481 && !c.getCombat().usingJavelins()) {
+					if ((c.playerEquipment[c.playerWeapon] == 19481 || c.playerEquipment[c.playerWeapon] == 19478) && !c.getCombat().usingJavelins()) {
 						c.sendMessage("You must use javelins with a ballista.");
 						c.stopMovement();
 						c.getCombat().resetPlayerAttack();
@@ -1172,7 +1173,7 @@ public class AttackPlayer {
 									c.getCombat().resetPlayerAttack();
 									return;
 								}
-								if (c.playerEquipment[Player.playerWeapon] == 1249) {
+								if (c.playerEquipment[c.playerWeapon] == 1249) {
 									c.sendMessage("You cannot use this special attack whilst in the duel arena.");
 									c.usingSpecial = false;
 									c.getItems().updateSpecialBar();
@@ -1181,9 +1182,9 @@ public class AttackPlayer {
 								}
 							}
 						}
-						if (c.getCombat().checkSpecAmount(c.playerEquipment[Player.playerWeapon])) {
+						if (c.getCombat().checkSpecAmount(c.playerEquipment[c.playerWeapon])) {
 							c.lastArrowUsed = c.playerEquipment[c.playerArrows];
-							c.getCombat().activateSpecial(c.playerEquipment[Player.playerWeapon], i);
+							c.getCombat().activateSpecial(c.playerEquipment[c.playerWeapon], i);
 							c.followId = c.playerIndex;
 							AttackPlayer.calculateCombatDamage(c, PlayerHandler.players[i]);
 							c.getItems().updateSpecialBar();
@@ -1203,7 +1204,7 @@ public class AttackPlayer {
 					}
 					if (c.playerLevel[3] > 0 && !c.isDead && PlayerHandler.players[i].playerLevel[3] > 0) {
 						if (!c.usingMagic || c.usingOtherRangeWeapons || c.usingBow) {
-							c.animation(c.getCombat().getWepAnim(c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase()));
+							c.animation(c.getCombat().getWepAnim(c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase()));
 							c.mageFollow = false;
 						} else {
 							c.animation(c.MAGIC_SPELLS[c.spellId][2]);
@@ -1227,15 +1228,15 @@ public class AttackPlayer {
 					if (!c.usingBow && !c.usingMagic && !c.usingSpecial && !c.usingOtherRangeWeapons) { // melee
 						c.followId = PlayerHandler.players[c.playerIndex].index;
 						c.getPA().followPlayer();
-						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 						c.projectileStage = 0;
 						c.oldPlayerIndex = i;
 					}
 
 					if (c.usingBow && !c.usingOtherRangeWeapons && !c.usingMagic || c.usingCross) { // range hit
 																									// delay
-						if (c.playerEquipment[Player.playerWeapon] >= 4212 && c.playerEquipment[Player.playerWeapon] <= 4223) {
-							c.rangeItemUsed = c.playerEquipment[Player.playerWeapon];
+						if (c.playerEquipment[c.playerWeapon] >= 4212 && c.playerEquipment[c.playerWeapon] <= 4223) {
+							c.rangeItemUsed = c.playerEquipment[c.playerWeapon];
 							c.crystalBowArrowCount++;
 						} else {
 							c.rangeItemUsed = c.playerEquipment[c.playerArrows];
@@ -1247,10 +1248,10 @@ public class AttackPlayer {
 						c.inSpecMode = true;
 						c.followId = PlayerHandler.players[c.playerIndex].index;
 						c.getPA().followPlayer();
-						c.lastWeaponUsed = c.playerEquipment[Player.playerWeapon];
+						c.lastWeaponUsed = c.playerEquipment[c.playerWeapon];
 						c.lastArrowUsed = c.playerEquipment[c.playerArrows];
 						c.gfx100(c.getCombat().getRangeStartGFX());
-						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 						c.projectileStage = 1;
 						c.oldPlayerIndex = i;
 						c.getCombat().fireProjectilePlayer();
@@ -1258,13 +1259,13 @@ public class AttackPlayer {
 
 					if (c.usingOtherRangeWeapons) { // knives, darts, etc hit
 													// delay
-						c.rangeItemUsed = c.playerEquipment[Player.playerWeapon];
+						c.rangeItemUsed = c.playerEquipment[c.playerWeapon];
 						c.getItems().deleteEquipment();
 						c.usingRangeWeapon = true;
 						c.followId = PlayerHandler.players[c.playerIndex].index;
 						c.getPA().followPlayer();
 						c.gfx100(c.getCombat().getRangeStartGFX());
-						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 						c.projectileStage = 1;
 						c.oldPlayerIndex = i;
 						c.getCombat().fireProjectilePlayer();
@@ -1294,7 +1295,7 @@ public class AttackPlayer {
 							c.followId = c.playerIndex;
 							c.followDistance = 5;
 						}
-						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+						c.hitDelay = c.getCombat().getHitDelay(i, c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 						c.oldPlayerIndex = i;
 						c.oldSpellId = c.spellId;
 						c.spellId = 0;
@@ -1353,7 +1354,7 @@ public class AttackPlayer {
 					if (c.usingBow && Config.CRYSTAL_BOW_DEGRADES) { // crystal
 																		// bow
 																		// degrading
-						if (c.playerEquipment[Player.playerWeapon] == 4212) { // new
+						if (c.playerEquipment[c.playerWeapon] == 4212) { // new
 																			// crystal
 																			// bow
 																			// becomes
@@ -1367,7 +1368,7 @@ public class AttackPlayer {
 						}
 
 						if (c.crystalBowArrowCount >= 250) {
-							switch (c.playerEquipment[Player.playerWeapon]) {
+							switch (c.playerEquipment[c.playerWeapon]) {
 
 							case 4223: // 1/10 bow
 								c.getItems().wearItem(-1, 1, 3);
@@ -1379,7 +1380,7 @@ public class AttackPlayer {
 								break;
 
 							default:
-								c.getItems().wearItem(++c.playerEquipment[Player.playerWeapon], 1, 3);
+								c.getItems().wearItem(++c.playerEquipment[c.playerWeapon], 1, 3);
 								c.sendMessage("Your crystal bow degrades.");
 								c.crystalBowArrowCount = 0;
 								break;

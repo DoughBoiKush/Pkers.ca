@@ -2924,7 +2924,7 @@ public class Player extends Entity {
 	public boolean check = false;
 	public boolean isExtreme = false;
 
-	public final int[] BOWS = { 12788, 9185, 11785, 19481, 839, 845, 847, 851, 855, 859, 841, 843, 849, 853, 857, 12424,
+	public final int[] BOWS = { 12788, 9185, 11785, 19481, 19478, 839, 845, 847, 851, 855, 859, 841, 843, 849, 853, 857, 12424,
 			861, 4212, 4214, 4215, 12765, 12766, 12767, 12768, 11235, 4216, 4217, 4218, 4219, 4220, 4734, 4221, 4222,
 			4223, 6724, 4934, 4935, 4936, 4937 };
 	public final int[] ARROWS = { 882, 884, 886, 888, 890, 892, 4740, 11212, 9140, 9141, 4142, 9143, 9144, 9240, 9241,
@@ -3314,7 +3314,7 @@ public class Player extends Entity {
 	public int playerHat = 0;
 	public int playerCape = 1;
 	public int playerAmulet = 2;
-	public static int playerWeapon = 3;
+	public int playerWeapon = 3;
 	public int playerChest = 4;
 	public int playerShield = 5;
 	public int playerLegs = 7;
@@ -3826,7 +3826,7 @@ public class Player extends Entity {
 	}
 
 	public boolean Ballista() {
-		return playerEquipment[playerWeapon] == 19481;
+		return playerEquipment[playerWeapon] == 19481 || playerEquipment[playerWeapon] == 19478;
 	}
 //	public boolean isIronMan() {
 	//	return equals(Rights.IRONMAN);

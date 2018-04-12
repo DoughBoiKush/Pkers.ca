@@ -169,7 +169,7 @@ public class CacheDownloader {
                 System.out.println("unzipping2 " + e.getName());
             }
             zin.close();
-
+            in.close();
         } catch(Exception e) {
             e.printStackTrace();
         }

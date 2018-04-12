@@ -17,6 +17,7 @@ public class RangeData {
 				int offX = (pY - nY)* -1;
 				int offY = (pX - nX)* -1;
 				if (c.lastWeaponUsed == 11785 && c.acbSpec == true) {
+					System.out.println("got here");
 					c.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, c.getCombat().getProjectileSpeed(), 301 /*GFX*/, 25, 10, c.oldNpcIndex + 1, 45);
 					c.acbSpec = false;
 				} else {
@@ -48,7 +49,7 @@ public class RangeData {
 				int oY = PlayerHandler.players[c.oldPlayerIndex].getY();
 				int offX = (pY - oY)* -1;
 				int offY = (pX - oX)* -1;	
-				if (c.lastWeaponUsed != 11785 && c.acbSpec == true) {
+				if (c.lastWeaponUsed == 11785 && c.acbSpec == true) {
 					c.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, c.getCombat().getProjectileSpeed(), 301 /*GFX*/, 25, 10, c.oldNpcIndex + 1, 45);
 					c.acbSpec = false;
 				} else {

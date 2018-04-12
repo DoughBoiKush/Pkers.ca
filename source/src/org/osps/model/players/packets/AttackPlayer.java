@@ -56,7 +56,8 @@ public class AttackPlayer implements PacketType {
 			boolean usingCross = client.playerEquipment[client.playerWeapon] == 9185
 					|| client.playerEquipment[client.playerWeapon] == 11785
 					|| client.playerEquipment[client.playerWeapon] == 8880
-					|| client.playerEquipment[client.playerWeapon] == 19481;
+					|| client.playerEquipment[client.playerWeapon] == 19481
+							|| client.playerEquipment[client.playerWeapon] == 19478;
 			for (int bowId : client.BOWS) {
 				if (client.playerEquipment[client.playerWeapon] == bowId) {
 					usingBow = true;
@@ -100,6 +101,7 @@ public class AttackPlayer implements PacketType {
 					&& Config.CORRECT_ARROWS && usingBow && !client.getCombat().usingCrystalBow()
 					&& client.playerEquipment[client.playerWeapon] != 9185
 					&& client.playerEquipment[client.playerWeapon] != 19481
+							&& client.playerEquipment[client.playerWeapon] != 19478
 					&& client.playerEquipment[client.playerWeapon] != 8880
 					&& client.playerEquipment[client.playerWeapon] != 11785) {
 				client.sendMessage("You can't use "
@@ -119,7 +121,7 @@ public class AttackPlayer implements PacketType {
 				client.getCombat().resetPlayerAttack();
 				return;
 			}
-			if (client.playerEquipment[client.playerWeapon] == 19481 && !client.getCombat().usingJavelins()) {
+			if ((client.playerEquipment[client.playerWeapon] == 19481 || client.playerEquipment[client.playerWeapon] == 19478) && !client.getCombat().usingJavelins()) {
 				client.sendMessage("You must use javelins with a ballista.");
 				client.stopMovement();
 				client.getCombat().resetPlayerAttack();

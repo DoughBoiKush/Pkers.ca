@@ -2286,7 +2286,7 @@ public class ClickingButtons implements PacketType {
 				player.getPA().refreshSkill(6);
 				player.getItems().wearItem(10828, 1, player.playerHat);
 				player.getItems().wearItem(6585, 1, player.playerAmulet);
-				player.getItems().wearItem(4587, 1, Player.playerWeapon);
+				player.getItems().wearItem(4587, 1, player.playerWeapon);
 				player.getItems().wearItem(8850, 1, player.playerShield);
 				player.getItems().wearItem(1052, 1, player.playerCape);
 				player.getItems().wearItem(1127, 1, player.playerChest);//
@@ -2309,7 +2309,7 @@ public class ClickingButtons implements PacketType {
 				player.getItems().updateInventory();
 				player.getPA().requestUpdates();
 				player.getItems().updateSpecialBar();
-				player.getItems().addSpecialBar(player.playerEquipment[Player.playerWeapon]);
+				player.getItems().addSpecialBar(player.playerEquipment[player.playerWeapon]);
 				player.sendMessage("<img=10>An appropriate starter package has been given to you.");
 				player.getPA().sendFrame126("Combat Level: " + player.combatLevel + "", 3983);
 				player.getPA().removeAllWindows();
@@ -2536,7 +2536,7 @@ public class ClickingButtons implements PacketType {
 				player.getPA().refreshSkill(6);
 				player.getItems().wearItem(3751, 1, player.playerHat);
 				player.getItems().wearItem(6585, 1, player.playerAmulet);
-				player.getItems().wearItem(4587, 1, Player.playerWeapon);
+				player.getItems().wearItem(4587, 1, player.playerWeapon);
 				player.getItems().wearItem(8850, 1, player.playerShield);
 				player.getItems().wearItem(1052, 1, player.playerCape);
 				player.getItems().wearItem(1127, 1, player.playerChest);
@@ -2559,7 +2559,7 @@ public class ClickingButtons implements PacketType {
 				player.getItems().updateInventory();
 				player.getPA().requestUpdates();
 				player.getItems().updateSpecialBar();
-				player.getItems().addSpecialBar(player.playerEquipment[Player.playerWeapon]);
+				player.getItems().addSpecialBar(player.playerEquipment[player.playerWeapon]);
 				player.sendMessage("<img=10>An appropriate starter package has been given to you.");
 				player.getPA().removeAllWindows();
 				player.getPA().sendFrame126("Combat Level: " + player.combatLevel + "", 3983);
@@ -2740,7 +2740,7 @@ public class ClickingButtons implements PacketType {
 				player.getPA().refreshSkill(6);
 				player.getItems().wearItem(12453, 1, player.playerHat);
 				player.getItems().wearItem(6585, 1, player.playerAmulet);
-				player.getItems().wearItem(861, 1, Player.playerWeapon);
+				player.getItems().wearItem(861, 1, player.playerWeapon);
 				player.getItems().wearItem(892, 500, player.playerArrows);
 				player.getItems().wearItem(10499, 1, player.playerCape);
 				player.getItems().wearItem(6107, 1, player.playerChest);
@@ -2763,7 +2763,7 @@ public class ClickingButtons implements PacketType {
 				player.getItems().updateInventory();
 				player.getPA().requestUpdates();
 				player.getItems().updateSpecialBar();
-				player.getItems().addSpecialBar(player.playerEquipment[Player.playerWeapon]);
+				player.getItems().addSpecialBar(player.playerEquipment[player.playerWeapon]);
 				player.sendMessage("<img=10>An appropriate starter package has been given to you.");
 				player.getPA().sendFrame126("Combat Level: " + player.combatLevel + "", 3983);
 				player.getPA().removeAllWindows();
@@ -3003,17 +3003,17 @@ public class ClickingButtons implements PacketType {
 				player.getPA().resetAutocast();
 			} else {
 				if (player.playerMagicBook == 1) {
-					if (player.playerEquipment[Player.playerWeapon] == 4675
-							|| player.playerEquipment[Player.playerWeapon] == 6914
-							|| player.playerEquipment[Player.playerWeapon] == 13867
-							|| player.playerEquipment[Player.playerWeapon] == 4710
-							|| player.playerEquipment[Player.playerWeapon] == 12904) {
+					if (player.playerEquipment[player.playerWeapon] == 4675
+							|| player.playerEquipment[player.playerWeapon] == 6914
+							|| player.playerEquipment[player.playerWeapon] == 13867
+							|| player.playerEquipment[player.playerWeapon] == 4710
+							|| player.playerEquipment[player.playerWeapon] == 12904) {
 						player.setSidebarInterface(0, 1689);
 					} else {
 						player.sendMessage("You can't autocast ancients without a proper staff.");
 					}
 				} else if (player.playerMagicBook == 0) {
-					if (player.playerEquipment[Player.playerWeapon] == 4170) {
+					if (player.playerEquipment[player.playerWeapon] == 4170) {
 						player.setSidebarInterface(0, 12050);
 					} else {
 						player.setSidebarInterface(0, 1829);
@@ -3303,7 +3303,7 @@ public class ClickingButtons implements PacketType {
 					player.getItems().updateSpecialBar();
 					player.setPoisonDamage((byte) 0);
 					player.setVenomDamage((byte) 0);
-					player.getItems().addSpecialBar(player.playerEquipment[Player.playerWeapon]);
+					player.getItems().addSpecialBar(player.playerEquipment[player.playerWeapon]);
 					player.sendMessage("You have restored your spec!");
 					player.getDH().sendDialogues(6193, player.npcType);
 					return;
@@ -4762,8 +4762,8 @@ public class ClickingButtons implements PacketType {
 
 		case 29049: // needs testing
 		case 29038:
-			if (player.playerEquipment[Player.playerWeapon] == 4153
-					|| player.playerEquipment[Player.playerWeapon] == 12848) {
+			if (player.playerEquipment[player.playerWeapon] == 4153
+					|| player.playerEquipment[player.playerWeapon] == 12848) {
 				player.specBarId = 7486;
 				player.getCombat().handleGmaulPlayer();
 				player.getItems().updateSpecialBar();
@@ -5678,8 +5678,8 @@ public class ClickingButtons implements PacketType {
 		case 24017:
 			player.getPA().resetAutocast();
 			// c.sendFrame246(329, 200, c.playerEquipment[c.playerWeapon]);
-			player.getItems().sendWeapon(player.playerEquipment[Player.playerWeapon],
-					player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]));
+			player.getItems().sendWeapon(player.playerEquipment[player.playerWeapon],
+					player.getItems().getItemName(player.playerEquipment[player.playerWeapon]));
 			// c.setSidebarInterface(0, 328);
 			// c.setSidebarInterface(6, c.playerMagicBook == 0 ? 1151 :
 			// c.playerMagicBook == 1 ? 12855 : 1151);

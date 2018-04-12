@@ -12,7 +12,7 @@ public class VoidSet {
 		
 		player.getItems().wearItem(11664, 1, player.playerHat); //void helm
 		player.getItems().wearItem(11978, 1, player.playerAmulet); //glory
-		player.getItems().wearItem(868, 2500, Player.playerWeapon); //knives
+		player.getItems().wearItem(868, 2500, player.playerWeapon); //knives
 		player.getItems().wearItem(3842, 1, player.playerShield); //unholy
 		player.getItems().wearItem(10499, 1, player.playerCape); //avas
 		player.getItems().wearItem(8839, 1, player.playerChest); //void top

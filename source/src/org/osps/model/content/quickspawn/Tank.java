@@ -12,7 +12,7 @@ public class Tank {
 		
 		player.getItems().wearItem(10828, 1, player.playerHat);
 		player.getItems().wearItem(11978, 1, player.playerAmulet);
-		player.getItems().wearItem(9185, 1, Player.playerWeapon);
+		player.getItems().wearItem(9185, 1, player.playerWeapon);
 		player.getItems().wearItem(1201, 1, player.playerShield); //rune kite
 		player.getItems().wearItem(10499, 1, player.playerCape); //ava
 		player.getItems().wearItem(2503, 1, player.playerChest); //black d

@@ -12,7 +12,7 @@ public class MainRune {
 		
 		player.getItems().wearItem(10828, 1, player.playerHat);
 		player.getItems().wearItem(11978, 1, player.playerAmulet);
-		player.getItems().wearItem(4151, 1, Player.playerWeapon);
+		player.getItems().wearItem(4151, 1, player.playerWeapon);
 		player.getItems().wearItem(8850, 1, player.playerShield);
 		player.getItems().wearItem(1052, 1, player.playerCape);
 		player.getItems().wearItem(1127, 1, player.playerChest);

@@ -12,7 +12,7 @@ public class PureMelee {
 		
 		player.getItems().wearItem(1153, 1, player.playerHat); //iron full helm
 		player.getItems().wearItem(11978, 1, player.playerAmulet); //glory
-		player.getItems().wearItem(4587, 1, Player.playerWeapon); //dragon scimitar
+		player.getItems().wearItem(4587, 1, player.playerWeapon); //dragon scimitar
 		player.getItems().wearItem(3842, 1, player.playerShield); //unholy book
 		player.getItems().wearItem(1052, 1, player.playerCape); //legends cape
 		player.getItems().wearItem(1115, 1, player.playerChest); //iron platebody

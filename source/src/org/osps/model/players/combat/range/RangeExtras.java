@@ -61,7 +61,8 @@ public class RangeExtras {
 	
 	public static boolean wearingCrossbow(Player player) {
 		return player.playerEquipment[player.playerWeapon] == 11785 
-				|| player.playerEquipment[player.playerWeapon] == 9185 || player.playerEquipment[player.playerWeapon] == 19481;
+				|| player.playerEquipment[player.playerWeapon] == 9185 || player.playerEquipment[player.playerWeapon] == 19481
+						 || player.playerEquipment[player.playerWeapon] == 19478;
 	}
 	
 	public static boolean wearingBolt(Player player) {

@@ -13214,6 +13214,8 @@ public class Client extends RSApplet {
 		java.io.InputStream inputstream = aSocket832.getInputStream();
 		OutputStream outputstream = aSocket832.getOutputStream();
 		outputstream.write(("JAGGRAB /" + s + "\n\n").getBytes());
+		inputstream.close();
+		outputstream.close();//does this break
 		return new DataInputStream(inputstream);
 	}
 

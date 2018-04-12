@@ -81,7 +81,8 @@ public class ClickNPC implements PacketType {
 			boolean usingOtherRangeWeapons = false;
 			boolean usingArrows = false;
 			boolean usingCross = c.playerEquipment[c.playerWeapon] == 9185 || c.playerEquipment[c.playerWeapon] == 11785
-					|| c.playerEquipment[c.playerWeapon] == 8880 || c.playerEquipment[c.playerWeapon] == 19481;
+					|| c.playerEquipment[c.playerWeapon] == 8880 || c.playerEquipment[c.playerWeapon] == 19481
+							 || c.playerEquipment[c.playerWeapon] == 19478;
 			if (c.playerEquipment[c.playerWeapon] >= 4214 && c.playerEquipment[c.playerWeapon] <= 4223)
 				usingBow = true;
 			for (int bowId : c.BOWS) {
@@ -121,7 +122,7 @@ public class ClickNPC implements PacketType {
 			}
 			if (c.getCombat().correctBowAndArrows() < c.playerEquipment[c.playerArrows] && Config.CORRECT_ARROWS
 					&& usingBow && !c.getCombat().usingCrystalBow() && c.playerEquipment[c.playerWeapon] != 9185
-					&& c.playerEquipment[c.playerWeapon] != 19481 && c.playerEquipment[c.playerWeapon] != 11785
+					&& c.playerEquipment[c.playerWeapon] != 19481 && c.playerEquipment[c.playerWeapon] != 19478 && c.playerEquipment[c.playerWeapon] != 11785
 					&& c.playerEquipment[c.playerWeapon] != 8880) {
 				c.sendMessage("You can't use "
 						+ c.getItems().getItemName(c.playerEquipment[c.playerArrows]).toLowerCase() + "s with a "
@@ -138,7 +139,7 @@ public class ClickNPC implements PacketType {
 				c.getCombat().resetPlayerAttack();
 				return;
 			}
-			if (c.playerEquipment[c.playerWeapon] == 19481 && !c.getCombat().usingJavelins()) {
+			if ((c.playerEquipment[c.playerWeapon] == 19481 || c.playerEquipment[c.playerWeapon] == 19478) && !c.getCombat().usingJavelins()) {
 				c.sendMessage("You must use javelins with a ballista.");
 				c.stopMovement();
 				c.getCombat().resetPlayerAttack();

@@ -1,16 +1,13 @@
 package com.osps.client.cache.graphics;
 
-
 import java.awt.Color;
 
 import com.osps.client.Sprite;
 import com.osps.client.Stream;
 import com.osps.client.cache.StreamLoader;
 import com.osps.client.draw.DrawingArea;
-import com.osps.client.draw.rsDrawingArea;
 
-public class RSFont extends DrawingArea {
-
+public class RSFontBackup {
 	private boolean strikeThrough;
 	public int baseCharacterHeight = 0;
 	public int anInt4142;
@@ -148,7 +145,7 @@ public class RSFont extends DrawingArea {
 				if (textColor != -1) {
 					color = textColor;
 				}
-				index += 5;
+				index += 4;
 			} else {
 				char c = string.charAt(index);
 				if (c != ' ') {
@@ -161,11 +158,11 @@ public class RSFont extends DrawingArea {
 			}
 		}
 		if (strikeThrough) {
-			DrawingArea.drawHorizontalLine(lineX, y + (int) ((double) baseCharacterHeight * 0.69999999999999996D), x - lineX, 0x800000);
+			DrawingArea.drawHorizontalLine(lineX, y + (int) (baseCharacterHeight * 0.69999999999999996D), x - lineX, 0x800000);
 		}
 	}
 
-	public RSFont(boolean TypeFont, String s, StreamLoader archive) {
+	public RSFontBackup(boolean TypeFont, String s, StreamLoader archive) {
 		fontPixels = new byte[256][];
 		characterWidths = new int[256];
 		characterHeights = new int[256];
@@ -236,13 +233,13 @@ public class RSFont extends DrawingArea {
 	public void drawStringMoveY(String string, int drawX, int drawY, int color, int shadow, int randomMod, int randomMod2) {
 		if (string != null) {
 			setColorAndShadow(color, shadow);
-			double d = 7.0 - (double) randomMod2 / 8.0;
+			double d = 7.0 - randomMod2 / 8.0;
 			if (d < 0.0) {
 				d = 0.0;
 			}
 			int[] yOffset = new int[string.length()];
 			for (int index = 0; index < string.length(); index++) {
-				yOffset[index] = (int) (Math.sin((double) index / 1.5 + (double) randomMod) * d);
+				yOffset[index] = (int) (Math.sin(index / 1.5 + randomMod) * d);
 			}
 			drawBaseStringMoveXY(string, drawX - getTextWidth(string) / 2, drawY, null, yOffset);
 		}
@@ -423,8 +420,8 @@ public class RSFont extends DrawingArea {
 			int[] xMods = new int[string.length()];
 			int[] yMods = new int[string.length()];
 			for (int index = 0; index < string.length(); index++) {
-				xMods[index] = (int) (Math.sin((double) index / 5.0 + (double) randomMod / 5.0) * 5.0);
-				yMods[index] = (int) (Math.sin((double) index / 3.0 + (double) randomMod / 5.0) * 5.0);
+				xMods[index] = (int) (Math.sin(index / 5.0 + randomMod / 5.0) * 5.0);
+				yMods[index] = (int) (Math.sin(index / 3.0 + randomMod / 5.0) * 5.0);
 			}
 			drawBaseStringMoveXY(string, drawX - getTextWidth(string) / 2, drawY, xMods, yMods);
 		}
@@ -435,7 +432,7 @@ public class RSFont extends DrawingArea {
 			setColorAndShadow(color, shadow);
 			int[] yOffset = new int[class100.length()];
 			for (int index = 0; index < class100.length(); index++) {
-				yOffset[index] = (int) (Math.sin((double) index / 2.0 + (double) i_54_ / 5.0) * 5.0);
+				yOffset[index] = (int) (Math.sin(index / 2.0 + i_54_ / 5.0) * 5.0);
 			}
 			drawBaseStringMoveXY(class100, drawX - getTextWidth(class100) / 2, drawY, null, yOffset);
 		}
@@ -446,28 +443,20 @@ public class RSFont extends DrawingArea {
 		clanImages = clan;
 	}
 
-	public void drawBasicString(String s, int drawX, int drawY) {
+	public void drawBasicString(String string, int drawX, int drawY) {
 		drawY -= baseCharacterHeight;
 		int startIndex = -1;
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '@' && i + 4 < s.length() && s.charAt(i + 4) == '@') {
-				int tagColor = getTagColor(s.substring(i + 1, i + 4));
-				if (tagColor != -1) {
-					textColor = tagColor;
-				}
-				i += 4;
-				continue;
-			}
-
-			int character = s.charAt(i);
+		string = handleOldSyntax(string);
+		for (int currentCharacter = 0; currentCharacter < string.length(); currentCharacter++) {
+			int character = string.charAt(currentCharacter);
 			if (character > 255) {
 				character = 32;
 			}
-			if (character == 60 && isSpecial(s, i)) {
-				startIndex = i;
+			if (character == 60 && isSpecial(string, currentCharacter)) {
+				startIndex = currentCharacter;
 			} else {
-				if (character == 62 && startIndex != -1 && isSpecial(s, startIndex + 1)) {
-					String effectString = s.substring(startIndex + 1, i);
+				if (character == 62 && startIndex != -1 && isSpecial(string, startIndex + 1)) {
+					String effectString = string.substring(startIndex + 1, currentCharacter);
 					startIndex = -1;
 					if (effectString.equals(startEffect)) {
 						character = 60;
@@ -532,10 +521,10 @@ public class RSFont extends DrawingArea {
 					}
 					int lineWidth = characterScreenWidths[character];
 					if (strikethroughColor != -1) {
-						rsDrawingArea.drawHorizontalLine(drawX, drawY + (int) ((double) baseCharacterHeight * 0.69999999999999996D), lineWidth, strikethroughColor);
+						DrawingArea.drawHorizontalLine(drawX, drawY + (int) (baseCharacterHeight * 0.69999999999999996D), lineWidth, strikethroughColor);
 					}
 					if (underlineColor != -1) {
-						rsDrawingArea.drawHorizontalLine(drawX, drawY + baseCharacterHeight, lineWidth, underlineColor);
+						DrawingArea.drawHorizontalLine(drawX, drawY + baseCharacterHeight, lineWidth, underlineColor);
 					}
 					drawX += lineWidth;
 				}
@@ -628,7 +617,7 @@ public class RSFont extends DrawingArea {
 								} else {
 									class92.drawSprite(drawX + xModI, (drawY + baseCharacterHeight - iconOffsetY + yMod), transparency);
 								}
-								drawX += class92.myWidth + class92.drawOffsetX;
+								drawX += class92.maxWidth;
 							} catch (Exception exception) {
 								/* empty */
 							}
@@ -673,10 +662,10 @@ public class RSFont extends DrawingArea {
 					}
 					int i_109_ = characterScreenWidths[character];
 					if (strikethroughColor != -1) {
-						rsDrawingArea.drawHorizontalLine(drawX, drawY + (int) ((double) baseCharacterHeight * 0.7), i_109_, strikethroughColor);
+						DrawingArea.drawHorizontalLine(drawX, drawY + (int) (baseCharacterHeight * 0.7), i_109_, strikethroughColor);
 					}
 					if (underlineColor != -1) {
-						rsDrawingArea.drawHorizontalLine(drawX, drawY + baseCharacterHeight, i_109_, underlineColor);
+						DrawingArea.drawHorizontalLine(drawX, drawY + baseCharacterHeight, i_109_, underlineColor);
 					}
 					drawX += i_109_;
 				}
@@ -744,32 +733,23 @@ public class RSFont extends DrawingArea {
 		return string.length();
 	}
 	
-	public int getTextWidth(String s) {
-		if (s == null) {
+	public int getTextWidth(String string) {
+		if (string == null) {
 			return 0;
 		}
 		int startIndex = -1;
 		int finalWidth = 0;
-
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '@' && i + 4 < s.length() && s.charAt(i + 4) == '@') {
-				int tagColor = getTagColor(s.substring(i + 1, i + 4));
-				if (tagColor != -1) {
-					textColor = tagColor;
-				}
-				i += 4;
-				continue;
-			}
-
-			int character = s.charAt(i);
+		string = handleOldSyntax(string);
+		for (int currentCharacter = 0; currentCharacter < string.length(); currentCharacter++) {
+			int character = string.charAt(currentCharacter);
 			if (character > 255) {
 				character = 32;
 			}
-			if (character == 60 && isSpecial(s, i)) {
-				startIndex = i;
+			if (character == 60 && isSpecial(string, currentCharacter)) {
+				startIndex = currentCharacter;
 			} else {
-				if (character == 62 && startIndex != -1 && isSpecial(s, startIndex + 1)) {
-					String effectString = s.substring(startIndex + 1, i);
+				if (character == 62 && startIndex != -1 && isSpecial(string, startIndex + 1)) {
+					String effectString = string.substring(startIndex + 1, currentCharacter);
 					startIndex = -1;
 					if (effectString.equals(startEffect)) {
 						character = 60;
@@ -791,14 +771,14 @@ public class RSFont extends DrawingArea {
 						if (effectString.startsWith(startImage)) {
 							try {
 								int iconId = Integer.valueOf(effectString.substring(4));
-								finalWidth += chatImages[iconId].myWidth += chatImages[iconId].drawOffsetX;
+								finalWidth += chatImages[iconId].maxWidth;
 							} catch (Exception exception) {
 								/* empty */
 							}
 						} else if (effectString.startsWith(startClanImage)) {
 							try {
 								int iconId = Integer.valueOf(effectString.substring(5));
-								finalWidth += clanImages[iconId].myWidth += chatImages[iconId].drawOffsetX;
+								finalWidth += clanImages[iconId].maxWidth;
 							} catch (Exception exception) {
 								/* empty */
 							}
@@ -823,66 +803,71 @@ public class RSFont extends DrawingArea {
 		}
 	}
 
-	public static String handleOldSyntax(String text, String tagOld, String tagNew) {
-		if (text.contains(tagOld)) {
-			return text.replaceAll(tagOld, tagNew);
-		}
-		return text;
-	}
-
 	public static String handleOldSyntax(String text) {
-		text = handleOldSyntax(text, "@gry@", "<col=475154>");
-		text = handleOldSyntax(text, "@pt2@", "<col=336600>");
-		text = handleOldSyntax(text, "@pt1@", "<col=005eff>");
-		text = handleOldSyntax(text, "@pt7@", "<col=3D991F>");
-		text = handleOldSyntax(text, "@pt6@", "<col=E68A00>");
-		text = handleOldSyntax(text, "@pt3@", "<col=A300CC>");
-		text = handleOldSyntax(text, "@pt4@", "<col=E6E600>");
-		text = handleOldSyntax(text, "@pt5@", "<col=B80000>");
-		text = handleOldSyntax(text, "@red@", "<col=ff0000>");
-		text = handleOldSyntax(text, "@gre@", "<col=65280>");
-		text = handleOldSyntax(text, "@blu@", "<col=255>");
-		text = handleOldSyntax(text, "@yel@", "<col=ffff00>");
-		text = handleOldSyntax(text, "@cya@", "<col=65535>");
-		text = handleOldSyntax(text, "@mag@", "<col=ff00ff>");
-		text = handleOldSyntax(text, "@whi@", "<col=ffffff>");
-		text = handleOldSyntax(text, "@lre@", "<col=ff9040>");
-		text = handleOldSyntax(text, "@dre@", "<col=800000>");
-		text = handleOldSyntax(text, "@bla@", "<col=0>");
-		text = handleOldSyntax(text, "@or1@", "<col=ffb000>");
-		text = handleOldSyntax(text, "@or2@", "<col=ff7000>");
-		text = handleOldSyntax(text, "@or3@", "<col=ff3000>");
-		text = handleOldSyntax(text, "@gr1@", "<col=c0ff00>");
-		text = handleOldSyntax(text, "@gr2@", "<col=80ff00>");
-		text = handleOldSyntax(text, "@gr3@", "<col=40ff00>");
-		text = handleOldSyntax(text, "@RED@", "<col=ffff00>");
-		text = handleOldSyntax(text, "@GRE@", "<col=65280>");
-		text = handleOldSyntax(text, "@BLU@", "<col=255>");
-		text = handleOldSyntax(text, "@YEL@", "<col=ff0000>");
-		text = handleOldSyntax(text, "@CYA@", "<col=65535>");
-		text = handleOldSyntax(text, "@MAG@", "<col=ff00ff>");
-		text = handleOldSyntax(text, "@WHI@", "<col=ffffff>");
-		text = handleOldSyntax(text, "@LRE@", "<col=ff9040>");
-		text = handleOldSyntax(text, "@DRE@", "<col=800000>");
-		text = handleOldSyntax(text, "@BLA@", "<col=0>");
-		text = handleOldSyntax(text, "@OR1@", "<col=ffb000>");
-		text = handleOldSyntax(text, "@OR2@", "<col=ff7000>");
-		text = handleOldSyntax(text, "@OR3@", "<col=ff3000>");
-		text = handleOldSyntax(text, "@GR1@", "<col=c0ff00>");
-		text = handleOldSyntax(text, "@GR2@", "<col=80ff00>");
-		text = handleOldSyntax(text, "@GR3@", "<col=40ff00>");
-		text = handleOldSyntax(text, "@ric@", "<col=ff8000>");
-		text = handleOldSyntax(text, "@cr1@", "<img=0>");
-		text = handleOldSyntax(text, "@cr2@", "<img=1>");
-		text = handleOldSyntax(text, "@cr3@", "<img=2>");
-		text = handleOldSyntax(text, "@don@", "<img=3>");
-		text = handleOldSyntax(text, "@mbl@", "<col=359BBD>");
+		text = text.replaceAll("@gry@", "<col=475154>");
+		text = text.replaceAll("@pt2@", "<col=336600>");
+		text = text.replaceAll("@pt1@", "<col=005eff>");
+		text = text.replaceAll("@pt7@", "<col=3D991F>");
+		text = text.replaceAll("@pt6@", "<col=E68A00>");
+		text = text.replaceAll("@pt3@", "<col=A300CC>");
+		text = text.replaceAll("@pt4@", "<col=E6E600>");
+		text = text.replaceAll("@pt5@", "<col=B80000>");
+		text = text.replaceAll("@red@", "<col=ff0000>");
+		text = text.replaceAll("@gre@", "<col=65280>");
+		text = text.replaceAll("@blu@", "<col=255>");
+		text = text.replaceAll("@yel@", "<col=ffff00>");
+		text = text.replaceAll("@cya@", "<col=65535>");
+		text = text.replaceAll("@mag@", "<col=ff00ff>");
+		text = text.replaceAll("@whi@", "<col=ffffff>");
+		text = text.replaceAll("@lre@", "<col=ff9040>");
+		text = text.replaceAll("@dre@", "<col=800000>");
+		text = text.replaceAll("@bla@", "<col=0>");
+		text = text.replaceAll("@or1@", "<col=ffb000>");
+		text = text.replaceAll("@or2@", "<col=ff7000>");
+		text = text.replaceAll("@or3@", "<col=ff3000>");
+		text = text.replaceAll("@gr1@", "<col=c0ff00>");
+		text = text.replaceAll("@gr2@", "<col=80ff00>");
+		text = text.replaceAll("@gr3@", "<col=40ff00>");
+		text = text.replaceAll("@RED@", "<col=ffff00>");
+		text = text.replaceAll("@GRE@", "<col=65280>");
+		text = text.replaceAll("@BLU@", "<col=255>");
+		text = text.replaceAll("@YEL@", "<col=ff0000>");
+		text = text.replaceAll("@CYA@", "<col=65535>");
+		text = text.replaceAll("@MAG@", "<col=ff00ff>");
+		text = text.replaceAll("@WHI@", "<col=ffffff>");
+		text = text.replaceAll("@LRE@", "<col=ff9040>");
+		text = text.replaceAll("@DRE@", "<col=800000>");
+		text = text.replaceAll("@BLA@", "<col=0>");
+		text = text.replaceAll("@OR1@", "<col=ffb000>");
+		text = text.replaceAll("@OR2@", "<col=ff7000>");
+		text = text.replaceAll("@OR3@", "<col=ff3000>");
+		text = text.replaceAll("@GR1@", "<col=c0ff00>");
+		text = text.replaceAll("@GR2@", "<col=80ff00>");
+		text = text.replaceAll("@GR3@", "<col=40ff00>");
+		text = text.replaceAll("@ric@", "<col=ff8000>");
+		text = text.replaceAll("@cr1@", "<img=0>");
+		text = text.replaceAll("@cr2@", "<img=1>");
+		text = text.replaceAll("@cr3@", "<img=2>");
+		text = text.replaceAll("@cr4@", "<img=3>");
+		text = text.replaceAll("@cr5@", "<img=4>");
+		text = text.replaceAll("@cr6@", "<img=5>");
+		text = text.replaceAll("@cr7@", "<img=6>");
+		text = text.replaceAll("@cr8@", "<img=7>");
+		text = text.replaceAll("@cr9@", "<img=8>");
+		text = text.replaceAll("@cr10@", "<img=9>");
+		text = text.replaceAll("@cr11@", "<img=10>");
+		text = text.replaceAll("@cr12@", "<img=11>");
+		text = text.replaceAll("@cr13@", "<img=12>");
+		text = text.replaceAll("@cr14@", "<img=13>");
+		text = text.replaceAll("@don@", "<img=3>");
+		text = text.replaceAll("@mbl@", "<col=359BBD>");
 		return text;
 	}
 
 	public void drawCenteredString(String string, int drawX, int drawY, int color, int shadow) {
 		if (string != null) {
 			setColorAndShadow(color, shadow);
+			string = handleOldSyntax(string);
 			drawBasicString(string, drawX - getTextWidth(string) / 2, drawY);
 		}
 	}
@@ -1038,48 +1023,6 @@ public class RSFont extends DrawingArea {
 		if (i_37_ > 0 && i_38_ > 0) {
 			createCharacterPixels(DrawingArea.pixels, fontPixels[character], i_39_, i_43_, i_40_, i_37_, i_38_, i_41_, i_42_);
 
-		}
-	}
-
-
-	public int getTagColor(String s) {
-		switch (s) {
-			case "red":
-				return 0xff0000;
-			case "gre":
-				return 65280;
-			case "blu":
-				return 255;
-			case "yel":
-				return 0xffff00;
-			case "cya":
-				return 65535;
-			case "mag":
-				return 0xff00ff;
-			case "whi":
-				return 0xffffff;
-			case "bla":
-				return 0;
-			case "lre":
-				return 0xff9040;
-			case "dre":
-				return 0x800000;
-			case "dbl":
-				return 128;
-			case "or1":
-				return 0xffb000;
-			case "or2":
-				return 0xff7000;
-			case "or3":
-				return 0xff3000;
-			case "gr1":
-				return 0xc0ff00;
-			case "gr2":
-				return 0x80ff00;
-			case "gr3":
-				return 0x40ff00;
-			default:
-				return -1;
 		}
 	}
 

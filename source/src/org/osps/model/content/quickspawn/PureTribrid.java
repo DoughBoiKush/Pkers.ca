@@ -12,7 +12,7 @@ public class PureTribrid {
 		
 		player.getItems().wearItem(6109, 1, player.playerHat); //ghostly hood
 		player.getItems().wearItem(11978, 1, player.playerAmulet); //glory
-		player.getItems().wearItem(4675, 1, Player.playerWeapon); //ancient staff	
+		player.getItems().wearItem(4675, 1, player.playerWeapon); //ancient staff	
 		player.getItems().wearItem(3842, 1, player.playerShield); //unholy book
 		player.getItems().wearItem(9244, 2500, player.playerArrows); //dragon bolts (e)
 		player.getItems().wearItem(2412, 1, player.playerCape); //saradomin cape

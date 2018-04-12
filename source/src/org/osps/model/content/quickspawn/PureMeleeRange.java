@@ -12,7 +12,7 @@ public class PureMeleeRange {
 		
 		player.getItems().wearItem(1169, 1, player.playerHat); //coif
 		player.getItems().wearItem(11978, 1, player.playerAmulet); //glory
-		player.getItems().wearItem(861, 1, Player.playerWeapon); //magic shortbow
+		player.getItems().wearItem(861, 1, player.playerWeapon); //magic shortbow
 		player.getItems().wearItem(892, 2500, player.playerArrows); //rune arrows
 		player.getItems().wearItem(10499, 1, player.playerCape); //ava's accumulator
 		player.getItems().wearItem(1129, 1, player.playerChest); //leather body

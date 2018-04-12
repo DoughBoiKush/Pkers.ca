@@ -977,7 +977,8 @@ public class AttackNPC {
 				c.usingOtherRangeWeapons = false;
 				c.check = false;
 				c.usingCross = c.playerEquipment[c.playerWeapon] == 9185 || c.playerEquipment[c.playerWeapon] == 11785
-						|| c.playerEquipment[c.playerWeapon] == 8880 || c.playerEquipment[c.playerWeapon] == 19481;
+						|| c.playerEquipment[c.playerWeapon] == 8880 || c.playerEquipment[c.playerWeapon] == 19481
+								 || c.playerEquipment[c.playerWeapon] == 19478;
 				c.bonusAttack = 0;
 				c.rangeItemUsed = 0;
 				c.projectileStage = 0;
@@ -1140,7 +1141,7 @@ public class AttackNPC {
 				}
 				if (c.getCombat().correctBowAndArrows() < c.playerEquipment[c.playerArrows] && Config.CORRECT_ARROWS
 						&& c.usingBow && !c.getCombat().usingCrystalBow() && c.playerEquipment[c.playerWeapon] != 9185
-						&& c.playerEquipment[c.playerWeapon] != 19481 && c.playerEquipment[c.playerWeapon] != 8880
+						&& c.playerEquipment[c.playerWeapon] != 19481 && c.playerEquipment[c.playerWeapon] != 19478 && c.playerEquipment[c.playerWeapon] != 8880
 						&& c.playerEquipment[c.playerWeapon] != 11785 && !c.getItems().isWearingItem(12926)) {
 					c.sendMessage("You can't use "
 							+ c.getItems().getItemName(c.playerEquipment[c.playerArrows]).toLowerCase() + "s with a "
@@ -1158,7 +1159,7 @@ public class AttackNPC {
 					c.getCombat().resetPlayerAttack();
 					return;
 				}
-				if (c.playerEquipment[c.playerWeapon] == 19481 && !c.getCombat().usingJavelins()) {
+				if ((c.playerEquipment[c.playerWeapon] == 19481 || c.playerEquipment[c.playerWeapon] == 19478) && !c.getCombat().usingJavelins()) {
 					c.sendMessage("You must use javelins with a ballista.");
 					c.stopMovement();
 					c.getCombat().resetPlayerAttack();

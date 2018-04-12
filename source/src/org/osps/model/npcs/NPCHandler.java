@@ -3665,17 +3665,17 @@ public class NPCHandler {
 				int r = Misc.random(2);
 				switch(r) {
 				case 0:
-					if(player.getItems().freeSlots() == 0 && player.playerEquipment[Player.playerWeapon] != -1) {
-						Server.itemHandler.createGroundItem(player, player.playerEquipment[Player.playerWeapon], npcs[i].absX, npcs[i].absY, 1, 1, player.getId());
+					if(player.getItems().freeSlots() == 0 && player.playerEquipment[player.playerWeapon] != -1) {
+						Server.itemHandler.createGroundItem(player, player.playerEquipment[player.playerWeapon], npcs[i].absX, npcs[i].absY, 1, 1, player.getId());
 						player.sendMessage("The Chaos Elemental has un-equipped your weapon and placed it on the ground.");
-					} else if(player.getItems().freeSlots() > 0 && player.playerEquipment[Player.playerWeapon] != -1) {
-						player.getItems().addItem(player.playerEquipment[Player.playerWeapon], 1);
+					} else if(player.getItems().freeSlots() > 0 && player.playerEquipment[player.playerWeapon] != -1) {
+						player.getItems().addItem(player.playerEquipment[player.playerWeapon], 1);
 						player.sendMessage("The Chaos Elemental has un-equipped your weapon and placed it in your inventory.");
 					}
-					player.playerEquipment[Player.playerWeapon] = -1;
-					player.getItems().updateSlot(Player.playerWeapon);
-					player.getItems().sendWeapon(player.playerEquipment[Player.playerWeapon], player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]));
-					player.getCombat().getPlayerAnimIndex(player.getItems().getItemName(player.playerEquipment[Player.playerWeapon]).toLowerCase());
+					player.playerEquipment[player.playerWeapon] = -1;
+					player.getItems().updateSlot(player.playerWeapon);
+					player.getItems().sendWeapon(player.playerEquipment[player.playerWeapon], player.getItems().getItemName(player.playerEquipment[player.playerWeapon]));
+					player.getCombat().getPlayerAnimIndex(player.getItems().getItemName(player.playerEquipment[player.playerWeapon]).toLowerCase());
 					player.getItems().resetBonus();
 					player.getItems().getBonus();
 					player.getItems().writeBonus();

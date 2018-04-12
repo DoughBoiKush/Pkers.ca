@@ -704,17 +704,17 @@ public class ItemAssistant {
 			c.getPA().sendFrame126(WeaponName, 12293);
 		} else if ((WeaponName.endsWith("bow") || WeaponName.contains("shortbow (i)") || WeaponName.endsWith("10")
 				|| WeaponName.endsWith("full") || WeaponName.startsWith("seercull")
-				|| c.playerEquipment[Player.playerWeapon] == 12924 || c.playerEquipment[Player.playerWeapon] == 12926
-				|| c.playerEquipment[Player.playerWeapon] == 19481) && !WeaponName.contains("halberd")) {
+				|| c.playerEquipment[c.playerWeapon] == 12924 || c.playerEquipment[c.playerWeapon] == 12926
+				|| c.playerEquipment[c.playerWeapon] == 19481|| c.playerEquipment[c.playerWeapon] == 19478) && !WeaponName.contains("halberd")) {
 			c.setSidebarInterface(0, 1764); // accurate, rapid, longrange
 			c.getPA().sendFrame246(1765, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 1767);
 		} else if (WeaponName.contains("Staff") || WeaponName.contains("wand")
-				|| c.playerEquipment[Player.playerWeapon] == 12904 || c.playerEquipment[Player.playerWeapon] == 4675
-				|| c.playerEquipment[Player.playerWeapon] == 6914 || c.playerEquipment[Player.playerWeapon] == 12899
-				|| c.playerEquipment[Player.playerWeapon] == 12900 || c.playerEquipment[Player.playerWeapon] == 12902
-				|| c.playerEquipment[Player.playerWeapon] == 11905 || c.playerEquipment[Player.playerWeapon] == 11907
-				|| c.playerEquipment[Player.playerWeapon] == 11908 || c.playerEquipment[Player.playerWeapon] == 13867) {
+				|| c.playerEquipment[c.playerWeapon] == 12904 || c.playerEquipment[c.playerWeapon] == 4675
+				|| c.playerEquipment[c.playerWeapon] == 6914 || c.playerEquipment[c.playerWeapon] == 12899
+				|| c.playerEquipment[c.playerWeapon] == 12900 || c.playerEquipment[c.playerWeapon] == 12902
+				|| c.playerEquipment[c.playerWeapon] == 11905 || c.playerEquipment[c.playerWeapon] == 11907
+				|| c.playerEquipment[c.playerWeapon] == 11908 || c.playerEquipment[c.playerWeapon] == 13867) {
 			c.setSidebarInterface(0, 328); // spike, impale, smash, block
 			c.getPA().sendFrame246(329, 200, Weapon);
 			
@@ -726,9 +726,9 @@ public class ItemAssistant {
 			c.getPA().sendFrame246(4447, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 4449);
 		} else if (WeaponName2.startsWith("dagger") || WeaponName2.contains("anchor") || WeaponName2.contains("sword")
-				|| c.playerEquipment[Player.playerWeapon] == 13265 || c.playerEquipment[Player.playerWeapon] == 13267
-				|| c.playerEquipment[Player.playerWeapon] == 13269 || c.playerEquipment[Player.playerWeapon] == 13271
-				|| c.playerEquipment[Player.playerWeapon] == 13576) {
+				|| c.playerEquipment[c.playerWeapon] == 13265 || c.playerEquipment[c.playerWeapon] == 13267
+				|| c.playerEquipment[c.playerWeapon] == 13269 || c.playerEquipment[c.playerWeapon] == 13271
+				|| c.playerEquipment[c.playerWeapon] == 13576) {
 			c.setSidebarInterface(0, 2276); // stab, lunge, slash, block
 			c.getPA().sendFrame246(2277, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 2279);
@@ -740,8 +740,8 @@ public class ItemAssistant {
 			c.setSidebarInterface(0, 1698); // chop, hack, smash, block
 			c.getPA().sendFrame246(1699, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 1701);
-		} else if (WeaponName2.startsWith("halberd") || c.playerEquipment[Player.playerWeapon] == 13092
-				|| c.playerEquipment[Player.playerWeapon] == 13091) {
+		} else if (WeaponName2.startsWith("halberd") || c.playerEquipment[c.playerWeapon] == 13092
+				|| c.playerEquipment[c.playerWeapon] == 13091) {
 			c.setSidebarInterface(0, 8460); // jab, swipe, fend
 			c.getPA().sendFrame246(8461, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 8463);
@@ -749,7 +749,7 @@ public class ItemAssistant {
 			c.setSidebarInterface(0, 8460); // jab, swipe, fend
 			c.getPA().sendFrame246(8461, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 8463);
-		} else if (WeaponName2.startsWith("spear") || c.playerEquipment[Player.playerWeapon] == 13905) {
+		} else if (WeaponName2.startsWith("spear") || c.playerEquipment[c.playerWeapon] == 13905) {
 			c.setSidebarInterface(0, 4679); // lunge, swipe, pound, block
 			c.getPA().sendFrame246(4680, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 4682);
@@ -757,8 +757,8 @@ public class ItemAssistant {
 			c.setSidebarInterface(0, 3796);
 			c.getPA().sendFrame246(3797, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 3799);
-		} else if (c.playerEquipment[Player.playerWeapon] == 4153 || c.playerEquipment[Player.playerWeapon] == 12848
-				|| c.playerEquipment[Player.playerWeapon] == 13902 || c.playerEquipment[Player.playerWeapon] == 13263) {
+		} else if (c.playerEquipment[c.playerWeapon] == 4153 || c.playerEquipment[c.playerWeapon] == 12848
+				|| c.playerEquipment[c.playerWeapon] == 13902 || c.playerEquipment[c.playerWeapon] == 13263) {
 			c.setSidebarInterface(0, 425); // war hammer equip.
 			c.getPA().sendFrame246(426, 200, Weapon);
 			c.getPA().sendFrame126(WeaponName, 428);
@@ -849,6 +849,7 @@ public class ItemAssistant {
 		case 12788:
 		case 12926:
 		case 19481:
+		case 19478:
 			c.getPA().sendFrame171(0, 7549);
 			specialAmount(weapon, c.specAmount, 7561);
 			break;
@@ -954,7 +955,7 @@ public class ItemAssistant {
 	 * Special attack text.
 	 **/
 	public void updateSpecialBar() {
-		if(c.usingSpecial && c.playerEquipment[Player.playerWeapon] != 15050) {
+		if(c.usingSpecial && c.playerEquipment[c.playerWeapon] != 15050) {
             c.getPA().sendFrame126("@yel@ Special Attack ("+(int)c.specAmount*10+"%)", c.specBarId);
         } else { 
             c.getPA().sendFrame126("@bla@ Special Attack ("+(int)c.specAmount*10+"%)", c.specBarId);
@@ -1240,12 +1241,12 @@ public class ItemAssistant {
 						c.sendMessage("Wearing a ring has been disabled for this duel.");
 						return false;
 					}
-					if (targetSlot == Player.playerWeapon && session.getRules().contains(Rule.NO_WEAPON)) {
+					if (targetSlot == c.playerWeapon && session.getRules().contains(Rule.NO_WEAPON)) {
 						c.sendMessage("Wearing weapons has been disabled for this duel.");
 						return false;
 					}
 					if (session.getRules().contains(Rule.NO_SHIELD)) {
-						if (targetSlot == c.playerShield || targetSlot == Player.playerWeapon
+						if (targetSlot == c.playerShield || targetSlot == c.playerWeapon
 								&& is2handed(getItemName(wearID).toLowerCase(), wearID)) {
 							c.sendMessage("Wearing shields and 2handed weapons has been disabled for this duel.");
 							return false;
@@ -1348,14 +1349,14 @@ public class ItemAssistant {
 					c.playerEquipment[targetSlot] = toEquip - 1;
 					c.playerEquipmentN[targetSlot] = toEquipN;
 				} else if (targetSlot == 5) {
-					boolean wearing2h = is2handed(getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase(),
-							c.playerEquipment[Player.playerWeapon]);
+					boolean wearing2h = is2handed(getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase(),
+							c.playerEquipment[c.playerWeapon]);
 					if (wearing2h) {
-						toRemove = c.playerEquipment[Player.playerWeapon];
-						toRemoveN = c.playerEquipmentN[Player.playerWeapon];
-						c.playerEquipment[Player.playerWeapon] = -1;
-						c.playerEquipmentN[Player.playerWeapon] = 0;
-						updateSlot(Player.playerWeapon);
+						toRemove = c.playerEquipment[c.playerWeapon];
+						toRemoveN = c.playerEquipmentN[c.playerWeapon];
+						c.playerEquipment[c.playerWeapon] = -1;
+						c.playerEquipmentN[c.playerWeapon] = 0;
+						updateSlot(c.playerWeapon);
 					}
 					c.playerItems[slot] = toRemove + 1;
 					c.playerItemsN[slot] = toRemoveN;
@@ -1364,7 +1365,7 @@ public class ItemAssistant {
 				} else if (targetSlot == 3) {
 					boolean is2h = is2handed(getItemName(wearID).toLowerCase(), wearID);
 					boolean wearingShield = c.playerEquipment[c.playerShield] > 0;
-					boolean wearingWeapon = c.playerEquipment[Player.playerWeapon] > 0;
+					boolean wearingWeapon = c.playerEquipment[c.playerWeapon] > 0;
 					if (is2h) {
 						if (wearingShield && wearingWeapon) {
 							if (freeSlots() > 0) {
@@ -1458,11 +1459,11 @@ public class ItemAssistant {
 				c.getOutStream().endFrameVarSizeWord();
 				c.flushOutStream();
 			}
-			sendWeapon(c.playerEquipment[Player.playerWeapon], getItemName(c.playerEquipment[Player.playerWeapon]));
+			sendWeapon(c.playerEquipment[c.playerWeapon], getItemName(c.playerEquipment[c.playerWeapon]));
 			resetBonus();
 			getBonus();
 			writeBonus();
-			c.getCombat().getPlayerAnimIndex(c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+			c.getCombat().getPlayerAnimIndex(c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 			c.getPA().requestUpdates();
 			return true;
 		} else {
@@ -1500,13 +1501,13 @@ public class ItemAssistant {
 			c.flushOutStream();
 			c.playerEquipment[targetSlot] = wearID;
 			c.playerEquipmentN[targetSlot] = wearAmount;
-			c.getItems().sendWeapon(c.playerEquipment[Player.playerWeapon],
-					c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]));
+			c.getItems().sendWeapon(c.playerEquipment[c.playerWeapon],
+					c.getItems().getItemName(c.playerEquipment[c.playerWeapon]));
 			c.getItems().resetBonus();
 			c.updateItems = true;
 			c.getItems().getBonus();
 			c.getItems().writeBonus();
-			c.getCombat().getPlayerAnimIndex(c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+			c.getCombat().getPlayerAnimIndex(c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 			c.updateRequired = true;
 			c.setAppearanceUpdateRequired(true);
 		}
@@ -1544,12 +1545,12 @@ public class ItemAssistant {
 				if (addItem(c.playerEquipment[slot], c.playerEquipmentN[slot])) {
 					c.playerEquipment[slot] = -1;
 					c.playerEquipmentN[slot] = 0;
-					sendWeapon(c.playerEquipment[Player.playerWeapon], getItemName(c.playerEquipment[Player.playerWeapon]));
+					sendWeapon(c.playerEquipment[c.playerWeapon], getItemName(c.playerEquipment[c.playerWeapon]));
 					resetBonus();
 					getBonus();
 					writeBonus();
 					c.getCombat().getPlayerAnimIndex(
-							c.getItems().getItemName(c.playerEquipment[Player.playerWeapon]).toLowerCase());
+							c.getItems().getItemName(c.playerEquipment[c.playerWeapon]).toLowerCase());
 					c.getOutStream().createFrame(34);
 					c.getOutStream().writeWord(6);
 					c.getOutStream().writeWord(1688);
@@ -2373,7 +2374,7 @@ public class ItemAssistant {
 		c.getOutStream().writeWord(0);
 		c.getOutStream().writeByte(0);
 		getBonus();
-		if (j == Player.playerWeapon) {
+		if (j == c.playerWeapon) {
 			sendWeapon(-1, "Unarmed");
 		}
 		resetBonus();
@@ -2490,23 +2491,23 @@ public class ItemAssistant {
 				|| c.playerEquipment[c.playerCape] == 9757)
 				&& Misc.random(5) != 1)
 			return;
-		if (c.playerEquipmentN[Player.playerWeapon] == 1) {
-			c.getItems().deleteEquipment(c.playerEquipment[Player.playerWeapon], Player.playerWeapon);
+		if (c.playerEquipmentN[c.playerWeapon] == 1) {
+			c.getItems().deleteEquipment(c.playerEquipment[c.playerWeapon], c.playerWeapon);
 		}
-		if (c.playerEquipmentN[Player.playerWeapon] != 0) {
+		if (c.playerEquipmentN[c.playerWeapon] != 0) {
 			c.getOutStream().createFrameVarSizeWord(34);
 			c.getOutStream().writeWord(1688);
-			c.getOutStream().writeByte(Player.playerWeapon);
-			c.getOutStream().writeWord(c.playerEquipment[Player.playerWeapon] + 1);
-			if (c.playerEquipmentN[Player.playerWeapon] - 1 > 254) {
+			c.getOutStream().writeByte(c.playerWeapon);
+			c.getOutStream().writeWord(c.playerEquipment[c.playerWeapon] + 1);
+			if (c.playerEquipmentN[c.playerWeapon] - 1 > 254) {
 				c.getOutStream().writeByte(255);
-				c.getOutStream().writeDWord(c.playerEquipmentN[Player.playerWeapon] - 1);
+				c.getOutStream().writeDWord(c.playerEquipmentN[c.playerWeapon] - 1);
 			} else {
-				c.getOutStream().writeByte(c.playerEquipmentN[Player.playerWeapon] - 1);
+				c.getOutStream().writeByte(c.playerEquipmentN[c.playerWeapon] - 1);
 			}
 			c.getOutStream().endFrameVarSizeWord();
 			c.flushOutStream();
-			c.playerEquipmentN[Player.playerWeapon] -= 1;
+			c.playerEquipmentN[c.playerWeapon] -= 1;
 		}
 		c.updateRequired = true;
 		c.setAppearanceUpdateRequired(true);

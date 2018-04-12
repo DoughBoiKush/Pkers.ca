@@ -104,6 +104,7 @@ public class MeleeSpecial {
 			return false;
 		case 12809:
 		case 19481:
+		case 19478:
 			if (c.specAmount > 6.5) {
 				c.specAmount -= 6.5;
 				c.getItems().addSpecialBar(weapon);
@@ -273,7 +274,9 @@ public class MeleeSpecial {
 		case 11785:
 			c.animation(4230);
 			c.acbSpec = true;
+			//c.gfx100(301);
 			c.usingBow = true;
+			c.lastWeaponUsed = c.playerEquipment[c.playerWeapon];
 			c.rangeItemUsed = c.playerEquipment[c.playerArrows];
 			if (c.playerIndex > 0)
 				c.getCombat().fireProjectilePlayer();
@@ -470,6 +473,7 @@ public class MeleeSpecial {
 			break;
 
 		case 19481:
+		case 19478:
 			c.specAccuracy = 1.25;
 			c.specDamage = 1.25;
 			c.usingBow = true;
@@ -558,7 +562,8 @@ public class MeleeSpecial {
 			break;
 		}
 		if (c.playerEquipment[c.playerWeapon] == 861 || c.playerEquipment[c.playerWeapon] == 11235
-				|| c.playerEquipment[c.playerWeapon] == 11785 || c.playerEquipment[c.playerWeapon] == 12926 || c.playerEquipment[c.playerWeapon] == 19481) {
+				|| c.playerEquipment[c.playerWeapon] == 11785 || c.playerEquipment[c.playerWeapon] == 12926 || c.playerEquipment[c.playerWeapon] == 19481
+				 || c.playerEquipment[c.playerWeapon] == 19478) {
 			c.delayedDamage = Misc.random(c.getCombat().rangeMaxHit());
 			c.delayedDamage2 = Misc.random(c.getCombat().rangeMaxHit());
 		} else {

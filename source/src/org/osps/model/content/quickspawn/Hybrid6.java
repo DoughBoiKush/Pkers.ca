@@ -12,7 +12,7 @@ public class Hybrid6 {
 		
 		player.getItems().wearItem(4089, 1, player.playerHat); //mystic hat
 		player.getItems().wearItem(11978, 1, player.playerAmulet); //glory
-		player.getItems().wearItem(4675, 1, Player.playerWeapon); //ancient staff	
+		player.getItems().wearItem(4675, 1, player.playerWeapon); //ancient staff	
 		player.getItems().wearItem(3842, 1, player.playerShield); //unholy book
 		player.getItems().wearItem(2412, 1, player.playerCape); //saradomin cape
 		player.getItems().wearItem(4091, 1, player.playerChest); //mystic body
