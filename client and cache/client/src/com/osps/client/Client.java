@@ -12167,12 +12167,12 @@ public class Client extends RSApplet {
 			aTextDrawingArea_1271.method385(textColour, "Fps: " + super.fps, 45,
 					Configuration.clientSize == 0 ? 470 : Configuration.clientWidth - 265);
 			Runtime runtime = Runtime.getRuntime();
-			int memUsage = (int) ((runtime.totalMemory() - runtime.freeMemory()) / 1024L);
+			int memUsage = (int) ((runtime.totalMemory() - runtime.freeMemory()) / 1024L / 1024L);
 			textColour = 0xffff00;
 			if (memUsage > 0x2000000 && lowMem) {
 				textColour = 0xff0000;
 			}
-			aTextDrawingArea_1271.method385(textColour, "Mem: " + memUsage + "k", 60,
+			aTextDrawingArea_1271.method385(textColour, "Mem: " + memUsage + "mb", 60,
 					Configuration.clientSize == 0 ? 428 : Configuration.clientWidth - 265);
 		}
 		int x = baseX + (myPlayer.x - 6 >> 7);
@@ -12183,10 +12183,10 @@ public class Client extends RSApplet {
 			}
 			aTextDrawingArea_1271.method385(0xffff00, "Fps: " + super.fps, 285, 5);
 			Runtime runtime = Runtime.getRuntime();
-			int j1 = (int) ((runtime.totalMemory() - runtime.freeMemory()) / 1024L);
+			int j1 = (int) ((runtime.totalMemory() - runtime.freeMemory()) / 1024L / 1024L);
 			if (j1 > 0x2000000 && lowMem) {
 			}
-			aTextDrawingArea_1271.method385(0xffff00, "Mem: " + j1 + "k", 299, 5);
+			aTextDrawingArea_1271.method385(0xffff00, "Mem: " + j1 + "mb", 299, 5);
 			aTextDrawingArea_1271.method385(0xffff00, "Mouse X: " + super.mouseX + " , Mouse Y: " + super.mouseY, 314,
 					5);
 			aTextDrawingArea_1271.method385(0xffff00, "Coords: " + x + ", " + y, 329, 5);

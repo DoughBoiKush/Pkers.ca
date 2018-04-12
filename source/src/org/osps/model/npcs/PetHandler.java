@@ -203,6 +203,32 @@ public class PetHandler {
 		}
 	}
 	
+	public static void restorePrayerZilyana(Player c, int npcId) {
+		if (npcId != 6633 || c.summonId != 12651) {
+			return;
+		}
+		Pets pets = forNpc(npcId);
+		if (pets != null) {
+			if (NPCHandler.npcs[c.rememberNpcIndex].spawnedBy == c.index && c.summonId == pets.itemId) {
+				if (System.currentTimeMillis() - c.lastZilyanaHeal >= 180000L) {
+					if (c.playerLevel[5] < c.getPA().getLevelForXP(c.playerXP[5])) {
+						c.animation(645);
+						c.playerLevel[5] = c.getPA().getLevelForXP(c.playerXP[5]);
+						c.sendMessage("Zilyana Jr recharges your prayer points.");
+						c.lastZilyanaHeal =  System.currentTimeMillis();
+						c.getPA().refreshSkill(5);
+					} else {
+						c.sendMessage("You already have full prayer points.");
+					}
+				} else {
+					c.sendMessage("Zilyana Jr. needs to regain her energy before healing you again.");
+				}
+			} else {
+				c.sendMessage("This is not your pet.");
+			}
+		}
+	}
+	
 	public static boolean spawnPet(Player c, int itemId, int slot,
 			boolean ignore) {
 		Pets pets = forItem(itemId);

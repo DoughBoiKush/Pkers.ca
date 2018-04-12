@@ -30,6 +30,26 @@ public class MeleeExtras {
 			c2.getPA().refreshSkill(5);
 		}
 	}
+	
+	//half as effective smite and heals 10% of damage dealt
+	public static void applySoulSplit(Player c, int index, int damage) {
+		if (index != -1) {
+			if (PlayerHandler.players[index] != null) {
+				Player c2 = PlayerHandler.players[index];
+				c2.playerLevel[5] -= damage/8;
+				if (c2.playerLevel[5] <= 0) {
+					c2.playerLevel[5] = 0;
+					c2.getCombat().resetPrayers();
+				}
+				c2.getPA().refreshSkill(5);
+			}
+		}
+		c.playerLevel[3] += damage/10;
+		if (c.playerLevel[3] > Player.getLevelForXP(c.playerXP[3])) {
+			c.playerLevel[3] = Player.getLevelForXP(c.playerXP[3]);
+		}
+		
+	}
 
 	public static void appendVengeanceNPC(Player c, int otherPlayer, int damage) {
 		if (damage <= 0)

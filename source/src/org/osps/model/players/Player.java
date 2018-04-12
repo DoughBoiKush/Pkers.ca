@@ -1828,7 +1828,7 @@ public class Player extends Entity {
 			appendPoisonDamage();
 			setLastPoisonHit(System.currentTimeMillis());
 		}
-		if (getVenomDamage() > 0 && System.currentTimeMillis() - getLastVenomHit() > 15_0000) {
+		if (getVenomDamage() > 0 && System.currentTimeMillis() - getLastVenomHit() > 18000) {
 			if (!hasBeenVenomed && playerEquipment[playerHat] != 12931) {
 				sendMessage("You have been infected by venom!");
 			}
@@ -2569,6 +2569,7 @@ public class Player extends Entity {
 	public boolean updateItems = false;
 	public int ratsCaught;
 	public int summonId;
+	public long lastZilyanaHeal = 0;
 	public int bossKills;
 	public int droppedItem = -1;
 	public int kbdCount;
@@ -5596,7 +5597,8 @@ public class Player extends Entity {
 	 * @return true of they can be infected by venom.
 	 */
 	public boolean isSusceptibleToVenom() {
-		return System.currentTimeMillis() - lastVenomCure > venomImmunity && !getItems().isWearingItem(12931);
+		return System.currentTimeMillis() - lastVenomCure > venomImmunity && !getItems().isWearingItem(12931) && 
+				!(summonId == 12921 || summonId == 12939 || summonId == 12940);
 	}
 
 	/**

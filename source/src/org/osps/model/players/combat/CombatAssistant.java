@@ -177,6 +177,10 @@ public class CombatAssistant {
 	public void applySmite(int index, int damage) {
 		MeleeExtras.applySmite(c, index, damage);
 	}
+	
+	public void applySoulSplit(int index, int damage) {
+		MeleeExtras.applySoulSplit(c, index, damage);
+	}
 
 	public boolean usingDbow() {
 		return c.playerEquipment[c.playerWeapon] == 11235 ||

@@ -181,6 +181,9 @@ public class AttackNPC {
 		if (NPCHandler.npcs[i].HP - damage < 0) {
 			damage = NPCHandler.npcs[i].HP;
 		}
+		if (c.summonId == 12816) {
+			c.getCombat().applySoulSplit(-1, damage);
+		}
 		if (c.fightMode == 3) {
 			c.getPA().addSkillXP((damage * Config.MELEE_EXP_RATE / 3), 3);
 			c.getPA().addSkillXP((damage * Config.MELEE_EXP_RATE / 3), 0);

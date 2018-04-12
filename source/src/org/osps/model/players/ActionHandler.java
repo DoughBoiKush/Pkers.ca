@@ -3073,6 +3073,9 @@ public class ActionHandler {
 			if (c.summonId == 11995)
 				TeleportExecutor.teleport(c, new Position(Config.RESPAWN_X, Config.RESPAWN_Y, 0), false);
 			break;
+		case 6633:
+			PetHandler.restorePrayerZilyana(c, npcType);
+			break;
 		case 5892:
 		case 6636:
 			if (c.summonId == 13225 || c.summonId == 12653) {

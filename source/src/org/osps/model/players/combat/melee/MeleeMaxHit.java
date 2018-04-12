@@ -185,7 +185,6 @@ public class MeleeMaxHit {
 					highest = i;
 			}
 		}
-		System.out.println(""+highest);
 		return highest;
 	}
 

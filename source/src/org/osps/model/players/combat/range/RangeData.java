@@ -17,7 +17,6 @@ public class RangeData {
 				int offX = (pY - nY)* -1;
 				int offY = (pX - nX)* -1;
 				if (c.lastWeaponUsed == 11785 && c.acbSpec == true) {
-					System.out.println("got here");
 					c.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, c.getCombat().getProjectileSpeed(), 301 /*GFX*/, 25, 10, c.oldNpcIndex + 1, 45);
 					c.acbSpec = false;
 				} else {

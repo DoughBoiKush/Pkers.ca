@@ -16,6 +16,7 @@ import org.osps.model.players.PlayerHandler;
 import org.osps.model.players.combat.effects.AmuletOfTheDamnedDharokEffect;
 import org.osps.model.players.combat.effects.AmuletOfTheDamnedKarilEffect;
 import org.osps.model.players.combat.effects.SerpentineHelmEffect;
+import org.osps.model.players.combat.effects.SnakelingEffect;
 import org.osps.model.players.combat.effects.ToxicBlowpipeEffect;
 import org.osps.model.players.combat.range.RangeData;
 import org.osps.model.players.combat.range.RangeExtras;
@@ -124,6 +125,9 @@ public class AttackPlayer {
 				c.playerLevel[3] = c.getMaximumHealth();
 			c.getPA().refreshSkill(3);
 			o.gfx0(398);
+		}
+		if (c.summonId == 12816) {
+			c.getCombat().applySoulSplit(i, damage);
 		}
 		if (damage > 0 && guthansEffect && c.getPA().wearingGuthan(c) && c.playerLevel[3] == c.getPA().getLevelForXP(c.playerXP[3])) {
 			c.playerLevel[3] += 11;
@@ -323,6 +327,10 @@ public class AttackPlayer {
 				if (venom.isExecutable(o)) {
 					venom.execute(c, o, new Damage(6));
 				}
+			}
+			if (c.summonId == 12921 || c.summonId == 12939 || c.summonId == 12940) {
+				DamageEffect venom = new SnakelingEffect();
+				venom.execute(c, o, new Damage(6));
 			}
 			if (!c.castingMagic && c.projectileStage > 0) { // range hit damage
 				c.rangeEndGFX = RangeData.getRangeEndGFX(c);

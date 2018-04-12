@@ -6,24 +6,26 @@ import org.osps.model.players.combat.Damage;
 import org.osps.model.players.combat.DamageEffect;
 import org.osps.util.Misc;
 
-public class SerpentineHelmEffect implements DamageEffect {
+public class SnakelingEffect implements DamageEffect {
 
 	@Override
 	public void execute(Player attacker, Player defender, Damage damage) {
-		defender.setVenomDamage((byte) damage.getAmount()); 
-		defender.sendMessage("You have been infected by venom.");
-	} 
-	
+		if (Misc.random(2) == 0 && defender.isSusceptibleToVenom()) {
+			defender.setVenomDamage((byte) damage.getAmount()); 
+			attacker.sendMessage("Your pet snakeling infected your opponent with venom.");
+		}
+		
+	}
 
 	@Override
 	public void execute(Player attacker, NPC defender, Damage damage) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean isExecutable(Player operator) {
-		return operator.getItems().isWearingItem(12931) && Misc.random(5) == 1;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

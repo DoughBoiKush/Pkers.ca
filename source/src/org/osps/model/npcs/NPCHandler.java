@@ -3602,7 +3602,6 @@ public class NPCHandler {
 			return;
 		}
 		if (!followPlayer(i)) { 
-			System.out.println("got here");
 			npcs[i].face(PlayerHandler.players[playerId]);
 			return;
 		}

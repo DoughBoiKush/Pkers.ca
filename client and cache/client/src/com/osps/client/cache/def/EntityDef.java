@@ -28,6 +28,12 @@ public final class EntityDef {
 			entityDef.actions[2] = "Pick-up";
 			entityDef.actions[3] = "@or2@Tele Home";
 		}
+		if (i == 6633) { //zilyana jr
+			entityDef.actions = new String[5];
+			entityDef.actions[0] = "Talk-to";
+			entityDef.actions[2] = "Pick-up";
+			entityDef.actions[3] = "@or2@Restore Prayer";
+		}
 		if (i == 6636) { //prince black dragon
 			entityDef.actions = new String[5];
 			entityDef.actions[0] = "Talk-to";
