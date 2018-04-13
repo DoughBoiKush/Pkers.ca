@@ -2187,6 +2187,10 @@ public class NPCHandler {
 						else
 							damage = 0;
 					}
+					if (isRevenant(npcs[i].npcType) && c.revenantProtection()) {
+						c.setEther(c.getEther() - 1);
+						damage = 0;
+					}
 					if (c.playerEquipment[c.playerShield] == 12817) {
 						if (Misc.random(100) > 30 && damage > 0) {
 							damage *= .75;
@@ -2259,6 +2263,10 @@ public class NPCHandler {
 							damage = c.playerLevel[3];
 						}
 					}
+					if (isRevenant(npcs[i].npcType) && c.revenantProtection()) {
+						c.setEther(c.getEther() - 1);
+						damage = 0;
+					}
 					if (npcs[i].npcType == 2042 || npcs[i].npcType == 2044 || npcs[i].npcType == 320) {
 						if (c.isSusceptibleToVenom()) {
 							c.setVenomDamage((byte) 6);
@@ -2323,6 +2331,10 @@ public class NPCHandler {
 					}
 					if (c.playerLevel[3] - damage < 0) {
 						damage = c.playerLevel[3];
+					}
+					if (isRevenant(npcs[i].npcType) && c.revenantProtection()) {
+						c.setEther(c.getEther() - 1);
+						damage = 0;
 					}
 					if (damage == 0 && npcs[i].npcType == 7152) {
 						c.hits++;
@@ -3642,7 +3654,18 @@ public class NPCHandler {
 		if (DemonicGorilla.isDemonicGorilla(npcs[npcId])) {
 			DemonicGorilla.switchPrayer(npcs[npcId]);
 		}
-
+		if (isRevenant(npcs[npcId].npcType)) {
+			int revSpell = Misc.random(10);
+			if (revSpell <= 5) {
+				npcs[npcId].attackType = 2;
+				npcs[npcId].projectileId = 386;
+			} else if (revSpell <= 7) {
+				npcs[npcId].attackType = 0;
+			} else {
+				npcs[npcId].attackType = 1;
+				npcs[npcId].projectileId = 386;
+			}
+		}
 		switch (npcs[npcId].npcType) {
 		case 2054:
 			int r2 = Misc.random(10);

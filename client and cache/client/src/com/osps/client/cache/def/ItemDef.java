@@ -456,6 +456,19 @@ public final class ItemDef {
 			itemDef.itemActions = new String[5];
 			itemDef.itemActions[0] = "Claim";
 			break;
+			
+		case 11088:
+			itemDef.name = "Bracelet of Ethereum";
+			itemDef.itemActions = new String[5];
+			itemDef.description = "Yeah, we fucking know it's not an actual bracelet of ethereum.";
+			itemDef.itemActions[1] = "Weild";
+			itemDef.itemActions[2] = "@or2@Empty";
+			break;
+			
+		case 4278:
+			itemDef.name = "Revenant Ether";
+			itemDef.description = "No shit these are ecto tokens, you don't need to tell us.";
+			break;
 
 
 		case 15098:

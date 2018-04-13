@@ -3015,6 +3015,9 @@ public class Player extends Entity {
 			// burst
 			{ 12881, 70, 1979, 0, 0, 363, 22, 40, 560, 2, 562, 4, 555, 4, 0, 0 }, // ice
 			// burst
+			// example {magicId, level req, animation, startGFX, projectile Id,
+						// endGFX, maxhit, exp gained, rune 1, rune 1 amount, rune 2, rune 2
+						// amount, rune 3, rune 3 amount, rune 4, rune 4 amount}
 			{ 12951, 74, 1978, 0, 386, 387, 23, 42, 560, 2, 554, 2, 565, 2, 556, 2 }, // smoke
 			// blitz
 			{ 12999, 76, 1978, 0, 380, 381, 24, 43, 560, 2, 565, 2, 556, 2, 566, 2 }, // shadow
@@ -5427,6 +5430,16 @@ public class Player extends Entity {
 	public void setRights(Rights rights) {
 		this.rights = rights;
 	}
+	
+	private int ether;
+	
+	public int getEther() {
+		return ether;
+	}
+	
+	public void setEther(int ether) {
+		this.ether = ether;
+	}
 
 	/**
 	 * Mutates the current hitmark to be that of the new hitmark. This is
@@ -6079,6 +6092,10 @@ public class Player extends Entity {
 
 	public ItemPouch getGemBag() {
 		return gemBag;
+	}
+
+	public boolean revenantProtection() {
+		return (getEther() > 0) && getItems().isWearingItem(11088);
 	}
 
 }

@@ -219,6 +219,18 @@ public class ItemClick2 implements PacketType {
 		case 11808:
 			c.sendMessage("Dismantle has been disabled.");
 			break;
+		case 11088:
+			if (c.getEther() == 0) {
+				c.sendMessage("You have no ether to empty.");
+				break;
+			}
+			if (c.getItems().freeSlots() != 0) {
+				c.getItems().addItem(4278, c.getEther());
+				c.setEther(0);
+			} else {
+				c.sendMessage("You need at least 1 free inventory slot to do this.");
+			}
+			break;
 		default:
 			if (c.getRights().isDeveloper() && Config.SERVER_DEBUG)
 				Misc.println(c.playerName + " - Item3rdOption: " + itemId);

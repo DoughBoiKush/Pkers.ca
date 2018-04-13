@@ -167,7 +167,22 @@ public class UseItem {
 			}
 			return;
 		}
-
+		if ((itemUsed == 4278 && useWith == 11088) || (itemUsed == 11088 && useWith == 4278)) {
+			int amount = c.getItems().getItemAmount(4278);
+			if (amount == 0)
+				return;
+			if (amount > 16000)
+				amount = 16000;
+			if (c.getEther() >= 16000) {
+				c.sendMessage("You're already charged with 16,000 ether.");
+				return;
+			}
+			if (c.getEther() + amount > 16000)
+				amount = 16000 - c.getEther();
+			c.getItems().deleteItem(4278, amount);
+			c.setEther(c.getEther() + amount);
+			c.sendMessage("You're now charged with " + c.getEther() + " ether.");
+		}
 		if (itemUsed == 19592 && useWith == 19589 || itemUsed == 19589 && useWith == 19592) {
 			if (c.playerLevel[9] > 72 && c.getItems().playerHasItem(19589) && c.getItems().playerHasItem(19592)) {
 				c.getItems().deleteItem(19592, 1);

@@ -601,6 +601,8 @@ public class PlayerSave {
 						p.blastPoints = Integer.parseInt(token2);
 					} else if (token.equals("magePoints")) {
 						p.magePoints = Integer.parseInt(token2);
+					} else if (token.equals("ether")) {
+						p.setEther(Integer.parseInt(token2));
 					} else if (token.equals("autoRet")) {
 						p.autoRet = Integer.parseInt(token2);
 					} else if (token.equals("barrowskillcount")) {
@@ -1268,6 +1270,9 @@ public class PlayerSave {
 			characterfile.newLine();
 			characterfile.write("magePoints = ", 0, 13);
 			characterfile.write(Integer.toString(p.magePoints), 0, Integer.toString(p.magePoints).length());
+			characterfile.newLine();
+			characterfile.write("ether = ", 0, 8);
+			characterfile.write(Integer.toString(p.getEther()), 0, Integer.toString(p.getEther()).length());
 			characterfile.newLine();
 			characterfile.write("autoRet = ", 0, 10);
 			characterfile.write(Integer.toString(p.autoRet), 0, Integer.toString(p.autoRet).length());
