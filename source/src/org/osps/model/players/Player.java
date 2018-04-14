@@ -5438,6 +5438,9 @@ public class Player extends Entity {
 	}
 	
 	public void setEther(int ether) {
+		if (ether == 0) {
+			sendMessage("@dre@You're out of ether and no longer protected from revenants!");
+		}
 		this.ether = ether;
 	}
 
