@@ -10036,7 +10036,7 @@ public class Client extends RSApplet {
 
 	@Override
 	void startUp() {
-		// new CacheDownloader(this).downloadCache();
+		new CacheDownloader(this).downloadCache();
 		//new UpdateCache(this).run();
 		toggles1();
 		toggles2();

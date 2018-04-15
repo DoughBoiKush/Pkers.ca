@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
 
 public class UpdateCache implements Runnable {
 
-	public static final String ZIP_URL = "https://dl.dropboxusercontent.com/s/8ndnp753h9j3s3n/OSPS-CACHE.zip";
-	public static final String VERSION_URL = "https://dl.dropboxusercontent.com/s/byhnp40cwn9kia3/cacheVersion.txt";
+	public static final String ZIP_URL = "https://pkers.ca/OSPS-CACHE.zip";
+	public static final String VERSION_URL = "https://pkers.ca/cacheVersion.txt";
 	public static final String VERSION_FILE = Signlink.findcachedir() + "cacheVersion.dat";
 	private Client client;
 	Client frame;
@@ -33,7 +33,8 @@ public class UpdateCache implements Runnable {
 	}
 
 	public double getCurrentVersion() {
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(VERSION_FILE)))) {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(VERSION_FILE)));
 			return Double.parseDouble(br.readLine());
 		} catch (Exception e) {
 			return 0.1;
@@ -54,6 +55,8 @@ public class UpdateCache implements Runnable {
 	private void handleException(Exception e) {
 		StringBuilder strBuff = new StringBuilder();
 		strBuff.append("Please Screenshot this message, and send it to an admin!\r\n\r\n");
+		StringBuilder append = strBuff.append(e.getClass().getName()).append(" \"").append(e.getMessage())
+				.append("\"\r\n");
 		for (StackTraceElement s : e.getStackTrace())
 			strBuff.append(s.toString()).append("\r\n");
 		alert("Exception [" + e.getClass().getSimpleName() + "]", strBuff.toString(), true);
@@ -74,11 +77,21 @@ public class UpdateCache implements Runnable {
 		try {
 			double newest = getNewestVersion();
 			if (newest > this.getCurrentVersion()) {
-				updateClient();
-				OutputStream out = new FileOutputStream(VERSION_FILE);
-				out.write(String.valueOf(newest).getBytes());
-				;
-				out.close();
+				int n = JOptionPane.showConfirmDialog(null,
+						"There is an update to version " + newest + "\n" + "Would you like to update?",
+						"Current version: " + getCurrentVersion(), JOptionPane.YES_NO_OPTION);
+				if (n == 0) {
+					updateClient();
+					drawLoadingText(0, "Cache has been updated, please restart the client!");
+					alert("Cache has been updated, please restart the client!");
+					OutputStream out = new FileOutputStream(VERSION_FILE);
+					out.write(String.valueOf(newest).getBytes());
+					;
+					System.exit(0);
+				} else {
+					alert(" Your client may not load correct " + getCurrentVersion());
+					// System.exit(0);
+				}
 			}
 		} catch (Exception e) {
 			handleException(e);
@@ -109,25 +122,22 @@ public class UpdateCache implements Runnable {
 		while ((e = zin.getNextEntry()) != null)
 			max += e.getSize();
 		zin.close();
-		try (ZipInputStream in = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFile)))) {
-			while ((e = in.getNextEntry()) != null) {
-				if (e.isDirectory())
-					new File(outFile, e.getName()).mkdirs();
-				else {
-					FileOutputStream out = new FileOutputStream(new File(outFile, e.getName()));
-					byte[] b = new byte[1024];
-					int len;
-					while ((len = in.read(b, 0, b.length)) > -1) {
-						curr += len;
-						out.write(b, 0, len);
-						setUnzipPercent((int) ((curr * 100) / max));
-					}
-					out.flush();
-					out.close();
+		ZipInputStream in = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFile)));
+		while ((e = in.getNextEntry()) != null) {
+			if (e.isDirectory())
+				new File(outFile, e.getName()).mkdirs();
+			else {
+				FileOutputStream out = new FileOutputStream(new File(outFile, e.getName()));
+				byte[] b = new byte[1024];
+				int len;
+				while ((len = in.read(b, 0, b.length)) > -1) {
+					curr += len;
+					out.write(b, 0, len);
+					setUnzipPercent((int) ((curr * 100) / max));
 				}
+				out.flush();
+				out.close();
 			}
-		} catch (Exception exception) {
-			exception.printStackTrace();
 		}
 	}
 
@@ -135,7 +145,7 @@ public class UpdateCache implements Runnable {
 
 	public void setDownloadPercent(int amount) {
 		percent = amount;
-		drawLoadingText(amount, "Updating Cache" + " - " + amount + "%");
+		drawLoadingText(amount, "Downloading Cache" + " - " + amount + "%");
 	}
 
 	public int percent2 = 0;

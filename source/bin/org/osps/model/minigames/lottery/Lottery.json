@@ -1,0 +1,17 @@
+{
+	"jackpot":6000,
+	"entries":[
+		{
+			"NAME":"Sam",
+			"PKP_ENTERED":1000
+		},
+		{
+			"NAME":"Sam2",
+			"PKP_ENTERED":2000
+		},
+		{
+			"NAME":"Sam3",
+			"PKP_ENTERED":3000
+		}
+	]
+}

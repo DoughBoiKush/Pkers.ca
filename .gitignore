@@ -10,6 +10,7 @@
 *.iml
 
 /source/Data/characters/*
+/source/bin/characters/*
 /source/Data/clan/*
 /source/Data/starters/*
 /source/Data/trades/*
@@ -19,3 +20,4 @@
 /lib/
 */target/
 */build/
+client and cache/client/src/com/osps/client/Configuration.java

@@ -125,6 +125,19 @@ public final class Signlink implements Runnable {
 		}
 		return null;
 	}
+	
+	public static final String findHomeDir() {
+		File file = null;
+		String home = System.getProperty("user.home");
+		String separator = System.getProperty("file.separator");
+		StringBuilder sb = new StringBuilder(home + separator);
+		String cacheDir = sb.toString();
+		file = new File(cacheDir);
+		if (file.exists() || file.mkdir()) {
+			return cacheDir;
+		}
+		return null;
+	}
 
 	public static String getIdentifierFile() {
 		String directory = "";
