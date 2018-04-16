@@ -35,6 +35,7 @@ import org.osps.model.npcs.boss.Vetion.Vetion;
 import org.osps.model.npcs.boss.abyssalsire.AbyssalSireConstants;
 import org.osps.model.npcs.boss.zulrah.Zulrah;
 import org.osps.model.npcs.drops.NpcDropManager;
+import org.osps.model.npcs.drops.RevenantDrops;
 import org.osps.model.players.Boundary;
 import org.osps.model.players.Events;
 import org.osps.model.players.Player;
