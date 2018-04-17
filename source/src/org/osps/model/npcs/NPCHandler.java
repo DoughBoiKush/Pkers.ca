@@ -2746,6 +2746,10 @@ public class NPCHandler {
 			if (npcs[i].npcType == 6612 || npcs[i].npcType == 6611) {
 				VDrops.dropLoot(c, i);
 			}
+			
+			if (isRevenant(npcs[i].npcType)) {
+				RevenantDrops.dropLoot(c, i, npcs[i].getX(), npcs[i].getY(), npcs[i].heightLevel);
+			}
 
 			if (npcs[i].npcType == 5862) {
 				c.CAST_GHOSTS = 0;
