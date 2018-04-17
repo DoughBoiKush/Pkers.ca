@@ -502,15 +502,12 @@ public class NPCHandler {
 	}
 
 	public boolean isAggressive(int i) {
-		if (Boundary.isIn(npcs[i], Boundary.GODWARS_BOSSROOMS)) {
+		if (Boundary.isIn(npcs[i], Boundary.GODWARS_BOSSROOMS))
 			return true;
-		}
-		if (Boundary.isIn(npcs[i], Zulrah.BOUNDARY)) {
+		if (Boundary.isIn(npcs[i], Zulrah.BOUNDARY))
 			return true;
-		}
-		if (Boundary.isIn(npcs[i], NPC.BOUNDARY_CORP)) {
+		if (Boundary.isIn(npcs[i], NPC.BOUNDARY_CORP))
 			return true;
-		}
 		if (npcs[i].inWild()) 
 			return true;
 		switch (npcs[i].npcType) {
@@ -2244,7 +2241,6 @@ public class NPCHandler {
 					// damage = Misc.random(npcs[i].maxHit);
 					int rangeDefence = Misc.random(c.getCombat().calculateRangeDefence());
 					int npcAttack = Misc.random(NPCHandler.npcs[i].attack);
-					System.out.println("range def " + rangeDefence + " npc attack " + npcAttack);
 					if (rangeDefence > npcAttack) {
 						damage = 0;
 					}
@@ -4640,7 +4636,7 @@ public class NPCHandler {
 			return 6;
 
 		}
-		return 0;
+		return 5;
 
 	}
 
