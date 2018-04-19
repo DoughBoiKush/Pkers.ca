@@ -6,9 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import org.osps.Config;
 import org.osps.Server;
@@ -34,6 +36,7 @@ import org.osps.model.npcs.boss.Lizardman.Lizardman;
 import org.osps.model.npcs.boss.Vetion.Vetion;
 import org.osps.model.npcs.boss.abyssalsire.AbyssalSireConstants;
 import org.osps.model.npcs.boss.zulrah.Zulrah;
+import org.osps.model.npcs.drops.BeardedGorillaDrops;
 import org.osps.model.npcs.drops.NpcDropManager;
 import org.osps.model.npcs.drops.RevenantDrops;
 import org.osps.model.players.Boundary;
@@ -116,8 +119,8 @@ public class NPCHandler {
 		if (player == null) {
 			return;
 		}
-		int x = player.getX();
-		int y = player.getY();
+		player.getX();
+		player.getY();
 
 		player.getPA().createPlayersProjectile(npc.absX, npc.absY, player.absX, player.absY, 40,
 				getProjectileSpeed(npc.index), 314, 31, 0, -1, 5);
@@ -130,8 +133,6 @@ public class NPCHandler {
 				int pY = player.getY();
 				int nX = npc.getX();
 				int nY = npc.getY();
-				int offX = (pY - nY) * -1;
-				int offY = (pX - nX) * -1;
 				int offX1 = (pY - nY) * -1;
 				int offY1 = (pX - nX);
 				int offX2 = (pY - nY) * -1;
@@ -169,8 +170,6 @@ public class NPCHandler {
 		for (int[] point : coreCoordinates) {
 			int nX = npc.absX + 2;
 			int nY = npc.absY + 2;
-			int iX = player.absX + 2;
-			int iY = player.absY + 2;
 			int x1 = point[0] + 1;
 			int y1 = point[1] + 2;
 			int offY = (nX - x1) * -1;
@@ -184,8 +183,6 @@ public class NPCHandler {
 			@Override
 			public void execute(CycleEventContainer container) {
 				for (int[] point : coreCoordinates) {
-					int coordX = point[0];
-					int coordY = point[1];
 					// player.getPA().createPlayersStillGfx(317, coordX, coordY,
 					// 0, 5);
 					NPCHandler.spawnNpc67(player, 320, player.absX, player.absY, 2, -1, 50, 20, 2000, 80, true, true);
@@ -346,7 +343,7 @@ public class NPCHandler {
 			int dir = NPCClipping.getDirection(k[0], k[1]);
 			if (NPCDumbPathFinder.canMoveTo(npcs[i], dir)) {
 				NPCDumbPathFinder.walkTowards(npcs[i], npcs[i].getX() + NPCClipping.DIR[dir][0],
-						npcs[i].getY() + NPCClipping.DIR[dir][1]);
+						npcs[i].getY() + NPCClipping.DIR[dir][1], null);
 				break;
 			}
 		}
@@ -747,6 +744,7 @@ public class NPCHandler {
 		case 7151:
 			return 7227;
 		case 7152:
+		case 7095:
 			return 7225;
 		case 7153:
 			return 7224;
@@ -1167,6 +1165,7 @@ public class NPCHandler {
 		switch (npcs[i].npcType) {
 		case 7101:
 			return 4673;
+		case 7095:
 		case 7151:
 		case 7152:
 		case 7153:
@@ -1671,37 +1670,7 @@ public class NPCHandler {
 		npcs[slot] = newNPC;
 		return newNPC;
 	}
-	/*
-	 * public void handleClipping(int i) { NPC npc = npcs[i]; if (npc.moveX == 1
-	 * && npc.moveY == 1) { if ((Region.getClipping(npc.absX + 1, npc.absY + 1,
-	 * npc.heightLevel) & 0x12801e0) != 0) { npc.moveX = 0; npc.moveY = 0; if
-	 * ((Region.getClipping(npc.absX, npc.absY + 1, npc.heightLevel) &
-	 * 0x1280120) == 0) npc.moveY = 1; else npc.moveX = 1; } } else if
-	 * (npc.moveX == -1 && npc.moveY == -1) { if ((Region.getClipping(npc.absX -
-	 * 1, npc.absY - 1, npc.heightLevel) & 0x128010e) != 0) { npc.moveX = 0;
-	 * npc.moveY = 0; if ((Region.getClipping(npc.absX, npc.absY - 1,
-	 * npc.heightLevel) & 0x1280102) == 0) npc.moveY = -1; else npc.moveX = -1;
-	 * } } else if (npc.moveX == 1 && npc.moveY == -1) { if
-	 * ((Region.getClipping(npc.absX + 1, npc.absY - 1, npc.heightLevel) &
-	 * 0x1280183) != 0) { npc.moveX = 0; npc.moveY = 0; if
-	 * ((Region.getClipping(npc.absX, npc.absY - 1, npc.heightLevel) &
-	 * 0x1280102) == 0) npc.moveY = -1; else npc.moveX = 1; } } else if
-	 * (npc.moveX == -1 && npc.moveY == 1) { if ((Region.getClipping(npc.absX -
-	 * 1, npc.absY + 1, npc.heightLevel) & 0x128013) != 0) { npc.moveX = 0;
-	 * npc.moveY = 0; if ((Region.getClipping(npc.absX, npc.absY + 1,
-	 * npc.heightLevel) & 0x1280120) == 0) npc.moveY = 1; else npc.moveX = -1; }
-	 * } // Checking Diagonal movement.
-	 * 
-	 * if (npc.moveY == -1) { if ((Region.getClipping(npc.absX, npc.absY - 1,
-	 * npc.heightLevel) & 0x1280102) != 0) npc.moveY = 0; } else if (npc.moveY
-	 * == 1) { if ((Region.getClipping(npc.absX, npc.absY + 1, npc.heightLevel)
-	 * & 0x1280120) != 0) npc.moveY = 0; } // Checking Y movement. if (npc.moveX
-	 * == 1) { if ((Region.getClipping(npc.absX + 1, npc.absY, npc.heightLevel)
-	 * & 0x1280180) != 0) npc.moveX = 0; } else if (npc.moveX == -1) { if
-	 * ((Region.getClipping(npc.absX - 1, npc.absY, npc.heightLevel) &
-	 * 0x1280108) != 0) npc.moveX = 0; } }
-	 * 
-	 */
+
 	public static void kill(int npcId) {
 		if (npcs[npcId] == null) {
 			return;
@@ -1712,6 +1681,19 @@ public class NPCHandler {
 		npcs[npcId].animUpdateRequired = true;
 		npcs[npcId].actionTimer = 0;
 		npcs[npcId].needRespawn = true;
+	}
+	
+	public void stopKilling(int i) {
+		if (isRevenant(npcs[i].npcType) && PlayerHandler.players[npcs[i].killerId] != null) {
+			if (PlayerHandler.players[npcs[i].killerId].revenantProtection()) {
+				npcs[i].killerId = 0;
+			}
+		}
+		switch (npcs[i].npcType) {
+		case 4933:
+			npcs[i].killerId = 0;
+			break;
+		}
 	}
 
 	public void process() {
@@ -1846,16 +1828,20 @@ public class NPCHandler {
 					// Player player = PlayerHandler.players[npcs[i].spawnedBy];
 					if (isAggressive(i) && !npcs[i].underAttack && !npcs[i].isDead && !switchesAttackers(i)) {
 						npcs[i].killerId = getCloseRandomPlayer(i);
+						stopKilling(i);
 					} else if (isAggressive(i) && !npcs[i].underAttack && !npcs[i].isDead && switchesAttackers(i)) {
 						npcs[i].killerId = getCloseRandomPlayer(i);
+						stopKilling(i);
 					}
 
 					if (NpcDefinition.DEFINITIONS[i].isAggressive() && !npcs[i].underAttack && !npcs[i].isDead
 							&& !switchesAttackers(i)) {
 						npcs[i].killerId = getCloseRandomPlayer(i);
+						stopKilling(i);
 					} else if (NpcDefinition.DEFINITIONS[i].isAggressive() && !npcs[i].underAttack && !npcs[i].isDead
 							&& switchesAttackers(i)) {
 						npcs[i].killerId = getCloseRandomPlayer(i);
+						stopKilling(i);
 					}
 					if (npcs[i].npcType == 320) {
 						npcs[i].damageDealt += npcs[i].damageDone;
@@ -1885,7 +1871,7 @@ public class NPCHandler {
 										// npcs[i].lastKillerId = c.playerId;
 									}
 								} else {
-									Player c = PlayerHandler.players[p];
+									Player c = PlayerHandler.players[npcs[i].summonedBy];
 									if (npcs[i].absX == c.absX && npcs[i].absY == c.absY) {
 										stepAway(i);
 										npcs[i].randomWalk = false;
@@ -1923,7 +1909,7 @@ public class NPCHandler {
 						if (npcs[i].walkingHome && npcs[i].absX == npcs[i].makeX && npcs[i].absY == npcs[i].makeY) {
 							npcs[i].walkingHome = false;
 						} else if (npcs[i].walkingHome) {
-							NPCDumbPathFinder.walkTowards(npcs[i], npcs[i].makeX, npcs[i].makeY);
+							NPCDumbPathFinder.walkTowards(npcs[i], npcs[i].makeX, npcs[i].makeY, null);
 							//npcs[i].updateRequired = true;
 						}
 						if (npcs[i].walkingType >= 0) {
@@ -1958,7 +1944,7 @@ public class NPCHandler {
 								int movingToY = npcs[i].getY() + NPCClipping.DIR[direction][1];
 								if (Math.abs(npcs[i].makeX - movingToX) <= 1 && Math.abs(npcs[i].makeY - movingToY) <= 1
 										&& NPCDumbPathFinder.canMoveTo(npcs[i], direction)) {
-									NPCDumbPathFinder.walkTowards(npcs[i], movingToX, movingToY);
+									NPCDumbPathFinder.walkTowards(npcs[i], movingToX, movingToY, null);
 								}
 							}
 						}
@@ -2716,7 +2702,6 @@ public class NPCHandler {
 	}
 
 	public void handleJadDeath(int i) {
-		Player c = PlayerHandler.players[npcs[i].spawnedBy];
 	}
 
 	/**
@@ -2745,6 +2730,10 @@ public class NPCHandler {
 
 			if (npcs[i].npcType == 6612 || npcs[i].npcType == 6611) {
 				VDrops.dropLoot(c, i);
+			}
+			
+			if (npcs[i].npcType == 7095) {
+				BeardedGorillaDrops.dropLoot(c, i, npcs[i].getX(), npcs[i].getY(), npcs[i].heightLevel);
 			}
 			
 			if (isRevenant(npcs[i].npcType)) {
@@ -2842,7 +2831,6 @@ public class NPCHandler {
 				// KILL_TENT(c, 6617, npcs[i].absX + 1, npcs[i].absY, 0);
 				// KILL_TENT(c, 6617, npcs[i].absX + 2, npcs[i].absY, 0);
 				kill(6617, 0);
-				spawnedGuardian = false;
 			}
 
 			if (npcs[i].npcType == 2461 || npcs[i].npcType == 2463 || npcs[i].npcType == 2464) {
@@ -2861,7 +2849,6 @@ public class NPCHandler {
 				if (Server.task.getNPC() != null && Server.task.getNPC() == npcs[i]) {
 					if (Server.task.getAttackers() != null && !Server.task.getAttackers().isEmpty()) {
 						for (final Player p : Server.task.getAttackers()) {
-							int id = 0;
 							Server.task.dropLoot(p);
 						}
 						return;
@@ -2878,7 +2865,7 @@ public class NPCHandler {
 
 			int random = Misc.random(1500);
 			int chaos = Misc.random(1000);
-			int chaos1 = Misc.random(300);
+			Misc.random(300);
 			int zulrahpet = Misc.random(3000);
 			if (npcs[i].npcType == 2054 && chaos == 100) {
 				c.sendMessage("@red@You receive a boss pet. It has been added to your bank. Congratulations!");
@@ -3064,9 +3051,6 @@ public class NPCHandler {
 			}
 			if (npcs[i].npcType == 912 || npcs[i].npcType == 913 || npcs[i].npcType == 914)
 				c.magePoints += 1;
-			int dropX = npcs[i].absX;
-			int dropY = npcs[i].absY;
-			int dropHeight = npcs[i].heightLevel;
 			NpcDropManager.dropItems(Optional.of(c), npcs[i]);
 		}
 	}
@@ -3609,7 +3593,6 @@ public class NPCHandler {
 				return;
 			}
 		}
-		Player c = PlayerHandler.players[npcs[i].oldIndex];
 		if (Boundary.isIn(npcs[i], Zulrah.BOUNDARY)
 				&& (npcs[i].npcType >= 2042 && npcs[i].npcType <= 2044 || npcs[i].npcType == 6720)) {
 			return;
@@ -3630,10 +3613,10 @@ public class NPCHandler {
 		if (npcs[i].getDistance(playerX, playerY) <= distance) {
 			return;
 		} 
-		if ((npcs[i].spawnedBy > 0) || ((npcs[i].absX < npcs[i].makeX + Config.NPC_FOLLOW_DISTANCE)
+		if ((npcs[i].spawnedBy > 0) || (((npcs[i].absX < npcs[i].makeX + Config.NPC_FOLLOW_DISTANCE)
 				&& (npcs[i].absX > npcs[i].makeX - Config.NPC_FOLLOW_DISTANCE)
 				&& (npcs[i].absY < npcs[i].makeY + Config.NPC_FOLLOW_DISTANCE)
-				&& (npcs[i].absY > npcs[i].makeY - Config.NPC_FOLLOW_DISTANCE))) {
+				&& (npcs[i].absY > npcs[i].makeY - Config.NPC_FOLLOW_DISTANCE)) || IntStream.of(PetHandler.pets).anyMatch(x -> x == npcs[i].npcType))) {
 			if (npcs[i].heightLevel == PlayerHandler.players[playerId].heightLevel) {
 				if (PlayerHandler.players[playerId] != null && npcs[i] != null) {
 					NPCDumbPathFinder.follow(npcs[i], player);
@@ -3646,8 +3629,6 @@ public class NPCHandler {
 
 		}
 	}
-
-	private boolean spawnedGuardian = false;
 
 	public void loadSpell(Player player, int npcId) {
 		int chance = 0;
@@ -4601,6 +4582,9 @@ public class NPCHandler {
 	public int followDistance(int i) {
 		if (Boundary.isIn(npcs[i], Boundary.GODWARS_BOSSROOMS)) {
 			return 8;
+		}
+		if (IntStream.of(PetHandler.pets).anyMatch(x -> x == npcs[i].npcType)) {
+			return 100;
 		}
 		switch (npcs[i].npcType) {
 		case 319:

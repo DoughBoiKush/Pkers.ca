@@ -9,10 +9,10 @@ public class NPCDumbPathFinder {
 	private static final int NORTH = 0, EAST = 1,  SOUTH = 2, WEST = 3;
 	
 	public static void follow(NPC npc, Player following) {
-		walkTowards(npc, following.getX(), following.getY());
+		walkTowards(npc, following.getX(), following.getY(), following);
 	}
 
-	public static void walkTowards(NPC npc, int waypointx, int waypointy) {
+	public static void walkTowards(NPC npc, int waypointx, int waypointy, Player player) {
 		int x = npc.getX();
 		int y = npc.getY();
 		if (waypointx == x && waypointy == y) {
@@ -85,6 +85,7 @@ public class NPCDumbPathFinder {
 		}*/
 		npc.moveX = NPCClipping.DIR[direction][0];
 		npc.moveY = NPCClipping.DIR[direction][1];
+		npc.face(player);
 		//npc.moveY = Server.npcHandler.GetMove(npc.getY(), npcLocation[1] + movey);
 		npc.getNextNPCMovement(npc.index);
 		npc.updateRequired = true;

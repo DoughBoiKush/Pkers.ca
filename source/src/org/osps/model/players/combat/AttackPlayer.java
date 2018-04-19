@@ -126,7 +126,7 @@ public class AttackPlayer {
 			c.getPA().refreshSkill(3);
 			o.gfx0(398);
 		}
-		if (c.summonId == 12816) {
+		if (c.summonId == 13247) {
 			c.getCombat().applySoulSplit(i, damage);
 		}
 		if (damage > 0 && guthansEffect && c.getPA().wearingGuthan(c) && c.playerLevel[3] == c.getPA().getLevelForXP(c.playerXP[3])) {

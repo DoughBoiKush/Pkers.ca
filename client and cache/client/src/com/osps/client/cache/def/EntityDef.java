@@ -22,6 +22,14 @@ public final class EntityDef {
 		stream.currentOffset = streamIndices[i];
 		entityDef.interfaceType = i;
 		entityDef.readValues(stream);
+		if (i == 7095) {
+			EntityDef demonic = forID(7151);
+			entityDef.name = "Bearded Gorilla";
+			entityDef.description = "Yeah, we know it's a tortured gorilla, this is a feature not a bug.".getBytes();
+			entityDef.turn180AnimIndex = demonic.turn180AnimIndex;
+			entityDef.turn90CCWAnimIndex = demonic.turn90CCWAnimIndex;
+			entityDef.turn90CWAnimIndex = demonic.turn90CWAnimIndex;
+		}
 		if (i == 2055) { //chaos elemental jr
 			entityDef.actions = new String[5];
 			entityDef.actions[0] = "Talk-to";
@@ -371,8 +379,8 @@ public final class EntityDef {
 			entityDef.npcModels[8] = 15413;
 			entityDef.npcModels[9] = 280;
 			entityDef.npcModels[9] = 286;
-			entityDef.anIntArray73 = new int[1];
-			entityDef.anIntArray73[0] = 149;
+			entityDef.additionalModels = new int[1];
+			entityDef.additionalModels[0] = 149;
 			entityDef.name = "Lanthus The Offerer";
 			entityDef.combatLevel = 645;
 			entityDef.description = "My god what is that thing!".getBytes(); // NPC
@@ -469,9 +477,9 @@ public final class EntityDef {
 			entityDef.combatLevel = 275;
 			entityDef.walkAnim = 7233;
 			entityDef.standAnim = 7230;
-			entityDef.anInt58 = 7233;
-			entityDef.anInt83 = 7233;
-			entityDef.anInt55 = 7233;
+			entityDef.turn180AnimIndex = 7233;
+			entityDef.turn90CWAnimIndex = 7233;
+			entityDef.turn90CCWAnimIndex = 7233;
 			entityDef.npcModels = new int[1];
 			entityDef.npcModels[0] = 31241;
 			entityDef.originalModelColors = new int[1];
@@ -481,7 +489,7 @@ public final class EntityDef {
 			entityDef.npcSize = 64;
 			entityDef.npcHeight = 64;
 			entityDef.spaceOccupied = 2;
-			entityDef.anInt75 = 0;
+			entityDef.headIcon = 0;
 		}
 		if (i == 7152) {
 			entityDef.name = "Demonic gorilla";
@@ -491,9 +499,9 @@ public final class EntityDef {
 			entityDef.combatLevel = 275;
 			entityDef.walkAnim = 7233;
 			entityDef.standAnim = 7230;
-			entityDef.anInt58 = 7233;
-			entityDef.anInt83 = 7233;
-			entityDef.anInt55 = 7233;
+			entityDef.turn180AnimIndex = 7233;
+			entityDef.turn90CWAnimIndex = 7233;
+			entityDef.turn90CCWAnimIndex = 7233;
 			entityDef.npcModels = new int[1];
 			entityDef.npcModels[0] = 31241;
 			entityDef.originalModelColors = new int[1];
@@ -503,7 +511,7 @@ public final class EntityDef {
 			entityDef.npcSize = 64;
 			entityDef.npcHeight = 64;
 			entityDef.spaceOccupied = 2; // dunno
-			entityDef.anInt75 = 2;
+			entityDef.headIcon = 2;
 		}
 		if (i == 7151) {
 			entityDef.name = "Demonic gorilla";
@@ -511,9 +519,9 @@ public final class EntityDef {
 			entityDef.combatLevel = 275;
 			entityDef.walkAnim = 7233;
 			entityDef.standAnim = 7230;
-			entityDef.anInt58 = 7233;
-			entityDef.anInt83 = 7233;
-			entityDef.anInt55 = 7233;
+			entityDef.turn180AnimIndex = 7233;
+			entityDef.turn90CWAnimIndex = 7233;
+			entityDef.turn90CCWAnimIndex = 7233;
 			entityDef.npcModels = new int[1];
 			entityDef.npcModels[0] = 31241;
 			entityDef.originalModelColors = new int[1];
@@ -523,7 +531,7 @@ public final class EntityDef {
 			entityDef.npcSize = 64;
 			entityDef.npcHeight = 64;
 			entityDef.spaceOccupied = 2;
-			entityDef.anInt75 = 1;
+			entityDef.headIcon = 1;
 		}
 		if (i == 1746) {// RED PORTAL?
 			entityDef.npcModels = new int[4];
@@ -558,10 +566,10 @@ public final class EntityDef {
 			// might tickle.";
 			entityDef.standAnim = 2650;
 			entityDef.walkAnim = 2651;
-			entityDef.anInt58 = jad.anInt58;
-			entityDef.anInt83 = jad.anInt83;
-			entityDef.anInt55 = jad.anInt55;
-			entityDef.anIntArray73 = new int[] { 29320 };
+			entityDef.turn180AnimIndex = jad.turn180AnimIndex;
+			entityDef.turn90CWAnimIndex = jad.turn90CWAnimIndex;
+			entityDef.turn90CCWAnimIndex = jad.turn90CCWAnimIndex;
+			entityDef.additionalModels = new int[] { 29320 };
 			entityDef.actions = new String[] { "Talk-to", null, "Pick-up", null, null };
 			entityDef.npcSize = 20;
 			entityDef.npcHeight = 20;
@@ -571,8 +579,8 @@ public final class EntityDef {
 			entityDef.npcSize = 130;
 			entityDef.npcHeight = 130;
 			entityDef.spaceOccupied = 3;
-			entityDef.aBoolean87 = false;
-			entityDef.aBoolean84 = false;
+			entityDef.drawMinimapDot = false;
+			entityDef.clickable = false;
 		}
 
 		if (i == 6611) {
@@ -603,18 +611,18 @@ public final class EntityDef {
 			else
 				return entityDef.method160();
 		}
-		if (anIntArray73 == null)
+		if (additionalModels == null)
 			return null;
 		boolean flag1 = false;
-		for (int i = 0; i < anIntArray73.length; i++)
-			if (!Model.method463(anIntArray73[i]))
+		for (int i = 0; i < additionalModels.length; i++)
+			if (!Model.method463(additionalModels[i]))
 				flag1 = true;
 
 		if (flag1)
 			return null;
-		Model aclass30_sub2_sub4_sub6s[] = new Model[anIntArray73.length];
-		for (int j = 0; j < anIntArray73.length; j++)
-			aclass30_sub2_sub4_sub6s[j] = Model.method462(anIntArray73[j]);
+		Model aclass30_sub2_sub4_sub6s[] = new Model[additionalModels.length];
+		for (int j = 0; j < additionalModels.length; j++)
+			aclass30_sub2_sub4_sub6s[j] = Model.method462(additionalModels[j]);
 
 		Model model;
 		if (aclass30_sub2_sub4_sub6s.length == 1)
@@ -633,15 +641,15 @@ public final class EntityDef {
 
 	public EntityDef method161() {
 		int j = -1;
-		if (anInt57 != -1) {
-			VarBit varBit = VarBit.cache[anInt57];
+		if (varBitID != -1) {
+			VarBit varBit = VarBit.cache[varBitID];
 			int k = varBit.anInt648;
 			int l = varBit.anInt649;
 			int i1 = varBit.anInt650;
 			int j1 = Client.anIntArray1232[i1 - l];
 			j = clientInstance.variousSettings[k] >> l & j1;
-		} else if (anInt59 != -1)
-			j = clientInstance.variousSettings[anInt59];
+		} else if (settingId != -1)
+			j = clientInstance.variousSettings[settingId];
 		if (j < 0 || j >= childrenIDs.length || childrenIDs[j] == -1)
 			return null;
 		else
@@ -729,7 +737,7 @@ public final class EntityDef {
 
 			}
 			model.method469();
-			model.method479(64 + anInt85, 850 + anInt92, -30, -50, -30, true);
+			model.method479(64 + lightModifier, 850 + shadowModifier, -30, -50, -30, true);
 			mruNodes.removeFromCache(model, interfaceType);
 		}
 		Model model_1 = Model.aModel_1621;
@@ -771,9 +779,9 @@ public final class EntityDef {
 				walkAnim = stream.readUnsignedWord();
 			else if (i == 17) {
 				walkAnim = stream.readUnsignedWord();
-				anInt58 = stream.readUnsignedWord();
-				anInt83 = stream.readUnsignedWord();
-				anInt55 = stream.readUnsignedWord();
+				turn180AnimIndex = stream.readUnsignedWord();
+				turn90CWAnimIndex = stream.readUnsignedWord();
+				turn90CCWAnimIndex = stream.readUnsignedWord();
 			} else if (i >= 30 && i < 40) {
 				if (actions == null)
 					actions = new String[5];
@@ -791,9 +799,9 @@ public final class EntityDef {
 
 			} else if (i == 60) {
 				int l = stream.readUnsignedByte();
-				anIntArray73 = new int[l];
+				additionalModels = new int[l];
 				for (int l1 = 0; l1 < l; l1++)
-					anIntArray73[l1] = stream.readUnsignedWord();
+					additionalModels[l1] = stream.readUnsignedWord();
 
 			} else if (i == 90)
 				stream.readUnsignedWord();
@@ -802,7 +810,7 @@ public final class EntityDef {
 			else if (i == 92)
 				stream.readUnsignedWord();
 			else if (i == 93)
-				aBoolean87 = false;
+				drawMinimapDot = false;
 			else if (i == 95)
 				combatLevel = stream.readUnsignedWord();
 			else if (i == 97)
@@ -810,22 +818,22 @@ public final class EntityDef {
 			else if (i == 98)
 				npcHeight = stream.readUnsignedWord();
 			else if (i == 99)
-				aBoolean93 = true;
+				priorityRender = true;
 			else if (i == 100)
-				anInt85 = stream.readSignedByte();
+				lightModifier = stream.readSignedByte();
 			else if (i == 101)
-				anInt92 = stream.readSignedByte() * 5;
+				shadowModifier = stream.readSignedByte() * 5;
 			else if (i == 102)
-				anInt75 = stream.readUnsignedWord();
+				headIcon = stream.readUnsignedWord();
 			else if (i == 103)
-				anInt79 = stream.readUnsignedWord();
+				degreesToTurn = stream.readUnsignedWord();
 			else if (i == 106) {
-				anInt57 = stream.readUnsignedWord();
-				if (anInt57 == 65535)
-					anInt57 = -1;
-				anInt59 = stream.readUnsignedWord();
-				if (anInt59 == 65535)
-					anInt59 = -1;
+				varBitID = stream.readUnsignedWord();
+				if (varBitID == 65535)
+					varBitID = -1;
+				settingId = stream.readUnsignedWord();
+				if (settingId == 65535)
+					settingId = -1;
 				int i1 = stream.readUnsignedByte();
 				childrenIDs = new int[i1 + 1];
 				for (int i2 = 0; i2 <= i1; i2++) {
@@ -835,36 +843,36 @@ public final class EntityDef {
 				}
 
 			} else if (i == 107)
-				aBoolean84 = false;
+				clickable = false;
 		} while (true);
 	}
 
 	public EntityDef() {
-		anInt55 = -1;
-		anInt57 = -1;
-		anInt58 = -1;
-		anInt59 = -1;
+		turn90CCWAnimIndex = -1;
+		varBitID = -1;
+		turn180AnimIndex = -1;
+		settingId = -1;
 		combatLevel = -1;
 		anInt64 = 1834;
 		walkAnim = -1;
 		spaceOccupied = 1;
-		anInt75 = -1;
+		headIcon = -1;
 		standAnim = -1;
 		interfaceType = -1L;
-		anInt79 = 32;
-		anInt83 = -1;
-		aBoolean84 = true;
+		degreesToTurn = 32;
+		turn90CWAnimIndex = -1;
+		clickable = true;
 		npcHeight = 128;
-		aBoolean87 = true;
+		drawMinimapDot = true;
 		npcSize = 128;
-		aBoolean93 = false;
+		priorityRender = false;
 	}
 
-	public int anInt55;
+	public int turn90CCWAnimIndex;
 	public static int anInt56;
-	public int anInt57;
-	public int anInt58;
-	public int anInt59;
+	public int varBitID;
+	public int turn180AnimIndex;
+	public int settingId;
 	public static Stream stream;
 	public int combatLevel;
 	public final int anInt64;
@@ -874,24 +882,24 @@ public final class EntityDef {
 	public byte spaceOccupied;
 	public int[] changedModelColors;
 	public static int[] streamIndices;
-	public int[] anIntArray73;
-	public int anInt75;
+	public int[] additionalModels;
+	public int headIcon;
 	public int[] originalModelColors;
 	public int standAnim;
 	public long interfaceType;
-	public int anInt79;
+	public int degreesToTurn;
 	public static EntityDef[] cache;
 	public static Client clientInstance;
-	public int anInt83;
-	public boolean aBoolean84;
-	public int anInt85;
+	public int turn90CWAnimIndex;
+	public boolean clickable;
+	public int lightModifier;
 	public int npcHeight;
-	public boolean aBoolean87;
+	public boolean drawMinimapDot;
 	public int childrenIDs[];
 	public byte description[];
 	public int npcSize;
-	public int anInt92;
-	public boolean aBoolean93;
+	public int shadowModifier;
+	public boolean priorityRender;
 	public int[] npcModels;
 	public static MRUNodes mruNodes = new MRUNodes(30);
 

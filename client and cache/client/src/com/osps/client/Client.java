@@ -1992,7 +1992,7 @@ public class Client extends RSApplet {
 		for (int j = 0; j < npcCount; j++) {
 			Npc npc = npcArray[npcIndices[j]];
 			int k = 0x20000000 + (npcIndices[j] << 14);
-			if (npc == null || !npc.isVisible() || npc.desc.aBoolean93 != flag)
+			if (npc == null || !npc.isVisible() || npc.desc.priorityRender != flag)
 				continue;
 			int l = npc.x >> 7;
 			int i1 = npc.y >> 7;
@@ -2003,7 +2003,7 @@ public class Client extends RSApplet {
 					continue;
 				anIntArrayArray929[l][i1] = anInt1265;
 			}
-			if (!npc.desc.aBoolean84)
+			if (!npc.desc.clickable)
 				k += 0x80000000;
 			worldController.method285(plane, npc.anInt1552, method42(plane, npc.y, npc.x), k, npc.y,
 					(npc.anInt1540 - 1) * 64 + 60, npc.x, npc, npc.aBoolean1541);
@@ -2848,10 +2848,10 @@ public class Client extends RSApplet {
 					}
 				} else {
 					EntityDef entityDef_1 = ((Npc) obj).desc;
-					if (entityDef_1.anInt75 >= 0 && entityDef_1.anInt75 < headIcons.length) {
+					if (entityDef_1.headIcon >= 0 && entityDef_1.headIcon < headIcons.length) {
 						npcScreenPos(((Entity) (obj)), ((Entity) (obj)).height + 15);
 						if (spriteDrawX > -1)
-							headIcons[entityDef_1.anInt75].drawSprite(spriteDrawX - 12, spriteDrawY - 30);
+							headIcons[entityDef_1.headIcon].drawSprite(spriteDrawX - 12, spriteDrawY - 30);
 					}
 					if (anInt855 == 1 && anInt1222 == npcIndices[j - playerCount] && loopCycle % 20 < 10) {
 						npcScreenPos(((Entity) (obj)), ((Entity) (obj)).height + 15);
@@ -3582,11 +3582,11 @@ public class Client extends RSApplet {
 			if (k1 == 1)
 				anIntArray894[anInt893++] = k;
 			npc.anInt1540 = npc.desc.spaceOccupied;
-			npc.anInt1504 = npc.desc.anInt79;
+			npc.anInt1504 = npc.desc.degreesToTurn;
 			npc.anInt1554 = npc.desc.walkAnim;
-			npc.anInt1555 = npc.desc.anInt58;
-			npc.anInt1556 = npc.desc.anInt83;
-			npc.anInt1557 = npc.desc.anInt55;
+			npc.anInt1555 = npc.desc.turn180AnimIndex;
+			npc.anInt1556 = npc.desc.turn90CWAnimIndex;
+			npc.anInt1557 = npc.desc.turn90CCWAnimIndex;
 			npc.anInt1511 = npc.desc.standAnim;
 			npc.setPos(myPlayer.smallX[0] + i1, myPlayer.smallY[0] + l, j1 == 1);
 		}
@@ -9799,11 +9799,11 @@ public class Client extends RSApplet {
 			if ((l & 2) != 0) {
 				npc.desc = EntityDef.forID(stream.method436());
 				npc.anInt1540 = npc.desc.spaceOccupied;
-				npc.anInt1504 = npc.desc.anInt79;
+				npc.anInt1504 = npc.desc.degreesToTurn;
 				npc.anInt1554 = npc.desc.walkAnim;
-				npc.anInt1555 = npc.desc.anInt58;
-				npc.anInt1556 = npc.desc.anInt83;
-				npc.anInt1557 = npc.desc.anInt55;
+				npc.anInt1555 = npc.desc.turn180AnimIndex;
+				npc.anInt1556 = npc.desc.turn90CWAnimIndex;
+				npc.anInt1557 = npc.desc.turn90CCWAnimIndex;
 				npc.anInt1511 = npc.desc.standAnim;
 			}
 			if ((l & 4) != 0) {
@@ -9820,7 +9820,7 @@ public class Client extends RSApplet {
 			entityDef = entityDef.method161();
 		if (entityDef == null)
 			return;
-		if (!entityDef.aBoolean84)
+		if (!entityDef.clickable)
 			return;
 		String s = entityDef.name;
 		if (entityDef.combatLevel != 0)
@@ -12901,7 +12901,7 @@ public class Client extends RSApplet {
 				if (entityDef.childrenIDs != null) {
 					entityDef = entityDef.method161();
 				}
-				if (entityDef != null && entityDef.aBoolean87 && entityDef.aBoolean84) {
+				if (entityDef != null && entityDef.drawMinimapDot && entityDef.clickable) {
 					int i1 = npc.x / 32 - myPlayer.x / 32;
 					int k3 = npc.y / 32 - myPlayer.y / 32;
 					markMinimap(mapDotNPC, i1, k3);

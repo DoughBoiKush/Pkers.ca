@@ -181,7 +181,7 @@ public class AttackNPC {
 		if (NPCHandler.npcs[i].HP - damage < 0) {
 			damage = NPCHandler.npcs[i].HP;
 		}
-		if (c.summonId == 12816) {
+		if (c.summonId == 13247) {
 			c.getCombat().applySoulSplit(-1, damage);
 		}
 		if (c.fightMode == 3) {

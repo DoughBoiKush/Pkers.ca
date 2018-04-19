@@ -3965,11 +3965,12 @@ public class Player extends Entity {
 		if (inFunPk2()) {
 			return true;
 		}
+		
 		if(isInYanille()) {
 			return true;
-			}
+		}
 
-		if (absX > 2941 && absX < 3392 && absY > 3518 && absY < 3966
+		if (absX > 2941 && absX < 3392 && absY > 3524 && absY < 3966
 				|| absX > 2941 && absX < 3392 && absY > 9918 && absY < 10366
 				|| absX >= 3194 && absX <= 3251 && absY >= 3190 && absY <= 3288
 				|| absX <= 2777 && absX >= 2674 && absY <= 3520 && absY >= 3469
@@ -3979,29 +3980,6 @@ public class Player extends Entity {
 				|| absX > 3543 && absX < 3584 && absY > 3265 && absY < 3311
 				|| absX > 3529 && absX < 3581 && absY > 9673 && absY < 9722
 				|| absX > 3520 && absX < 3598 && absY > 9653 && absY < 9750) {
-			
-			
-			
-//			public boolean isInBarrows() {
-//				if (absX > 3543 && absX < 3584 && absY > 3265 && absY < 3311) {
-//					return true;
-//				}
-//				return false;
-//			}
-//
-//			public boolean isInBarrows2() {
-//				if (absX > 3529 && absX < 3581 && absY > 9673 && absY < 9722) {
-//					return true;
-//				}
-//				return false;
-//			}
-//
-//			public boolean inBarrows() {
-//				if (absX > 3520 && absX < 3598 && absY > 9653 && absY < 9750) {
-//					return true;
-//				}
-//				return false;
-//			}
 			
 			return true;
 		}

@@ -7,7 +7,7 @@ public class Configuration {
 	/**
 	 * True = connect to local host False = connect to VPS
 	 */
-	public static boolean localHost = false;
+	public static boolean localHost = true;
 
 	public static final String localAddress = "127.0.0.1";
 	public static final String liveAddress = "172.81.132.122";

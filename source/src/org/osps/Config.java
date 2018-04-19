@@ -317,7 +317,7 @@ public class Config {
 	 */
 	public static final int[] FUN_WEAPONS = { 4151, 5698, 1231, 1215, 5680 };
 
-	public static final String[] UNSPAWNABLE = { "ahrim", "reindeer", "token", "lamp", "warrior guild", "manta",
+	public static final String[] UNSPAWNABLE = { "ether", "ahrim", "reindeer", "token", "lamp", "warrior guild", "manta",
 			"sea turtle", "tuna potato", "star bauble", "bauble", "tokkul", "grimy", "herb", "torag", "dharok",
 			"overload", "tenderiser", "woolly", "bobble", "jester", "gilded", "legend", "hell", "dragon spear", "odium",
 			"malediction", "callisto", "gods", "yrannical", "treasonous", "granite maul", "ancient mace",
